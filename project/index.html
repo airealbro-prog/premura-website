@@ -979,7 +979,7 @@
       card.setAttribute('aria-label', 'Play ' + d.name + '\u2019s testimonial');
       card.innerHTML =
         '<div class="tc-card-thumb">' +
-          '<img loading="lazy" src="https://vumbnail.com/' + d.vimeo + '.jpg" alt="' + d.name + ' testimonial thumbnail"/>' +
+          '<img loading="lazy" data-vid="' + d.vimeo + '" alt="' + d.name + '"/>' +
           '<div class="tc-card-play"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>' +
         '</div>' +
         '<div class="tc-card-body">' +
@@ -1083,6 +1083,21 @@
   }
 
   buildInfiniteTrack();
+
+  // Fetch Vimeo thumbnails via oEmbed (vumbnail.com blocks this domain)
+  const _thumbCache = {};
+  data.forEach(d => {
+    if (_thumbCache[d.vimeo]) return;
+    _thumbCache[d.vimeo] = true;
+    fetch('https://vimeo.com/api/oembed.json?url=' + encodeURIComponent('https://vimeo.com/' + d.vimeo + '?h=' + d.hash))
+      .then(r => r.json())
+      .then(j => {
+        const url = j.thumbnail_url;
+        if (!url) return;
+        track.querySelectorAll('img[data-vid="' + d.vimeo + '"]').forEach(img => { img.src = url; });
+      })
+      .catch(() => {});
+  });
 
   track.addEventListener('click', (e) => {
     const card = e.target.closest('.tc-card');
