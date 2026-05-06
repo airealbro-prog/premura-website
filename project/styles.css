@@ -1424,9 +1424,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:64px 40
   .tc-player-wrap{padding:8px;}
   .tc-player-inner{aspect-ratio:9/16;}
   .tc-player-close{width:36px;height:36px;font-size:20px;}
-}
   .tc-card{flex:0 0 240px;}
-  .tc-arrow{display:none;}
 }
 
 /* ════════════════════════════════════════════════
