@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="assets/premura-logo.png">
+<link rel="apple-touch-icon" href="assets/premura-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premura | In-House Call Centers for Solar & Roofing Companies</title>
+<meta name="description" content="Premura builds and manages dedicated call centers that book qualified appointments directly into your calendar. Trained agents, real-time dashboards, and full transparency.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Premura"><img src="assets/premura-logo.png" alt="Premura"/></a>
+    <div class="nav-links">
+      <a href="how-it-works.html">How It Works</a>
+      <a href="solar.html">Solar</a>
+      <a href="roofing.html">Roofing</a>
+      <a href="technology.html">Technology</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="nav-mobile-menu">
+  <button class="nav-mobile-close">×</button>
+  <a href="how-it-works.html">How It Works</a>
+  <a href="solar.html">Solar</a>
+  <a href="roofing.html">Roofing</a>
+  <a href="about.html">About</a>
+  <a href="faq.html">FAQ</a>
+  <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:16px;">Book a Call</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+  <div class="hero-layout">
+    <div class="hero-content">
+      <span class="hero-eyebrow">In-House Call Centers for Solar &amp; Roofing</span>
+      <h1 class="hero-title">We Build Your<br>Call Center.<br><span>You Close the Deals.</span></h1>
+      <p class="hero-subtitle">Premura builds and manages dedicated outbound call centers that book qualified appointments directly into your calendar. Your closers show up, sit down, and sell — we handle everything else.</p>
+      <div class="hero-buttons">
+        <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary">Book a Strategy Call →</a>
+        <a href="how-it-works.html" class="btn-secondary">See How It Works</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <video autoplay loop muted playsinline>
+        <source src="dark one.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<div class="stats-wrap" style="padding-top:48px;padding-bottom:48px;">
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num" id="statNum1" data-count="150" data-suffix="+">150+</span>
+      <span class="stat-lbl" id="statLbl1">Active Campaigns</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" id="statNum2" data-count="6800" data-suffix="+">6,800+</span>
+      <span class="stat-lbl" id="statLbl2">Appointments Booked</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" id="statNum3" data-count="6000" data-suffix="+">6,000+</span>
+      <span class="stat-lbl" id="statLbl3">Trained Agents</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" id="statNum4">U.S.-Wide</span>
+      <span class="stat-lbl" id="statLbl4">Service Coverage</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SCROLL ANIMATION — frame-sequence scrubber ═══ -->
+<div class="scroll-section-wrap">
+  <div class="scroll-fade-top"></div>
+  <section class="scroll-animation">
+    <div class="scroll-sticky">
+      <canvas id="frameCanvas"></canvas>
+      <div id="scrollLoader" class="scroll-loader" aria-hidden="true">
+        <div class="scroll-loader-bar"><div id="scrollLoaderFill" class="scroll-loader-fill"></div></div>
+      </div>
+      <div class="annotation-card" data-show="0" data-hide="0.92">
+        <div class="wavecard-content">
+          <div class="wavecard-status">
+            <span class="wavecard-dot"></span>
+            <span class="wavecard-live">LIVE CALL</span>
+          </div>
+          <div class="wavecard-name" id="wavecardName">Robert K. — Friday 2:00 PM</div>
+          <div class="wavecard-bars" id="wavecardBars">
+            <span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span>
+            <span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span>
+            <span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span>
+            <span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span>
+          </div>
+          <div class="wavecard-ended" id="wavecardEnded">Call ended — appointment booked ✓</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="scroll-fade-bottom"></div>
+</div>
+
+<!-- ═══ PROBLEM — Pick the one that hurts most ═══ -->
+<section id="problem" class="section">
+  <div class="section-inner">
+    <span class="section-label">The Problem</span>
+    <h2 class="section-title">Which One Hurts<br>The Most?</h2>
+    <p class="problem-prompt">Tap the pain you live with every week.</p>
+    <div class="pain-stack" id="painStack">
+      <button class="pain-card" data-pain="0">
+        <span class="pain-num">01</span>
+        <span class="pain-headline">Your closers are sitting around waiting for appointments.</span>
+        <span class="pain-answer">
+          <span class="pain-answer-lbl">Premura's answer</span>
+          <span class="pain-answer-text">Dedicated agents fill their calendar before they wake up. Five qualified appointments per agent per week — measured daily, not hoped for.</span>
+        </span>
+      </button>
+      <button class="pain-card" data-pain="1">
+        <span class="pain-num">02</span>
+        <span class="pain-headline">Door knocking is inconsistent and burning out your reps.</span>
+        <span class="pain-answer">
+          <span class="pain-answer-lbl">Premura's answer</span>
+          <span class="pain-answer-text">No more weather, willpower, or shoe leather. Your agents dial every working day — rural, urban, gated, all of it.</span>
+        </span>
+      </button>
+      <button class="pain-card" data-pain="2">
+        <span class="pain-num">03</span>
+        <span class="pain-headline">You've tried lead gen companies and got burned.</span>
+        <span class="pain-answer">
+          <span class="pain-answer-lbl">Premura's answer</span>
+          <span class="pain-answer-text">No shared lists. No recycled contacts. Confirmed appointments, in your calendar, exclusive to you.</span>
+        </span>
+      </button>
+      <button class="pain-card" data-pain="3">
+        <span class="pain-num">04</span>
+        <span class="pain-headline">Hiring your own cold callers is a full-time job.</span>
+        <span class="pain-answer">
+          <span class="pain-answer-lbl">Premura's answer</span>
+          <span class="pain-answer-text">We recruit, train, manage, and replace agents until they perform. You sign one contract — we run the call center.</span>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOLUTION — Drag slider ═══ -->
+<section id="solution" class="section">
+  <div class="section-inner">
+    <span class="section-label">The Solution</span>
+    <h2 class="section-title">Drag To See<br>The Difference.</h2>
+    <p class="solution-prompt">Slide right. Watch the chaos turn into a calendar.</p>
+
+    <div class="dragslider" id="dragslider">
+      <!-- WITHOUT (red) — full width underneath -->
+      <div class="dragslider-side dragslider-without">
+        <div class="dragslider-side-inner">
+          <span class="dragslider-tag dragslider-tag-bad">Without Premura</span>
+          <div class="dragslider-cards">
+            <div class="dscard dscard-bad">
+              <span class="dscard-num">01</span>
+              <h3>Shared Dialers</h3>
+              <p>You're one of dozens on the same floor. Nobody knows your brand.</p>
+            </div>
+            <div class="dscard dscard-bad">
+              <span class="dscard-num">02</span>
+              <h3>Recycled Leads</h3>
+              <p>A spreadsheet shared with four competitors. Half your day, chasing no-shows.</p>
+            </div>
+            <div class="dscard dscard-bad">
+              <span class="dscard-num">03</span>
+              <h3>You Run Ops</h3>
+              <p>Recruiting, training, dialers, data — a second job on top of running your business.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- WITH (purple) — clipped from the left -->
+      <div class="dragslider-side dragslider-with" id="dragsliderWith">
+        <div class="dragslider-side-inner">
+          <span class="dragslider-tag dragslider-tag-good">With Premura</span>
+          <div class="dragslider-cards">
+            <div class="dscard dscard-good">
+              <span class="dscard-num">01</span>
+              <h3>Dedicated Agents</h3>
+              <p>Your team only. Your brand, offer, and territory — burned into muscle memory.</p>
+            </div>
+            <div class="dscard dscard-good">
+              <span class="dscard-num">02</span>
+              <h3>Booked Appointments</h3>
+              <p>Confirmed time slots in your Google Calendar. Closers show up. Closers close.</p>
+            </div>
+            <div class="dscard dscard-good">
+              <span class="dscard-num">03</span>
+              <h3>We Run Ops</h3>
+              <p>Recruitment, training, scripts, data, optimization — managed entirely by us.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Drag handle -->
+      <div class="dragslider-handle" id="dragsliderHandle">
+        <div class="dragslider-line"></div>
+        <div class="dragslider-knob">
+          <span class="dragslider-arrow">‹</span>
+          <span class="dragslider-arrow">›</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS — pinned scroll stepper ═══ -->
+<section class="ssteps-wrap" id="ssteps">
+  <div class="ssteps-track">
+    <div class="ssteps-sticky">
+      <div class="ssteps-grid">
+        <div class="ssteps-text">
+          <span class="section-label">The Process</span>
+          <h2 class="section-title ssteps-title">From Signup<br>to Calendar.</h2>
+          <ol class="ssteps-list" id="sstepsList">
+            <li class="ssteps-item active" data-step="0">
+              <span class="ssteps-num">01</span>
+              <div>
+                <span class="ssteps-h">Strategy Call</span>
+                <span class="ssteps-d">Map your market, sales team, and territory.</span>
+              </div>
+            </li>
+            <li class="ssteps-item" data-step="1">
+              <span class="ssteps-num">02</span>
+              <div>
+                <span class="ssteps-h">We Build Your Campaign</span>
+                <span class="ssteps-d">Recruit agents. Train. Configure your tech stack.</span>
+              </div>
+            </li>
+            <li class="ssteps-item" data-step="2">
+              <span class="ssteps-num">03</span>
+              <div>
+                <span class="ssteps-h">Your Call Center Goes Live</span>
+                <span class="ssteps-d">Live in ~14 days. Appointments in your calendar.</span>
+              </div>
+            </li>
+            <li class="ssteps-item" data-step="3">
+              <span class="ssteps-num">04</span>
+              <div>
+                <span class="ssteps-h">Ongoing Optimization</span>
+                <span class="ssteps-d">Daily monitoring. Agents replaced if needed.</span>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="ssteps-stage">
+          <!-- Step 0: Strategy Call (territory map ping) -->
+          <div class="sstage sstage-0 active" data-stage="0">
+            <div class="sstage-card">
+              <div class="sstage-grid-bg"></div>
+              <div class="sstage-ping sstage-ping-1"></div>
+              <div class="sstage-ping sstage-ping-2"></div>
+              <div class="sstage-ping sstage-ping-3"></div>
+              <div class="sstage-pin"></div>
+              <span class="sstage-tag">Mapping territory</span>
+            </div>
+          </div>
+          <!-- Step 1: Building (agents popping in) -->
+          <div class="sstage sstage-1" data-stage="1">
+            <div class="sstage-card">
+              <div class="sstage-agents">
+                <div class="sstage-agent" data-i="0"><span></span></div>
+                <div class="sstage-agent" data-i="1"><span></span></div>
+                <div class="sstage-agent" data-i="2"><span></span></div>
+                <div class="sstage-agent" data-i="3"><span></span></div>
+                <div class="sstage-agent" data-i="4"><span></span></div>
+                <div class="sstage-agent" data-i="5"><span></span></div>
+                <div class="sstage-agent" data-i="6"><span></span></div>
+                <div class="sstage-agent" data-i="7"><span></span></div>
+              </div>
+              <span class="sstage-tag">Recruiting your team</span>
+            </div>
+          </div>
+          <!-- Step 2: Live calendar filling -->
+          <div class="sstage sstage-2" data-stage="2">
+            <div class="sstage-card">
+              <div class="sstage-cal">
+                <div class="sstage-cal-head">
+                  <span>March</span>
+                  <span class="sstage-cal-live"><span class="sstage-cal-dot"></span> LIVE</span>
+                </div>
+                <div class="sstage-cal-grid">
+                  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                </div>
+              </div>
+              <span class="sstage-tag">Appointments arriving</span>
+            </div>
+          </div>
+          <!-- Step 3: Optimization meter -->
+          <div class="sstage sstage-3" data-stage="3">
+            <div class="sstage-card">
+              <div class="sstage-meter">
+                <div class="sstage-meter-row"><span>Agent A</span><div class="sstage-meter-bar"><div style="width:92%"></div></div></div>
+                <div class="sstage-meter-row"><span>Agent B</span><div class="sstage-meter-bar"><div style="width:78%"></div></div></div>
+                <div class="sstage-meter-row sstage-meter-row-bad"><span>Agent C</span><div class="sstage-meter-bar"><div style="width:24%"></div></div><span class="sstage-meter-x">→ replaced</span></div>
+                <div class="sstage-meter-row"><span>Agent D</span><div class="sstage-meter-bar"><div style="width:88%"></div></div></div>
+                <div class="sstage-meter-row"><span>Agent E</span><div class="sstage-meter-bar"><div style="width:96%"></div></div></div>
+              </div>
+              <span class="sstage-tag">Daily monitoring</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Progress rail -->
+      <div class="ssteps-rail">
+        <div class="ssteps-rail-fill" id="sstepsRailFill"></div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;padding:60px 40px 0;background:var(--bg-2);">
+    <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary">Book a Strategy Call →</a>
+    <a href="how-it-works.html" class="btn-secondary">See the Full Process</a>
+  </div>
+</section>
+
+<!-- ═══ COMPETITIVE EDGE — Miami Map ═══ -->
+<section id="targeting" class="section">
+  <div class="section-inner">
+    <span class="section-label">Competitive Edge · Miami-Dade</span>
+    <h2 class="section-title">We Go Where Your<br>Competition Can't.</h2>
+
+    <div class="usmap-wrap">
+      <div class="usmap-stage">
+        <div class="miami-map-chrome">
+          <span class="miami-map-coords">25.78°N · 80.21°W</span>
+          <span class="miami-map-title">MIAMI-DADE COUNTY · LIVE TARGETING</span>
+          <span class="miami-map-scale">5 mi</span>
+        </div>
+        <!-- Real MapLibre base map (purple/black themed) -->
+        <div id="miamiMap" class="miami-map-base"></div>
+        <!-- Loading skeleton (hidden once map fires 'load') -->
+        <div id="miamiMapLoader" class="miami-map-loader" aria-hidden="true">
+          <div class="miami-map-loader-bar"><div class="miami-map-loader-fill"></div></div>
+          <span class="miami-map-loader-txt">Loading territory data…</span>
+        </div>
+        <!-- Territory overlay (pin halos rendered via MapLibre HTML markers — see js) -->
+        <div id="miamiTerrLayer" class="miami-terr-layer" aria-hidden="true"></div>
+        <svg class="usmap-svg miami-svg miami-svg-legacy" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet" style="display:none;">
+          <defs>
+            <radialGradient id="terrGated" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#c084fc" stop-opacity="0.9"/>
+              <stop offset="50%" stop-color="#a855f7" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#8b3cf7" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="terrRural" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#c084fc" stop-opacity="0.9"/>
+              <stop offset="50%" stop-color="#a855f7" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#8b3cf7" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="terrBilingual" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#c084fc" stop-opacity="0.9"/>
+              <stop offset="50%" stop-color="#a855f7" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#8b3cf7" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#080214"/>
+              <stop offset="100%" stop-color="#100628"/>
+            </linearGradient>
+            <pattern id="streetGrid" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
+              <path d="M 22 0 L 0 0 0 22" fill="none" stroke="rgba(139,60,247,0.09)" stroke-width="0.6"/>
+            </pattern>
+            <pattern id="streetGridDense" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+              <path d="M 14 0 L 0 0 0 14" fill="none" stroke="rgba(168,85,247,0.13)" stroke-width="0.5"/>
+            </pattern>
+          </defs>
+
+          <!-- BACKGROUND: ocean / Atlantic + Biscayne Bay -->
+          <rect x="0" y="0" width="1000" height="700" fill="url(#waterGrad)"/>
+
+          <!-- LAND MASS: Miami-Dade mainland (sweeping curve from Aventura north → Homestead south) -->
+          <path d="M 0 0 L 1000 0 L 1000 80 L 760 90 L 745 110 L 738 135 L 735 165 L 740 195 L 738 225 L 735 250 L 728 275 L 720 300 L 712 330 L 705 360 L 700 395 L 700 430 L 698 470 L 690 510 L 670 555 L 645 595 L 615 625 L 575 645 L 525 660 L 470 668 L 410 670 L 0 670 L 0 0 Z" fill="#15082a" stroke="rgba(168,85,247,0.18)" stroke-width="0.5"/>
+
+          <!-- DENSE STREET GRID overlay on land -->
+          <path d="M 0 0 L 1000 0 L 1000 80 L 760 90 L 745 110 L 738 135 L 735 165 L 740 195 L 738 225 L 735 250 L 728 275 L 720 300 L 712 330 L 705 360 L 700 395 L 700 430 L 698 470 L 690 510 L 670 555 L 645 595 L 615 625 L 575 645 L 525 660 L 470 668 L 410 670 L 0 670 L 0 0 Z" fill="url(#streetGrid)"/>
+
+          <!-- Hialeah dense grid (dense urban) -->
+          <rect x="220" y="195" width="200" height="170" fill="url(#streetGridDense)" opacity="0.9"/>
+          <!-- Coral Gables dense grid -->
+          <rect x="470" y="365" width="180" height="120" fill="url(#streetGridDense)" opacity="0.85"/>
+
+          <!-- BARRIER ISLANDS: Miami Beach, Bal Harbour, Sunny Isles, Key Biscayne -->
+          <!-- Miami Beach proper -->
+          <path d="M 825 200 L 838 195 L 845 220 L 848 260 L 845 305 L 838 350 L 825 395 L 815 395 L 805 350 L 802 300 L 805 245 L 815 210 Z" fill="#15082a" stroke="rgba(168,85,247,0.25)" stroke-width="0.6"/>
+          <!-- Sunny Isles / Bal Harbour (north) -->
+          <path d="M 800 95 L 815 90 L 820 130 L 818 170 L 808 195 L 800 195 L 795 170 L 793 130 Z" fill="#15082a" stroke="rgba(168,85,247,0.25)" stroke-width="0.6"/>
+          <!-- Key Biscayne -->
+          <path d="M 745 470 L 770 465 L 785 478 L 790 500 L 783 525 L 765 535 L 745 525 L 740 500 Z" fill="#15082a" stroke="rgba(168,85,247,0.25)" stroke-width="0.6"/>
+          <!-- Virginia Key (small) -->
+          <ellipse cx="725" cy="445" rx="20" ry="10" fill="#15082a" stroke="rgba(168,85,247,0.2)" stroke-width="0.5"/>
+          <!-- Fisher Island -->
+          <ellipse cx="780" cy="425" rx="14" ry="10" fill="#15082a" stroke="rgba(168,85,247,0.2)" stroke-width="0.5"/>
+
+          <!-- BISCAYNE BAY label area: it's the gap between mainland and barrier islands; already dark from background -->
+
+          <!-- MAJOR HIGHWAYS: bright purple -->
+          <g stroke="#a855f7" stroke-opacity="0.55" stroke-width="2.2" fill="none" stroke-linecap="round">
+            <!-- I-95 (north-south spine) -->
+            <path d="M 615 80 L 615 130 L 612 175 L 610 220 L 612 265 L 615 310 L 620 360 L 628 410 L 638 460 L 645 510 L 650 555"/>
+            <!-- I-75 / Palmetto Expy (west loop) -->
+            <path d="M 235 80 L 235 145 L 240 210 L 248 270 L 260 325 L 280 380 L 308 420 L 345 445 L 395 460"/>
+            <!-- Florida Turnpike (far west) -->
+            <path d="M 75 95 L 80 175 L 90 260 L 105 340 L 130 420 L 165 495 L 215 565 L 290 615 L 380 635"/>
+            <!-- Dolphin Expy / SR-836 (east-west) -->
+            <path d="M 130 320 L 220 318 L 320 315 L 425 312 L 515 310 L 605 308 L 690 306"/>
+            <!-- US-1 / Dixie Hwy (south spine) -->
+            <path d="M 660 380 L 655 425 L 648 475 L 638 525 L 620 575 L 590 615 L 545 635"/>
+            <!-- MacArthur Causeway (to Miami Beach) -->
+            <path d="M 690 360 L 745 358 L 800 355"/>
+            <!-- Julia Tuttle Causeway -->
+            <path d="M 685 295 L 745 295 L 815 295"/>
+            <!-- 79th St Causeway -->
+            <path d="M 680 230 L 745 228 L 805 226"/>
+            <!-- Rickenbacker Causeway (to Key Biscayne) -->
+            <path d="M 685 425 L 720 440 L 750 470"/>
+          </g>
+
+          <!-- HIGHWAY SHIELDS / labels -->
+          <g font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#c084fc" opacity="0.7">
+            <text x="625" y="180">95</text>
+            <text x="248" y="240">826</text>
+            <text x="100" y="300">FL</text>
+            <text x="320" y="305">836</text>
+            <text x="640" y="500">US-1</text>
+          </g>
+
+          <!-- SECONDARY ROADS: medium purple -->
+          <g stroke="#7c3aed" stroke-opacity="0.32" stroke-width="1" fill="none" stroke-linecap="round">
+            <!-- North-south arteries -->
+            <path d="M 480 80 L 482 200 L 485 320 L 490 440 L 500 540 L 520 615"/>
+            <path d="M 380 80 L 385 220 L 395 360 L 410 480 L 435 575"/>
+            <path d="M 555 80 L 555 230 L 555 380 L 558 510 L 570 605"/>
+            <path d="M 700 80 L 700 220 L 700 360"/>
+            <!-- East-west arteries -->
+            <path d="M 0 145 L 200 145 L 400 145 L 600 145 L 730 145"/>
+            <path d="M 0 215 L 220 215 L 440 215 L 620 215 L 720 215"/>
+            <path d="M 0 380 L 220 378 L 430 376 L 590 374 L 685 372"/>
+            <path d="M 0 455 L 200 453 L 380 452 L 540 460 L 670 470"/>
+            <path d="M 0 540 L 180 540 L 360 545 L 510 555 L 600 580"/>
+          </g>
+
+          <!-- MIAMI RIVER -->
+          <path d="M 130 360 L 200 358 L 280 360 L 360 363 L 440 365 L 520 368 L 600 370 L 670 375 L 700 388" fill="none" stroke="#1a0a3a" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
+          <path d="M 130 360 L 200 358 L 280 360 L 360 363 L 440 365 L 520 368 L 600 370 L 670 375 L 700 388" fill="none" stroke="#3a1a6a" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+
+          <!-- AIRPORT (MIA) — runway marks -->
+          <g opacity="0.55">
+            <rect x="425" y="282" width="80" height="6" fill="rgba(192,132,252,0.4)" rx="1"/>
+            <rect x="425" y="294" width="80" height="6" fill="rgba(192,132,252,0.4)" rx="1"/>
+            <text x="430" y="278" font-family="JetBrains Mono, monospace" font-size="7" font-weight="700" fill="#a855f7" opacity="0.7">MIA</text>
+          </g>
+
+          <!-- EVERGLADES edge (west) — diagonal hatch suggesting wetland -->
+          <g stroke="rgba(99,53,160,0.18)" stroke-width="0.4" fill="none">
+            <path d="M 0 100 L 60 105"/>
+            <path d="M 0 130 L 80 138"/>
+            <path d="M 0 165 L 95 175"/>
+            <path d="M 0 205 L 110 220"/>
+            <path d="M 0 250 L 130 270"/>
+            <path d="M 0 300 L 145 325"/>
+            <path d="M 0 355 L 160 380"/>
+            <path d="M 0 410 L 175 435"/>
+            <path d="M 0 470 L 200 495"/>
+            <path d="M 0 535 L 235 555"/>
+            <path d="M 0 600 L 290 615"/>
+          </g>
+
+          <!-- NEIGHBORHOOD LABELS -->
+          <g font-family="Syne, sans-serif" font-weight="700" fill="rgba(220,200,255,0.55)">
+            <text x="320" y="245" font-size="11">HIALEAH</text>
+            <text x="610" y="220" font-size="10">N. MIAMI</text>
+            <text x="610" y="295" font-size="11">DOWNTOWN</text>
+            <text x="615" y="345" font-size="9">BRICKELL</text>
+            <text x="510" y="420" font-size="10">CORAL GABLES</text>
+            <text x="540" y="495" font-size="10">KENDALL</text>
+            <text x="380" y="565" font-size="10">HOMESTEAD</text>
+            <text x="525" y="625" font-size="9">REDLAND</text>
+            <text x="822" y="270" font-size="9" fill="rgba(220,200,255,0.45)">MIAMI BCH</text>
+            <text x="745" y="498" font-size="8" fill="rgba(220,200,255,0.45)">KEY BISCAYNE</text>
+            <text x="800" y="120" font-size="8" fill="rgba(220,200,255,0.45)">SUNNY ISLES</text>
+            <text x="100" y="440" font-size="9" fill="rgba(120,90,160,0.5)" letter-spacing="0.2em">EVERGLADES</text>
+            <text x="870" y="490" font-size="9" fill="rgba(120,90,160,0.5)" letter-spacing="0.2em">ATLANTIC</text>
+            <text x="660" y="395" font-size="7" fill="rgba(120,90,160,0.55)" letter-spacing="0.15em">BISCAYNE BAY</text>
+          </g>
+
+          <!-- TERRITORY 0: GATED COMMUNITIES — Coral Gables, Pinecrest, Aventura, Key Biscayne -->
+          <g class="usmap-terr" data-terr="0">
+            <circle cx="540" cy="430" r="58" fill="url(#terrGated)"/>
+            <circle cx="600" cy="490" r="48" fill="url(#terrGated)"/>
+            <circle cx="765" cy="495" r="36" fill="url(#terrGated)"/>
+            <circle cx="715" cy="115" r="42" fill="url(#terrGated)"/>
+            <circle cx="540" cy="430" r="5" fill="#fff" class="usmap-pin"/>
+            <circle cx="600" cy="490" r="4" fill="#fff" class="usmap-pin"/>
+            <circle cx="765" cy="495" r="4" fill="#fff" class="usmap-pin"/>
+            <circle cx="715" cy="115" r="4" fill="#fff" class="usmap-pin"/>
+            <g font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#fff" class="terr-label">
+              <text x="552" y="426">Gables Estates</text>
+              <text x="612" y="486">Pinecrest</text>
+              <text x="775" y="491">Key Biscayne</text>
+              <text x="725" y="111">Aventura</text>
+            </g>
+          </g>
+
+          <!-- TERRITORY 1: RURAL — Homestead, Redland, far SW -->
+          <g class="usmap-terr" data-terr="1">
+            <circle cx="380" cy="565" r="62" fill="url(#terrRural)"/>
+            <circle cx="490" cy="615" r="50" fill="url(#terrRural)"/>
+            <circle cx="280" cy="510" r="44" fill="url(#terrRural)"/>
+            <circle cx="380" cy="565" r="5" fill="#fff" class="usmap-pin"/>
+            <circle cx="490" cy="615" r="4" fill="#fff" class="usmap-pin"/>
+            <circle cx="280" cy="510" r="4" fill="#fff" class="usmap-pin"/>
+            <g font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#fff" class="terr-label">
+              <text x="392" y="561">Homestead</text>
+              <text x="502" y="611">Redland</text>
+              <text x="292" y="506">SW Dade</text>
+            </g>
+          </g>
+
+          <!-- TERRITORY 2: SPANISH-SPEAKING — Hialeah, Little Havana, Westchester, Doral -->
+          <g class="usmap-terr" data-terr="2">
+            <circle cx="320" cy="270" r="60" fill="url(#terrBilingual)"/>
+            <circle cx="555" cy="335" r="46" fill="url(#terrBilingual)"/>
+            <circle cx="385" cy="335" r="42" fill="url(#terrBilingual)"/>
+            <circle cx="450" cy="395" r="40" fill="url(#terrBilingual)"/>
+            <circle cx="320" cy="270" r="5" fill="#fff" class="usmap-pin"/>
+            <circle cx="555" cy="335" r="4" fill="#fff" class="usmap-pin"/>
+            <circle cx="385" cy="335" r="4" fill="#fff" class="usmap-pin"/>
+            <circle cx="450" cy="395" r="4" fill="#fff" class="usmap-pin"/>
+            <g font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#fff" class="terr-label">
+              <text x="332" y="266">Hialeah</text>
+              <text x="567" y="331">Little Havana</text>
+              <text x="397" y="331">Doral</text>
+              <text x="462" y="391">Westchester</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="usmap-side">
+        <button class="usmap-btn active" data-terr="0">
+          <span class="usmap-btn-num">01</span>
+          <div>
+            <span class="usmap-btn-h">Gated Communities</span>
+            <span class="usmap-btn-d">Door knockers can't get past the gate. We can.</span>
+          </div>
+        </button>
+        <button class="usmap-btn" data-terr="1">
+          <span class="usmap-btn-num">02</span>
+          <div>
+            <span class="usmap-btn-h">Rural Territories</span>
+            <span class="usmap-btn-d">Long driveways. No foot traffic. Virgin territory.</span>
+          </div>
+        </button>
+        <button class="usmap-btn" data-terr="2">
+          <span class="usmap-btn-num">03</span>
+          <div>
+            <span class="usmap-btn-h">Spanish-Speaking Markets</span>
+            <span class="usmap-btn-d">Bilingual agents. Under-targeted. High intent.</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS — featured player + thumbnail strip ═══ -->
+<section class="section testimonials" style="background:var(--bg-2);">
+  <div class="section-inner">
+    <span class="section-label">Operators We Work With</span>
+    <h2 class="section-title">Real operators.<br>Real numbers.</h2>
+    <p class="section-sub">Five operators. Five different markets. One pattern: appointments, deals, revenue — month after month.</p>
+
+    <div class="tm-wrap" id="tmWrap">
+      <!-- Featured player -->
+      <div class="tm-featured">
+        <div class="tm-frame">
+          <div class="tm-chrome">
+            <span class="tm-dot" style="background:#ff5f57;"></span>
+            <span class="tm-dot" style="background:#febc2e;"></span>
+            <span class="tm-dot" style="background:#28c840;"></span>
+            <span class="tm-chrome-label"><span class="tm-live-dot"></span>NOW PLAYING · <span id="tmNowName">Jorge</span></span>
+          </div>
+          <div class="tm-player" id="tmPlayer">
+            <div class="tm-poster" id="tmPoster">
+              <img id="tmPosterImg" src="https://vumbnail.com/1072247746.jpg" alt=""/>
+              <button class="tm-play" id="tmPlayBtn" aria-label="Play testimonial">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating quote + result chips -->
+        <div class="tm-meta">
+          <div class="tm-quote">
+            <span class="tm-quote-lbl">Operator</span>
+            <span class="tm-quote-text" id="tmQuote">"Started strong with 6 deals and 43KW in the first month. Now we're consistently doing 20+ deals monthly with the AI system."</span>
+            <span class="tm-quote-name">— <span id="tmName">Jorge</span></span>
+          </div>
+          <div class="tm-chips" id="tmChips">
+            <span class="tm-chip">6 Deals &amp; 43KW · Month 1</span>
+            <span class="tm-chip">20+ Deals / Month</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thumbnail strip -->
+      <div class="tm-strip" id="tmStrip" role="tablist" aria-label="Operator testimonials">
+        <!-- buttons injected by JS for cleanliness -->
+      </div>
+    </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESULTS ═══ -->
+<section id="results" class="section">
+  <div class="section-inner">
+    <span class="section-label">Results</span>
+    <h2 class="section-title">Built for Performance.<br>Measured Every Day.</h2>
+    <p class="section-sub">We don't hide behind vanity metrics — we measure what actually matters: appointments booked, show rates, and the quality of every conversation.</p>
+    <div class="metrics-grid">
+      <div class="glass-card metric-card">
+        <span class="metric-num" data-count="5" data-suffix="+">5+</span>
+        <span class="metric-lbl">Qualified Appointments Per Agent Per Week</span>
+      </div>
+      <div class="glass-card metric-card">
+        <span class="metric-num">Live</span>
+        <span class="metric-lbl">Real-Time Performance Dashboards for Every Client</span>
+      </div>
+      <div class="glass-card metric-card">
+        <span class="metric-num">Daily</span>
+        <span class="metric-lbl">Campaign Monitoring — Not Monthly Reports</span>
+      </div>
+      <div class="glass-card metric-card">
+        <span class="metric-num" data-count="100" data-suffix="%">100%</span>
+        <span class="metric-lbl">Agents Trained, Tested, and Replaced Until They Perform</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section id="cta-final">
+  <div class="cta-inner">
+    <span class="section-label" style="display:block;text-align:center;margin-bottom:16px;">Ready to Scale?</span>
+    <h2>Ready to Stop Chasing Leads<br>and Start Closing Deals?</h2>
+    <p>Book a free strategy call. We'll map your territory, identify your best opportunities, and show you exactly how your call center would work.</p>
+    <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary">Book Your Strategy Call →</a>
+    <p class="cta-support">No contracts required to start the conversation. No pressure. Just a clear plan.</p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-logo"><img src="assets/premura-logo.png" alt="Premura"/><span class="footer-logo-word">PREMURA</span></span>
+      <p>In-house call centers for solar and roofing companies.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <a href="index.html">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="solar.html">For Solar</a>
+      <a href="roofing.html">For Roofing</a>
+      <a href="about.html">About Us</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="solar.html">Solar Campaigns</a>
+      <a href="roofing.html">Roofing Campaigns</a>
+      <a href="technology.html">Technology &amp; Tools</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:support@premura.org">support@premura.org</a>
+      <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:10px;padding:10px 20px;font-size:.84rem;display:inline-flex;">Book a Strategy Call →</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Premura Corp. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<div id="floating-cta">
+  <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary">Book a Call →</a>
+</div>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="map-base.js"></script>
+<script src="miami-map.js"></script>
+<script src="main.js"></script>
+
+<script>
+// ── Scroll animation: calendar frame sequence ──
+(function(){
+  const FRAME_COUNT = 121;
+  const isMobile = window.innerWidth <= 768;
+  const frameStep = isMobile ? 2 : 1;
+
+  const frameNums = [];
+  for (let i = 1; i <= FRAME_COUNT; i += frameStep) frameNums.push(i);
+  const totalFrames = frameNums.length;
+
+  const frames = [];
+  let loadedCount = 0;
+  let currentFrame = -1;
+  let ticking = false;
+
+  const canvas = document.getElementById('frameCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const loader = document.getElementById('scrollLoader');
+  const loaderFill = document.getElementById('scrollLoaderFill');
+
+  const cards = document.querySelectorAll('.annotation-card');
+  const zones = Array.from(cards).map(c => ({
+    show: parseFloat(c.dataset.show),
+    hide: parseFloat(c.dataset.hide)
+  }));
+
+  function resizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width  = window.innerWidth  * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width  = window.innerWidth  + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    if (currentFrame >= 0) drawFrame(currentFrame);
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  function drawFrame(idx) {
+    const img = frames[idx];
+    if (!img || !img.complete) return;
+    const cw = canvas.width, ch = canvas.height;
+    ctx.fillStyle = '#f5f3ff';
+    ctx.fillRect(0, 0, cw, ch);
+    const ir = img.naturalWidth / img.naturalHeight;
+    const cr = cw / ch;
+    let dw, dh, dx, dy;
+    if (window.innerWidth > 768) {
+      if (cr > ir) { dw = cw; dh = cw / ir; }
+      else         { dh = ch; dw = ch * ir; }
+    } else {
+      const z = 1.15;
+      if (cr > ir) { dh = ch * z; dw = dh * ir; }
+      else         { dw = cw * z; dh = dw / ir; }
+    }
+    dx = (cw - dw) / 2;
+    dy = (ch - dh) / 2;
+    ctx.drawImage(img, dx, dy, dw, dh);
+  }
+
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const section = document.querySelector('.scroll-animation');
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        const scrollable = section.offsetHeight - window.innerHeight;
+        const progress = Math.min(1, Math.max(0, -rect.top / scrollable));
+        const fi = Math.min(totalFrames - 1, Math.floor(progress * totalFrames));
+        if (fi !== currentFrame) { currentFrame = fi; drawFrame(fi); }
+        cards.forEach((card, i) => {
+          const z = zones[i];
+          card.classList.toggle('visible', progress >= z.show && progress <= z.hide);
+        });
+      }
+      ticking = false;
+    });
+  }, { passive: true });
+
+  function preloadFrames() {
+    frameNums.forEach(num => {
+      const img = new Image();
+      img.onload = () => {
+        loadedCount++;
+        if (loaderFill) loaderFill.style.width = (loadedCount / totalFrames * 100) + '%';
+        if (loadedCount >= totalFrames) {
+          if (loader) {
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 600);
+          }
+          currentFrame = 0;
+          drawFrame(0);
+        }
+      };
+      img.onerror = () => {
+        loadedCount++;
+        if (loaderFill) loaderFill.style.width = (loadedCount / totalFrames * 100) + '%';
+        if (loadedCount >= totalFrames) {
+          if (loader) { loader.style.opacity = '0'; setTimeout(() => { loader.style.display = 'none'; }, 600); }
+          currentFrame = 0; drawFrame(0);
+        }
+      };
+      img.src = 'frames/frame_' + String(num).padStart(4, '0') + '.jpg';
+      frames.push(img);
+    });
+  }
+
+  const sectionWrap = document.querySelector('.scroll-section-wrap');
+  if (sectionWrap && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        obs.disconnect();
+        preloadFrames();
+      }
+    }, { rootMargin: '300px' });
+    obs.observe(sectionWrap);
+  } else {
+    preloadFrames();
+  }
+})();
+</script>
+
+<script>
+// ── Waveform card ──
+(function(){
+  const card = document.querySelector('.annotation-card');
+  if (!card) return;
+  const nameEl = document.getElementById('wavecardName');
+  const endedEl = document.getElementById('wavecardEnded');
+  const bars = Array.from(card.querySelectorAll('.wb'));
+
+  const callers = [
+    'Robert K. — Friday 2:00 PM',
+    'Sarah M. — Monday 10:30 AM',
+    'James H. — Thursday 3:00 PM',
+    'Lisa T. — Wednesday 9:00 AM'
+  ];
+  let callerIdx = 0;
+  let isHovered = false;
+  let raf;
+  let endedTimer;
+  const phases = bars.map(() => Math.random() * Math.PI * 2);
+  const speeds = bars.map(() => 1.8 + Math.random() * 2.2);
+
+  function animateBars(t) {
+    if (isHovered) return;
+    bars.forEach((b, i) => {
+      const h = 0.12 + 0.88 * (0.5 + 0.5 * Math.sin(t * 0.001 * speeds[i] + phases[i]));
+      b.style.transform = 'scaleY(' + h + ')';
+    });
+    raf = requestAnimationFrame(animateBars);
+  }
+  raf = requestAnimationFrame(animateBars);
+
+  setInterval(() => {
+    if (isHovered) return;
+    callerIdx = (callerIdx + 1) % callers.length;
+    nameEl.style.opacity = '0';
+    setTimeout(() => { nameEl.textContent = callers[callerIdx]; nameEl.style.opacity = '1'; }, 300);
+  }, 4500);
+
+  card.addEventListener('mouseenter', () => {
+    isHovered = true;
+    cancelAnimationFrame(raf);
+    bars.forEach(b => { b.style.transition = 'transform 0.55s ease'; b.style.transform = 'scaleY(0.06)'; });
+    endedTimer = setTimeout(() => { endedEl.style.opacity = '1'; }, 480);
+  });
+
+  card.addEventListener('mouseleave', () => {
+    isHovered = false;
+    clearTimeout(endedTimer);
+    endedEl.style.opacity = '0';
+    bars.forEach(b => { b.style.transition = 'transform 0.25s ease'; });
+    setTimeout(() => { bars.forEach(b => { b.style.transition = ''; }); raf = requestAnimationFrame(animateBars); }, 260);
+  });
+})();
+</script>
+
+<script>
+// ── Problem: Pick the one that hurts most ──
+(function(){
+  const stack = document.getElementById('painStack');
+  if (!stack) return;
+  const cards = Array.from(stack.querySelectorAll('.pain-card'));
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const isActive = card.classList.contains('active');
+      cards.forEach(c => c.classList.remove('active', 'dimmed'));
+      if (!isActive) {
+        card.classList.add('active');
+        cards.forEach(c => { if (c !== card) c.classList.add('dimmed'); });
+      }
+    });
+  });
+})();
+
+// ── Solution: drag slider ──
+(function(){
+  const wrap   = document.getElementById('dragslider');
+  const withEl = document.getElementById('dragsliderWith');
+  const handle = document.getElementById('dragsliderHandle');
+  if (!wrap) return;
+  let pct = 50;
+  let dragging = false;
+
+  function setPct(p){
+    pct = Math.max(2, Math.min(98, p));
+    withEl.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+    handle.style.left = pct + '%';
+  }
+  setPct(50);
+
+  function onMove(clientX){
+    const r = wrap.getBoundingClientRect();
+    setPct(((clientX - r.left) / r.width) * 100);
+  }
+
+  handle.addEventListener('mousedown', e => { dragging = true; e.preventDefault(); });
+  wrap.addEventListener('mousedown', e => {
+    if (e.target.closest('.dragslider-handle')) return;
+    dragging = true;
+    onMove(e.clientX);
+  });
+  window.addEventListener('mousemove', e => { if (dragging) onMove(e.clientX); });
+  window.addEventListener('mouseup',   () => { dragging = false; });
+
+  handle.addEventListener('touchstart', e => { dragging = true; }, {passive:true});
+  window.addEventListener('touchmove', e => { if (dragging && e.touches[0]) onMove(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend',  () => { dragging = false; });
+
+  // Auto demo nudge once on first reveal
+  let demoed = false;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting && !demoed){
+        demoed = true;
+        let t = 0;
+        const start = pct;
+        const id = setInterval(() => {
+          t += 1;
+          if (t < 30) setPct(start + (80 - start) * (t/30));
+          else if (t < 60) setPct(80 - (80 - 50) * ((t-30)/30));
+          else clearInterval(id);
+        }, 16);
+      }
+    });
+  }, {threshold: 0.4});
+  obs.observe(wrap);
+})();
+
+// ── How it works: scroll-driven pinned stepper ──
+(function(){
+  const wrap    = document.getElementById('ssteps');
+  if (!wrap) return;
+  const items   = Array.from(wrap.querySelectorAll('.ssteps-item'));
+  const stages  = Array.from(wrap.querySelectorAll('.sstage'));
+  const fillEl  = document.getElementById('sstepsRailFill');
+  const track   = wrap.querySelector('.ssteps-track');
+  const STEPS = 4;
+
+  function setStep(i){
+    items.forEach((el, idx) => el.classList.toggle('active', idx === i));
+    stages.forEach((el, idx) => el.classList.toggle('active', idx === i));
+  }
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const r = track.getBoundingClientRect();
+      const scrollable = track.offsetHeight - window.innerHeight;
+      const p = Math.min(1, Math.max(0, -r.top / scrollable));
+      const i = Math.min(STEPS - 1, Math.floor(p * STEPS));
+      setStep(i);
+      if (fillEl) fillEl.style.height = (p * 100) + '%';
+      ticking = false;
+    });
+  }, {passive:true});
+
+  // Click jump
+  items.forEach((it, idx) => {
+    it.addEventListener('click', () => {
+      const r = track.getBoundingClientRect();
+      const scrollable = track.offsetHeight - window.innerHeight;
+      const targetP = (idx + 0.4) / STEPS;
+      const targetY = window.scrollY + r.top + scrollable * targetP;
+      window.scrollTo({top: targetY, behavior: 'smooth'});
+    });
+  });
+})();
+
+// ── Competitive edge: US map auto-cycle territories ──
+// (Now handled by miami-map.js — left here as a noop fallback)
+(function(){
+  const btns = Array.from(document.querySelectorAll('.usmap-btn'));
+  const terrs = Array.from(document.querySelectorAll('.usmap-terr'));
+  if (!btns.length) return;
+  // If miami-map.js loaded successfully, skip — markers live there.
+  if (window.maplibregl && document.getElementById('miamiMap')) return;
+  let idx = 0;
+  let auto = true;
+  let timer;
+
+  function setActive(i){
+    idx = i;
+    btns.forEach((b, n) => b.classList.toggle('active', n === i));
+    terrs.forEach((t, n) => t.classList.toggle('active', n === i));
+  }
+  setActive(0);
+
+  function loop(){
+    timer = setInterval(() => {
+      if (!auto) return;
+      setActive((idx + 1) % btns.length);
+    }, 3200);
+  }
+  loop();
+
+  btns.forEach((b, n) => {
+    b.addEventListener('mouseenter', () => { auto = false; setActive(n); });
+    b.addEventListener('click', () => { auto = false; setActive(n); });
+  });
+})();
+
+// ── Transparency: dashboard hover hotspots ──
+(function(){
+  const dash = document.getElementById('dashmock');
+  if (!dash) return;
+  const panels   = Array.from(dash.querySelectorAll('[data-hotspot]'));
+  const callouts = Array.from(dash.querySelectorAll('.dashmock-callout'));
+
+  function setActive(i){
+    panels.forEach((p, n) => p.classList.toggle('active', n === i));
+    callouts.forEach((c, n) => c.classList.toggle('active', n === i));
+  }
+  setActive(-1);
+
+  panels.forEach((p, i) => {
+    p.addEventListener('mouseenter', () => setActive(i));
+    p.addEventListener('focus',      () => setActive(i));
+  });
+  dash.addEventListener('mouseleave', () => setActive(-1));
+
+  // Auto-cycle while not hovered
+  let auto = true;
+  let idx = -1;
+  dash.addEventListener('mouseenter', () => { auto = false; });
+  setInterval(() => {
+    if (!auto) return;
+    idx = (idx + 1) % 4;
+    setActive(idx);
+  }, 2400);
+})();
+</script>
+<script>
+// ── Testimonials: featured player + thumbnail strip ──
+(function(){
+  const wrap = document.getElementById('tmWrap');
+  if (!wrap) return;
+
+  // Operators sorted by deal volume desc; Jorge featured first per request
+  const data = [
+    { id:'jorge',  vimeo:'1072247746', hash:'d493e53744', name:'Jorge',
+      quote:'Started strong with 6 deals and 43KW in the first month. Now we\u2019re consistently doing 20+ deals monthly with the AI system.',
+      tags:['6 Deals & 43KW \u00b7 Month 1','20+ Deals / Month'],
+      stat:'20+ deals / month' },
+    { id:'leicer', vimeo:'1072244795', hash:'5d8bc1fb19', name:'Leicer',
+      quote:'November was incredible \u2014 22 sales from the AI system alone. The automation just works and keeps delivering results.',
+      tags:['22 Deals \u00b7 1 Month','$152,000 in Payouts'],
+      stat:'22 deals \u00b7 $152k' },
+    { id:'caesar', vimeo:'1072251232', hash:'50162c383c', name:'Caesar',
+      quote:'The speed was incredible \u2014 20 appointments in the first week and closed 4 of them. Now we\u2019re consistently hitting 8\u201310 installs every month.',
+      tags:['20 Appts Week 1','8\u201310 Installs / Month'],
+      stat:'20 appts week 1' },
+    { id:'scott',  vimeo:'1072241851', hash:'26fcdbbedd', name:'Scott',
+      quote:'The results were so good that we decided to merge and become partners. This AI system is the real deal for roofing companies.',
+      tags:['17 Deals \u00b7 1 Month','Merged as Partners'],
+      stat:'17 deals / month' },
+    { id:'rafa',   vimeo:'1091678713', hash:'243b833aa0', name:'Rafa',
+      quote:'The AI system completely changed my business. From struggling to find leads to consistent monthly results that keep growing.',
+      tags:['5 Deals \u00b7 First 2 Weeks','12+ Deals Every Month'],
+      stat:'12+ deals / month' },
+  ];
+
+  const strip   = document.getElementById('tmStrip');
+  const player  = document.getElementById('tmPlayer');
+  const poster  = document.getElementById('tmPoster');
+  const posterImg = document.getElementById('tmPosterImg');
+  const playBtn = document.getElementById('tmPlayBtn');
+  const nowName = document.getElementById('tmNowName');
+  const qText   = document.getElementById('tmQuote');
+  const qName   = document.getElementById('tmName');
+  const chipsEl = document.getElementById('tmChips');
+
+  let activeIdx = 0; // Jorge
+
+  // Build thumbnail buttons
+  data.forEach((d, i) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'tm-thumb' + (i === activeIdx ? ' is-active' : '');
+    btn.setAttribute('role','tab');
+    btn.setAttribute('aria-selected', i === activeIdx ? 'true':'false');
+    btn.setAttribute('aria-label', 'Play ' + d.name + '\u2019s testimonial');
+    btn.dataset.idx = i;
+    btn.innerHTML =
+      '<span class="tm-thumb-img">' +
+        '<img loading="lazy" src="https://vumbnail.com/' + d.vimeo + '.jpg" alt=""/>' +
+        '<span class="tm-thumb-mini-play"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>' +
+      '</span>' +
+      '<span class="tm-thumb-meta">' +
+        '<span class="tm-thumb-name">' + d.name + '</span>' +
+        '<span class="tm-thumb-stat">' + d.stat + '</span>' +
+      '</span>';
+    strip.appendChild(btn);
+  });
+
+  function renderMeta(d){
+    qText.textContent = '\u201c' + d.quote + '\u201d';
+    qName.textContent = d.name;
+    nowName.textContent = d.name;
+    chipsEl.innerHTML = d.tags.map(t => '<span class="tm-chip">' + t + '</span>').join('');
+  }
+
+  function resetPoster(d){
+    // Reset to thumbnail (kills any embedded iframe to free resources)
+    while (player.firstChild) player.removeChild(player.firstChild);
+    const wrapPoster = document.createElement('div');
+    wrapPoster.className = 'tm-poster';
+    wrapPoster.id = 'tmPoster';
+    wrapPoster.innerHTML =
+      '<img id="tmPosterImg" src="https://vumbnail.com/' + d.vimeo + '.jpg" alt=""/>' +
+      '<button class="tm-play" id="tmPlayBtn" aria-label="Play testimonial">' +
+        '<svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>' +
+      '</button>';
+    player.appendChild(wrapPoster);
+    wrapPoster.addEventListener('click', () => playVideo(activeIdx));
+  }
+
+  function playVideo(i){
+    const d = data[i];
+    // Replace player content with iframe
+    while (player.firstChild) player.removeChild(player.firstChild);
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://player.vimeo.com/video/' + d.vimeo + '?h=' + d.hash + '&autoplay=1&title=0&byline=0&portrait=0';
+    iframe.title = d.name + ' testimonial';
+    iframe.setAttribute('allow','autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share');
+    iframe.setAttribute('allowfullscreen','');
+    iframe.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+    player.appendChild(iframe);
+  }
+
+  function setActive(i){
+    activeIdx = i;
+    const d = data[i];
+    renderMeta(d);
+    // Update strip
+    strip.querySelectorAll('.tm-thumb').forEach((b, n) => {
+      const on = n === i;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-selected', on ? 'true':'false');
+    });
+    resetPoster(d);
+  }
+
+  // Wire thumbnail clicks
+  strip.addEventListener('click', (e) => {
+    const btn = e.target.closest('.tm-thumb');
+    if (!btn) return;
+    const i = parseInt(btn.dataset.idx, 10);
+    if (i === activeIdx) {
+      // Same active card: just play
+      playVideo(i);
+    } else {
+      setActive(i);
+    }
+  });
+
+  // Initial play button on page load
+  if (playBtn) playBtn.addEventListener('click', () => playVideo(activeIdx));
+  if (poster) poster.addEventListener('click', (e) => {
+    if (e.target.closest('.tm-play')) return; // handled above
+    playVideo(activeIdx);
+  });
+
+  // Keyboard nav when strip focused
+  strip.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      setActive((activeIdx + 1) % data.length);
+      strip.querySelectorAll('.tm-thumb')[activeIdx].focus();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      setActive((activeIdx - 1 + data.length) % data.length);
+      strip.querySelectorAll('.tm-thumb')[activeIdx].focus();
+    } else if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      playVideo(activeIdx);
+    }
+  });
+})();
+</script>
+
+<script>
+// ── Tweaks panel (vanilla) ──
+(function(){
+  const TWEAKS = /*EDITMODE-BEGIN*/{
+    "stat1Num": "150+",
+    "stat1Lbl": "Active Campaigns",
+    "stat2Num": "6,800+",
+    "stat2Lbl": "Appointments Booked",
+    "stat3Num": "6,000+",
+    "stat3Lbl": "Trained Agents",
+    "stat4Num": "U.S.-Wide",
+    "stat4Lbl": "Service Coverage"
+  }/*EDITMODE-END*/;
+
+  // Apply current values to DOM
+  function apply(){
+    for (let i = 1; i <= 4; i++){
+      const num = document.getElementById('statNum'+i);
+      const lbl = document.getElementById('statLbl'+i);
+      if (num) {
+        num.textContent = TWEAKS['stat'+i+'Num'];
+        // Update count-up data so it stays consistent if re-triggered
+        const m = String(TWEAKS['stat'+i+'Num']).match(/^([\d,]+)([^\d]*)$/);
+        if (m) { num.dataset.count = m[1].replace(/,/g,''); num.dataset.suffix = m[2]||''; }
+      }
+      if (lbl) lbl.textContent = TWEAKS['stat'+i+'Lbl'];
+    }
+  }
+  apply();
+
+  // Build panel
+  const panel = document.createElement('div');
+  panel.id = 'tweaksPanel';
+  panel.style.cssText = 'position:fixed;bottom:20px;right:20px;width:320px;max-height:80vh;overflow-y:auto;background:#0d0d18;border:1px solid rgba(168,85,247,.3);border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(168,85,247,.15);padding:18px;font-family:Inter,sans-serif;color:#e9e9f0;z-index:9999;display:none;';
+  panel.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:12px;">
+      <span style="font-family:Syne,sans-serif;font-weight:800;font-size:.95rem;letter-spacing:.04em;">TWEAKS</span>
+      <button id="tweaksClose" style="background:none;border:none;color:#8b8bad;font-size:1.2rem;cursor:pointer;line-height:1;padding:2px 6px;">×</button>
+    </div>
+    <div style="font-size:.7rem;color:#8b8bad;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;">Stats Bar</div>
+    ${[1,2,3,4].map(i => `
+      <div style="margin-bottom:14px;padding-bottom:14px;${i<4?'border-bottom:1px solid rgba(255,255,255,.05);':''}">
+        <label style="display:block;font-size:.7rem;color:#8b8bad;margin-bottom:4px;font-weight:600;">STAT ${i} — NUMBER</label>
+        <input data-tw="stat${i}Num" type="text" value="${TWEAKS['stat'+i+'Num']}" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:8px 10px;color:#e9e9f0;font-family:inherit;font-size:.85rem;margin-bottom:8px;box-sizing:border-box;"/>
+        <label style="display:block;font-size:.7rem;color:#8b8bad;margin-bottom:4px;font-weight:600;">STAT ${i} — LABEL</label>
+        <input data-tw="stat${i}Lbl" type="text" value="${TWEAKS['stat'+i+'Lbl']}" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:8px 10px;color:#e9e9f0;font-family:inherit;font-size:.85rem;box-sizing:border-box;"/>
+      </div>
+    `).join('')}
+  `;
+  document.body.appendChild(panel);
+
+  panel.querySelectorAll('input[data-tw]').forEach(inp => {
+    inp.addEventListener('input', () => {
+      const k = inp.dataset.tw;
+      TWEAKS[k] = inp.value;
+      apply();
+      window.parent.postMessage({type:'__edit_mode_set_keys', edits:{[k]: inp.value}}, '*');
+    });
+  });
+
+  document.getElementById('tweaksClose').addEventListener('click', () => {
+    panel.style.display = 'none';
+    window.parent.postMessage({type:'__edit_mode_dismissed'}, '*');
+  });
+
+  window.addEventListener('message', (e) => {
+    const d = e.data || {};
+    if (d.type === '__activate_edit_mode') panel.style.display = 'block';
+    if (d.type === '__deactivate_edit_mode') panel.style.display = 'none';
+  });
+
+  window.parent.postMessage({type:'__edit_mode_available'}, '*');
+})();
+</script>
+</body>
+</html>

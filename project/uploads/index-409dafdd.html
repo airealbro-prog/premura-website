@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premura | In-House Call Centers for Solar & Roofing Companies</title>
+<meta name="description" content="Premura builds and manages dedicated call centers that book qualified appointments directly into your calendar. Trained agents, real-time dashboards, and full transparency.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">PRE<span>MU</span>RA</a>
+    <div class="nav-links">
+      <a href="how-it-works.html">How It Works</a>
+      <a href="solar.html">Solar</a>
+      <a href="roofing.html">Roofing</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html" class="nav-cta">Book a Call</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="nav-mobile-menu">
+  <button class="nav-mobile-close">×</button>
+  <a href="how-it-works.html">How It Works</a>
+  <a href="solar.html">Solar</a>
+  <a href="roofing.html">Roofing</a>
+  <a href="about.html">About</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html" class="btn-primary" style="margin-top:16px;">Book a Call</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+  <div class="hero-layout">
+    <div class="hero-content">
+      <span class="hero-eyebrow">In-House Call Centers for Solar &amp; Roofing</span>
+      <h1 class="hero-title">We Build Your<br>Call Center.<br><span>You Close the Deals.</span></h1>
+      <p class="hero-subtitle">Premura builds and manages dedicated outbound call centers that book qualified appointments directly into your calendar. Your closers show up, sit down, and sell — we handle everything else.</p>
+      <div class="hero-buttons">
+        <a href="contact.html" class="btn-primary">Book a Strategy Call →</a>
+        <a href="how-it-works.html" class="btn-secondary">See How It Works</a>
+      </div>
+      <div class="scroll-hint">
+        <span>Scroll to explore</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <video autoplay loop muted playsinline preload="metadata">
+        <source src="dark one.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<div class="stats-wrap" style="padding-top:48px;padding-bottom:48px;">
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num" data-count="28" data-suffix="+">28+</span>
+      <span class="stat-lbl">Active Campaigns</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-count="4800" data-suffix="+">4,800+</span>
+      <span class="stat-lbl">Appointments Booked</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-count="168" data-suffix="+">168+</span>
+      <span class="stat-lbl">Trained Agents</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">U.S.-Wide</span>
+      <span class="stat-lbl">Service Coverage</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SCROLL ANIMATION ═══ -->
+<div class="scroll-section-wrap">
+  <div class="scroll-fade-top"></div>
+  <section class="scroll-animation">
+    <div class="scroll-sticky">
+      <div class="scroll-loader" id="scrollLoader">
+        <div class="scroll-loader-inner">
+          <div class="scroll-loader-bar-track">
+            <div class="scroll-loader-fill" id="scrollLoaderFill"></div>
+          </div>
+          <p class="scroll-loader-text">Loading</p>
+        </div>
+      </div>
+      <canvas id="frameCanvas"></canvas>
+      <div class="annotation-card" data-show="0" data-hide="0.92">
+        <div class="wavecard-content">
+          <div class="wavecard-status">
+            <span class="wavecard-dot"></span>
+            <span class="wavecard-live">LIVE CALL</span>
+          </div>
+          <div class="wavecard-name" id="wavecardName">Robert K. — Friday 2:00 PM</div>
+          <div class="wavecard-bars" id="wavecardBars">
+            <span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span>
+            <span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span>
+            <span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span>
+            <span class="wb"></span><span class="wb"></span><span class="wb"></span><span class="wb"></span>
+          </div>
+          <div class="wavecard-ended" id="wavecardEnded">Call ended — appointment booked ✓</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="scroll-fade-bottom"></div>
+</div>
+
+<!-- ═══ PROBLEM ═══ -->
+<section id="problem" class="section">
+  <div class="section-inner">
+    <span class="section-label">The Problem</span>
+    <h2 class="section-title">Sound Familiar?</h2>
+    <div class="pain-list">
+      <div class="pain-row">
+        <span class="pain-num">01</span>
+        <span class="pain-headline">Your closers are sitting around waiting for appointments</span>
+      </div>
+      <div class="pain-row">
+        <span class="pain-num">02</span>
+        <span class="pain-headline">Door knocking is inconsistent and burning out your reps</span>
+      </div>
+      <div class="pain-row">
+        <span class="pain-num">03</span>
+        <span class="pain-headline">You've tried lead gen companies and got burned</span>
+      </div>
+      <div class="pain-row">
+        <span class="pain-num">04</span>
+        <span class="pain-headline">Hiring your own cold callers is a full-time job</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOLUTION ═══ -->
+<section id="solution" class="section">
+  <div class="section-inner">
+    <span class="section-label">The Solution</span>
+    <h2 class="section-title">We Don't Sell You Leads.<br>We Build You a Call Center.</h2>
+    <p class="solution-body">Premura builds a dedicated, in-house call center for your company. Not shared. Not outsourced. Your agents, your scripts, your territory — managed entirely by us.</p>
+    <div class="stoggle-wrap">
+      <div class="stoggle">
+        <button class="stoggle-opt active" id="stog-with">With Premura</button>
+        <button class="stoggle-opt" id="stog-without">Without Premura</button>
+      </div>
+    </div>
+    <div class="diff-grid" id="diff-with">
+      <div class="glass-card diff-card">
+        <span class="diff-num">01</span>
+        <h3>Dedicated — Not Shared</h3>
+        <p>Your agents only call for you. They learn your brand, your offer, and your territory. Not a call center juggling 50 clients on the same dialer.</p>
+      </div>
+      <div class="glass-card diff-card">
+        <span class="diff-num">02</span>
+        <h3>Appointments — Not Leads</h3>
+        <p>We book real, qualified homeowners into your calendar with a confirmed time slot. Your closers show up and close — no chasing, no follow-up lists.</p>
+      </div>
+      <div class="glass-card diff-card">
+        <span class="diff-num">03</span>
+        <h3>Fully Managed — Not DIY</h3>
+        <p>We handle recruitment, training, scripts, dialer technology, data sourcing, and ongoing optimization. You focus entirely on selling.</p>
+      </div>
+    </div>
+    <div class="diff-grid diff-grid-hidden" id="diff-without">
+      <div class="glass-card diff-card diff-card-bad">
+        <span class="diff-num diff-num-bad">01</span>
+        <h3>Shared Dialers</h3>
+        <p>You're one of dozens on the same call floor. Agents don't know your brand, territory, or pitch. Results are inconsistent and nobody's accountable to your numbers.</p>
+      </div>
+      <div class="glass-card diff-card diff-card-bad">
+        <span class="diff-num diff-num-bad">02</span>
+        <h3>Leads, Not Appointments</h3>
+        <p>You get a spreadsheet — often recycled and shared with competitors. No confirmed times, no verification. Your closer spends half their day chasing no-shows.</p>
+      </div>
+      <div class="glass-card diff-card diff-card-bad">
+        <span class="diff-num diff-num-bad">03</span>
+        <h3>You Run Operations</h3>
+        <p>Recruiting, training, managing dialers, buying data. A second job on top of running your business. Most companies give up long before it ever works.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS OVERVIEW ═══ -->
+<section class="section" style="background:var(--bg-2);">
+  <div class="section-inner">
+    <span class="section-label">The Process</span>
+    <h2 class="section-title">From Signup to Appointments<br>in Your Calendar</h2>
+    <div class="stepper">
+      <div class="stepper-nav">
+        <button class="step-item active" data-step="0">
+          <span class="si-num">01</span>
+          <span class="si-label">Strategy Call</span>
+        </button>
+        <button class="step-item" data-step="1">
+          <span class="si-num">02</span>
+          <span class="si-label">We Build Your Campaign</span>
+        </button>
+        <button class="step-item" data-step="2">
+          <span class="si-num">03</span>
+          <span class="si-label">Your Call Center Goes Live</span>
+        </button>
+        <button class="step-item" data-step="3">
+          <span class="si-num">04</span>
+          <span class="si-label">Ongoing Optimization</span>
+        </button>
+      </div>
+      <div class="stepper-body">
+        <div class="step-pane active" data-pane="0">
+          <span class="sp-eyebrow">01</span>
+          <h3 class="sp-title">Strategy Call</h3>
+          <p class="sp-desc">We map your market, your sales team, and your territory. By the end of this call you'll know exactly how your call center will operate — agent count, targeting approach, and launch timeline.</p>
+          <div class="sp-chips">
+            <span class="sp-chip">Territory mapped</span>
+            <span class="sp-chip">Agent count defined</span>
+            <span class="sp-chip">Launch timeline confirmed</span>
+          </div>
+        </div>
+        <div class="step-pane" data-pane="1">
+          <span class="sp-eyebrow">02</span>
+          <h3 class="sp-title">We Build Your Campaign</h3>
+          <p class="sp-desc">We recruit agents specifically for your company, train them on your offer and scripts, source targeted homeowner data, and configure your entire tech stack. You're kept in the loop at every stage.</p>
+          <div class="sp-chips">
+            <span class="sp-chip">Agents recruited & trained</span>
+            <span class="sp-chip">Scripts tested</span>
+            <span class="sp-chip">Tech stack configured</span>
+          </div>
+        </div>
+        <div class="step-pane" data-pane="2">
+          <span class="sp-eyebrow">03</span>
+          <h3 class="sp-title">Your Call Center Goes Live</h3>
+          <p class="sp-desc">Agents start dialing your territory. Qualified homeowners book directly into your Google Calendar. You and your closers have full real-time visibility into every call and appointment from day one.</p>
+          <div class="sp-chips">
+            <span class="sp-chip">Live in ~14 days</span>
+            <span class="sp-chip">Appointments in your calendar</span>
+            <span class="sp-chip">Real-time dashboard access</span>
+          </div>
+        </div>
+        <div class="step-pane" data-pane="3">
+          <span class="sp-eyebrow">04</span>
+          <h3 class="sp-title">Ongoing Optimization</h3>
+          <p class="sp-desc">We monitor performance every day. Underperforming agents are coached or replaced. Scripts are refined. Data is refreshed. Your pipeline stays full regardless of season or market conditions.</p>
+          <div class="sp-chips">
+            <span class="sp-chip">Daily monitoring</span>
+            <span class="sp-chip">Agents replaced if needed</span>
+            <span class="sp-chip">Monthly strategy reviews</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:40px;">
+      <a href="contact.html" class="btn-primary">Book a Strategy Call →</a>
+      <a href="how-it-works.html" class="btn-secondary">See the Full Process</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMPETITIVE ADVANTAGE ═══ -->
+<section id="targeting" class="section">
+  <div class="section-inner">
+    <span class="section-label">Competitive Edge</span>
+    <h2 class="section-title">We Go Where Your<br>Competition Can't</h2>
+    <p class="section-sub">Our data-driven targeting strategies reach homeowners that door-to-door reps and generic lead companies completely miss.</p>
+    <div class="comp-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Door Knocking</th>
+            <th>Lead Gen</th>
+            <th class="comp-col-hl">Premura</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="comp-row-lbl">Gated Communities</td>
+            <td><span class="comp-no">✗</span></td>
+            <td><span class="comp-no">✗</span></td>
+            <td class="comp-col-hl"><span class="comp-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="comp-row-lbl">Rural Territories</td>
+            <td><span class="comp-no">✗</span></td>
+            <td><span class="comp-part">∼</span></td>
+            <td class="comp-col-hl"><span class="comp-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="comp-row-lbl">Spanish-Speaking Markets</td>
+            <td><span class="comp-no">✗</span></td>
+            <td><span class="comp-part">∼</span></td>
+            <td class="comp-col-hl"><span class="comp-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="comp-row-lbl">Exclusive Appointments</td>
+            <td><span class="comp-no">✗</span></td>
+            <td><span class="comp-no">✗</span></td>
+            <td class="comp-col-hl"><span class="comp-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="comp-row-lbl">Year-Round Consistency</td>
+            <td><span class="comp-no">✗</span></td>
+            <td><span class="comp-part">∼</span></td>
+            <td class="comp-col-hl"><span class="comp-yes">✓</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRANSPARENCY ═══ -->
+<section class="section" style="background:var(--bg-2);">
+  <div class="section-inner">
+    <span class="section-label">Full Transparency</span>
+    <h2 class="section-title">See Everything.<br>Control Everything.</h2>
+    <p class="section-sub">You will never wonder what's happening with your campaign. Every client gets full access to the tools and dashboards that power their call center.</p>
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="0">CRM Dashboard</button>
+      <button class="tab-btn" data-tab="1">Real-Time Dialer</button>
+      <button class="tab-btn" data-tab="2">Direct Communication</button>
+      <button class="tab-btn" data-tab="3">Calendar Integration</button>
+    </div>
+    <div class="tab-panel-wrap">
+      <div class="tab-panel active" data-panel="0">
+        <div class="tp-lbl">CRM Dashboard</div>
+        <h3 class="tp-title">Your Complete Pipeline</h3>
+        <p class="tp-desc">See every appointment, every lead, and every detail. Appointments booked directly into your system with full contact information and qualification notes.</p>
+        <span class="tp-chip">Updated in real time</span>
+      </div>
+      <div class="tab-panel" data-panel="1">
+        <div class="tp-lbl">Real-Time Dialer</div>
+        <h3 class="tp-title">Watch Your Agents Work Live</h3>
+        <p class="tp-desc">See how many calls are being made, connect rates, conversion rates, and individual agent performance — whenever you want. No black boxes.</p>
+        <span class="tp-chip">No black boxes</span>
+      </div>
+      <div class="tab-panel" data-panel="2">
+        <div class="tp-lbl">Direct Communication</div>
+        <h3 class="tp-title">A Direct Line to Your Agents</h3>
+        <p class="tp-desc">Send feedback, training materials, or instructions. Your agents are required to be responsive during work hours. No request-through-support systems.</p>
+        <span class="tp-chip">Response required during work hours</span>
+      </div>
+      <div class="tab-panel" data-panel="3">
+        <div class="tp-lbl">Calendar Integration</div>
+        <h3 class="tp-title">Appointments in Your Google Calendar</h3>
+        <p class="tp-desc">Your closers see exactly who they're meeting, when, and all qualification details — no manual entry, no spreadsheets, no phone tag.</p>
+        <span class="tp-chip">Zero manual entry</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESULTS ═══ -->
+<section id="results" class="section">
+  <div class="section-inner">
+    <span class="section-label">Results</span>
+    <h2 class="section-title">Built for Performance.<br>Measured Every Day.</h2>
+    <p class="section-sub">We don't hide behind vanity metrics — we measure what actually matters: appointments booked, show rates, and the quality of every conversation.</p>
+    <div class="metrics-grid">
+      <div class="glass-card metric-card">
+        <span class="metric-num" data-count="5" data-suffix="+">5+</span>
+        <span class="metric-lbl">Qualified Appointments Per Agent Per Week</span>
+      </div>
+      <div class="glass-card metric-card">
+        <span class="metric-num">Live</span>
+        <span class="metric-lbl">Real-Time Performance Dashboards for Every Client</span>
+      </div>
+      <div class="glass-card metric-card">
+        <span class="metric-num">Daily</span>
+        <span class="metric-lbl">Campaign Monitoring — Not Monthly Reports</span>
+      </div>
+      <div class="glass-card metric-card">
+        <span class="metric-num" data-count="100" data-suffix="%">100%</span>
+        <span class="metric-lbl">Agents Trained, Tested, and Replaced Until They Perform</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section id="cta-final">
+  <div class="cta-inner">
+    <span class="section-label" style="display:block;text-align:center;margin-bottom:16px;">Ready to Scale?</span>
+    <h2>Ready to Stop Chasing Leads<br>and Start Closing Deals?</h2>
+    <p>Book a free strategy call. We'll map your territory, identify your best opportunities, and show you exactly how your call center would work.</p>
+    <a href="contact.html" class="btn-primary">Book Your Strategy Call →</a>
+    <p class="cta-support">No contracts required to start the conversation. No pressure. Just a clear plan.</p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-logo">PRE<span>MU</span>RA</span>
+      <p>In-house call centers for solar and roofing companies.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <a href="index.html">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="solar.html">For Solar</a>
+      <a href="roofing.html">For Roofing</a>
+      <a href="about.html">About Us</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="solar.html">Solar Campaigns</a>
+      <a href="roofing.html">Roofing Campaigns</a>
+      <a href="technology.html">Technology &amp; Tools</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:info@premura.org">info@premura.org</a>
+      <a href="contact.html" class="btn-primary" style="margin-top:10px;padding:10px 20px;font-size:.84rem;display:inline-flex;">Book a Strategy Call →</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Premura Corp. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<div id="floating-cta">
+  <a href="contact.html" class="btn-primary">Book a Call →</a>
+</div>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="main.js"></script>
+
+<script>
+// ── Scroll animation: calendar frame sequence ──
+(function(){
+  const FRAME_COUNT = 121;
+  const isMobile = window.innerWidth <= 768;
+  const frameStep = isMobile ? 2 : 1;
+
+  // Build the list of frame numbers to load (every frame on desktop, every other on mobile)
+  const frameNums = [];
+  for (let i = 1; i <= FRAME_COUNT; i += frameStep) frameNums.push(i);
+  const totalFrames = frameNums.length;
+
+  const frames = [];
+  let loadedCount = 0;
+  let currentFrame = -1;
+  let ticking = false;
+
+  const canvas = document.getElementById('frameCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const loader = document.getElementById('scrollLoader');
+  const loaderFill = document.getElementById('scrollLoaderFill');
+
+  const cards = document.querySelectorAll('.annotation-card');
+  const zones = Array.from(cards).map(c => ({
+    show: parseFloat(c.dataset.show),
+    hide: parseFloat(c.dataset.hide)
+  }));
+
+  function resizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width  = window.innerWidth  * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width  = window.innerWidth  + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    if (currentFrame >= 0) drawFrame(currentFrame);
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  function drawFrame(idx) {
+    const img = frames[idx];
+    if (!img || !img.complete) return;
+    const cw = canvas.width, ch = canvas.height;
+    ctx.fillStyle = '#f5f3ff';
+    ctx.fillRect(0, 0, cw, ch);
+    const ir = img.naturalWidth / img.naturalHeight;
+    const cr = cw / ch;
+    let dw, dh, dx, dy;
+    if (window.innerWidth > 768) {
+      if (cr > ir) { dw = cw; dh = cw / ir; }
+      else         { dh = ch; dw = ch * ir; }
+    } else {
+      const z = 1.15;
+      if (cr > ir) { dh = ch * z; dw = dh * ir; }
+      else         { dw = cw * z; dh = dw / ir; }
+    }
+    dx = (cw - dw) / 2;
+    dy = (ch - dh) / 2;
+    ctx.drawImage(img, dx, dy, dw, dh);
+  }
+
+  function updateCards(progress) {
+    cards.forEach((card, i) => {
+      const z = zones[i];
+      card.classList.toggle('visible', progress >= z.show && progress <= z.hide);
+    });
+  }
+
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const section = document.querySelector('.scroll-animation');
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        const scrollable = section.offsetHeight - window.innerHeight;
+        const progress = Math.min(1, Math.max(0, -rect.top / scrollable));
+        const fi = Math.min(totalFrames - 1, Math.floor(progress * totalFrames));
+        if (fi !== currentFrame) { currentFrame = fi; drawFrame(fi); }
+        updateCards(progress);
+      }
+      ticking = false;
+    });
+  }, { passive: true });
+
+  function preloadFrames() {
+    frameNums.forEach(num => {
+      const img = new Image();
+      img.src = 'frames/frame_' + String(num).padStart(4, '0') + '.jpg';
+      img.onload = () => {
+        loadedCount++;
+        if (loaderFill) loaderFill.style.width = (loadedCount / totalFrames * 100) + '%';
+        if (loadedCount === totalFrames) {
+          setTimeout(() => {
+            if (loader) {
+              loader.style.opacity = '0';
+              setTimeout(() => { loader.style.display = 'none'; }, 600);
+            }
+            currentFrame = 0;
+            drawFrame(0);
+          }, 300);
+        }
+      };
+      frames.push(img);
+    });
+  }
+
+  // Only start loading frames when the section is near the viewport
+  const sectionWrap = document.querySelector('.scroll-section-wrap');
+  if (sectionWrap && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        obs.disconnect();
+        preloadFrames();
+      }
+    }, { rootMargin: '300px' });
+    obs.observe(sectionWrap);
+  } else {
+    preloadFrames();
+  }
+})();
+</script>
+
+<script>
+// ── Waveform card ──
+(function(){
+  const card = document.querySelector('.annotation-card');
+  if (!card) return;
+  const nameEl = document.getElementById('wavecardName');
+  const endedEl = document.getElementById('wavecardEnded');
+  const bars = Array.from(card.querySelectorAll('.wb'));
+
+  const callers = [
+    'Robert K. — Friday 2:00 PM',
+    'Sarah M. — Monday 10:30 AM',
+    'James H. — Thursday 3:00 PM',
+    'Lisa T. — Wednesday 9:00 AM'
+  ];
+  let callerIdx = 0;
+  let isHovered = false;
+  let raf;
+  let endedTimer;
+  const phases = bars.map(() => Math.random() * Math.PI * 2);
+  const speeds = bars.map(() => 1.8 + Math.random() * 2.2);
+
+  function animateBars(t) {
+    if (isHovered) return;
+    bars.forEach((b, i) => {
+      const h = 0.12 + 0.88 * (0.5 + 0.5 * Math.sin(t * 0.001 * speeds[i] + phases[i]));
+      b.style.transform = 'scaleY(' + h + ')';
+    });
+    raf = requestAnimationFrame(animateBars);
+  }
+  raf = requestAnimationFrame(animateBars);
+
+  setInterval(() => {
+    if (isHovered) return;
+    callerIdx = (callerIdx + 1) % callers.length;
+    nameEl.style.opacity = '0';
+    setTimeout(() => { nameEl.textContent = callers[callerIdx]; nameEl.style.opacity = '1'; }, 300);
+  }, 4500);
+
+  card.addEventListener('mouseenter', () => {
+    isHovered = true;
+    cancelAnimationFrame(raf);
+    bars.forEach(b => { b.style.transition = 'transform 0.55s ease'; b.style.transform = 'scaleY(0.06)'; });
+    endedTimer = setTimeout(() => { endedEl.style.opacity = '1'; }, 480);
+  });
+
+  card.addEventListener('mouseleave', () => {
+    isHovered = false;
+    clearTimeout(endedTimer);
+    endedEl.style.opacity = '0';
+    bars.forEach(b => { b.style.transition = 'transform 0.25s ease'; });
+    setTimeout(() => { bars.forEach(b => { b.style.transition = ''; }); raf = requestAnimationFrame(animateBars); }, 260);
+  });
+})();
+</script>
+
+<script>
+// ── Tabs ──
+(function(){
+  const btns   = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+  if (!btns.length) return;
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelector('.tab-panel[data-panel="' + btn.dataset.tab + '"]').classList.add('active');
+    });
+  });
+})();
+
+// ── Stepper ──
+(function(){
+  const items = document.querySelectorAll('.step-item');
+  const panes = document.querySelectorAll('.step-pane');
+  if (!items.length) return;
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      items.forEach(i => i.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+      item.classList.add('active');
+      document.querySelector('.step-pane[data-pane="' + item.dataset.step + '"]').classList.add('active');
+    });
+  });
+})();
+
+// ── Solution toggle ──
+(function(){
+  const btnWith    = document.getElementById('stog-with');
+  const btnWithout = document.getElementById('stog-without');
+  const gridWith   = document.getElementById('diff-with');
+  const gridWithout= document.getElementById('diff-without');
+  if (!btnWith) return;
+  btnWith.addEventListener('click', () => {
+    btnWith.classList.add('active');    btnWithout.classList.remove('active');
+    gridWith.classList.remove('diff-grid-hidden');
+    gridWithout.classList.add('diff-grid-hidden');
+  });
+  btnWithout.addEventListener('click', () => {
+    btnWithout.classList.add('active'); btnWith.classList.remove('active');
+    gridWithout.classList.remove('diff-grid-hidden');
+    gridWith.classList.add('diff-grid-hidden');
+    gridWithout.querySelectorAll('.diff-card').forEach(c => { c.style.opacity='1'; c.style.transform='none'; });
+  });
+})();
+</script>
+</body>
+</html>

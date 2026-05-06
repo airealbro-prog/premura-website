@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="assets/premura-logo.png">
+<link rel="apple-touch-icon" href="assets/premura-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roofing Appointment Setting | Storm-Ready Call Center for Roofers | Premura</title>
+<meta name="description" content="Premura builds dedicated call centers for roofing companies. Storm-response speed, hail-map targeting, exclusive appointments — booked into your calendar within hours of a hit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="roofing.css">
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Premura"><img src="assets/premura-logo.png" alt="Premura"/></a>
+    <div class="nav-links">
+      <a href="how-it-works.html">How It Works</a>
+      <a href="solar.html">Solar</a>
+      <a href="roofing.html">Roofing</a>
+      <a href="technology.html">Technology</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile-menu">
+  <button class="nav-mobile-close">×</button>
+  <a href="how-it-works.html">How It Works</a><a href="solar.html">Solar</a><a href="roofing.html">Roofing</a><a href="technology.html">Technology</a><a href="about.html">About</a><a href="faq.html">FAQ</a>
+  <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:16px;">Book a Call</a>
+</div>
+
+<!-- ════ HERO: Storm radar over neighborhood ════ -->
+<section id="roof-hero">
+  <div class="rh-sky"></div>
+  <div class="rh-grid"></div>
+
+  <!-- radar overlay -->
+  <div class="rh-radar">
+    <div class="rh-radar-ring"></div>
+    <div class="rh-radar-ring r2"></div>
+    <div class="rh-radar-ring r3"></div>
+    <div class="rh-radar-sweep"></div>
+  </div>
+
+  <!-- moving storm cell -->
+  <div class="rh-storm-cell"></div>
+
+  <!-- clouds layer -->
+  <div class="rh-clouds"></div>
+  <!-- rain -->
+  <div class="rh-rain"></div>
+  <!-- lightning flash -->
+  <div class="rh-flash"></div>
+
+  <!-- rooftops silhouette -->
+  <div class="rh-rooftops">
+    <svg viewBox="0 0 1600 360" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="rfHouseGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1d1438"/>
+          <stop offset="100%" stop-color="#070612"/>
+        </linearGradient>
+      </defs>
+      <!-- distant treeline -->
+      <path d="M 0 240 Q 80 222 160 235 T 320 228 T 480 240 T 640 230 T 800 238 T 960 226 T 1120 240 T 1280 230 T 1440 235 T 1600 240 L 1600 360 L 0 360 Z" fill="#0a0816" opacity="0.7"/>
+      <!-- Rooftops only (silhouettes) -->
+      <g fill="url(#rfHouseGrad)" stroke="rgba(168,85,247,0.18)">
+        <polygon points="60,260 200,260 200,360 60,360"/>
+        <polygon points="50,260 130,210 210,260" fill="#150f2a"/>
+        <polygon points="240,250 380,250 380,360 240,360"/>
+        <polygon points="225,250 310,180 395,250" fill="#150f2a"/>
+        <polygon points="420,265 540,265 540,360 420,360"/>
+        <polygon points="410,265 480,220 550,265" fill="#150f2a"/>
+        <polygon points="580,255 740,255 740,360 580,360"/>
+        <polygon points="570,255 660,195 750,255" fill="#150f2a"/>
+        <polygon points="780,260 900,260 900,360 780,360"/>
+        <polygon points="770,260 840,212 910,260" fill="#150f2a"/>
+        <polygon points="940,250 1100,250 1100,360 940,360"/>
+        <polygon points="930,250 1020,190 1110,250" fill="#150f2a"/>
+        <polygon points="1140,265 1260,265 1260,360 1140,360"/>
+        <polygon points="1130,265 1200,222 1270,265" fill="#150f2a"/>
+        <polygon points="1300,255 1460,255 1460,360 1300,360"/>
+        <polygon points="1290,255 1380,200 1470,255" fill="#150f2a"/>
+        <polygon points="1500,260 1600,260 1600,360 1500,360"/>
+        <polygon points="1490,260 1545,222 1600,260" fill="#150f2a"/>
+      </g>
+      <!-- a few warm windows -->
+      <g fill="rgba(255,206,114,0.22)">
+        <rect x="95" y="300" width="22" height="40"/>
+        <rect x="280" y="290" width="24" height="50"/>
+        <rect x="630" y="295" width="26" height="48"/>
+        <rect x="990" y="295" width="26" height="48"/>
+        <rect x="1350" y="295" width="26" height="48"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- damage markers removed -->
+
+
+  <div class="rh-content">
+    <span class="rh-eyebrow">For Roofing Companies</span>
+    <h1 class="rh-title">When the storm rolls through,<br><em>your phones should already be ringing.</em></h1>
+    <p class="rh-sub">Premura builds storm-ready call center campaigns for roofing companies — so the morning after a hail event, your closers walk into pre-qualified, exclusive appointments. Not a knock-and-pray war with every chaser in town.</p>
+    <div class="rh-cta">
+      <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary">Book a Roofing Strategy Call →</a>
+      <div class="rh-meta"><span class="rh-meta-dot"></span>Live storm-response queue · 4 markets active</div>
+    </div>
+  </div>
+
+  <!-- storm scrubber -->
+  <div class="rh-storm-control">
+    <span class="rh-storm-stage">CLEAR · 6 AM</span>
+    <div class="rh-storm-track"><div class="rh-storm-knob"></div></div>
+    <button class="rh-storm-auto playing">Pause</button>
+  </div>
+</section>
+
+<!-- ════ 72-HOUR WINDOW ════ -->
+<section id="rf-window">
+  <div class="rf-win-glow"></div>
+  <div class="rf-win-inner">
+    <div class="rf-win-header">
+      <span class="section-label">The 72-Hour Storm Window</span>
+      <h2 class="section-title">Most contracts are signed<br>in the first 72 hours.</h2>
+      <p>Insurance adjusters race the clock. Homeowners panic. Whichever roofer makes contact first usually wins the job — and after day three, close rates fall off a cliff. Drag the marker to see how the math punishes anyone still knocking doors a week later.</p>
+    </div>
+
+    <div class="rf-win-stage">
+      <div class="rf-win-readout">
+        <div class="rf-win-readout-cell hour">
+          <div class="rf-win-readout-lbl">Hours after storm</div>
+          <div class="rf-win-readout-val">18 hr</div>
+          <div class="rf-win-readout-sub">your call lands here</div>
+        </div>
+        <div class="rf-win-readout-cell rate">
+          <div class="rf-win-readout-lbl">Close rate at this hour</div>
+          <div class="rf-win-readout-val">56%</div>
+          <div class="rf-win-readout-sub">of qualified inspections</div>
+        </div>
+        <div class="rf-win-readout-cell deals">
+          <div class="rf-win-readout-lbl">Deals per 100 leads</div>
+          <div class="rf-win-readout-val">56 / 100</div>
+          <div class="rf-win-readout-sub">within the golden window</div>
+        </div>
+      </div>
+
+      <div class="rf-win-chart"></div>
+
+      <div class="rf-win-hint">Drag the marker · or click anywhere on the curve <kbd>↔</kbd></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ HAIL MAP ════ -->
+<section id="rf-hail">
+  <div class="rf-hail-inner">
+    <div class="rf-hail-header">
+      <span class="section-label">Hail-Damage Targeting</span>
+      <h2 class="section-title">We dial the streets<br>that just took the hit.</h2>
+      <p>Premura layers NOAA storm reports on top of homeowner records — every morning, our agents are on the phones to addresses where hail actually fell, scaled to size and recency. Filter by hail size and storm window to see what's currently in the active queue.</p>
+    </div>
+
+    <div class="rf-hail-stage">
+      <div class="rf-hail-map-wrap">
+        <svg class="rf-hail-svg"></svg>
+
+        <div class="rf-hail-readout">
+          <div class="rf-hail-readout-lbl">Active queue</div>
+          <div class="rf-hail-readout-val">0</div>
+          <div class="rf-hail-readout-sub">homeowners</div>
+        </div>
+
+        <div class="rf-hail-tickr">
+          <span class="rf-hail-tickr-icon"></span>
+          <span class="rf-hail-tickr-text">Loading active queue…</span>
+        </div>
+
+        <div class="rf-hail-tooltip"></div>
+      </div>
+
+      <div class="rf-hail-controls">
+        <div class="rf-hail-controls-title">Filter the queue</div>
+
+        <div class="rf-hail-filter-group">
+          <h4>Hail size</h4>
+          <div class="rf-hail-chips">
+            <button class="rf-hail-chip active" data-size="lg"><span class="rf-hail-chip-dot lg"></span>2″+</button>
+            <button class="rf-hail-chip active" data-size="md"><span class="rf-hail-chip-dot md"></span>1.5–2″</button>
+            <button class="rf-hail-chip active" data-size="sm"><span class="rf-hail-chip-dot sm"></span>Under 1.5″</button>
+          </div>
+        </div>
+
+        <div class="rf-hail-filter-group rf-hail-slider">
+          <div class="rf-hail-slider-row">
+            <span>Storm window</span>
+            <span><span id="rfHailDaysVal">3 days</span></span>
+          </div>
+          <input id="rfHailDays" type="range" min="1" max="7" value="3" step="1">
+        </div>
+
+        <div class="rf-hail-bottom-line">
+          A hailstorm has a <strong>72-hour commercial half-life</strong>. After that, adjusters have closed claims and your competitors have already knocked. Premura is on the phones the next morning.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ STORM CALENDAR ════ -->
+<section id="rf-cal">
+  <div class="rf-cal-inner">
+    <div class="rf-cal-copy">
+      <span class="section-label">Pipeline That Doesn't Wait for Weather</span>
+      <h2 class="section-title">Storm season<br>is a spike.<br>You need a baseline.</h2>
+      <p>Most roofing operators live and die by the weather radar — feast in May, famine in October. Premura's outbound runs every working day, so even your "quiet" weeks book steady inspections. When the next system rolls in, you're amplifying a pipeline, not building one from scratch.</p>
+      <ul class="rf-cal-features">
+        <li><span class="rf-cal-check">✓</span><span>Year-round dialers — appointments every week, weather or not</span></li>
+        <li><span class="rf-cal-check">✓</span><span>Storm spikes routed to a dedicated rapid-response queue</span></li>
+        <li><span class="rf-cal-check">✓</span><span>Insurance-friendly conversations, not high-pressure pitches</span></li>
+        <li><span class="rf-cal-check">✓</span><span>Reschedules and confirmations handled by us, not your closers</span></li>
+      </ul>
+    </div>
+
+    <div class="rf-cal-mock">
+      <div class="rf-cal-head">
+        <div class="rf-cal-month">A typical 8 weeks · Spring 2026</div>
+        <div class="rf-cal-storm-tag">Hailstorm · Wk 4</div>
+      </div>
+
+      <div class="rf-cal-week-bar">
+        <div class="rf-cal-week-lbl">Week 1<strong>Quiet</strong></div>
+        <div class="rf-cal-week-cells">
+          <div class="rf-cal-cell" data-c="1"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="1"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="1"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="1"></div>
+        </div>
+      </div>
+      <div class="rf-cal-week-bar">
+        <div class="rf-cal-week-lbl">Week 2<strong>Quiet</strong></div>
+        <div class="rf-cal-week-cells">
+          <div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="1"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="1"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="1"></div>
+        </div>
+      </div>
+      <div class="rf-cal-week-bar">
+        <div class="rf-cal-week-lbl">Week 3<strong>Building</strong></div>
+        <div class="rf-cal-week-cells">
+          <div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="3"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="3"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="2"></div>
+        </div>
+      </div>
+      <div class="rf-cal-week-bar" style="position:relative;">
+        <div class="rf-cal-week-lbl" style="color:#dc2645;">Week 4<strong style="color:#dc2645;">STORM HIT</strong></div>
+        <div class="rf-cal-week-cells">
+          <div class="rf-cal-cell" data-c="3"></div>
+          <div class="rf-cal-cell" data-c="3"></div>
+          <div class="rf-cal-cell" data-c="4"><div class="rf-cal-storm-marker"></div></div>
+          <div class="rf-cal-cell" data-c="4"></div>
+          <div class="rf-cal-cell" data-c="4"></div>
+          <div class="rf-cal-cell" data-c="3"></div>
+          <div class="rf-cal-cell" data-c="3"></div>
+        </div>
+      </div>
+      <div class="rf-cal-week-bar">
+        <div class="rf-cal-week-lbl">Week 5<strong>Aftermath</strong></div>
+        <div class="rf-cal-week-cells">
+          <div class="rf-cal-cell" data-c="3"></div><div class="rf-cal-cell" data-c="4"></div><div class="rf-cal-cell" data-c="3"></div><div class="rf-cal-cell" data-c="3"></div><div class="rf-cal-cell" data-c="3"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="3"></div>
+        </div>
+      </div>
+      <div class="rf-cal-week-bar">
+        <div class="rf-cal-week-lbl">Week 6<strong>Steady</strong></div>
+        <div class="rf-cal-week-cells">
+          <div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="3"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="3"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="2"></div>
+        </div>
+      </div>
+      <div class="rf-cal-week-bar">
+        <div class="rf-cal-week-lbl">Week 7<strong>Steady</strong></div>
+        <div class="rf-cal-week-cells">
+          <div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="3"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="2"></div>
+        </div>
+      </div>
+      <div class="rf-cal-week-bar">
+        <div class="rf-cal-week-lbl">Week 8<strong>Steady</strong></div>
+        <div class="rf-cal-week-cells">
+          <div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="3"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="2"></div><div class="rf-cal-cell" data-c="2"></div>
+        </div>
+      </div>
+
+      <div class="rf-cal-summary">
+        <div class="rf-cal-summary-cell">
+          <div class="rf-cal-summary-lbl">Avg / week (baseline)</div>
+          <div class="rf-cal-summary-val">22 appts</div>
+        </div>
+        <div class="rf-cal-summary-cell warn">
+          <div class="rf-cal-summary-lbl">Storm-week surge</div>
+          <div class="rf-cal-summary-val">61 appts</div>
+        </div>
+      </div>
+
+      <div class="rf-cal-legend">
+        <div class="rf-cal-legend-row"><span class="rf-cal-legend-dot l1"></span>None</div>
+        <div class="rf-cal-legend-row"><span class="rf-cal-legend-dot l2"></span>Light</div>
+        <div class="rf-cal-legend-row"><span class="rf-cal-legend-dot l3"></span>Steady</div>
+        <div class="rf-cal-legend-row"><span class="rf-cal-legend-dot l4"></span>Storm surge</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FINAL CTA ════ -->
+<section id="cta-final">
+  <div class="cta-inner">
+    <span class="section-label" style="display:block;text-align:center;margin-bottom:16px;">Roofing Companies</span>
+    <h2>Stop chasing storms.<br>Start answering them.</h2>
+    <p>Book a roofing strategy call. We'll show you how to stand up a storm-ready dial team that books exclusive inspections within 24 hours of the next hail event in your market.</p>
+    <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary">Book a Roofing Strategy Call →</a>
+    <p class="cta-support">No contracts required to start the conversation.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><span class="footer-logo"><img src="assets/premura-logo.png" alt="Premura"/><span class="footer-logo-word">PREMURA</span></span><p>In-house call centers for solar and roofing companies.</p></div>
+    <div class="footer-col"><h4>Pages</h4><a href="index.html">Home</a><a href="how-it-works.html">How It Works</a><a href="solar.html">For Solar</a><a href="roofing.html">For Roofing</a><a href="about.html">About Us</a><a href="faq.html">FAQ</a></div>
+    <div class="footer-col"><h4>Services</h4><a href="solar.html">Solar Campaigns</a><a href="roofing.html">Roofing Campaigns</a><a href="technology.html">Technology &amp; Tools</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:support@premura.org">support@premura.org</a><a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:10px;padding:10px 20px;font-size:.84rem;display:inline-flex;">Book a Strategy Call →</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Premura Corp. All rights reserved.</span><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+</footer>
+<div id="floating-cta"><a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary">Book a Call →</a></div>
+
+<script src="main.js"></script>
+<script src="roofing.js"></script>
+</body>
+</html>

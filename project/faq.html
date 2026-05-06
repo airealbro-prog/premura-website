@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="assets/premura-logo.png">
+<link rel="apple-touch-icon" href="assets/premura-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ | Premura</title>
+<meta name="description" content="Search and filter answers to common questions about how Premura builds and manages dedicated call centers for solar and roofing companies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="faq.css">
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Premura"><img src="assets/premura-logo.png" alt="Premura"/></a>
+    <div class="nav-links">
+      <a href="how-it-works.html">How It Works</a>
+      <a href="solar.html">Solar</a>
+      <a href="roofing.html">Roofing</a>
+      <a href="technology.html">Technology</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile-menu">
+  <button class="nav-mobile-close">×</button>
+  <a href="how-it-works.html">How It Works</a><a href="solar.html">Solar</a><a href="roofing.html">Roofing</a><a href="technology.html">Technology</a><a href="about.html">About</a><a href="faq.html">FAQ</a>
+  <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:16px;">Book a Call</a>
+</div>
+
+<!-- ════ HERO: Search + Persona ════ -->
+<section id="faq-hero">
+  <div class="fq-hero-inner">
+    <span class="fq-eyebrow">Ask Premura</span>
+    <h1 class="fq-h1">Got a question?<br><em>Type it. We've heard it before.</em></h1>
+    <p class="fq-sub">Search across every answer in our knowledge base, or pick your role to see the questions other operators in your shoes have asked first.</p>
+
+    <div class="fq-search">
+      <span class="fq-search-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+      </span>
+      <input id="fqSearch" type="text" placeholder="Try: 'shared leads', 'how long', 'agents', 'turnover'…" autocomplete="off">
+      <button id="fqClear" class="fq-search-clear" aria-label="Clear">×</button>
+      <span class="fq-search-tag">⌘K</span>
+      <div id="fqSuggest" class="fq-suggest"></div>
+    </div>
+
+    <div class="fq-personas">
+      <button class="fq-persona active" data-p="all"><span class="fq-persona-dot"></span>All questions</button>
+      <button class="fq-persona" data-p="solar">☀ I run solar</button>
+      <button class="fq-persona" data-p="roofing">⌂ I run roofing</button>
+      <button class="fq-persona" data-p="curious">◎ Just exploring</button>
+    </div>
+
+    <div id="fqContext" class="fq-context"></div>
+  </div>
+</section>
+
+<!-- ════ FAQ list ════ -->
+<section id="faq-body">
+  <div class="fq-wrap">
+
+    <div class="fq-stats-bar">
+      <div>Showing <strong id="fqMatchCount">13</strong> answers · curated from real client calls</div>
+      <div class="fq-stats-bar-right">
+        <button id="fqSort" class="fq-sort-toggle">Sort by most asked</button>
+      </div>
+    </div>
+
+    <div class="fq-group">
+      <div class="fq-group-title">General Questions</div>
+
+      <div class="fq-item" id="q-what" data-idx="1" data-pct="71" data-hot="hot">
+        <button class="fq-q"><span class="fq-q-text">What exactly does Premura do?</span><span class="fq-hot">71% ask this</span><span class="fq-icon">+</span></button>
+        <div class="fq-ans"><div class="fq-ans-inner">We build and manage dedicated in-house call centers for solar and roofing companies. Our trained agents call homeowners in your service area, qualify them, and book confirmed appointments directly into your calendar. We handle everything — recruitment, training, scripts, technology, data sourcing, and daily management.</div></div>
+      </div>
+
+      <div class="fq-item" id="q-diff" data-idx="2" data-pct="68" data-hot="hot">
+        <button class="fq-q"><span class="fq-q-text">How is this different from buying leads?</span><span class="fq-hot">68% ask this</span><span class="fq-icon">+</span></button>
+        <div class="fq-ans"><div class="fq-ans-inner">When you buy leads, you get a list of names — often shared with multiple competitors — and you're responsible for chasing them down. With Premura, we don't sell leads at all. <em>We book qualified appointments</em> with homeowners who have agreed to meet your closer at a specific time. Your agents work exclusively for you, and every appointment goes to your calendar only.</div></div>
+      </div>
+
+      <div class="fq-item" id="q-dedicated" data-idx="3" data-pct="42" data-hot="warm">
+        <button class="fq-q"><span class="fq-q-text">Are the agents dedicated to my company?</span><span class="fq-hot warm">42% ask this</span><span class="fq-icon">+</span></button>
+        <div class="fq-ans"><div class="fq-ans-inner">Yes. Your agents are recruited, trained, and assigned specifically to your campaign. They learn your brand, your offer, your territory, and your qualification criteria. They do not work on other clients' campaigns simultaneously.</div></div>
+      </div>
+
+      <div class="fq-item" id="q-many" data-idx="4" data-pct="38" data-hot="warm">
+        <button class="fq-q"><span class="fq-q-text">How many agents will I have?</span><span class="fq-hot warm">38% ask this</span><span class="fq-icon">+</span></button>
+        <div class="fq-ans"><div class="fq-ans-inner">The number of agents is tailored to your sales capacity and appointment goals. During your strategy call, we'll determine the right number based on how many closers you have, how many appointments per week you need, and the size of your territory.</div></div>
+      </div>
+
+      <div class="fq-item" id="q-choose" data-idx="5" data-pct="29" data-hot="mild">
+        <button class="fq-q"><span class="fq-q-text">Do I get to choose my agents?</span><span class="fq-hot mild">29% ask this</span><span class="fq-icon">+</span></button>
+        <div class="fq-ans"><div class="fq-ans-inner">Yes. Every agent candidate goes through our multi-stage screening process. At the final interview stage, you meet the top candidates and make the final decision on who represents your company.</div></div>
+      </div>
+
+      <div class="fq-item" id="q-perform" data-idx="6" data-pct="34" data-hot="warm">
+        <button class="fq-q"><span class="fq-q-text">What happens if an agent isn't performing?</span><span class="fq-hot warm">34% ask this</span><span class="fq-icon">+</span></button>
+        <div class="fq-ans"><div class="fq-ans-inner">We monitor agent performance daily. If an agent is underperforming, they receive immediate coaching from our Call Center Manager. If they don't improve within a short window, they are replaced. We maintain a standard of <em>five qualified appointments per agent per week</em>.</div></div>
+      </div>
+    </div>
+
+    <div class="fq-group">
+      <div class="fq-group-title">Technology &amp; Access</div>
+
+      <div class="fq-item" id="q-tech" data-idx="7" data-pct="22" data-hot="mild">
+        <button class="fq-q"><span class="fq-q-text">What technology do I need?</span><span class="fq-hot mild">22% ask this</span><span class="fq-icon">+</span></button>
+        <div class="fq-ans"><div class="fq-ans-inner">Nothing beyond a computer and an internet connection. We configure and manage all the technology for you — CRM, dialer, calendar integration, and communication tools. You'll receive login credentials and a walkthrough during onboarding.</div></div>
+      </div>
+
+      <div class="fq-item" id="q-live" data-idx="8" data-pct="44" data-hot="warm">
+        <button class="fq-q"><span class="fq-q-text">Can I see my agents' calls in real time?</span><span class="fq-hot warm">44% ask this</span><span class="fq-icon">+</span></button>
+        <div class="fq-ans"><div class="fq-ans-inner">Absolutely. You have full access to the dialer dashboard where you can see <em>live agent activity, call volume, connect rates, and individual performance metrics</em> at any time.</div></div>
+      </div>
+
+      <div class="fq-item" id="q-calendar" data-idx="9" data-pct="31" data-hot="warm">
+        <button class="fq-q"><span class="fq-q-text">How do appointments get into my calendar?</span><span class="fq-hot warm">31% ask this</span><span class="fq-icon">+</span></button>
+        <div class="fq-ans"><div class="fq-ans-inner">We integrate your Google Calendar directly with our CRM. When an agent books a qualified appointment, it appears instantly in your calendar with the homeowner's name, phone number, address, and all qualification details. Your closers see exactly who they're meeting and when.</div></div>
+      </div>
+    </div>
+
+    <div class="fq-group">
+      <div class="fq-group-title">Process &amp; Timeline</div>
+
+      <div class="fq-item" id="q-howlong" data-idx="10" data-pct="56" data-hot="hot">
+        <button class="fq-q"><span class="fq-q-text">How long does it take to get started?</span><span class="fq-hot">56% ask this</span><span class="fq-icon">+</span></button>
+        <div class="fq-ans"><div class="fq-ans-inner">From your strategy call to your first live campaign, the process typically takes <em>one to two weeks</em>. This includes onboarding, technology setup, agent recruitment, training, and launch verification.</div></div>
+      </div>
+
+      <div class="fq-item" id="q-competitive" data-idx="11" data-pct="26" data-hot="mild">
+        <button class="fq-q"><span class="fq-q-text">What if I'm in a very competitive market?</span><span class="fq-hot mild">26% ask this</span><span class="fq-icon">+</span></button>
+        <div class="fq-ans"><div class="fq-ans-inner">Competitive markets are exactly where we provide the most value. Our targeting strategies — <em>gated communities, rural zip codes, bilingual campaigns</em> — are specifically designed to reach homeowners that your competition can't. We'll build a territory plan during your strategy call.</div></div>
+      </div>
+
+      <div class="fq-item" id="q-state" data-idx="12" data-pct="48" data-hot="warm">
+        <button class="fq-q"><span class="fq-q-text">Do you work in my state?</span><span class="fq-hot warm">48% ask this</span><span class="fq-icon">+</span></button>
+        <div class="fq-ans"><div class="fq-ans-inner">We serve solar and roofing companies across the United States. During your strategy call, we'll confirm your service area and start building your territory map.</div></div>
+      </div>
+
+      <div class="fq-item" id="q-after" data-idx="13" data-pct="18" data-hot="mild">
+        <button class="fq-q"><span class="fq-q-text">What's expected of me after launch?</span><span class="fq-hot mild">18% ask this</span><span class="fq-icon">+</span></button>
+        <div class="fq-ans"><div class="fq-ans-inner">Your primary job is to close deals. We manage the call center operation day-to-day. You'll have a weekly check-in with your Customer Success Manager, access to all dashboards and tools, and the ability to communicate with your agents directly. We also encourage you to share feedback on appointment quality so we can continuously refine targeting and qualification.</div></div>
+      </div>
+    </div>
+
+    <div id="fqNoResults" class="fq-no-results">
+      <h4>No matches in our knowledge base.</h4>
+      <p>That's a great question for a 5-minute strategy call. <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" style="color:#7c3aed;font-weight:700;">Book one →</a></p>
+    </div>
+
+  </div>
+</section>
+
+<section id="cta-final">
+  <div class="cta-inner">
+    <span class="section-label" style="display:block;text-align:center;margin-bottom:16px;">Still Have Questions?</span>
+    <h2>Let's answer them<br>on a call.</h2>
+    <p>Book a free strategy call. No pressure, no pitch — just straight answers about whether Premura is the right fit for your business.</p>
+    <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary">Book a Strategy Call →</a>
+    <p class="cta-support">No contracts required to start the conversation.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><span class="footer-logo"><img src="assets/premura-logo.png" alt="Premura"/><span class="footer-logo-word">PREMURA</span></span><p>In-house call centers for solar and roofing companies.</p></div>
+    <div class="footer-col"><h4>Pages</h4><a href="index.html">Home</a><a href="how-it-works.html">How It Works</a><a href="solar.html">For Solar</a><a href="roofing.html">For Roofing</a><a href="about.html">About Us</a><a href="faq.html">FAQ</a></div>
+    <div class="footer-col"><h4>Services</h4><a href="solar.html">Solar Campaigns</a><a href="roofing.html">Roofing Campaigns</a><a href="technology.html">Technology &amp; Tools</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:support@premura.org">support@premura.org</a><a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:10px;padding:10px 20px;font-size:.84rem;display:inline-flex;">Book a Strategy Call →</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Premura Corp. All rights reserved.</span><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+</footer>
+
+<script src="main.js"></script>
+<script src="faq.js"></script>
+</body>
+</html>

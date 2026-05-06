@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="assets/premura-logo.png">
+<link rel="apple-touch-icon" href="assets/premura-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar Appointment Setting | Dedicated Call Center for Solar Companies | Premura</title>
+<meta name="description" content="Fill your closers' calendars with qualified solar appointments. Premura builds dedicated call center campaigns for solar companies across the United States.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="solar.css">
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Premura"><img src="assets/premura-logo.png" alt="Premura"/></a>
+    <div class="nav-links">
+      <a href="how-it-works.html">How It Works</a>
+      <a href="solar.html">Solar</a>
+      <a href="roofing.html">Roofing</a>
+      <a href="technology.html">Technology</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile-menu">
+  <button class="nav-mobile-close">×</button>
+  <a href="how-it-works.html">How It Works</a><a href="solar.html">Solar</a><a href="roofing.html">Roofing</a><a href="technology.html">Technology</a><a href="about.html">About</a><a href="faq.html">FAQ</a>
+  <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:16px;">Book a Call</a>
+</div>
+
+<!-- ════ HERO: Sun arc + rooftops ════ -->
+<section id="solar-hero">
+  <div class="sh-stars"></div>
+  <div class="sh-grid"></div>
+  <div class="sh-arc-track"></div>
+  <div class="sh-sky"></div>
+  <div class="sh-sun"></div>
+
+  <div class="sh-rooftops">
+    <svg viewBox="0 0 1600 360" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="houseGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1d1438"/>
+          <stop offset="100%" stop-color="#0b0a18"/>
+        </linearGradient>
+        <linearGradient id="panelGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#e9b6ff"/>
+          <stop offset="100%" stop-color="#c084fc"/>
+        </linearGradient>
+      </defs>
+      <!-- distant treeline -->
+      <path d="M 0 240 Q 80 222 160 235 T 320 228 T 480 240 T 640 230 T 800 238 T 960 226 T 1120 240 T 1280 230 T 1440 235 T 1600 240 L 1600 360 L 0 360 Z" fill="#0d0a20" opacity="0.6"/>
+
+      <!-- Houses with solar panels -->
+      <!-- House 1 -->
+      <g>
+        <polygon points="60,260 200,260 200,360 60,360" fill="url(#houseGrad)" stroke="rgba(168,85,247,0.15)"/>
+        <polygon points="50,260 130,210 210,260" fill="#150f2a" stroke="rgba(168,85,247,0.2)"/>
+        <rect x="95" y="300" width="22" height="40" fill="#0b0a18" stroke="rgba(255,206,114,0.15)"/>
+        <rect x="145" y="285" width="20" height="20" fill="rgba(255,206,114,0.25)" stroke="rgba(255,206,114,0.3)"/>
+        <!-- panels -->
+        <g class="sh-roof-panel" style="opacity:0;">
+          <polygon points="78,253 130,221 158,239 110,266" fill="url(#panelGrad)" opacity="0.85"/>
+          <line x1="93" y1="245" x2="138" y2="227" stroke="rgba(11,10,24,0.5)" stroke-width="0.5"/>
+          <line x1="100" y1="251" x2="146" y2="231" stroke="rgba(11,10,24,0.5)" stroke-width="0.5"/>
+        </g>
+      </g>
+
+      <!-- House 2 (taller) -->
+      <g>
+        <polygon points="240,250 380,250 380,360 240,360" fill="url(#houseGrad)" stroke="rgba(168,85,247,0.15)"/>
+        <polygon points="225,250 310,180 395,250" fill="#150f2a" stroke="rgba(168,85,247,0.2)"/>
+        <rect x="280" y="290" width="24" height="50" fill="#0b0a18" stroke="rgba(255,206,114,0.15)"/>
+        <rect x="330" y="280" width="22" height="22" fill="rgba(255,206,114,0.25)" stroke="rgba(255,206,114,0.3)"/>
+        <g class="sh-roof-panel" style="opacity:0;">
+          <polygon points="252,243 310,196 350,222 290,267" fill="url(#panelGrad)" opacity="0.85"/>
+          <line x1="270" y1="232" x2="318" y2="208" stroke="rgba(11,10,24,0.5)" stroke-width="0.5"/>
+          <line x1="278" y1="240" x2="328" y2="216" stroke="rgba(11,10,24,0.5)" stroke-width="0.5"/>
+        </g>
+      </g>
+
+      <!-- House 3 -->
+      <g>
+        <polygon points="420,265 540,265 540,360 420,360" fill="url(#houseGrad)" stroke="rgba(168,85,247,0.15)"/>
+        <polygon points="410,265 480,220 550,265" fill="#150f2a" stroke="rgba(168,85,247,0.2)"/>
+        <rect x="450" y="305" width="20" height="35" fill="#0b0a18" stroke="rgba(255,206,114,0.15)"/>
+        <rect x="495" y="290" width="18" height="18" fill="rgba(255,206,114,0.25)"/>
+        <g class="sh-roof-panel" style="opacity:0;">
+          <polygon points="425,260 480,228 510,244 458,278" fill="url(#panelGrad)" opacity="0.7"/>
+        </g>
+      </g>
+
+      <!-- House 4 -->
+      <g>
+        <polygon points="580,255 740,255 740,360 580,360" fill="url(#houseGrad)" stroke="rgba(168,85,247,0.15)"/>
+        <polygon points="570,255 660,195 750,255" fill="#150f2a" stroke="rgba(168,85,247,0.2)"/>
+        <rect x="630" y="295" width="26" height="48" fill="#0b0a18" stroke="rgba(255,206,114,0.15)"/>
+        <rect x="685" y="282" width="22" height="22" fill="rgba(255,206,114,0.25)"/>
+        <rect x="600" y="282" width="20" height="20" fill="rgba(255,206,114,0.18)"/>
+        <g class="sh-roof-panel" style="opacity:0;">
+          <polygon points="588,250 660,210 705,232 633,272" fill="url(#panelGrad)" opacity="0.9"/>
+          <line x1="610" y1="238" x2="668" y2="216" stroke="rgba(11,10,24,0.5)" stroke-width="0.5"/>
+          <line x1="620" y1="248" x2="678" y2="225" stroke="rgba(11,10,24,0.5)" stroke-width="0.5"/>
+        </g>
+      </g>
+
+      <!-- House 5 -->
+      <g>
+        <polygon points="780,260 900,260 900,360 780,360" fill="url(#houseGrad)" stroke="rgba(168,85,247,0.15)"/>
+        <polygon points="770,260 840,212 910,260" fill="#150f2a" stroke="rgba(168,85,247,0.2)"/>
+        <rect x="815" y="298" width="22" height="42" fill="#0b0a18" stroke="rgba(255,206,114,0.15)"/>
+        <rect x="855" y="285" width="20" height="20" fill="rgba(255,206,114,0.2)"/>
+        <g class="sh-roof-panel" style="opacity:0;">
+          <polygon points="784,256 840,222 870,238 815,272" fill="url(#panelGrad)" opacity="0.75"/>
+        </g>
+      </g>
+
+      <!-- House 6 -->
+      <g>
+        <polygon points="940,250 1100,250 1100,360 940,360" fill="url(#houseGrad)" stroke="rgba(168,85,247,0.15)"/>
+        <polygon points="930,250 1020,190 1110,250" fill="#150f2a" stroke="rgba(168,85,247,0.2)"/>
+        <rect x="990" y="295" width="26" height="48" fill="#0b0a18" stroke="rgba(255,206,114,0.15)"/>
+        <rect x="1045" y="280" width="22" height="22" fill="rgba(255,206,114,0.25)"/>
+        <rect x="960" y="280" width="20" height="20" fill="rgba(255,206,114,0.18)"/>
+        <g class="sh-roof-panel" style="opacity:0;">
+          <polygon points="948,245 1020,205 1065,228 992,268" fill="url(#panelGrad)" opacity="0.9"/>
+          <line x1="970" y1="232" x2="1028" y2="208" stroke="rgba(11,10,24,0.5)" stroke-width="0.5"/>
+          <line x1="980" y1="242" x2="1038" y2="218" stroke="rgba(11,10,24,0.5)" stroke-width="0.5"/>
+        </g>
+      </g>
+
+      <!-- House 7 -->
+      <g>
+        <polygon points="1140,265 1260,265 1260,360 1140,360" fill="url(#houseGrad)" stroke="rgba(168,85,247,0.15)"/>
+        <polygon points="1130,265 1200,222 1270,265" fill="#150f2a" stroke="rgba(168,85,247,0.2)"/>
+        <rect x="1175" y="305" width="20" height="35" fill="#0b0a18"/>
+        <rect x="1215" y="290" width="18" height="18" fill="rgba(255,206,114,0.18)"/>
+        <g class="sh-roof-panel" style="opacity:0;">
+          <polygon points="1144,261 1200,228 1228,242 1176,275" fill="url(#panelGrad)" opacity="0.7"/>
+        </g>
+      </g>
+
+      <!-- House 8 -->
+      <g>
+        <polygon points="1300,255 1460,255 1460,360 1300,360" fill="url(#houseGrad)" stroke="rgba(168,85,247,0.15)"/>
+        <polygon points="1290,255 1380,200 1470,255" fill="#150f2a" stroke="rgba(168,85,247,0.2)"/>
+        <rect x="1350" y="295" width="26" height="48" fill="#0b0a18" stroke="rgba(255,206,114,0.15)"/>
+        <rect x="1410" y="282" width="22" height="22" fill="rgba(255,206,114,0.25)"/>
+        <g class="sh-roof-panel" style="opacity:0;">
+          <polygon points="1308,250 1380,213 1425,235 1352,272" fill="url(#panelGrad)" opacity="0.85"/>
+          <line x1="1330" y1="238" x2="1388" y2="216" stroke="rgba(11,10,24,0.5)" stroke-width="0.5"/>
+        </g>
+      </g>
+
+      <!-- House 9 -->
+      <g>
+        <polygon points="1500,260 1600,260 1600,360 1500,360" fill="url(#houseGrad)" stroke="rgba(168,85,247,0.15)"/>
+        <polygon points="1490,260 1545,222 1600,260" fill="#150f2a" stroke="rgba(168,85,247,0.2)"/>
+        <rect x="1530" y="300" width="20" height="40" fill="#0b0a18"/>
+        <g class="sh-roof-panel" style="opacity:0;">
+          <polygon points="1500,256 1545,228 1572,242 1525,272" fill="url(#panelGrad)" opacity="0.7"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="sh-content">
+    <span class="sh-eyebrow">For Solar Companies</span>
+    <h1 class="sh-title">Every roof is an opportunity.<br><em>Most of them never hear from you.</em></h1>
+    <p class="sh-sub">We build dedicated call center campaigns for solar companies — pre-qualified appointments dropped straight onto your closers' calendars. No shared leads. No door-knocking. No spreadsheets.</p>
+    <div class="sh-cta">
+      <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary">Book a Solar Strategy Call →</a>
+      <div class="sh-meta"><span class="sh-meta-dot"></span>Currently booking 2026 capacity</div>
+    </div>
+  </div>
+
+  <div class="sh-time-control">
+    <span class="sh-time-label">Morning</span>
+    <div class="sh-time-track"><div class="sh-time-knob"></div></div>
+    <button class="sh-time-auto">Pause</button>
+  </div>
+</section>
+
+<!-- ════ QUALIFICATION FUNNEL ════ -->
+<section id="sf-funnel">
+  <div class="sf-funnel-inner">
+    <div class="sf-funnel-header">
+      <span class="section-label">The Qualification Funnel</span>
+      <h2 class="section-title">10,000 records in.<br>42 booked appointments out.</h2>
+      <p>Every appointment Premura books has been filtered through five qualification gates. Watch how a fresh batch of homeowner records narrows down to the handful that earn a place on your closer's calendar.</p>
+    </div>
+
+    <div class="sf-funnel-stage">
+      <div class="sf-funnel-vis"></div>
+
+      <div class="sf-funnel-side">
+        <div class="sf-stage-row" data-i="0">
+          <div class="sf-stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7h18M3 12h18M3 17h18" stroke-linecap="round"/></svg></div>
+          <div class="sf-stage-info"><h4>Raw records sourced</h4><p>Filtered by territory and property type</p></div>
+          <div class="sf-stage-num">10,000<small>records</small></div>
+        </div>
+        <div class="sf-stage-row" data-i="1">
+          <div class="sf-stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12l2 2 4-4M21 12l-2 2-4-4M12 3v18" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="sf-stage-info"><h4>Homeownership verified</h4><p>Renters and multi-unit removed</p></div>
+          <div class="sf-stage-num">5,800<small>−42%</small></div>
+        </div>
+        <div class="sf-stage-row" data-i="2">
+          <div class="sf-stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L4 7v10l8 5 8-5V7l-8-5z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="sf-stage-info"><h4>No existing solar</h4><p>Cross-referenced against permit records</p></div>
+          <div class="sf-stage-num">2,900<small>−50%</small></div>
+        </div>
+        <div class="sf-stage-row" data-i="3">
+          <div class="sf-stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3h18v6H3zM3 15h18v6H3z"/><path d="M7 6h.01M7 18h.01" stroke-linecap="round"/></svg></div>
+          <div class="sf-stage-info"><h4>Credit range qualifies</h4><p>Soft check — no impact on score</p></div>
+          <div class="sf-stage-num">1,200<small>−59%</small></div>
+        </div>
+        <div class="sf-stage-row" data-i="4">
+          <div class="sf-stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12l9-9 9 9M5 10v10h14V10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="sf-stage-info"><h4>Roof condition + interest</h4><p>Live conversation with a real human</p></div>
+          <div class="sf-stage-num">380<small>−68%</small></div>
+        </div>
+        <div class="sf-stage-row" data-i="5">
+          <div class="sf-stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke-linecap="round"/></svg></div>
+          <div class="sf-stage-info"><h4>Booked on calendar</h4><p>Closer-ready, with full qualification notes</p></div>
+          <div class="sf-stage-num">42<small>0.42%</small></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CALENDAR MOCK ════ -->
+<section id="sf-calendar">
+  <div class="sf-cal-inner">
+    <div class="sf-cal-copy">
+      <span class="section-label">Calendar-Ready Appointments</span>
+      <h2 class="section-title">No spreadsheets.<br>No lead lists.</h2>
+      <p>Qualified appointments appear directly in your closers' calendar — with the homeowner's name, address, contact info, and full qualification notes. Hover any appointment to see the detail every closer gets before they walk in the door.</p>
+      <ul class="sf-cal-features">
+        <li><span class="sf-cal-check">✓</span><span>Synced to Google, Outlook, or your CRM of choice</span></li>
+        <li><span class="sf-cal-check">✓</span><span>Pre-qualification notes attached to every appointment</span></li>
+        <li><span class="sf-cal-check">✓</span><span>Confirmation calls and reminders handled by our team</span></li>
+        <li><span class="sf-cal-check">✓</span><span>Reschedules routed back to us — never your closer</span></li>
+      </ul>
+    </div>
+
+    <div class="sf-cal-mock">
+      <div class="sf-cal-head">
+        <div class="sf-cal-month">March 2026 · Week 3</div>
+        <div class="sf-cal-live">Live Sync</div>
+      </div>
+      <div class="sf-cal-days">
+        <div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div>
+      </div>
+      <div class="sf-cal-grid">
+        <!-- Row 1 -->
+        <div class="sf-cal-cell filled" data-name="Marcus Reyes" data-addr="2418 Larkspur Ln, Phoenix AZ" data-own="Owner of 14 yrs" data-solar="No existing system" data-credit="720+" data-roof="Asphalt · 8 yrs old">
+          <div class="sf-cal-cell-num">16</div>
+          <div class="sf-cal-appt">M. Reyes</div>
+          <div class="sf-cal-appt-time">10:00 AM</div>
+          <div class="sf-cal-appt-badges"><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span></div>
+        </div>
+        <div class="sf-cal-cell filled" data-name="Aisha Coleman" data-addr="1809 Pinecrest Dr, Tampa FL" data-own="Owner of 6 yrs" data-solar="No existing system" data-credit="680+" data-roof="Tile · 12 yrs old">
+          <div class="sf-cal-cell-num">17</div>
+          <div class="sf-cal-appt">A. Coleman</div>
+          <div class="sf-cal-appt-time">9:30 AM</div>
+          <div class="sf-cal-appt-badges"><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span></div>
+        </div>
+        <div class="sf-cal-cell">
+          <div class="sf-cal-cell-num">18</div>
+        </div>
+        <div class="sf-cal-cell filled" data-name="Daniel Park" data-addr="4502 Mesa Verde, Austin TX" data-own="Owner of 9 yrs" data-solar="No existing system" data-credit="740+" data-roof="Asphalt · 4 yrs old">
+          <div class="sf-cal-cell-num">19</div>
+          <div class="sf-cal-appt">D. Park</div>
+          <div class="sf-cal-appt-time">2:00 PM</div>
+          <div class="sf-cal-appt-badges"><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span></div>
+        </div>
+        <div class="sf-cal-cell filled" data-name="Linda Okafor" data-addr="817 Ridgemont Way, San Diego CA" data-own="Owner of 22 yrs" data-solar="No existing system" data-credit="760+" data-roof="Asphalt · 6 yrs old">
+          <div class="sf-cal-cell-num">20</div>
+          <div class="sf-cal-appt">L. Okafor</div>
+          <div class="sf-cal-appt-time">11:00 AM</div>
+          <div class="sf-cal-appt-badges"><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span></div>
+        </div>
+        <!-- Row 2 -->
+        <div class="sf-cal-cell filled" data-name="Eduardo Vega" data-addr="3320 Lakeshore, Dallas TX" data-own="Owner of 11 yrs" data-solar="No existing system" data-credit="700+" data-roof="Asphalt · 9 yrs old">
+          <div class="sf-cal-cell-num">23</div>
+          <div class="sf-cal-appt">E. Vega</div>
+          <div class="sf-cal-appt-time">3:30 PM</div>
+          <div class="sf-cal-appt-badges"><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span></div>
+        </div>
+        <div class="sf-cal-cell">
+          <div class="sf-cal-cell-num">24</div>
+        </div>
+        <div class="sf-cal-cell filled" data-name="Sarah Whitman" data-addr="612 Birchwood Ct, Denver CO" data-own="Owner of 5 yrs" data-solar="No existing system" data-credit="710+" data-roof="Asphalt · 3 yrs old">
+          <div class="sf-cal-cell-num">25</div>
+          <div class="sf-cal-appt">S. Whitman</div>
+          <div class="sf-cal-appt-time">10:00 AM</div>
+          <div class="sf-cal-appt-badges"><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span></div>
+        </div>
+        <div class="sf-cal-cell filled" data-name="Brian Holland" data-addr="2208 Hollow Oak, Charlotte NC" data-own="Owner of 16 yrs" data-solar="No existing system" data-credit="690+" data-roof="Asphalt · 11 yrs old">
+          <div class="sf-cal-cell-num">26</div>
+          <div class="sf-cal-appt">B. Holland</div>
+          <div class="sf-cal-appt-time">1:00 PM</div>
+          <div class="sf-cal-appt-badges"><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span></div>
+        </div>
+        <div class="sf-cal-cell filled" data-name="Maria Delgado" data-addr="945 Sunset Bluff, Las Vegas NV" data-own="Owner of 8 yrs" data-solar="No existing system" data-credit="720+" data-roof="Tile · 7 yrs old">
+          <div class="sf-cal-cell-num">27</div>
+          <div class="sf-cal-appt">M. Delgado</div>
+          <div class="sf-cal-appt-time">4:30 PM</div>
+          <div class="sf-cal-appt-badges"><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span><span class="sf-cal-badge"></span></div>
+        </div>
+      </div>
+
+      <div class="sf-cal-popover">
+        <div class="sf-cal-popover-name">Marcus Reyes</div>
+        <div class="sf-cal-popover-addr">2418 Larkspur Ln, Phoenix AZ</div>
+        <div class="sf-cal-popover-row"><span>Homeownership</span><span data-pf="own">—</span></div>
+        <div class="sf-cal-popover-row"><span>Existing solar</span><span data-pf="solar">—</span></div>
+        <div class="sf-cal-popover-row"><span>Credit range</span><span data-pf="credit">—</span></div>
+        <div class="sf-cal-popover-row"><span>Roof condition</span><span data-pf="roof">—</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ COST CALCULATOR ════ -->
+<section id="sf-cost">
+  <div class="sf-cost-inner">
+    <div class="sf-cost-copy">
+      <span class="section-label">Closer-Hour Math</span>
+      <h2 class="section-title">What's an hour of prospecting actually costing you?</h2>
+      <p>Every hour your closer spends sourcing leads, knocking doors, or chasing unqualified phone numbers is an hour they're <em>not</em> sitting across from a homeowner with a checkbook. Slide the dials below for a rough number.</p>
+    </div>
+
+    <div class="sf-cost-card">
+      <div class="sf-cost-slider">
+        <div class="sf-cost-slider-head">
+          <span class="sf-cost-slider-lbl">Closer's effective hourly value</span>
+          <span class="sf-cost-slider-val" id="sf-cost-rate-val">$120</span>
+        </div>
+        <input type="range" id="sf-cost-rate" min="60" max="300" step="10" value="120">
+      </div>
+      <div class="sf-cost-slider">
+        <div class="sf-cost-slider-head">
+          <span class="sf-cost-slider-lbl">Hours/week spent prospecting</span>
+          <span class="sf-cost-slider-val" id="sf-cost-hours-val">15 hrs/wk</span>
+        </div>
+        <input type="range" id="sf-cost-hours" min="2" max="40" step="1" value="15">
+      </div>
+      <div class="sf-cost-slider">
+        <div class="sf-cost-slider-head">
+          <span class="sf-cost-slider-lbl">Number of closers</span>
+          <span class="sf-cost-slider-val" id="sf-cost-closers-val">3 closers</span>
+        </div>
+        <input type="range" id="sf-cost-closers" min="1" max="20" step="1" value="3">
+      </div>
+
+      <div class="sf-cost-result">
+        <div class="sf-cost-result-lbl">Annual revenue left on the table</div>
+        <div class="sf-cost-result-val" id="sf-cost-result">$270,000</div>
+        <div class="sf-cost-result-sub">That's the value of closer hours spent on activities a $20/hr appointment setter could be doing instead.</div>
+        <div class="sf-cost-recover">
+          With Premura, your closers spend ~85% of those hours back in front of qualified homeowners — recovering <strong id="sf-cost-recover-val">$229,500</strong>/year in selling time.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ TERRITORY HEATMAP ════ -->
+<section id="sf-territory">
+  <div class="sf-terr-glow"></div>
+  <div class="sf-terr-inner">
+    <div class="sf-terr-header">
+      <span class="section-label">Territories Your Competition Can't Reach</span>
+      <h2 class="section-title">The houses your reps drive past every day.</h2>
+      <p style="color:#c9bfdc;font-size:1.05rem;line-height:1.7;">Door-to-door reps physically can't enter gated communities. Most can't have a substantive conversation in Spanish. Almost none will spend the windshield time it takes to reach rural homeowners. We can — and we do. Toggle the filters to see where the addressable demand actually lives.</p>
+    </div>
+
+    <div class="sf-terr-stage">
+      <div class="sf-terr-map" id="sfTerrMap">
+        <div class="sf-terr-map-chrome">
+          <span class="sf-map-meta">CONUS · METRO HEAT</span>
+          <span class="sf-map-meta sf-map-meta-pulse"><span class="sf-map-dot"></span>LIVE</span>
+        </div>
+        <div class="sf-terr-readout">
+          <span class="sf-terr-readout-lbl">Matching Homeowners</span>
+          <span class="sf-terr-readout-val" id="sf-terr-count" data-cur="0">0</span>
+          <span class="sf-terr-readout-sub">in selected segments</span>
+        </div>
+      </div>
+
+      <div class="sf-terr-controls">
+        <div class="sf-terr-controls-title">Targeting Filters</div>
+        <button class="sf-terr-filter active" data-filter="rural">
+          <div class="sf-terr-filter-check">✓</div>
+          <div class="sf-terr-filter-info">
+            <h4>Rural homeowners</h4>
+            <p>Outside door-knocking radius</p>
+          </div>
+          <div class="sf-terr-filter-count">1.84M</div>
+        </button>
+        <button class="sf-terr-filter" data-filter="gated">
+          <div class="sf-terr-filter-check">✓</div>
+          <div class="sf-terr-filter-info">
+            <h4>Gated communities</h4>
+            <p>No D2D access, high home value</p>
+          </div>
+          <div class="sf-terr-filter-count">720K</div>
+        </button>
+        <button class="sf-terr-filter" data-filter="spanish">
+          <div class="sf-terr-filter-check">✓</div>
+          <div class="sf-terr-filter-info">
+            <h4>Spanish-speaking households</h4>
+            <p>Native bilingual setters</p>
+          </div>
+          <div class="sf-terr-filter-count">2.15M</div>
+        </button>
+        <button class="sf-terr-filter" data-filter="highvalue">
+          <div class="sf-terr-filter-check">✓</div>
+          <div class="sf-terr-filter-info">
+            <h4>High home value</h4>
+            <p>$650K+ properties</p>
+          </div>
+          <div class="sf-terr-filter-count">1.28M</div>
+        </button>
+
+        <div class="sf-terr-legend">
+          <div class="sf-terr-legend-row"><span class="sf-terr-legend-dot high"></span>High concentration</div>
+          <div class="sf-terr-legend-row"><span class="sf-terr-legend-dot mid"></span>Moderate</div>
+          <div class="sf-terr-legend-row"><span class="sf-terr-legend-dot low"></span>Low</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FINAL CTA ════ -->
+<section id="cta-final">
+  <div class="cta-inner">
+    <span class="section-label" style="display:block;text-align:center;margin-bottom:16px;">Solar Companies</span>
+    <h2>Ready to fill your<br>closers' calendars?</h2>
+    <p>Book a solar strategy call. We'll map your territory, identify your best targeting opportunities, and show you exactly how your campaign would work.</p>
+    <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary">Book a Solar Strategy Call →</a>
+    <p class="cta-support">No contracts required to start the conversation.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><span class="footer-logo"><img src="assets/premura-logo.png" alt="Premura"/><span class="footer-logo-word">PREMURA</span></span><p>In-house call centers for solar and roofing companies.</p></div>
+    <div class="footer-col"><h4>Pages</h4><a href="index.html">Home</a><a href="how-it-works.html">How It Works</a><a href="solar.html">For Solar</a><a href="roofing.html">For Roofing</a><a href="about.html">About Us</a><a href="faq.html">FAQ</a></div>
+    <div class="footer-col"><h4>Services</h4><a href="solar.html">Solar Campaigns</a><a href="roofing.html">Roofing Campaigns</a><a href="technology.html">Technology &amp; Tools</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:support@premura.org">support@premura.org</a><a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:10px;padding:10px 20px;font-size:.84rem;display:inline-flex;">Book a Strategy Call →</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Premura Corp. All rights reserved.</span><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+</footer>
+<div id="floating-cta"><a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary">Book a Call →</a></div>
+
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="map-base.js"></script>
+<script src="main.js"></script>
+<script src="us-geo.js"></script>
+<script src="solar.js"></script>
+</body>
+</html>
