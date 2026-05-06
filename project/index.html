@@ -932,131 +932,53 @@
 })();
 </script>
 <script>
-// ── Testimonials: carousel ──
-(function(){
-  const track      = document.getElementById('tcTrack');
-  const viewport   = document.getElementById('tcViewport');
-  const prevBtn    = document.getElementById('tcPrev');
-  const nextBtn    = document.getElementById('tcNext');
-  const playerWrap = document.getElementById('tcPlayerWrap');
-  const playerFrame= document.getElementById('tcPlayerFrame');
-  const playerMeta = document.getElementById('tcPlayerMeta');
+(function() {
+  const track = document.getElementById("tcTrack");
+  const prevBtn = document.getElementById("tcPrev");
+  const nextBtn = document.getElementById("tcNext");
   if (!track) return;
 
-  const data = [
-    { id:'jorge',  vimeo:'1072247746', hash:'d493e53744', name:'Jorge',  vertical:'Solar',
-      stat:'20+', statSub:'deals per month',
-      quote:'Started strong with 6 deals and 43KW in the first month. Now we\u2019re consistently doing 20+ deals monthly.',
-      tags:['6 Deals & 43KW \u00b7 Month 1','20+ Deals / Month'] },
-    { id:'leicer', vimeo:'1072244795', hash:'5d8bc1fb19', name:'Leicer', vertical:'Solar',
-      stat:'$152,000', statSub:'in payouts \u00b7 one month',
-      quote:'November was incredible \u2014 22 sales from the system alone. The automation just works and keeps delivering results.',
-      tags:['22 Deals \u00b7 1 Month','$152,000 in Payouts'] },
-    { id:'caesar', vimeo:'1072251232', hash:'50162c383c', name:'Caesar', vertical:'Solar',
-      stat:'8\u201310', statSub:'installs per month',
-      quote:'20 appointments in the first week, closed 4 of them. Now we\u2019re consistently hitting 8\u201310 installs every month.',
-      tags:['20 Appts Week 1','8\u201310 Installs / Month'] },
-    { id:'scott',  vimeo:'1072241851', hash:'26fcdbbedd', name:'Scott',  vertical:'Roofing',
-      stat:'17', statSub:'deals in their first month',
-      quote:'The results were so good that we decided to merge and become partners. This system is the real deal for roofing companies.',
-      tags:['17 Deals \u00b7 1 Month','Merged as Partners'] },
-    { id:'rafa',   vimeo:'1091678713', hash:'243b833aa0', name:'Rafa',   vertical:'Solar',
-      stat:'12+', statSub:'deals every month',
-      quote:'From struggling to find leads to consistent monthly results. This completely changed my business.',
-      tags:['5 Deals \u00b7 First 2 Weeks','12+ Deals Every Month'] },
+  const videos = [
+    { name: "Jorge", vimeo: "1072247746", hash: "d493e53744", stat: "20+", statSub: "deals per month" },
+    { name: "Leicer", vimeo: "1072244795", hash: "5d8bc1fb19", stat: "$152,000", statSub: "in payouts" },
+    { name: "Caesar", vimeo: "1072251232", hash: "50162c383c", stat: "8-10", statSub: "installs per month" },
+    { name: "Scott", vimeo: "1072241851", hash: "26fcdbbedd", stat: "17", statSub: "deals in first month" },
+    { name: "Rafa", vimeo: "1091678713", hash: "243b833aa0", stat: "12+", statSub: "deals every month" }
   ];
 
-  let activeOpen = -1;
-
-  function buildCards() {
-    track.innerHTML = '';
-    data.forEach((d, i) => {
-      const card = document.createElement('div');
-      card.className = 'tc-card';
-      card.dataset.idx = i;
-      card.setAttribute('role', 'button');
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('aria-label', 'Play ' + d.name + '\u2019s testimonial');
-      card.innerHTML =
-        '<div class="tc-card-thumb">' +
-          '<div class="tc-thumb-bg" data-init="' + d.name[0] + '" data-vid="' + d.vimeo + '"></div>' +
-          '<div class="tc-card-play"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>' +
-        '</div>' +
-        '<div class="tc-card-body">' +
-          '<div class="tc-card-name">' + d.name + '</div>' +
-          '<span class="tc-chip">' + d.stat + ' ' + d.statSub + '</span>' +
-        '</div>';
-      track.appendChild(card);
-    });
-  }
-
-  function openPlayer(i) {
-    const d = data[i];
-    activeOpen = i;
-    track.querySelectorAll('.tc-card').forEach(c => c.classList.toggle('is-active', parseInt(c.dataset.idx, 10) === i));
-    playerFrame.innerHTML = '';
-    const iframe = document.createElement('iframe');
-    iframe.src = 'https://player.vimeo.com/video/' + d.vimeo + '?h=' + d.hash + '&autoplay=1&title=0&byline=0&portrait=0';
-    iframe.title = d.name + ' testimonial';
-    iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share');
-    iframe.setAttribute('allowfullscreen', '');
-    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-    playerFrame.appendChild(iframe);
-    playerMeta.innerHTML =
-      '<span class="tc-player-badge tc-player-badge--' + d.vertical.toLowerCase() + '">' + d.vertical + '</span>' +
-      '<div class="tc-player-stat">' +
-        '<div class="tc-player-stat-val">' + d.stat + '</div>' +
-        '<div class="tc-player-stat-sub">' + d.statSub + '</div>' +
-      '</div>' +
-      '<div class="tc-player-divider"></div>' +
-      '<div class="tc-player-name">' + d.name + '</div>' +
-      '<div class="tc-player-chips">' + d.tags.map(t => '<span class="tc-chip">' + t + '</span>').join('') + '</div>';
-    playerWrap.classList.add('is-open');
-    playerWrap.setAttribute('aria-hidden', 'false');
-    setTimeout(() => playerWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
-  }
-
-  function closePlayer() {
-    playerWrap.classList.remove('is-open');
-    playerWrap.setAttribute('aria-hidden', 'true');
-    playerFrame.innerHTML = '';
-    track.querySelectorAll('.tc-card').forEach(c => c.classList.remove('is-active'));
-    activeOpen = -1;
-  }
-
   const CARD_W = 296;
-  const N = data.length;
+  const N = videos.length;
   let offset = 0;
   let isJumping = false;
 
-  function buildInfiniteTrack() {
-    track.innerHTML = ‘’;
-    [data, data, data].forEach((set, setIdx) => {
-      set.forEach((d, i) => {
+  function buildTrack() {
+    track.innerHTML = "";
+    [videos, videos, videos].forEach((set, setIdx) => {
+      set.forEach((v, i) => {
         const realIdx = setIdx === 1 ? i : -1;
-        const card = document.createElement(‘div’);
-        card.className = ‘tc-card’;
+        const card = document.createElement("div");
+        card.className = "tc-card";
         card.dataset.idx = realIdx;
-        card.setAttribute(‘role’, ‘button’);
-        card.setAttribute(‘tabindex’, setIdx === 1 ? ‘0’ : ‘-1’);
-        card.setAttribute(‘aria-label’, ‘Play ‘ + d.name + ‘\’s testimonial’);
+        card.setAttribute("role", "button");
+        card.setAttribute("tabindex", setIdx === 1 ? "0" : "-1");
+        card.setAttribute("aria-label", "Play " + v.name + " testimonial");
 
-        const thumb = document.createElement(‘div’);
-        thumb.className = ‘tc-card-thumb’;
+        const thumb = document.createElement("div");
+        thumb.className = "tc-card-thumb";
 
-        const iframe = document.createElement(‘iframe’);
-        iframe.title = ‘vimeo-player’;
-        iframe.src = ‘https://player.vimeo.com/video/’ + d.vimeo + ‘?h=’ + d.hash;
-        iframe.frameBorder = ‘0’;
-        iframe.allow = ‘autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share’;
+        const iframe = document.createElement("iframe");
+        iframe.title = "vimeo-player";
+        iframe.src = "https://player.vimeo.com/video/" + v.vimeo + "?h=" + v.hash;
+        iframe.frameBorder = "0";
+        iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share";
         iframe.allowFullscreen = true;
-        iframe.referrerPolicy = ‘strict-origin-when-cross-origin’;
-        iframe.style.cssText = ‘width:100%;height:100%;’;
+        iframe.referrerPolicy = "strict-origin-when-cross-origin";
+        iframe.style.cssText = "width:100%; height:100%;";
         thumb.appendChild(iframe);
 
-        const body = document.createElement(‘div’);
-        body.className = ‘tc-card-body’;
-        body.innerHTML = ‘<div class=”tc-card-name”>’ + d.name + ‘</div><span class=”tc-chip”>’ + d.stat + ‘ ‘ + d.statSub + ‘</span>’;
+        const body = document.createElement("div");
+        body.className = "tc-card-body";
+        body.innerHTML = "<div class='tc-card-name'>" + v.name + "</div><span class='tc-chip'>" + v.stat + " " + v.statSub + "</span>";
 
         card.appendChild(thumb);
         card.appendChild(body);
@@ -1064,79 +986,42 @@
       });
     });
     offset = N * CARD_W;
-    track.style.transition = ‘none’;
-    track.style.transform = ‘translateX(-’ + offset + ‘px)’;
+    track.style.transition = "none";
+    track.style.transform = "translateX(-" + offset + "px)";
   }
 
-  function scrollCarousel(dir) {
+  function scroll(dir) {
     offset += dir * CARD_W;
-    track.style.transition = 'transform .35s cubic-bezier(.4,0,.2,1)';
-    track.style.transform = 'translateX(-' + offset + 'px)';
+    track.style.transition = "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)";
+    track.style.transform = "translateX(-" + offset + "px)";
 
-    // After animation, silently jump if we've left the real-card zone
     setTimeout(() => {
       if (isJumping) return;
       const minSafe = CARD_W * 0.5;
       const maxSafe = (N * 2 - 0.5) * CARD_W;
       if (offset < minSafe || offset > maxSafe) {
         isJumping = true;
-        // Jump to equivalent position in middle set
         offset = ((offset % (N * CARD_W)) + N * CARD_W) % (N * CARD_W) + N * CARD_W;
-        track.style.transition = 'none';
-        track.style.transform = 'translateX(-' + offset + 'px)';
+        track.style.transition = "none";
+        track.style.transform = "translateX(-" + offset + "px)";
         requestAnimationFrame(() => { isJumping = false; });
       }
     }, 360);
   }
 
-  buildInfiniteTrack();
+  buildTrack();
+  if (prevBtn) prevBtn.addEventListener("click", () => scroll(-1));
+  if (nextBtn) nextBtn.addEventListener("click", () => scroll(1));
 
-  // Debug: confirm carousel initialized
-  console.log('Carousel initialized with', N, 'videos, offset:', offset, 'track children:', track.children.length);
-
-  track.addEventListener('click', (e) => {
-    const card = e.target.closest('.tc-card');
-    if (!card) return;
-    const i = parseInt(card.dataset.idx, 10);
-    if (i < 0) return; // clone card — ignore
-    if (activeOpen === i) { closePlayer(); return; }
-    openPlayer(i);
-  });
-
-  track.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      const card = e.target.closest('.tc-card');
-      if (!card) return;
-      e.preventDefault();
-      const i = parseInt(card.dataset.idx, 10);
-      if (i < 0) return;
-      if (activeOpen === i) { closePlayer(); return; }
-      openPlayer(i);
-    }
-  });
-
-  if (prevBtn) prevBtn.addEventListener('click', () => scrollCarousel(-1));
-  if (nextBtn) nextBtn.addEventListener('click', () => scrollCarousel(1));
-
-  // Touch swipe support
-  let touchStartX = 0;
-  let touchDelta = 0;
-  const swipeEl = document.querySelector('.tc-viewport');
+  const swipeEl = document.querySelector(".tc-viewport");
   if (swipeEl) {
-    swipeEl.addEventListener('touchstart', e => {
-      touchStartX = e.touches[0].clientX;
-      touchDelta = 0;
-    }, { passive: true });
-    swipeEl.addEventListener('touchmove', e => {
-      touchDelta = touchStartX - e.touches[0].clientX;
-    }, { passive: true });
-    swipeEl.addEventListener('touchend', () => {
-      if (Math.abs(touchDelta) > 40) scrollCarousel(touchDelta > 0 ? 1 : -1);
-    });
+    let touchStartX = 0, touchDelta = 0;
+    swipeEl.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; touchDelta = 0; }, { passive: true });
+    swipeEl.addEventListener("touchmove", e => { touchDelta = touchStartX - e.touches[0].clientX; }, { passive: true });
+    swipeEl.addEventListener("touchend", () => { if (Math.abs(touchDelta) > 40) scroll(touchDelta > 0 ? 1 : -1); });
   }
 })();
 </script>
-
 <script>
 // ── Tweaks panel (vanilla) ──
 (function(){
