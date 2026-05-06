@@ -39,6 +39,7 @@
   <a href="how-it-works.html">How It Works</a>
   <a href="solar.html">Solar</a>
   <a href="roofing.html">Roofing</a>
+  <a href="technology.html">Technology</a>
   <a href="about.html">About</a>
   <a href="faq.html">FAQ</a>
   <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:16px;">Book a Call</a>
@@ -98,7 +99,10 @@
     <div class="scroll-sticky">
       <canvas id="frameCanvas"></canvas>
       <div id="scrollLoader" class="scroll-loader" aria-hidden="true">
-        <div class="scroll-loader-bar"><div id="scrollLoaderFill" class="scroll-loader-fill"></div></div>
+        <div class="scroll-loader-inner">
+          <div class="scroll-loader-bar-track"><div id="scrollLoaderFill" class="scroll-loader-fill"></div></div>
+          <div class="scroll-loader-text" id="scrollLoaderPct">Loading… 0%</div>
+        </div>
       </div>
       <div class="annotation-card" data-show="0" data-hide="0.92">
         <div class="wavecard-content">
@@ -168,7 +172,7 @@
 <section id="solution" class="section">
   <div class="section-inner">
     <span class="section-label">The Solution</span>
-    <h2 class="section-title">Drag To See<br>The Difference.</h2>
+    <h2 class="section-title">Drag To See<br>The Difference</h2>
     <p class="solution-prompt">Slide right. Watch the chaos turn into a calendar.</p>
 
     <div class="dragslider" id="dragslider">
@@ -231,124 +235,11 @@
   </div>
 </section>
 
-<!-- ═══ HOW IT WORKS — pinned scroll stepper ═══ -->
-<section class="ssteps-wrap" id="ssteps">
-  <div class="ssteps-track">
-    <div class="ssteps-sticky">
-      <div class="ssteps-grid">
-        <div class="ssteps-text">
-          <span class="section-label">The Process</span>
-          <h2 class="section-title ssteps-title">From Signup<br>to Calendar.</h2>
-          <ol class="ssteps-list" id="sstepsList">
-            <li class="ssteps-item active" data-step="0">
-              <span class="ssteps-num">01</span>
-              <div>
-                <span class="ssteps-h">Strategy Call</span>
-                <span class="ssteps-d">Map your market, sales team, and territory.</span>
-              </div>
-            </li>
-            <li class="ssteps-item" data-step="1">
-              <span class="ssteps-num">02</span>
-              <div>
-                <span class="ssteps-h">We Build Your Campaign</span>
-                <span class="ssteps-d">Recruit agents. Train. Configure your tech stack.</span>
-              </div>
-            </li>
-            <li class="ssteps-item" data-step="2">
-              <span class="ssteps-num">03</span>
-              <div>
-                <span class="ssteps-h">Your Call Center Goes Live</span>
-                <span class="ssteps-d">Live in ~14 days. Appointments in your calendar.</span>
-              </div>
-            </li>
-            <li class="ssteps-item" data-step="3">
-              <span class="ssteps-num">04</span>
-              <div>
-                <span class="ssteps-h">Ongoing Optimization</span>
-                <span class="ssteps-d">Daily monitoring. Agents replaced if needed.</span>
-              </div>
-            </li>
-          </ol>
-        </div>
-
-        <div class="ssteps-stage">
-          <!-- Step 0: Strategy Call (territory map ping) -->
-          <div class="sstage sstage-0 active" data-stage="0">
-            <div class="sstage-card">
-              <div class="sstage-grid-bg"></div>
-              <div class="sstage-ping sstage-ping-1"></div>
-              <div class="sstage-ping sstage-ping-2"></div>
-              <div class="sstage-ping sstage-ping-3"></div>
-              <div class="sstage-pin"></div>
-              <span class="sstage-tag">Mapping territory</span>
-            </div>
-          </div>
-          <!-- Step 1: Building (agents popping in) -->
-          <div class="sstage sstage-1" data-stage="1">
-            <div class="sstage-card">
-              <div class="sstage-agents">
-                <div class="sstage-agent" data-i="0"><span></span></div>
-                <div class="sstage-agent" data-i="1"><span></span></div>
-                <div class="sstage-agent" data-i="2"><span></span></div>
-                <div class="sstage-agent" data-i="3"><span></span></div>
-                <div class="sstage-agent" data-i="4"><span></span></div>
-                <div class="sstage-agent" data-i="5"><span></span></div>
-                <div class="sstage-agent" data-i="6"><span></span></div>
-                <div class="sstage-agent" data-i="7"><span></span></div>
-              </div>
-              <span class="sstage-tag">Recruiting your team</span>
-            </div>
-          </div>
-          <!-- Step 2: Live calendar filling -->
-          <div class="sstage sstage-2" data-stage="2">
-            <div class="sstage-card">
-              <div class="sstage-cal">
-                <div class="sstage-cal-head">
-                  <span>March</span>
-                  <span class="sstage-cal-live"><span class="sstage-cal-dot"></span> LIVE</span>
-                </div>
-                <div class="sstage-cal-grid">
-                  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-                  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-                  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-                  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-                </div>
-              </div>
-              <span class="sstage-tag">Appointments arriving</span>
-            </div>
-          </div>
-          <!-- Step 3: Optimization meter -->
-          <div class="sstage sstage-3" data-stage="3">
-            <div class="sstage-card">
-              <div class="sstage-meter">
-                <div class="sstage-meter-row"><span>Agent A</span><div class="sstage-meter-bar"><div style="width:92%"></div></div></div>
-                <div class="sstage-meter-row"><span>Agent B</span><div class="sstage-meter-bar"><div style="width:78%"></div></div></div>
-                <div class="sstage-meter-row sstage-meter-row-bad"><span>Agent C</span><div class="sstage-meter-bar"><div style="width:24%"></div></div><span class="sstage-meter-x">→ replaced</span></div>
-                <div class="sstage-meter-row"><span>Agent D</span><div class="sstage-meter-bar"><div style="width:88%"></div></div></div>
-                <div class="sstage-meter-row"><span>Agent E</span><div class="sstage-meter-bar"><div style="width:96%"></div></div></div>
-              </div>
-              <span class="sstage-tag">Daily monitoring</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Progress rail -->
-      <div class="ssteps-rail">
-        <div class="ssteps-rail-fill" id="sstepsRailFill"></div>
-      </div>
-    </div>
-  </div>
-  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;padding:60px 40px 0;background:var(--bg-2);">
-    <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary">Book a Strategy Call →</a>
-    <a href="how-it-works.html" class="btn-secondary">See the Full Process</a>
-  </div>
-</section>
-
 <!-- ═══ COMPETITIVE EDGE — Miami Map ═══ -->
 <section id="targeting" class="section">
   <div class="section-inner">
     <span class="section-label">Competitive Edge · Miami-Dade</span>
-    <h2 class="section-title">We Go Where Your<br>Competition Can't.</h2>
+    <h2 class="section-title">We Go Where Your<br>Competition Can't</h2>
 
     <div class="usmap-wrap">
       <div class="usmap-stage">
@@ -592,54 +483,34 @@
   </div>
 </section>
 
-<!-- ═══ TESTIMONIALS — featured player + thumbnail strip ═══ -->
+<!-- ═══ TESTIMONIALS — infinite carousel ═══ -->
 <section class="section testimonials" style="background:var(--bg-2);">
   <div class="section-inner">
     <span class="section-label">Operators We Work With</span>
-    <h2 class="section-title">Real operators.<br>Real numbers.</h2>
+    <h2 class="section-title">Real operators.<br>Real numbers</h2>
     <p class="section-sub">Five operators. Five different markets. One pattern: appointments, deals, revenue — month after month.</p>
 
-    <div class="tm-wrap" id="tmWrap">
-      <!-- Featured player -->
-      <div class="tm-featured">
-        <div class="tm-frame">
-          <div class="tm-chrome">
-            <span class="tm-dot" style="background:#ff5f57;"></span>
-            <span class="tm-dot" style="background:#febc2e;"></span>
-            <span class="tm-dot" style="background:#28c840;"></span>
-            <span class="tm-chrome-label"><span class="tm-live-dot"></span>NOW PLAYING · <span id="tmNowName">Jorge</span></span>
-          </div>
-          <div class="tm-player" id="tmPlayer">
-            <div class="tm-poster" id="tmPoster">
-              <img id="tmPosterImg" src="https://vumbnail.com/1072247746.jpg" alt=""/>
-              <button class="tm-play" id="tmPlayBtn" aria-label="Play testimonial">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Floating quote + result chips -->
-        <div class="tm-meta">
-          <div class="tm-quote">
-            <span class="tm-quote-lbl">Operator</span>
-            <span class="tm-quote-text" id="tmQuote">"Started strong with 6 deals and 43KW in the first month. Now we're consistently doing 20+ deals monthly with the AI system."</span>
-            <span class="tm-quote-name">— <span id="tmName">Jorge</span></span>
-          </div>
-          <div class="tm-chips" id="tmChips">
-            <span class="tm-chip">6 Deals &amp; 43KW · Month 1</span>
-            <span class="tm-chip">20+ Deals / Month</span>
-          </div>
+    <!-- Carousel -->
+    <div class="tc-wrap">
+      <button class="tc-arrow tc-prev" id="tcPrev" aria-label="Previous">&#8592;</button>
+      <div class="tc-viewport" id="tcViewport">
+        <div class="tc-track" id="tcTrack">
+          <!-- cards injected by JS -->
         </div>
       </div>
+      <button class="tc-arrow tc-next" id="tcNext" aria-label="Next">&#8594;</button>
+    </div>
 
-      <!-- Thumbnail strip -->
-      <div class="tm-strip" id="tmStrip" role="tablist" aria-label="Operator testimonials">
-        <!-- buttons injected by JS for cleanliness -->
+    <!-- Expanded player (drops below carousel on click) -->
+    <div class="tc-player-wrap" id="tcPlayerWrap" aria-hidden="true">
+      <div class="tc-player-inner">
+        <div class="tc-player-frame" id="tcPlayerFrame">
+          <!-- iframe injected on play -->
+        </div>
+        <div class="tc-player-meta" id="tcPlayerMeta"></div>
       </div>
     </div>
 
-    </div>
   </div>
 </section>
 
@@ -647,7 +518,7 @@
 <section id="results" class="section">
   <div class="section-inner">
     <span class="section-label">Results</span>
-    <h2 class="section-title">Built for Performance.<br>Measured Every Day.</h2>
+    <h2 class="section-title">Built for Performance.<br>Measured Every Day</h2>
     <p class="section-sub">We don't hide behind vanity metrics — we measure what actually matters: appointments booked, show rates, and the quality of every conversation.</p>
     <div class="metrics-grid">
       <div class="glass-card metric-card">
@@ -748,6 +619,7 @@
   const ctx = canvas.getContext('2d');
   const loader = document.getElementById('scrollLoader');
   const loaderFill = document.getElementById('scrollLoaderFill');
+  const loaderPct = document.getElementById('scrollLoaderPct');
 
   const cards = document.querySelectorAll('.annotation-card');
   const zones = Array.from(cards).map(c => ({
@@ -813,8 +685,11 @@
       const img = new Image();
       img.onload = () => {
         loadedCount++;
-        if (loaderFill) loaderFill.style.width = (loadedCount / totalFrames * 100) + '%';
+        const pct = Math.round(loadedCount / totalFrames * 100);
+        if (loaderFill) loaderFill.style.width = pct + '%';
+        if (loaderPct) loaderPct.textContent = 'Loading… ' + pct + '%';
         if (loadedCount >= totalFrames) {
+          if (loaderPct) loaderPct.textContent = 'Ready';
           if (loader) {
             loader.style.opacity = '0';
             setTimeout(() => { loader.style.display = 'none'; }, 600);
@@ -825,7 +700,9 @@
       };
       img.onerror = () => {
         loadedCount++;
-        if (loaderFill) loaderFill.style.width = (loadedCount / totalFrames * 100) + '%';
+        const pct = Math.round(loadedCount / totalFrames * 100);
+        if (loaderFill) loaderFill.style.width = pct + '%';
+        if (loaderPct) loaderPct.textContent = 'Loading… ' + pct + '%';
         if (loadedCount >= totalFrames) {
           if (loader) { loader.style.opacity = '0'; setTimeout(() => { loader.style.display = 'none'; }, 600); }
           currentFrame = 0; drawFrame(0);
@@ -979,48 +856,6 @@
   obs.observe(wrap);
 })();
 
-// ── How it works: scroll-driven pinned stepper ──
-(function(){
-  const wrap    = document.getElementById('ssteps');
-  if (!wrap) return;
-  const items   = Array.from(wrap.querySelectorAll('.ssteps-item'));
-  const stages  = Array.from(wrap.querySelectorAll('.sstage'));
-  const fillEl  = document.getElementById('sstepsRailFill');
-  const track   = wrap.querySelector('.ssteps-track');
-  const STEPS = 4;
-
-  function setStep(i){
-    items.forEach((el, idx) => el.classList.toggle('active', idx === i));
-    stages.forEach((el, idx) => el.classList.toggle('active', idx === i));
-  }
-
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      const r = track.getBoundingClientRect();
-      const scrollable = track.offsetHeight - window.innerHeight;
-      const p = Math.min(1, Math.max(0, -r.top / scrollable));
-      const i = Math.min(STEPS - 1, Math.floor(p * STEPS));
-      setStep(i);
-      if (fillEl) fillEl.style.height = (p * 100) + '%';
-      ticking = false;
-    });
-  }, {passive:true});
-
-  // Click jump
-  items.forEach((it, idx) => {
-    it.addEventListener('click', () => {
-      const r = track.getBoundingClientRect();
-      const scrollable = track.offsetHeight - window.innerHeight;
-      const targetP = (idx + 0.4) / STEPS;
-      const targetY = window.scrollY + r.top + scrollable * targetP;
-      window.scrollTo({top: targetY, behavior: 'smooth'});
-    });
-  });
-})();
-
 // ── Competitive edge: US map auto-cycle territories ──
 // (Now handled by miami-map.js — left here as a noop fallback)
 (function(){
@@ -1085,151 +920,170 @@
 })();
 </script>
 <script>
-// ── Testimonials: featured player + thumbnail strip ──
+// ── Testimonials: carousel ──
 (function(){
-  const wrap = document.getElementById('tmWrap');
-  if (!wrap) return;
+  const track      = document.getElementById('tcTrack');
+  const viewport   = document.getElementById('tcViewport');
+  const prevBtn    = document.getElementById('tcPrev');
+  const nextBtn    = document.getElementById('tcNext');
+  const playerWrap = document.getElementById('tcPlayerWrap');
+  const playerFrame= document.getElementById('tcPlayerFrame');
+  const playerMeta = document.getElementById('tcPlayerMeta');
+  if (!track) return;
 
-  // Operators sorted by deal volume desc; Jorge featured first per request
   const data = [
     { id:'jorge',  vimeo:'1072247746', hash:'d493e53744', name:'Jorge',
-      quote:'Started strong with 6 deals and 43KW in the first month. Now we\u2019re consistently doing 20+ deals monthly with the AI system.',
-      tags:['6 Deals & 43KW \u00b7 Month 1','20+ Deals / Month'],
-      stat:'20+ deals / month' },
+      quote:'Started strong with 6 deals and 43KW in the first month. Now we\u2019re consistently doing 20+ deals monthly.',
+      tags:['6 Deals & 43KW \u00b7 Month 1','20+ Deals / Month'] },
     { id:'leicer', vimeo:'1072244795', hash:'5d8bc1fb19', name:'Leicer',
-      quote:'November was incredible \u2014 22 sales from the AI system alone. The automation just works and keeps delivering results.',
-      tags:['22 Deals \u00b7 1 Month','$152,000 in Payouts'],
-      stat:'22 deals \u00b7 $152k' },
+      quote:'November was incredible \u2014 22 sales from the system alone. The automation just works and keeps delivering results.',
+      tags:['22 Deals \u00b7 1 Month','$152,000 in Payouts'] },
     { id:'caesar', vimeo:'1072251232', hash:'50162c383c', name:'Caesar',
-      quote:'The speed was incredible \u2014 20 appointments in the first week and closed 4 of them. Now we\u2019re consistently hitting 8\u201310 installs every month.',
-      tags:['20 Appts Week 1','8\u201310 Installs / Month'],
-      stat:'20 appts week 1' },
+      quote:'20 appointments in the first week, closed 4 of them. Now we\u2019re consistently hitting 8\u201310 installs every month.',
+      tags:['20 Appts Week 1','8\u201310 Installs / Month'] },
     { id:'scott',  vimeo:'1072241851', hash:'26fcdbbedd', name:'Scott',
-      quote:'The results were so good that we decided to merge and become partners. This AI system is the real deal for roofing companies.',
-      tags:['17 Deals \u00b7 1 Month','Merged as Partners'],
-      stat:'17 deals / month' },
+      quote:'The results were so good that we decided to merge and become partners. This system is the real deal for roofing companies.',
+      tags:['17 Deals \u00b7 1 Month','Merged as Partners'] },
     { id:'rafa',   vimeo:'1091678713', hash:'243b833aa0', name:'Rafa',
-      quote:'The AI system completely changed my business. From struggling to find leads to consistent monthly results that keep growing.',
-      tags:['5 Deals \u00b7 First 2 Weeks','12+ Deals Every Month'],
-      stat:'12+ deals / month' },
+      quote:'From struggling to find leads to consistent monthly results. This completely changed my business.',
+      tags:['5 Deals \u00b7 First 2 Weeks','12+ Deals Every Month'] },
   ];
 
-  const strip   = document.getElementById('tmStrip');
-  const player  = document.getElementById('tmPlayer');
-  const poster  = document.getElementById('tmPoster');
-  const posterImg = document.getElementById('tmPosterImg');
-  const playBtn = document.getElementById('tmPlayBtn');
-  const nowName = document.getElementById('tmNowName');
-  const qText   = document.getElementById('tmQuote');
-  const qName   = document.getElementById('tmName');
-  const chipsEl = document.getElementById('tmChips');
+  let activeOpen = -1;
 
-  let activeIdx = 0; // Jorge
-
-  // Build thumbnail buttons
-  data.forEach((d, i) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'tm-thumb' + (i === activeIdx ? ' is-active' : '');
-    btn.setAttribute('role','tab');
-    btn.setAttribute('aria-selected', i === activeIdx ? 'true':'false');
-    btn.setAttribute('aria-label', 'Play ' + d.name + '\u2019s testimonial');
-    btn.dataset.idx = i;
-    btn.innerHTML =
-      '<span class="tm-thumb-img">' +
-        '<img loading="lazy" src="https://vumbnail.com/' + d.vimeo + '.jpg" alt=""/>' +
-        '<span class="tm-thumb-mini-play"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>' +
-      '</span>' +
-      '<span class="tm-thumb-meta">' +
-        '<span class="tm-thumb-name">' + d.name + '</span>' +
-        '<span class="tm-thumb-stat">' + d.stat + '</span>' +
-      '</span>';
-    strip.appendChild(btn);
-  });
-
-  function renderMeta(d){
-    qText.textContent = '\u201c' + d.quote + '\u201d';
-    qName.textContent = d.name;
-    nowName.textContent = d.name;
-    chipsEl.innerHTML = d.tags.map(t => '<span class="tm-chip">' + t + '</span>').join('');
+  function buildCards() {
+    track.innerHTML = '';
+    data.forEach((d, i) => {
+      const card = document.createElement('div');
+      card.className = 'tc-card';
+      card.dataset.idx = i;
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', 'Play ' + d.name + '\u2019s testimonial');
+      card.innerHTML =
+        '<div class="tc-card-thumb">' +
+          '<img loading="lazy" src="https://vumbnail.com/' + d.vimeo + '.jpg" alt="' + d.name + ' testimonial thumbnail"/>' +
+          '<div class="tc-card-play"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>' +
+        '</div>' +
+        '<div class="tc-card-body">' +
+          '<div class="tc-card-name">' + d.name + '</div>' +
+          '<p class="tc-card-quote">\u201c' + d.quote + '\u201d</p>' +
+          '<div class="tc-card-chips">' + d.tags.map(t => '<span class="tc-chip">' + t + '</span>').join('') + '</div>' +
+        '</div>';
+      track.appendChild(card);
+    });
   }
 
-  function resetPoster(d){
-    // Reset to thumbnail (kills any embedded iframe to free resources)
-    while (player.firstChild) player.removeChild(player.firstChild);
-    const wrapPoster = document.createElement('div');
-    wrapPoster.className = 'tm-poster';
-    wrapPoster.id = 'tmPoster';
-    wrapPoster.innerHTML =
-      '<img id="tmPosterImg" src="https://vumbnail.com/' + d.vimeo + '.jpg" alt=""/>' +
-      '<button class="tm-play" id="tmPlayBtn" aria-label="Play testimonial">' +
-        '<svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>' +
-      '</button>';
-    player.appendChild(wrapPoster);
-    wrapPoster.addEventListener('click', () => playVideo(activeIdx));
-  }
-
-  function playVideo(i){
+  function openPlayer(i) {
     const d = data[i];
-    // Replace player content with iframe
-    while (player.firstChild) player.removeChild(player.firstChild);
+    activeOpen = i;
+    track.querySelectorAll('.tc-card').forEach(c => c.classList.toggle('is-active', parseInt(c.dataset.idx, 10) === i));
+    playerFrame.innerHTML = '';
     const iframe = document.createElement('iframe');
     iframe.src = 'https://player.vimeo.com/video/' + d.vimeo + '?h=' + d.hash + '&autoplay=1&title=0&byline=0&portrait=0';
     iframe.title = d.name + ' testimonial';
-    iframe.setAttribute('allow','autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share');
-    iframe.setAttribute('allowfullscreen','');
-    iframe.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
-    player.appendChild(iframe);
+    iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    playerFrame.appendChild(iframe);
+    playerMeta.innerHTML =
+      '<div class="tc-player-name">' + d.name + '</div>' +
+      '<div class="tc-player-chips">' + d.tags.map(t => '<span class="tc-chip">' + t + '</span>').join('') + '</div>';
+    playerWrap.classList.add('is-open');
+    playerWrap.setAttribute('aria-hidden', 'false');
+    setTimeout(() => playerWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
   }
 
-  function setActive(i){
-    activeIdx = i;
-    const d = data[i];
-    renderMeta(d);
-    // Update strip
-    strip.querySelectorAll('.tm-thumb').forEach((b, n) => {
-      const on = n === i;
-      b.classList.toggle('is-active', on);
-      b.setAttribute('aria-selected', on ? 'true':'false');
+  function closePlayer() {
+    playerWrap.classList.remove('is-open');
+    playerWrap.setAttribute('aria-hidden', 'true');
+    playerFrame.innerHTML = '';
+    track.querySelectorAll('.tc-card').forEach(c => c.classList.remove('is-active'));
+    activeOpen = -1;
+  }
+
+  const CARD_W = 296;
+  const N = data.length;
+  let offset = 0;
+  let isJumping = false;
+
+  function buildInfiniteTrack() {
+    track.innerHTML = '';
+    // Prepend clone set + real cards + append clone set
+    [data, data, data].forEach((set, setIdx) => {
+      set.forEach((d, i) => {
+        const realIdx = setIdx === 1 ? i : -1; // only middle set has real idx
+        const card = document.createElement('div');
+        card.className = 'tc-card';
+        card.dataset.idx = realIdx;
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', setIdx === 1 ? '0' : '-1');
+        card.setAttribute('aria-label', 'Play ' + d.name + '’s testimonial');
+        card.innerHTML =
+          '<div class="tc-card-thumb">' +
+            '<img loading="lazy" src="https://vumbnail.com/' + d.vimeo + '.jpg" alt="' + d.name + ' testimonial thumbnail"/>' +
+            '<div class="tc-card-play"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>' +
+          '</div>' +
+          '<div class="tc-card-body">' +
+            '<div class="tc-card-name">' + d.name + '</div>' +
+            '<p class="tc-card-quote">“' + d.quote + '”</p>' +
+            '<div class="tc-card-chips">' + d.tags.map(t => '<span class="tc-chip">' + t + '</span>').join('') + '</div>' +
+          '</div>';
+        track.appendChild(card);
+      });
     });
-    resetPoster(d);
+    // Start at the first real card (second set)
+    offset = N * CARD_W;
+    track.style.transition = 'none';
+    track.style.transform = 'translateX(-' + offset + 'px)';
   }
 
-  // Wire thumbnail clicks
-  strip.addEventListener('click', (e) => {
-    const btn = e.target.closest('.tm-thumb');
-    if (!btn) return;
-    const i = parseInt(btn.dataset.idx, 10);
-    if (i === activeIdx) {
-      // Same active card: just play
-      playVideo(i);
-    } else {
-      setActive(i);
+  function scrollCarousel(dir) {
+    offset += dir * CARD_W;
+    track.style.transition = 'transform .35s cubic-bezier(.4,0,.2,1)';
+    track.style.transform = 'translateX(-' + offset + 'px)';
+
+    // After animation, silently jump if we've left the real-card zone
+    setTimeout(() => {
+      if (isJumping) return;
+      const minSafe = CARD_W * 0.5;
+      const maxSafe = (N * 2 - 0.5) * CARD_W;
+      if (offset < minSafe || offset > maxSafe) {
+        isJumping = true;
+        // Jump to equivalent position in middle set
+        offset = ((offset % (N * CARD_W)) + N * CARD_W) % (N * CARD_W) + N * CARD_W;
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(-' + offset + 'px)';
+        requestAnimationFrame(() => { isJumping = false; });
+      }
+    }, 360);
+  }
+
+  buildInfiniteTrack();
+
+  track.addEventListener('click', (e) => {
+    const card = e.target.closest('.tc-card');
+    if (!card) return;
+    const i = parseInt(card.dataset.idx, 10);
+    if (i < 0) return; // clone card — ignore
+    if (activeOpen === i) { closePlayer(); return; }
+    openPlayer(i);
+  });
+
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const card = e.target.closest('.tc-card');
+      if (!card) return;
+      e.preventDefault();
+      const i = parseInt(card.dataset.idx, 10);
+      if (i < 0) return;
+      if (activeOpen === i) { closePlayer(); return; }
+      openPlayer(i);
     }
   });
 
-  // Initial play button on page load
-  if (playBtn) playBtn.addEventListener('click', () => playVideo(activeIdx));
-  if (poster) poster.addEventListener('click', (e) => {
-    if (e.target.closest('.tm-play')) return; // handled above
-    playVideo(activeIdx);
-  });
-
-  // Keyboard nav when strip focused
-  strip.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      setActive((activeIdx + 1) % data.length);
-      strip.querySelectorAll('.tm-thumb')[activeIdx].focus();
-    } else if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      setActive((activeIdx - 1 + data.length) % data.length);
-      strip.querySelectorAll('.tm-thumb')[activeIdx].focus();
-    } else if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      playVideo(activeIdx);
-    }
-  });
+  if (prevBtn) prevBtn.addEventListener('click', () => scrollCarousel(-1));
+  if (nextBtn) nextBtn.addEventListener('click', () => scrollCarousel(1));
 })();
 </script>
 

@@ -264,12 +264,11 @@
     chart.addEventListener('pointerleave', ()=>{ dragging=false; });
   }
 
-  /* ──────────── 3. HAIL MAP ──────────── */
+  /* ──────────── 3. HAIL MAP (MapLibre) ──────────── */
   function initHail(){
     const sec = document.getElementById('rf-hail');
     if(!sec) return;
     const wrap = sec.querySelector('.rf-hail-map-wrap');
-    const svg = sec.querySelector('.rf-hail-svg');
     const tooltip = sec.querySelector('.rf-hail-tooltip');
     const readoutVal = sec.querySelector('.rf-hail-readout-val');
     const readoutSub = sec.querySelector('.rf-hail-readout-sub');
@@ -277,105 +276,96 @@
     const sliderEl = sec.querySelector('#rfHailDays');
     const sliderVal = sec.querySelector('#rfHailDaysVal');
 
-    const W = 1000, H = 540;
-
-    // simplified US shape outline (Continental, abstract hex feel)
-    const usPath = "M120,300 Q90,260 110,210 Q140,180 200,170 Q260,160 320,170 Q380,140 460,135 Q540,125 620,140 Q700,130 780,150 Q860,165 900,200 Q920,250 900,290 Q880,340 880,380 Q860,420 800,440 Q700,460 600,455 Q500,460 400,450 Q300,440 220,425 Q160,400 130,360 Z";
-
-    // Storm cells with size (sm/md/lg) and region. Roughly placed on US.
-    // size: sm=<1.5", md=1.5-2", lg=2"+
+    // Hail cells with real lat/lng coordinates
     const cells = [
-      // Texas Panhandle / Oklahoma / Kansas (Tornado Alley) — heavy
-      {x:480,y:330,size:'lg',region:'Lubbock TX',ct:248,d:1},
-      {x:470,y:300,size:'lg',region:'Amarillo TX',ct:312,d:0},
-      {x:510,y:280,size:'md',region:'Oklahoma City',ct:189,d:1},
-      {x:480,y:260,size:'lg',region:'Wichita KS',ct:267,d:2},
-      {x:540,y:300,size:'md',region:'Dallas-Fort Worth',ct:421,d:0},
-      {x:560,y:340,size:'md',region:'Austin TX',ct:156,d:1},
-      {x:520,y:380,size:'sm',region:'Houston TX',ct:92,d:3},
-      // Colorado Front Range
-      {x:400,y:260,size:'lg',region:'Denver CO',ct:298,d:0},
-      {x:390,y:290,size:'md',region:'Colorado Springs',ct:174,d:1},
-      // Nebraska / Iowa
-      {x:530,y:230,size:'md',region:'Omaha NE',ct:142,d:2},
-      {x:580,y:240,size:'sm',region:'Des Moines IA',ct:88,d:4},
-      // Missouri
-      {x:600,y:280,size:'md',region:'Kansas City',ct:167,d:1},
-      {x:650,y:300,size:'sm',region:'St. Louis MO',ct:73,d:3},
-      // Atlanta / Carolinas
-      {x:730,y:340,size:'md',region:'Atlanta GA',ct:201,d:0},
-      {x:790,y:330,size:'sm',region:'Charlotte NC',ct:94,d:2},
-      // Florida
-      {x:790,y:420,size:'sm',region:'Tampa FL',ct:67,d:5},
-      {x:820,y:430,size:'sm',region:'Orlando FL',ct:52,d:6},
-      // Phoenix
-      {x:300,y:340,size:'md',region:'Phoenix AZ',ct:133,d:1},
-      // Midwest minor
-      {x:680,y:230,size:'sm',region:'Chicago IL',ct:48,d:5},
-      {x:710,y:260,size:'sm',region:'Indianapolis',ct:62,d:4},
-      // Carolinas, Virginia
-      {x:810,y:290,size:'sm',region:'Raleigh NC',ct:81,d:3},
-      // Minor cells throughout
-      {x:440,y:220,size:'sm',region:'Cheyenne WY',ct:38,d:6},
-      {x:550,y:200,size:'sm',region:'Sioux Falls SD',ct:44,d:5},
-      {x:620,y:380,size:'sm',region:'Memphis TN',ct:71,d:2},
-      {x:680,y:380,size:'sm',region:'Birmingham AL',ct:58,d:3},
-      {x:760,y:380,size:'md',region:'Charleston SC',ct:112,d:1},
+      {lng:-101.85,lat:33.58,size:'lg',region:'Lubbock TX',ct:248,d:1},
+      {lng:-101.84,lat:35.22,size:'lg',region:'Amarillo TX',ct:312,d:0},
+      {lng:-97.52, lat:35.47,size:'md',region:'Oklahoma City',ct:189,d:1},
+      {lng:-97.34, lat:37.69,size:'lg',region:'Wichita KS',ct:267,d:2},
+      {lng:-97.03, lat:32.78,size:'md',region:'Dallas-Fort Worth',ct:421,d:0},
+      {lng:-97.75, lat:30.27,size:'md',region:'Austin TX',ct:156,d:1},
+      {lng:-95.37, lat:29.76,size:'sm',region:'Houston TX',ct:92,d:3},
+      {lng:-104.99,lat:39.74,size:'lg',region:'Denver CO',ct:298,d:0},
+      {lng:-104.82,lat:38.83,size:'md',region:'Colorado Springs',ct:174,d:1},
+      {lng:-95.93, lat:41.26,size:'md',region:'Omaha NE',ct:142,d:2},
+      {lng:-93.62, lat:41.60,size:'sm',region:'Des Moines IA',ct:88,d:4},
+      {lng:-94.58, lat:39.10,size:'md',region:'Kansas City',ct:167,d:1},
+      {lng:-90.20, lat:38.63,size:'sm',region:'St. Louis MO',ct:73,d:3},
+      {lng:-84.39, lat:33.75,size:'md',region:'Atlanta GA',ct:201,d:0},
+      {lng:-80.84, lat:35.23,size:'sm',region:'Charlotte NC',ct:94,d:2},
+      {lng:-82.46, lat:27.95,size:'sm',region:'Tampa FL',ct:67,d:5},
+      {lng:-81.38, lat:28.54,size:'sm',region:'Orlando FL',ct:52,d:6},
+      {lng:-112.07,lat:33.45,size:'md',region:'Phoenix AZ',ct:133,d:1},
+      {lng:-87.63, lat:41.88,size:'sm',region:'Chicago IL',ct:48,d:5},
+      {lng:-86.16, lat:39.77,size:'sm',region:'Indianapolis',ct:62,d:4},
+      {lng:-78.64, lat:35.79,size:'sm',region:'Raleigh NC',ct:81,d:3},
+      {lng:-104.82,lat:41.14,size:'sm',region:'Cheyenne WY',ct:38,d:6},
+      {lng:-96.73, lat:43.55,size:'sm',region:'Sioux Falls SD',ct:44,d:5},
+      {lng:-90.05, lat:35.15,size:'sm',region:'Memphis TN',ct:71,d:2},
+      {lng:-86.80, lat:33.52,size:'sm',region:'Birmingham AL',ct:58,d:3},
+      {lng:-79.93, lat:32.78,size:'md',region:'Charleston SC',ct:112,d:1},
     ];
 
-    // Build SVG
-    let html = `
-      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
-        <defs>
-          <radialGradient id="rfHailBg" cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stop-color="rgba(168,85,247,.08)"/>
-            <stop offset="100%" stop-color="rgba(11,10,24,0)"/>
-          </radialGradient>
-          <filter id="rfHailGlow"><feGaussianBlur stdDeviation="2"/></filter>
-        </defs>
-        <rect width="${W}" height="${H}" fill="url(#rfHailBg)"/>
-        <!-- US outline -->
-        <path d="${usPath}" fill="rgba(168,85,247,.04)" stroke="rgba(168,85,247,.3)" stroke-width="1.5"/>
-        <!-- grid dots -->
-    `;
-    // background dot grid inside US-ish area
-    for(let y=180; y<460; y+=22){
-      for(let x=120; x<900; x+=22){
-        // crude inside check by skipping corners
-        const dx = x - 510, dy = y - 320;
-        const r = Math.sqrt(dx*dx + dy*dy*1.4);
-        if(r < 410 && y > 165 && y < 460){
-          html += `<circle cx="${x}" cy="${y}" r="1" fill="rgba(255,255,255,.04)"/>`;
-        }
-      }
+    const markerEls = [];
+    let activeSizes = new Set(['sm','md','lg']);
+    let maxDays = parseInt(sliderEl.value, 10);
+
+    if(!window.PremuraMap){
+      console.warn('[roofing hail] PremuraMap not loaded');
+      return;
     }
-    // hail cells
-    cells.forEach((c, idx)=>{
-      // each "cell" is 5 jittered dots
-      let dots = '';
-      const baseR = c.size==='lg'?3.8:c.size==='md'?3.2:2.6;
-      const spread = c.size==='lg'?14:c.size==='md'?10:7;
-      for(let k=0; k<5; k++){
-        const ang = (k*2.4) + idx*.7;
-        const dist = (k===0?0:spread*(.4+(k%3)*.2));
-        const dx = Math.cos(ang)*dist;
-        const dy = Math.sin(ang)*dist*.8;
-        dots += `<circle cx="${c.x+dx}" cy="${c.y+dy}" r="${baseR}"/>`;
-      }
-      html += `<g class="rf-hail-cell size-${c.size}" data-region="${c.region}" data-ct="${c.ct}" data-size="${c.size}" data-d="${c.d}">${dots}</g>`;
-    });
-    html += `</svg>`;
-    svg.outerHTML = html;
-    const newSvg = wrap.querySelector('svg');
+
+    PremuraMap.initPurpleMap({
+      containerId: 'rfHailMap',
+      center: [-96, 38],
+      zoom: 3.6,
+      locked: true,
+    }).then(map => {
+      cells.forEach(c => {
+        const sizeR = c.size === 'lg' ? 28 : c.size === 'md' ? 20 : 14;
+        const color = c.size === 'lg'
+          ? 'rgba(220,38,69,.85)'
+          : c.size === 'md'
+          ? 'rgba(168,85,247,.85)'
+          : 'rgba(255,255,255,.55)';
+
+        const el = document.createElement('div');
+        el.style.cssText = `width:${sizeR}px;height:${sizeR}px;border-radius:50%;background:${color};box-shadow:0 0 12px ${color};border:1.5px solid rgba(255,255,255,.25);cursor:pointer;transition:opacity .3s ease,transform .3s ease;`;
+        el.dataset.size = c.size;
+        el.dataset.d = c.d;
+        el.dataset.ct = c.ct;
+        el.dataset.region = c.region;
+
+        el.addEventListener('mouseenter', e => {
+          if(el.style.opacity === '0') return;
+          const sizeText = c.size==='lg'?'2"+ hail':c.size==='md'?'1.5–2" hail':'<1.5" hail';
+          tooltip.innerHTML = `<strong>${c.region}</strong>${parseInt(c.ct).toLocaleString()} qualifying homeowners<br>${sizeText} · ${c.d===0?'today':(c.d+' days ago')}`;
+          tooltip.classList.add('show');
+        });
+        el.addEventListener('mousemove', e => {
+          const r = wrap.getBoundingClientRect();
+          tooltip.style.left = (e.clientX - r.left + 14) + 'px';
+          tooltip.style.top  = (e.clientY - r.top - 14) + 'px';
+        });
+        el.addEventListener('mouseleave', () => tooltip.classList.remove('show'));
+
+        new maplibregl.Marker({ element: el, anchor: 'center' })
+          .setLngLat([c.lng, c.lat])
+          .addTo(map);
+
+        markerEls.push(el);
+      });
+
+      applyFilters();
+    }).catch(err => console.warn('[roofing hail map]', err));
 
     // chip filters
     const sizeChips = sec.querySelectorAll('.rf-hail-chip[data-size]');
-    let activeSizes = new Set(['sm','md','lg']);
-    sizeChips.forEach(chip=>{
-      chip.addEventListener('click', ()=>{
+    sizeChips.forEach(chip => {
+      chip.addEventListener('click', () => {
         const s = chip.dataset.size;
         if(activeSizes.has(s)){
-          if(activeSizes.size === 1) return; // keep at least one
+          if(activeSizes.size === 1) return;
           activeSizes.delete(s);
           chip.classList.remove('active');
         } else {
@@ -386,8 +376,7 @@
       });
     });
 
-    let maxDays = parseInt(sliderEl.value, 10);
-    sliderEl.addEventListener('input', ()=>{
+    sliderEl.addEventListener('input', () => {
       maxDays = parseInt(sliderEl.value, 10);
       sliderVal.textContent = maxDays + (maxDays===1?' day':' days');
       applyFilters();
@@ -396,43 +385,22 @@
     function applyFilters(){
       let total = 0;
       let visibleCells = 0;
-      newSvg.querySelectorAll('.rf-hail-cell').forEach(g=>{
-        const s = g.dataset.size;
-        const d = parseInt(g.dataset.d, 10);
+      markerEls.forEach(el => {
+        const s = el.dataset.size;
+        const d = parseInt(el.dataset.d, 10);
         const visible = activeSizes.has(s) && d <= maxDays;
-        g.classList.toggle('hidden', !visible);
-        if(visible){ total += parseInt(g.dataset.ct,10); visibleCells++; }
+        el.style.opacity = visible ? '1' : '0';
+        el.style.pointerEvents = visible ? 'auto' : 'none';
+        if(visible){ total += parseInt(el.dataset.ct, 10); visibleCells++; }
       });
       readoutVal.textContent = total.toLocaleString();
       readoutSub.textContent = `${visibleCells} active cells · last ${maxDays} day${maxDays===1?'':'s'}`;
       tickrText.innerHTML = `<strong>${total.toLocaleString()}</strong> qualifying homeowners in your filter — ready to dial.`;
     }
+
+    // init readout ticker
     applyFilters();
-
-    // tooltip on cell hover
-    newSvg.querySelectorAll('.rf-hail-cell').forEach(g=>{
-      g.addEventListener('mouseenter', e=>{
-        if(g.classList.contains('hidden')) return;
-        const region = g.dataset.region;
-        const ct = parseInt(g.dataset.ct,10).toLocaleString();
-        const sz = g.dataset.size;
-        const sizeText = sz==='lg'?'2"+ hail':sz==='md'?'1.5–2" hail':'<1.5" hail';
-        const d = g.dataset.d;
-        tooltip.innerHTML = `<strong>${region}</strong>${ct} qualifying homeowners<br>${sizeText} · ${d===0?'today':(d+' days ago')}`;
-        tooltip.classList.add('show');
-      });
-      g.addEventListener('mousemove', e=>{
-        const r = wrap.getBoundingClientRect();
-        tooltip.style.left = (e.clientX - r.left + 14) + 'px';
-        tooltip.style.top  = (e.clientY - r.top - 14) + 'px';
-      });
-      g.addEventListener('mouseleave', ()=>{
-        tooltip.classList.remove('show');
-      });
-    });
-
-    // ticker animate the readout
-    const targetVal = parseInt(readoutVal.textContent.replace(/,/g,''),10);
+    const targetVal = parseInt(readoutVal.textContent.replace(/,/g,''), 10);
     let cur = 0;
     const tickStart = performance.now();
     function tickReadout(now){

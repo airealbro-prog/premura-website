@@ -335,6 +335,8 @@
   box-shadow:0 30px 80px rgba(11,10,24,.25);
 }
 .rf-hail-svg{width:100%;height:auto;display:block;}
+.rf-hail-map-ml{width:100%;height:480px;border-radius:12px;overflow:hidden;}
+.rf-hail-map-ml .maplibregl-canvas{border-radius:12px;}
 
 .rf-hail-readout{
   position:absolute;top:24px;right:24px;

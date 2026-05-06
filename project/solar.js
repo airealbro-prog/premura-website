@@ -369,37 +369,47 @@
   });
 })();
 
-// ── COST CALCULATOR ──
+// ── REVENUE CALCULATOR ──
 (() => {
   const card = document.querySelector('.sf-cost-card');
   if (!card) return;
-  const rate = card.querySelector('#sf-cost-rate');
-  const hours = card.querySelector('#sf-cost-hours');
-  const closers = card.querySelector('#sf-cost-closers');
-  const rateVal = card.querySelector('#sf-cost-rate-val');
-  const hoursVal = card.querySelector('#sf-cost-hours-val');
-  const closersVal = card.querySelector('#sf-cost-closers-val');
-  const result = card.querySelector('#sf-cost-result');
-  const recover = card.querySelector('#sf-cost-recover-val');
+  const commissionEl = card.querySelector('#sf-cost-commission');
+  const hoursEl      = card.querySelector('#sf-cost-hours');
+  const rateEl       = card.querySelector('#sf-cost-rate');
+  const closersEl    = card.querySelector('#sf-cost-closers');
+  const commissionVal= card.querySelector('#sf-cost-commission-val');
+  const hoursVal     = card.querySelector('#sf-cost-hours-val');
+  const rateVal      = card.querySelector('#sf-cost-rate-val');
+  const closersVal   = card.querySelector('#sf-cost-closers-val');
+  const result       = card.querySelector('#sf-cost-result');
+  const dealsMo      = card.querySelector('#sf-cost-deals-mo');
 
   function fmt(n) {
+    if (n >= 1000000) return '$' + (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+    if (n >= 1000)    return '$' + Math.round(n / 1000) + 'K';
     return '$' + Math.round(n).toLocaleString('en-US');
   }
 
   function update() {
-    const r = +rate.value;
-    const h = +hours.value;
-    const c = +closers.value;
-    rateVal.textContent = '$' + r;
-    hoursVal.textContent = h + ' hrs/wk';
-    closersVal.textContent = c + (c === 1 ? ' closer' : ' closers');
-    const annualLost = r * h * c * 50; // 50 working weeks
-    result.textContent = fmt(annualLost);
-    // Premura recovers ~85% of those hours
-    const recovered = annualLost * 0.85;
-    recover.textContent = fmt(recovered);
+    const commission = +commissionEl.value;
+    const appts      = +hoursEl.value;
+    const closeRate  = +rateEl.value / 100;
+    const closers    = +closersEl.value;
+
+    commissionVal.textContent = '$' + commission.toLocaleString('en-US');
+    hoursVal.textContent      = appts + ' appts/wk';
+    rateVal.textContent       = rateEl.value + '%';
+    closersVal.textContent    = closers + (closers === 1 ? ' closer' : ' closers');
+
+    // Monthly: appts/wk × 4.3 weeks × close_rate × commission × closers
+    const dealsPerMonth = appts * 4.3 * closeRate * closers;
+    const monthly = dealsPerMonth * commission;
+
+    result.textContent = fmt(monthly);
+    if (dealsMo) dealsMo.textContent = Math.round(dealsPerMonth);
   }
-  [rate, hours, closers].forEach(s => s && s.addEventListener('input', update));
+
+  [commissionEl, hoursEl, rateEl, closersEl].forEach(s => s && s.addEventListener('input', update));
   update();
 })();
 
@@ -436,12 +446,9 @@
   }
 
   function applyFilters() {
-    markerEntries.forEach(({ meta, halo, core, label }) => {
+    markerEntries.forEach(({ meta, core, label }) => {
       const heat = currentHeat(meta);
-      const haloSize = heat === 0 ? 0 : 18 + heat * 18; // 36, 54, 72
       const coreSize = heat === 0 ? 0 : 4 + heat * 1.8;
-      halo.style.width = halo.style.height = haloSize + 'px';
-      halo.style.opacity = heat === 0 ? '0' : (0.32 + heat * 0.18);
       core.style.width = core.style.height = coreSize + 'px';
       core.style.opacity = heat === 0 ? '0' : '1';
       if (label) label.style.opacity = heat >= 2 ? '1' : '0';
@@ -490,11 +497,6 @@
       wrap.className = 'sf-metro-marker';
       wrap.style.cssText = 'position:relative;width:0;height:0;display:flex;align-items:center;justify-content:center;cursor:pointer;';
 
-      const halo = document.createElement('div');
-      halo.className = 'sf-metro-halo-ml';
-      halo.style.cssText = 'position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(233,182,255,.95) 0%,rgba(168,85,247,.55) 40%,rgba(124,58,237,0) 100%);transform:translate(-50%,-50%);transition:width .55s cubic-bezier(.4,0,.2,1),height .55s cubic-bezier(.4,0,.2,1),opacity .55s ease;pointer-events:none;width:0;height:0;opacity:0;';
-      wrap.appendChild(halo);
-
       const core = document.createElement('div');
       core.className = 'sf-metro-core-ml';
       core.style.cssText = 'position:absolute;border-radius:50%;background:#fff;box-shadow:0 0 8px rgba(233,182,255,.9),0 0 16px rgba(168,85,247,.7);transform:translate(-50%,-50%);transition:width .35s ease,height .35s ease,opacity .35s ease;pointer-events:none;width:0;height:0;opacity:0;';
@@ -534,7 +536,7 @@
         .setLngLat([m.lng, m.lat])
         .addTo(map);
 
-      markerEntries.push({ meta: m, halo, core, label });
+      markerEntries.push({ meta: m, core, label });
     });
 
     applyFilters();

@@ -44,6 +44,19 @@
     phaseTitle.textContent = p.title;
     bigNum.textContent = p.bigNum;
 
+    // Scene 2: interview feed — flip status to Approved after checks animate
+    if (idx === 2) {
+      const statusEl = document.getElementById('s3Status');
+      if (statusEl) {
+        statusEl.classList.remove('approved');
+        statusEl.innerHTML = '<span class="s3-status-dot"></span>Under review';
+        setTimeout(() => {
+          statusEl.classList.add('approved');
+          statusEl.innerHTML = '<span class="s3-status-dot"></span>Approved ✓';
+        }, 1800);
+      }
+    }
+
     // Update systems
     systems.forEach(sys => {
       const key = sys.dataset.sys;
