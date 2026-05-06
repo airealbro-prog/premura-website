@@ -478,6 +478,23 @@
 }
 @media(max-width:768px){
   #rf-hail{padding:64px 20px;}
+  .rf-hail-map-wrap{min-height:auto;padding:14px;}
+  /* Stack readout above map, ticker below */
+  .rf-hail-readout{
+    position:static;
+    flex-direction:row;align-items:center;gap:14px;
+    margin-bottom:10px;padding:10px 14px;
+    border-radius:10px;
+  }
+  .rf-hail-readout-val{font-size:1.4rem;}
+  .rf-hail-map-ml{height:300px;}
+  .rf-hail-tickr{
+    position:static;
+    margin-top:10px;border-radius:10px;
+    border-left:none;border-top:1px solid rgba(255,92,122,.2);
+    padding:10px 14px;
+  }
+  .rf-hail-tooltip{display:none;}
 }
 
 /* ════ STORM CALENDAR ════ */

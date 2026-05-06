@@ -56,7 +56,7 @@
     <div class="hero-content">
       <span class="hero-eyebrow">In-House Call Centers for Solar &amp; Roofing</span>
       <h1 class="hero-title">We Build Your<br>Call Center.<br><span>You Close the Deals.</span></h1>
-      <p class="hero-subtitle">Premura builds and manages dedicated outbound call centers that book qualified appointments directly into your calendar. Your closers show up, sit down, and sell — we handle everything else.</p>
+      <p class="hero-subtitle">Dedicated outbound call centers for solar and roofing companies. Qualified appointments in your calendar every week — we build it, run it, and own the numbers.</p>
       <div class="hero-buttons">
         <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary">Book a Strategy Call →</a>
         <a href="how-it-works.html" class="btn-secondary">See How It Works</a>
@@ -130,11 +130,11 @@
   <div class="section-inner">
     <span class="section-label">The Problem</span>
     <h2 class="section-title">Which One Hurts<br>The Most?</h2>
-    <p class="problem-prompt">Tap the pain you live with every week.</p>
+    <p class="problem-prompt">Tap the pain you live with every week</p>
     <div class="pain-stack" id="painStack">
       <button class="pain-card" data-pain="0">
         <span class="pain-num">01</span>
-        <span class="pain-headline">Your closers are sitting around waiting for appointments.</span>
+        <span class="pain-headline">Your closers are sitting around waiting for appointments</span>
         <span class="pain-answer">
           <span class="pain-answer-lbl">Premura's answer</span>
           <span class="pain-answer-text">Dedicated agents fill their calendar before they wake up. Five qualified appointments per agent per week — measured daily, not hoped for.</span>
@@ -142,7 +142,7 @@
       </button>
       <button class="pain-card" data-pain="1">
         <span class="pain-num">02</span>
-        <span class="pain-headline">Door knocking is inconsistent and burning out your reps.</span>
+        <span class="pain-headline">Door knocking is inconsistent and burning out your reps</span>
         <span class="pain-answer">
           <span class="pain-answer-lbl">Premura's answer</span>
           <span class="pain-answer-text">No more weather, willpower, or shoe leather. Your agents dial every working day — rural, urban, gated, all of it.</span>
@@ -150,7 +150,7 @@
       </button>
       <button class="pain-card" data-pain="2">
         <span class="pain-num">03</span>
-        <span class="pain-headline">You've tried lead gen companies and got burned.</span>
+        <span class="pain-headline">You've tried lead gen companies and got burned</span>
         <span class="pain-answer">
           <span class="pain-answer-lbl">Premura's answer</span>
           <span class="pain-answer-text">No shared lists. No recycled contacts. Confirmed appointments, in your calendar, exclusive to you.</span>
@@ -158,7 +158,7 @@
       </button>
       <button class="pain-card" data-pain="3">
         <span class="pain-num">04</span>
-        <span class="pain-headline">Hiring your own cold callers is a full-time job.</span>
+        <span class="pain-headline">Hiring your own cold callers is a full-time job</span>
         <span class="pain-answer">
           <span class="pain-answer-lbl">Premura's answer</span>
           <span class="pain-answer-text">We recruit, train, manage, and replace agents until they perform. You sign one contract — we run the call center.</span>
@@ -173,7 +173,7 @@
   <div class="section-inner">
     <span class="section-label">The Solution</span>
     <h2 class="section-title">Drag To See<br>The Difference</h2>
-    <p class="solution-prompt">Slide right. Watch the chaos turn into a calendar.</p>
+    <p class="solution-prompt">Slide right. Watch the chaos turn into a calendar</p>
 
     <div class="dragslider" id="dragslider">
       <!-- WITHOUT (red) — full width underneath -->
@@ -680,37 +680,46 @@
     });
   }, { passive: true });
 
+  function onFrameSettled() {
+    loadedCount++;
+    const pct = Math.round(loadedCount / totalFrames * 100);
+    if (loaderFill) loaderFill.style.width = pct + '%';
+    if (loaderPct) loaderPct.textContent = 'Loading… ' + pct + '%';
+    if (loadedCount >= totalFrames) {
+      if (loaderPct) loaderPct.textContent = 'Ready';
+      if (loader) { loader.style.opacity = '0'; setTimeout(() => { loader.style.display = 'none'; }, 600); }
+      if (currentFrame < 0) { currentFrame = 0; drawFrame(0); }
+    }
+  }
+
   function preloadFrames() {
+    // Allocate all Image objects up front so drawFrame indices stay stable
     frameNums.forEach(num => {
       const img = new Image();
-      img.onload = () => {
-        loadedCount++;
-        const pct = Math.round(loadedCount / totalFrames * 100);
-        if (loaderFill) loaderFill.style.width = pct + '%';
-        if (loaderPct) loaderPct.textContent = 'Loading… ' + pct + '%';
-        if (loadedCount >= totalFrames) {
-          if (loaderPct) loaderPct.textContent = 'Ready';
-          if (loader) {
-            loader.style.opacity = '0';
-            setTimeout(() => { loader.style.display = 'none'; }, 600);
-          }
-          currentFrame = 0;
-          drawFrame(0);
-        }
-      };
-      img.onerror = () => {
-        loadedCount++;
-        const pct = Math.round(loadedCount / totalFrames * 100);
-        if (loaderFill) loaderFill.style.width = pct + '%';
-        if (loaderPct) loaderPct.textContent = 'Loading… ' + pct + '%';
-        if (loadedCount >= totalFrames) {
-          if (loader) { loader.style.opacity = '0'; setTimeout(() => { loader.style.display = 'none'; }, 600); }
-          currentFrame = 0; drawFrame(0);
-        }
-      };
-      img.src = 'frames/frame_' + String(num).padStart(4, '0') + '.jpg';
+      img.onload = img.onerror = onFrameSettled;
       frames.push(img);
     });
+
+    // Load first 20 frames immediately for fast first paint
+    const PRIORITY = Math.min(20, totalFrames);
+    for (let i = 0; i < PRIORITY; i++) {
+      frames[i].src = 'frames/frame_' + String(frameNums[i]).padStart(4, '0') + '.jpg';
+    }
+
+    // Load remainder in parallel batches of 12 with a small stagger
+    const BATCH = 12;
+    let batchIdx = PRIORITY;
+    function loadBatch() {
+      if (batchIdx >= totalFrames) return;
+      const end = Math.min(batchIdx + BATCH, totalFrames);
+      for (let i = batchIdx; i < end; i++) {
+        frames[i].src = 'frames/frame_' + String(frameNums[i]).padStart(4, '0') + '.jpg';
+      }
+      batchIdx = end;
+      if (batchIdx < totalFrames) setTimeout(loadBatch, 80);
+    }
+    // Start background batches once priority frames are requested
+    setTimeout(loadBatch, 50);
   }
 
   const sectionWrap = document.querySelector('.scroll-section-wrap');
@@ -1084,6 +1093,23 @@
 
   if (prevBtn) prevBtn.addEventListener('click', () => scrollCarousel(-1));
   if (nextBtn) nextBtn.addEventListener('click', () => scrollCarousel(1));
+
+  // Touch swipe support
+  let touchStartX = 0;
+  let touchDelta = 0;
+  const viewport = document.querySelector('.tc-viewport');
+  if (viewport) {
+    viewport.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+      touchDelta = 0;
+    }, { passive: true });
+    viewport.addEventListener('touchmove', e => {
+      touchDelta = touchStartX - e.touches[0].clientX;
+    }, { passive: true });
+    viewport.addEventListener('touchend', () => {
+      if (Math.abs(touchDelta) > 40) scrollCarousel(touchDelta > 0 ? 1 : -1);
+    });
+  }
 })();
 </script>
 

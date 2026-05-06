@@ -131,7 +131,7 @@
   border:1px solid rgba(220,38,69,.2);
   color:#ffb6c4;
 }
-.ah-card[data-key="inhouse"] .ah-summary{
+.ah-card[data-key="doorknock"] .ah-summary{
   background:rgba(251,191,36,.06);
   border:1px solid rgba(251,191,36,.18);
   color:#fde0a3;
@@ -148,6 +148,22 @@
 }
 @media(max-width:768px){
   #about-hero{min-height:auto;padding:120px 20px 60px;}
+  /* Let card expand to natural height on mobile */
+  .ah-stack{min-height:0;padding-bottom:0;}
+  .ah-card{
+    position:relative;inset:auto;
+    opacity:0;pointer-events:none;
+    height:0;overflow:hidden;
+    transform:none;
+    transition:opacity .3s ease;
+  }
+  .ah-card.show{
+    opacity:1;pointer-events:auto;
+    height:auto;overflow:visible;
+  }
+  .ah-compare{padding:18px 14px;}
+  .ah-row{grid-template-columns:1fr auto;gap:8px;padding:10px 12px;}
+  .ah-row-val{font-size:.92rem;}
 }
 
 /* ════ WALL OF AGENTS ════ */

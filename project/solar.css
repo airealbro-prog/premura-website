@@ -660,6 +660,16 @@
 }
 @media(max-width:768px){
   #sf-territory{padding:64px 20px;}
+  /* Keep readout inside map but fix overflow */
+  .sf-terr-readout{
+    position:absolute;top:12px;right:10px;left:auto;
+    padding:8px 12px;border-radius:10px;
+    flex-direction:column;align-items:flex-end;gap:1px;
+    max-width:160px;
+  }
+  .sf-terr-readout-val{font-size:1.1rem;}
+  .sf-terr-readout-sub{font-size:.62rem;white-space:normal;text-align:right;}
+  .sf-terr-readout-lbl{font-size:.55rem;}
 }
 
 /* MapLibre territory map overlays */
