@@ -979,7 +979,8 @@
       card.setAttribute('aria-label', 'Play ' + d.name + '\u2019s testimonial');
       card.innerHTML =
         '<div class="tc-card-thumb">' +
-          '<img loading="lazy" data-vid="' + d.vimeo + '" alt="' + d.name + '"/>' +
+          '<div class="tc-thumb-bg" data-init="' + d.name[0] + '"></div>' +
+          '<img class="tc-thumb-img" data-vid="' + d.vimeo + '" alt="' + d.name + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none"/>' +
           '<div class="tc-card-play"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>' +
         '</div>' +
         '<div class="tc-card-body">' +
@@ -1044,7 +1045,8 @@
         card.setAttribute('aria-label', 'Play ' + d.name + '’s testimonial');
         card.innerHTML =
           '<div class=”tc-card-thumb”>' +
-            '<img loading=”lazy” src=”https://vumbnail.com/' + d.vimeo + '.jpg” alt=”' + d.name + ' testimonial thumbnail”/>' +
+            '<div class=”tc-thumb-bg” data-init=”' + d.name[0] + '”></div>' +
+            '<img class=”tc-thumb-img” data-vid=”' + d.vimeo + '” alt=”' + d.name + '” style=”position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none”/>' +
             '<div class=”tc-card-play”><svg viewBox=”0 0 24 24” width=”22” height=”22” fill=”currentColor”><path d=”M8 5v14l11-7z”/></svg></div>' +
           '</div>' +
           '<div class=”tc-card-body”>' +
@@ -1094,7 +1096,7 @@
       .then(j => {
         const url = j.thumbnail_url;
         if (!url) return;
-        track.querySelectorAll('img[data-vid="' + d.vimeo + '"]').forEach(img => { img.src = url; });
+        track.querySelectorAll('.tc-thumb-img[data-vid="' + d.vimeo + '"]').forEach(img => { img.src = url; img.style.display = ''; });
       })
       .catch(() => {});
   });
