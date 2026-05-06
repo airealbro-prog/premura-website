@@ -1017,27 +1017,29 @@
   const modal = document.getElementById("tcPlayerWrap");
   const playerFrame = document.getElementById("tcPlayerFrame");
 
+  function openPlayerModal(videoIdx) {
+    if (videoIdx < 0 || videoIdx >= N) return;
+    const v = videos[videoIdx];
+    playerFrame.innerHTML = "";
+    const iframe = document.createElement("iframe");
+    iframe.src = "https://player.vimeo.com/video/" + v.vimeo + "?h=" + v.hash + "&autoplay=1";
+    iframe.title = v.name + " testimonial";
+    iframe.frameBorder = "0";
+    iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share";
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.style.cssText = "width:100%;height:100%;";
+    playerFrame.appendChild(iframe);
+    modal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  }
+
   if (modal) {
     track.addEventListener("click", (e) => {
       const card = e.target.closest(".tc-card");
       if (!card) return;
       const realIdx = parseInt(card.dataset.idx, 10);
-      if (realIdx < 0) return;
-
-      const v = videos[realIdx];
-      playerFrame.innerHTML = "";
-      const iframe = document.createElement("iframe");
-      iframe.src = "https://player.vimeo.com/video/" + v.vimeo + "?h=" + v.hash + "&autoplay=1";
-      iframe.title = v.name + " testimonial";
-      iframe.frameBorder = "0";
-      iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share";
-      iframe.allowFullscreen = true;
-      iframe.referrerPolicy = "strict-origin-when-cross-origin";
-      iframe.style.cssText = "width:100%;height:100%;";
-      playerFrame.appendChild(iframe);
-
-      modal.classList.add("is-open");
-      document.body.style.overflow = "hidden";
+      openPlayerModal(realIdx);
     });
 
     modal.addEventListener("click", (e) => {
