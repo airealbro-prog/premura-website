@@ -1091,6 +1091,9 @@
 
   buildInfiniteTrack();
 
+  // Debug: confirm carousel initialized
+  console.log('Carousel initialized with', N, 'videos, offset:', offset, 'track children:', track.children.length);
+
   track.addEventListener('click', (e) => {
     const card = e.target.closest('.tc-card');
     if (!card) return;
