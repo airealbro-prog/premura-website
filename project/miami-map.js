@@ -74,10 +74,7 @@
           const wrap = document.createElement('div');
           wrap.className = `mm-marker mm-terr-${terr.id}`;
           wrap.dataset.terr = terr.id;
-          wrap.innerHTML = `
-            <div class="mm-dot"></div>
-            <div class="mm-chip">${pin.label}</div>
-          `;
+          wrap.innerHTML = `<div class="mm-dot"></div>`;
           const marker = new maplibregl.Marker({ element: wrap, anchor: 'center' })
             .setLngLat([pin.lng, pin.lat])
             .addTo(map);

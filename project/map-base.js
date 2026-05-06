@@ -31,16 +31,16 @@
     layers: [
       // ── BACKGROUND (default LAND color — purple) ──
       // Everything not explicitly water/lake is land by default.
-      { id: 'bg', type: 'background', paint: { 'background-color': '#1a0c38' } },
+      { id: 'bg', type: 'background', paint: { 'background-color': '#22104a' } },
 
       // ── WATER (ocean, big lakes) ── deep black with faint sheen
       {
         id: 'water', type: 'fill', source: 'openmaptiles', 'source-layer': 'water',
-        paint: { 'fill-color': '#04020a', 'fill-opacity': 1 }
+        paint: { 'fill-color': '#000000', 'fill-opacity': 1 }
       },
       {
         id: 'waterway', type: 'line', source: 'openmaptiles', 'source-layer': 'waterway',
-        paint: { 'line-color': '#04020a', 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.5, 14, 2.5] }
+        paint: { 'line-color': '#000000', 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.5, 14, 2.5] }
       },
 
       // ── LANDCOVER (parks, forests, glaciers) ── slightly darker purple

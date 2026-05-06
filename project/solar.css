@@ -572,7 +572,7 @@
   background:rgba(255,255,255,.03);
   border:1px solid rgba(255,255,255,.08);
   font-family:inherit;text-align:left;
-  transition:all .25s;
+  transition:background .3s ease,border-color .3s ease,box-shadow .3s ease;
 }
 .sf-terr-filter:hover{
   background:rgba(168,85,247,.06);
@@ -588,8 +588,8 @@
   background:rgba(255,255,255,.06);
   border:1px solid rgba(255,255,255,.15);
   display:flex;align-items:center;justify-content:center;
-  color:#a855f7;font-weight:800;font-size:.78rem;
-  transition:all .25s;
+  color:transparent;font-weight:800;font-size:.78rem;
+  transition:background .3s ease,border-color .3s ease,color .15s ease;
 }
 .sf-terr-filter.active .sf-terr-filter-check{
   background:#a855f7;border-color:#a855f7;color:#fff;
@@ -613,7 +613,7 @@
   display:flex;flex-direction:column;gap:8px;
   font-size:.74rem;color:#8b8bad;
 }
-.sf-terr-legend-row{display:flex;align-items:center;gap:10px;}
+.sf-terr-legend-row{display:flex;align-items:center;gap:10px;white-space:nowrap;}
 .sf-terr-legend-dot{
   width:10px;height:10px;border-radius:50%;
 }
