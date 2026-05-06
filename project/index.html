@@ -1084,7 +1084,7 @@
 
   // Load Vimeo thumbnails via Netlify proxy function
   data.forEach(d => {
-    fetch('/.netlify/functions/vimeo-thumb?id=' + d.vimeo + '&h=' + d.hash)
+    fetch('/api/vimeo-thumb?id=' + d.vimeo + '&h=' + d.hash)
       .then(r => r.json())
       .then(j => {
         if (!j.thumbnail_url) return;
