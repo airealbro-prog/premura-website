@@ -1043,7 +1043,7 @@
         card.setAttribute(‘aria-label’, ‘Play ‘ + d.name + ‘’s testimonial’);
         card.innerHTML =
           ‘<div class=”tc-card-thumb”>’ +
-            ‘<iframe src=”https://player.vimeo.com/video/’ + d.vimeo + ‘?h=’ + d.hash + ‘&title=0&byline=0&portrait=0&controls=1” style=”position:absolute;inset:0;width:100%;height:100%;border:0;” allow=”autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share” allowfullscreen referrerpolicy=”strict-origin-when-cross-origin”></iframe>’ +
+            ‘<iframe title=”vimeo-player” src=”https://player.vimeo.com/video/’ + d.vimeo + ‘?h=’ + d.hash + ‘” frameborder=”0” allow=”autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share” allowfullscreen referrerpolicy=”strict-origin-when-cross-origin” style=”width:100%;height:100%;”></iframe>’ +
           ‘</div>’ +
           ‘<div class=”tc-card-body”>’ +
             ‘<div class=”tc-card-name”>’ + d.name + ‘</div>’ +
