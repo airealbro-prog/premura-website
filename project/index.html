@@ -640,7 +640,7 @@
 
   function drawFrame(idx) {
     const img = frames[idx];
-    if (!img || !img.complete) return;
+    if (!img || !img.complete || !img.naturalWidth) return;
     const cw = canvas.width, ch = canvas.height;
     ctx.fillStyle = '#f5f3ff';
     ctx.fillRect(0, 0, cw, ch);
@@ -685,10 +685,13 @@
     const pct = Math.round(loadedCount / totalFrames * 100);
     if (loaderFill) loaderFill.style.width = pct + '%';
     if (loaderPct) loaderPct.textContent = 'Loading… ' + pct + '%';
+    // Draw frame 0 as soon as the first frame lands (don't wait for all 121)
+    if (currentFrame < 0 && loadedCount >= 1) { currentFrame = 0; drawFrame(0); }
+    // If user has scrolled while loading, catch up to current position
+    else if (currentFrame >= 0) drawFrame(currentFrame);
     if (loadedCount >= totalFrames) {
       if (loaderPct) loaderPct.textContent = 'Ready';
       if (loader) { loader.style.opacity = '0'; setTimeout(() => { loader.style.display = 'none'; }, 600); }
-      if (currentFrame < 0) { currentFrame = 0; drawFrame(0); }
     }
   }
 
@@ -1097,16 +1100,16 @@
   // Touch swipe support
   let touchStartX = 0;
   let touchDelta = 0;
-  const viewport = document.querySelector('.tc-viewport');
-  if (viewport) {
-    viewport.addEventListener('touchstart', e => {
+  const swipeEl = document.querySelector('.tc-viewport');
+  if (swipeEl) {
+    swipeEl.addEventListener('touchstart', e => {
       touchStartX = e.touches[0].clientX;
       touchDelta = 0;
     }, { passive: true });
-    viewport.addEventListener('touchmove', e => {
+    swipeEl.addEventListener('touchmove', e => {
       touchDelta = touchStartX - e.touches[0].clientX;
     }, { passive: true });
-    viewport.addEventListener('touchend', () => {
+    swipeEl.addEventListener('touchend', () => {
       if (Math.abs(touchDelta) > 40) scrollCarousel(touchDelta > 0 ? 1 : -1);
     });
   }
