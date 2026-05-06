@@ -1082,9 +1082,9 @@
 
   buildInfiniteTrack();
 
-  // Load Vimeo thumbnails via oEmbed (works from browsers)
+  // Load Vimeo thumbnails via Netlify proxy function
   data.forEach(d => {
-    fetch('https://vimeo.com/api/oembed.json?url=' + encodeURIComponent('https://vimeo.com/' + d.vimeo + '?h=' + d.hash))
+    fetch('/.netlify/functions/vimeo-thumb?id=' + d.vimeo + '&h=' + d.hash)
       .then(r => r.json())
       .then(j => {
         if (!j.thumbnail_url) return;
