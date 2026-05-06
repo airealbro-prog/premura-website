@@ -980,13 +980,11 @@
       card.innerHTML =
         '<div class="tc-card-thumb">' +
           '<div class="tc-thumb-bg" data-init="' + d.name[0] + '"></div>' +
-          '<img class="tc-thumb-img" data-vid="' + d.vimeo + '" alt="' + d.name + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none"/>' +
           '<div class="tc-card-play"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>' +
         '</div>' +
         '<div class="tc-card-body">' +
           '<div class="tc-card-name">' + d.name + '</div>' +
-          '<p class="tc-card-quote">\u201c' + d.quote + '\u201d</p>' +
-          '<div class="tc-card-chips">' + d.tags.map(t => '<span class="tc-chip">' + t + '</span>').join('') + '</div>' +
+          '<span class="tc-chip">' + d.stat + ' ' + d.statSub + '</span>' +
         '</div>';
       track.appendChild(card);
     });
@@ -1045,12 +1043,12 @@
         card.setAttribute('aria-label', 'Play ' + d.name + '’s testimonial');
         card.innerHTML =
           '<div class=”tc-card-thumb”>' +
-              '<div class=”tc-card-play”><svg viewBox=”0 0 24 24” width=”22” height=”22” fill=”currentColor”><path d=”M8 5v14l11-7z”/></svg></div>' +
+            '<div class=”tc-thumb-bg” data-init=”' + d.name[0] + '”></div>' +
+            '<div class=”tc-card-play”><svg viewBox=”0 0 24 24” width=”22” height=”22” fill=”currentColor”><path d=”M8 5v14l11-7z”/></svg></div>' +
           '</div>' +
           '<div class=”tc-card-body”>' +
             '<div class=”tc-card-name”>' + d.name + '</div>' +
-            '<p class=”tc-card-quote”>”' + d.quote + '”</p>' +
-            '<div class=”tc-card-chips”>' + d.tags.map(t => '<span class=”tc-chip”>' + t + '</span>').join('') + '</div>' +
+            '<span class=”tc-chip”>' + d.stat + ' ' + d.statSub + '</span>' +
           '</div>';
         track.appendChild(card);
       });
