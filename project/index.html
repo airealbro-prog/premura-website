@@ -1031,28 +1031,38 @@
 
   function buildInfiniteTrack() {
     track.innerHTML = ‘’;
-    // Prepend clone set + real cards + append clone set
     [data, data, data].forEach((set, setIdx) => {
       set.forEach((d, i) => {
-        const realIdx = setIdx === 1 ? i : -1; // only middle set has real idx
+        const realIdx = setIdx === 1 ? i : -1;
         const card = document.createElement(‘div’);
         card.className = ‘tc-card’;
         card.dataset.idx = realIdx;
         card.setAttribute(‘role’, ‘button’);
         card.setAttribute(‘tabindex’, setIdx === 1 ? ‘0’ : ‘-1’);
         card.setAttribute(‘aria-label’, ‘Play ‘ + d.name + ‘’s testimonial’);
-        card.innerHTML =
-          ‘<div class=”tc-card-thumb”>’ +
-            ‘<iframe title=”vimeo-player” src=”https://player.vimeo.com/video/’ + d.vimeo + ‘?h=’ + d.hash + ‘” frameborder=”0” allow=”autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share” allowfullscreen referrerpolicy=”strict-origin-when-cross-origin” style=”width:100%;height:100%;”></iframe>’ +
-          ‘</div>’ +
-          ‘<div class=”tc-card-body”>’ +
-            ‘<div class=”tc-card-name”>’ + d.name + ‘</div>’ +
-            ‘<span class=”tc-chip”>’ + d.stat + ‘ ‘ + d.statSub + ‘</span>’ +
-          ‘</div>’;
+
+        const thumb = document.createElement(‘div’);
+        thumb.className = ‘tc-card-thumb’;
+
+        const iframe = document.createElement(‘iframe’);
+        iframe.title = ‘vimeo-player’;
+        iframe.src = ‘https://player.vimeo.com/video/’ + d.vimeo + ‘?h=’ + d.hash;
+        iframe.frameBorder = ‘0’;
+        iframe.allow = ‘autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share’;
+        iframe.allowFullscreen = true;
+        iframe.referrerPolicy = ‘strict-origin-when-cross-origin’;
+        iframe.style.cssText = ‘width:100%;height:100%;’;
+        thumb.appendChild(iframe);
+
+        const body = document.createElement(‘div’);
+        body.className = ‘tc-card-body’;
+        body.innerHTML = ‘<div class=”tc-card-name”>’ + d.name + ‘</div><span class=”tc-chip”>’ + d.stat + ‘ ‘ + d.statSub + ‘</span>’;
+
+        card.appendChild(thumb);
+        card.appendChild(body);
         track.appendChild(card);
       });
     });
-    // Start at the first real card (second set)
     offset = N * CARD_W;
     track.style.transition = ‘none’;
     track.style.transform = ‘translateX(-’ + offset + ‘px)’;
