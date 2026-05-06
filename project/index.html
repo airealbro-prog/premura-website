@@ -1030,33 +1030,32 @@
   let isJumping = false;
 
   function buildInfiniteTrack() {
-    track.innerHTML = '';
+    track.innerHTML = ‘’;
     // Prepend clone set + real cards + append clone set
     [data, data, data].forEach((set, setIdx) => {
       set.forEach((d, i) => {
         const realIdx = setIdx === 1 ? i : -1; // only middle set has real idx
-        const card = document.createElement('div');
-        card.className = 'tc-card';
+        const card = document.createElement(‘div’);
+        card.className = ‘tc-card’;
         card.dataset.idx = realIdx;
-        card.setAttribute('role', 'button');
-        card.setAttribute('tabindex', setIdx === 1 ? '0' : '-1');
-        card.setAttribute('aria-label', 'Play ' + d.name + '’s testimonial');
+        card.setAttribute(‘role’, ‘button’);
+        card.setAttribute(‘tabindex’, setIdx === 1 ? ‘0’ : ‘-1’);
+        card.setAttribute(‘aria-label’, ‘Play ‘ + d.name + ‘’s testimonial’);
         card.innerHTML =
-          '<div class=”tc-card-thumb”>' +
-            '<div class=”tc-thumb-bg” data-init=”' + d.name[0] + '” data-vid=”' + d.vimeo + '”></div>' +
-            '<div class=”tc-card-play”><svg viewBox=”0 0 24 24” width=”22” height=”22” fill=”currentColor”><path d=”M8 5v14l11-7z”/></svg></div>' +
-          '</div>' +
-          '<div class=”tc-card-body”>' +
-            '<div class=”tc-card-name”>' + d.name + '</div>' +
-            '<span class=”tc-chip”>' + d.stat + ' ' + d.statSub + '</span>' +
-          '</div>';
+          ‘<div class=”tc-card-thumb”>’ +
+            ‘<iframe src=”https://player.vimeo.com/video/’ + d.vimeo + ‘?h=’ + d.hash + ‘&title=0&byline=0&portrait=0&controls=1” style=”position:absolute;inset:0;width:100%;height:100%;border:0;” allow=”autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share” allowfullscreen referrerpolicy=”strict-origin-when-cross-origin”></iframe>’ +
+          ‘</div>’ +
+          ‘<div class=”tc-card-body”>’ +
+            ‘<div class=”tc-card-name”>’ + d.name + ‘</div>’ +
+            ‘<span class=”tc-chip”>’ + d.stat + ‘ ‘ + d.statSub + ‘</span>’ +
+          ‘</div>’;
         track.appendChild(card);
       });
     });
     // Start at the first real card (second set)
     offset = N * CARD_W;
-    track.style.transition = 'none';
-    track.style.transform = 'translateX(-' + offset + 'px)';
+    track.style.transition = ‘none’;
+    track.style.transform = ‘translateX(-’ + offset + ‘px)’;
   }
 
   function scrollCarousel(dir) {
@@ -1081,21 +1080,6 @@
   }
 
   buildInfiniteTrack();
-
-  // Load Vimeo thumbnails via Netlify proxy function
-  data.forEach(d => {
-    fetch('/api/vimeo-thumb?id=' + d.vimeo + '&h=' + d.hash)
-      .then(r => r.json())
-      .then(j => {
-        if (!j.thumbnail_url) return;
-        track.querySelectorAll('[data-vid="' + d.vimeo + '"]').forEach(el => {
-          const img = document.createElement('img');
-          img.src = j.thumbnail_url;
-          img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
-          el.parentNode.insertBefore(img, el);
-        });
-      }).catch(() => {});
-  });
 
   track.addEventListener('click', (e) => {
     const card = e.target.closest('.tc-card');
