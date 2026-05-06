@@ -944,19 +944,24 @@
   if (!track) return;
 
   const data = [
-    { id:'jorge',  vimeo:'1072247746', hash:'d493e53744', name:'Jorge',
+    { id:'jorge',  vimeo:'1072247746', hash:'d493e53744', name:'Jorge',  vertical:'Solar',
+      stat:'20+', statSub:'deals per month',
       quote:'Started strong with 6 deals and 43KW in the first month. Now we\u2019re consistently doing 20+ deals monthly.',
       tags:['6 Deals & 43KW \u00b7 Month 1','20+ Deals / Month'] },
-    { id:'leicer', vimeo:'1072244795', hash:'5d8bc1fb19', name:'Leicer',
+    { id:'leicer', vimeo:'1072244795', hash:'5d8bc1fb19', name:'Leicer', vertical:'Solar',
+      stat:'$152,000', statSub:'in payouts \u00b7 one month',
       quote:'November was incredible \u2014 22 sales from the system alone. The automation just works and keeps delivering results.',
       tags:['22 Deals \u00b7 1 Month','$152,000 in Payouts'] },
-    { id:'caesar', vimeo:'1072251232', hash:'50162c383c', name:'Caesar',
+    { id:'caesar', vimeo:'1072251232', hash:'50162c383c', name:'Caesar', vertical:'Solar',
+      stat:'8\u201310', statSub:'installs per month',
       quote:'20 appointments in the first week, closed 4 of them. Now we\u2019re consistently hitting 8\u201310 installs every month.',
       tags:['20 Appts Week 1','8\u201310 Installs / Month'] },
-    { id:'scott',  vimeo:'1072241851', hash:'26fcdbbedd', name:'Scott',
+    { id:'scott',  vimeo:'1072241851', hash:'26fcdbbedd', name:'Scott',  vertical:'Roofing',
+      stat:'17', statSub:'deals in their first month',
       quote:'The results were so good that we decided to merge and become partners. This system is the real deal for roofing companies.',
       tags:['17 Deals \u00b7 1 Month','Merged as Partners'] },
-    { id:'rafa',   vimeo:'1091678713', hash:'243b833aa0', name:'Rafa',
+    { id:'rafa',   vimeo:'1091678713', hash:'243b833aa0', name:'Rafa',   vertical:'Solar',
+      stat:'12+', statSub:'deals every month',
       quote:'From struggling to find leads to consistent monthly results. This completely changed my business.',
       tags:['5 Deals \u00b7 First 2 Weeks','12+ Deals Every Month'] },
   ];
@@ -999,6 +1004,12 @@
     iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
     playerFrame.appendChild(iframe);
     playerMeta.innerHTML =
+      '<span class="tc-player-badge tc-player-badge--' + d.vertical.toLowerCase() + '">' + d.vertical + '</span>' +
+      '<div class="tc-player-stat">' +
+        '<div class="tc-player-stat-val">' + d.stat + '</div>' +
+        '<div class="tc-player-stat-sub">' + d.statSub + '</div>' +
+      '</div>' +
+      '<div class="tc-player-divider"></div>' +
       '<div class="tc-player-name">' + d.name + '</div>' +
       '<div class="tc-player-chips">' + d.tags.map(t => '<span class="tc-chip">' + t + '</span>').join('') + '</div>';
     playerWrap.classList.add('is-open');
