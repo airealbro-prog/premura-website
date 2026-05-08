@@ -92,14 +92,14 @@
   </div>
 </div>
 
-<!-- ═══ APPLE-STYLE DAY CALENDAR — Fills as you scroll ═══ -->
+<!-- ═══ MULTI-AGENT CALENDAR STACK — Fills as you scroll ═══ -->
 <section class="cal-section">
   <div class="cal-pin">
     <div class="cal-inner">
       <div class="cal-header">
-        <span class="cal-eyebrow">Today's Schedule</span>
-        <h2 class="cal-title">Watch a calendar<br>fill in real time.</h2>
-        <p class="cal-sub">Scroll down. Every slot below is a real appointment booked by a Premura agent today.</p>
+        <span class="cal-eyebrow">Today's Calendars</span>
+        <h2 class="cal-title">Five agents.<br>One day. Filling up.</h2>
+        <p class="cal-sub">Scroll down. Watch every agent's calendar fill simultaneously — every slot is a booked appointment.</p>
       </div>
 
       <div class="cal-frame">
@@ -116,8 +116,15 @@
             </div>
           </div>
         </div>
-        <div class="cal-timeline" id="calTimeline">
-          <!-- hours + appointments populated by JS -->
+
+        <div class="cal-grid-wrap">
+          <!-- Hour ruler -->
+          <div class="cal-hour-ruler">
+            <div class="cal-agent-spacer"></div>
+            <div class="cal-hours" id="calHours"></div>
+          </div>
+          <!-- Agent rows -->
+          <div class="cal-agents" id="calAgents"></div>
         </div>
       </div>
     </div>
@@ -1142,79 +1149,91 @@
 <script>
 (function() {
   const section = document.querySelector(".cal-section");
-  const timeline = document.getElementById("calTimeline");
+  const hoursEl = document.getElementById("calHours");
+  const agentsEl = document.getElementById("calAgents");
   const counter = document.getElementById("calCount");
-  if (!section || !timeline) return;
+  if (!section || !hoursEl || !agentsEl) return;
 
-  // Schedule of appointments throughout the day (in scroll-reveal order)
-  const appointments = [
-    { hour: 9,  min: 15, name: "Robert K.",      loc: "Phoenix, AZ",      vert: "solar" },
-    { hour: 9,  min: 45, name: "Sarah M.",       loc: "Tampa, FL",        vert: "roofing" },
-    { hour: 10, min: 0,  name: "James L.",       loc: "Austin, TX",       vert: "solar" },
-    { hour: 10, min: 30, name: "Maria G.",       loc: "Las Vegas, NV",    vert: "solar" },
-    { hour: 11, min: 0,  name: "David T.",       loc: "Charlotte, NC",    vert: "roofing" },
-    { hour: 11, min: 45, name: "Lisa R.",        loc: "Denver, CO",       vert: "solar" },
-    { hour: 12, min: 30, name: "Mike S.",        loc: "Atlanta, GA",      vert: "roofing" },
-    { hour: 13, min: 0,  name: "Karen W.",       loc: "Sacramento, CA",   vert: "solar" },
-    { hour: 13, min: 45, name: "Tom B.",         loc: "Houston, TX",      vert: "solar" },
-    { hour: 14, min: 15, name: "Emma F.",        loc: "Orlando, FL",      vert: "roofing" },
-    { hour: 15, min: 0,  name: "Carlos H.",      loc: "San Diego, CA",    vert: "solar" },
-    { hour: 15, min: 30, name: "Patricia N.",    loc: "Nashville, TN",    vert: "solar" },
-    { hour: 16, min: 0,  name: "Steven J.",      loc: "Seattle, WA",      vert: "roofing" },
-    { hour: 16, min: 45, name: "Jennifer P.",    loc: "Boston, MA",       vert: "solar" }
-  ];
-  const N = appointments.length;
+  const HOURS_START = 8;
+  const HOURS_END = 18;
+  const HOUR_COUNT = HOURS_END - HOURS_START + 1; // 11 columns (8 AM - 6 PM)
 
-  // Build timeline rows for hours 9 AM - 5 PM
-  const startHour = 9;
-  const endHour = 17;
-  const slotsByHour = {};
-
-  for (let h = startHour; h <= endHour; h++) {
-    const row = document.createElement("div");
-    row.className = "cal-row";
-
-    const hourLabel = document.createElement("div");
-    hourLabel.className = "cal-hour";
-    const displayHour = h > 12 ? h - 12 : h;
+  // Build hour ruler
+  for (let h = HOURS_START; h <= HOURS_END; h++) {
+    const cell = document.createElement("div");
+    cell.className = "cal-hour-cell";
+    const displayHour = h > 12 ? h - 12 : (h === 0 ? 12 : h);
     const ampm = h >= 12 ? "PM" : "AM";
-    hourLabel.textContent = displayHour + " " + ampm;
-
-    const slot = document.createElement("div");
-    slot.className = "cal-slot";
-    slot.dataset.hour = h;
-    slotsByHour[h] = slot;
-
-    row.appendChild(hourLabel);
-    row.appendChild(slot);
-    timeline.appendChild(row);
+    cell.textContent = displayHour + " " + ampm;
+    hoursEl.appendChild(cell);
   }
 
-  // Pre-create appointment cards in their slots, hidden until scroll reveals them
-  function pad(n) { return n < 10 ? "0" + n : n; }
-  function fmtTime(h, m) {
-    const displayH = h > 12 ? h - 12 : h;
-    return displayH + ":" + pad(m) + (h >= 12 ? " PM" : " AM");
-  }
+  // Agents
+  const agents = [
+    { name: "Maria R.", initials: "MR", color: "purple" },
+    { name: "James L.", initials: "JL", color: "blue" },
+    { name: "Sarah M.", initials: "SM", color: "pink" },
+    { name: "Carlos H.", initials: "CH", color: "amber" },
+    { name: "Lisa T.", initials: "LT", color: "green" }
+  ];
 
-  appointments.forEach((appt, idx) => {
-    const slot = slotsByHour[appt.hour];
-    if (!slot) return;
-    const card = document.createElement("div");
-    card.className = "cal-appt";
-    card.dataset.idx = idx;
-    card.dataset.vert = appt.vert;
-    card.innerHTML =
-      '<div class="cal-appt-bar"></div>' +
-      '<div class="cal-appt-info">' +
-        '<div class="cal-appt-name">' + fmtTime(appt.hour, appt.min) + ' — ' + appt.name + '</div>' +
-        '<div class="cal-appt-loc">' + appt.loc + '</div>' +
-      '</div>' +
-      '<div class="cal-appt-status">BOOKED</div>';
-    slot.appendChild(card);
+  // Each agent's appointments — slot is hour position (0 = 8 AM, 10 = 6 PM)
+  const schedule = [
+    [{ slot: 1, name: "Robert K.", loc: "Phoenix" }, { slot: 3, name: "Karen W.", loc: "Sacramento" }, { slot: 6, name: "Mike S.", loc: "Atlanta" }, { slot: 9, name: "Jennifer P.", loc: "Boston" }],
+    [{ slot: 0, name: "Sarah M.", loc: "Tampa" }, { slot: 2, name: "Tom B.", loc: "Houston" }, { slot: 5, name: "Emma F.", loc: "Orlando" }, { slot: 8, name: "Brian D.", loc: "Dallas" }],
+    [{ slot: 2, name: "James L.", loc: "Austin" }, { slot: 4, name: "Lisa R.", loc: "Denver" }, { slot: 7, name: "Steven J.", loc: "Seattle" }, { slot: 10, name: "Amy P.", loc: "Portland" }],
+    [{ slot: 1, name: "David T.", loc: "Charlotte" }, { slot: 4, name: "Maria G.", loc: "Las Vegas" }, { slot: 6, name: "Patricia N.", loc: "Nashville" }, { slot: 9, name: "Eric H.", loc: "Salt Lake" }],
+    [{ slot: 0, name: "Sandra K.", loc: "Miami" }, { slot: 3, name: "Carlos H.", loc: "San Diego" }, { slot: 5, name: "Anna B.", loc: "Chicago" }, { slot: 8, name: "Kevin M.", loc: "Detroit" }, { slot: 10, name: "Rita V.", loc: "Albuquerque" }]
+  ];
+
+  // Build agent rows + appointments (hidden until scroll)
+  const allAppts = [];
+  agents.forEach((agent, ai) => {
+    const row = document.createElement("div");
+    row.className = "cal-agent-row";
+    row.dataset.color = agent.color;
+
+    const info = document.createElement("div");
+    info.className = "cal-agent-info";
+    info.innerHTML =
+      '<div class="cal-agent-avatar">' + agent.initials + '</div>' +
+      '<div>' +
+        '<div class="cal-agent-name">' + agent.name + '</div>' +
+        '<div class="cal-agent-status">● Online</div>' +
+      '</div>';
+
+    const slots = document.createElement("div");
+    slots.className = "cal-agent-slots";
+    for (let i = 0; i < HOUR_COUNT; i++) {
+      const cell = document.createElement("div");
+      cell.className = "cal-slot-cell";
+      slots.appendChild(cell);
+    }
+
+    // Place appointments in their slots
+    schedule[ai].forEach(appt => {
+      if (appt.slot < 0 || appt.slot >= HOUR_COUNT) return;
+      const card = document.createElement("div");
+      card.className = "cal-appt";
+      card.style.left = "calc(" + (appt.slot / HOUR_COUNT * 100) + "% + 3px)";
+      card.style.right = "auto";
+      card.style.width = "calc(" + (1 / HOUR_COUNT * 100) + "% - 6px)";
+      card.innerHTML =
+        '<div class="cal-appt-name">' + appt.name + '</div>' +
+        '<div class="cal-appt-loc">' + appt.loc + '</div>';
+      slots.appendChild(card);
+      allAppts.push({ card: card, slot: appt.slot, agent: ai });
+    });
+
+    row.appendChild(info);
+    row.appendChild(slots);
+    agentsEl.appendChild(row);
   });
 
-  const cards = timeline.querySelectorAll(".cal-appt");
+  // Sort all appointments by slot then agent so they reveal time-by-time across agents
+  allAppts.sort((a, b) => a.slot - b.slot || a.agent - b.agent);
+  const N = allAppts.length;
+
   let lastShown = -1;
   let ticking = false;
 
@@ -1227,20 +1246,20 @@
     const scrolled = -rect.top;
     const progress = Math.max(0, Math.min(1, scrolled / totalScroll));
 
-    // Reveal cards based on progress — show all by 90% scroll
-    const shouldShow = Math.floor(progress / 0.9 * N);
+    // Reveal up to 90% scroll, leave last 10% to "linger"
+    const shouldShow = Math.min(N, Math.floor(progress / 0.85 * N));
     if (shouldShow !== lastShown) {
-      cards.forEach((card, idx) => {
+      allAppts.forEach((a, idx) => {
         if (idx < shouldShow) {
-          card.classList.add("shown");
+          a.card.classList.add("shown");
         } else {
-          card.classList.remove("shown");
+          a.card.classList.remove("shown");
         }
       });
+      counter.textContent = shouldShow;
       lastShown = shouldShow;
     }
 
-    counter.textContent = Math.min(N, shouldShow);
     ticking = false;
   }
 
