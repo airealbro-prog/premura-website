@@ -1133,40 +1133,54 @@
 (function() {
   const grid = document.getElementById("calendarGrid");
   const statFilled = document.getElementById("statFilled");
-  if (!grid) return;
+  const section = document.querySelector(".scroll-animation");
+  if (!grid || !section) return;
 
-  const totalCells = 150;
-  let activeCells = 0;
-
+  const totalCells = 120;
   for (let i = 0; i < totalCells; i++) {
     const cell = document.createElement("div");
     cell.className = "calendar-cell";
-    cell.style.animation = "none";
     grid.appendChild(cell);
   }
 
-  const section = document.querySelector(".scroll-animation");
-  const sectionTop = section.offsetTop;
-  const sectionHeight = section.offsetHeight;
+  const cells = grid.querySelectorAll(".calendar-cell");
+  let ticking = false;
+  let lastActiveCount = 0;
 
-  window.addEventListener("scroll", () => {
-    const scrolled = window.scrollY - sectionTop;
-    const progress = Math.max(0, Math.min(1, scrolled / (sectionHeight * 0.7)));
+  function updateCalendar() {
+    const rect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const sectionHeight = section.offsetHeight;
+
+    // Progress: starts when top hits viewport top, ends when bottom hits viewport bottom
+    const totalScroll = sectionHeight - windowHeight;
+    const scrolled = -rect.top;
+    const progress = Math.max(0, Math.min(1, scrolled / totalScroll));
     const cellsToActivate = Math.floor(progress * totalCells);
 
-    const cells = grid.querySelectorAll(".calendar-cell");
-    cells.forEach((cell, idx) => {
-      if (idx < cellsToActivate) {
-        if (!cell.classList.contains("active")) {
+    if (cellsToActivate !== lastActiveCount) {
+      cells.forEach((cell, idx) => {
+        if (idx < cellsToActivate) {
           cell.classList.add("active");
-          cell.style.animationDelay = idx * 20 + "ms";
+        } else {
+          cell.classList.remove("active");
         }
-      }
-    });
+      });
+      statFilled.textContent = cellsToActivate;
+      lastActiveCount = cellsToActivate;
+    }
 
-    activeCells = cellsToActivate;
-    statFilled.textContent = Math.min(150, cellsToActivate);
-  });
+    ticking = false;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(updateCalendar);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateCalendar();
 })();
 </script>
 </body>
