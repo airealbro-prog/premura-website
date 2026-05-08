@@ -452,6 +452,7 @@ p{color:var(--text-secondary);line-height:1.75;}
   /* Mobile: horizontal scrollable calendar with sticky agent column */
   .cal-grid-wrap{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
   .cal-grid-wrap::-webkit-scrollbar{display:none;}
+  .cal-agents{overflow:visible;}
 
   .cal-hour-ruler{
     display:grid;
