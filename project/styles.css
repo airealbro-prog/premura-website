@@ -167,8 +167,89 @@ p{color:var(--text-secondary);line-height:1.75;}
 .scroll-section-wrap{position:relative;}
 .scroll-fade-top{position:relative;z-index:2;height:80px;background:linear-gradient(to bottom,var(--bg) 0%,transparent 100%);margin-bottom:-80px;pointer-events:none;}
 .scroll-fade-bottom{position:relative;z-index:2;height:80px;background:linear-gradient(to top,#ffffff 0%,transparent 100%);margin-top:-80px;pointer-events:none;}
-.scroll-animation{height:280vh;position:relative;background:#f5f3ff;}
-.scroll-sticky{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;}
+.scroll-animation{height:180vh;position:relative;background:#f5f3ff;}
+.scroll-sticky{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+
+/* ── Calendar Grid ── */
+.calendar-wrap{width:100%;max-width:900px;margin:0 auto;padding:0 40px;}
+.calendar-header{text-align:center;margin-bottom:60px;}
+.calendar-header h3{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:700;color:#12102a;line-height:1.2;}
+.calendar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(45px,1fr));gap:8px;margin-bottom:60px;}
+.calendar-cell{
+  aspect-ratio:1;
+  background:rgba(139,60,247,.08);
+  border:1px solid rgba(139,60,247,.15);
+  border-radius:8px;
+  transition:all .4s cubic-bezier(.2,.6,.3,.8);
+  position:relative;
+  overflow:hidden;
+}
+.calendar-cell.active{
+  background:linear-gradient(135deg,#a855f7,#8b3cf7);
+  border-color:#a855f7;
+  box-shadow:0 0 20px rgba(168,85,247,.4),inset 0 1px 0 rgba(255,255,255,.2);
+}
+.calendar-cell.active::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.3),transparent 70%);
+  animation:cellParticle .8s ease-out forwards;
+}
+@keyframes cellParticle{
+  0%{
+    opacity:1;
+    transform:scale(0) translate(-50%,-50%);
+  }
+  100%{
+    opacity:0;
+    transform:scale(1) translate(0,0);
+  }
+}
+.calendar-stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
+.stat-box{text-align:center;padding:20px 40px;}
+.stat-value{
+  font-family:'Syne',sans-serif;
+  font-size:3rem;
+  font-weight:800;
+  color:#a855f7;
+  line-height:1;
+  display:block;
+  margin-bottom:8px;
+}
+.stat-label{
+  font-size:.85rem;
+  color:#5b5a7e;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-weight:600;
+}
+
+@media(max-width:1024px){
+  .scroll-animation{height:160vh;}
+  .calendar-wrap{padding:0 20px;}
+  .calendar-header h3{font-size:1.5rem;}
+}
+@media(max-width:768px){
+  .scroll-animation{height:140vh;}
+  .calendar-header{margin-bottom:40px;}
+  .calendar-header h3{font-size:1.2rem;}
+  .calendar-grid{gap:6px;}
+  .calendar-cell{border-radius:6px;}
+  .calendar-stats{gap:20px;}
+  .stat-box{padding:16px 20px;}
+  .stat-value{font-size:2rem;}
+  .stat-label{font-size:.75rem;}
+}
+@media(max-width:480px){
+  .scroll-animation{height:130vh;}
+  .calendar-wrap{padding:0 12px;}
+  .calendar-header h3{font-size:1rem;}
+  .calendar-grid{gap:4px;}
+  .calendar-cell{border-radius:4px;}
+  .stat-box{padding:12px 16px;}
+  .stat-value{font-size:1.8rem;}
+}
 #frameCanvas{position:absolute;top:0;left:0;}
 
 .scroll-animation-video{position:relative;background:#f5f3ff;padding:80px 0;}
