@@ -167,14 +167,25 @@ p{color:var(--text-secondary);line-height:1.75;}
 .scroll-section-wrap{position:relative;}
 .scroll-fade-top{position:relative;z-index:2;height:80px;background:linear-gradient(to bottom,var(--bg) 0%,transparent 100%);margin-bottom:-80px;pointer-events:none;}
 .scroll-fade-bottom{position:relative;z-index:2;height:80px;background:linear-gradient(to top,#ffffff 0%,transparent 100%);margin-top:-80px;pointer-events:none;}
-/* ── Live Appointment Feed — Mission Control ── */
+/* ── Live Appointment Feed — Mission Control (Pin & Fill) ── */
 .lf-section{
   background:linear-gradient(180deg,#080614 0%,#0c0a1a 100%);
-  padding:120px 40px;
   position:relative;
+  height:280vh;
+}
+.lf-pin{
+  position:sticky;
+  top:0;
+  height:100vh;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:80px 40px 40px;
+  box-sizing:border-box;
   overflow:hidden;
 }
-.lf-section::before{
+.lf-pin::before{
   content:'';
   position:absolute;
   top:-200px;
@@ -185,8 +196,8 @@ p{color:var(--text-secondary);line-height:1.75;}
   background:radial-gradient(circle,rgba(139,60,247,.15),transparent 60%);
   pointer-events:none;
 }
-.lf-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
-.lf-header{text-align:center;margin-bottom:60px;}
+.lf-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;width:100%;}
+.lf-header{text-align:center;margin-bottom:36px;}
 .lf-eyebrow{
   display:inline-block;
   font-size:.7rem;
@@ -198,11 +209,11 @@ p{color:var(--text-secondary);line-height:1.75;}
 }
 .lf-title{
   font-family:'Syne',sans-serif;
-  font-size:3rem;
+  font-size:2.4rem;
   font-weight:800;
   color:#fff;
   line-height:1.1;
-  margin:0 0 16px;
+  margin:0 0 14px;
   letter-spacing:-1px;
 }
 .lf-title-accent{
@@ -351,7 +362,7 @@ p{color:var(--text-secondary);line-height:1.75;}
   font-family:'JetBrains Mono','Courier New',monospace;
   display:flex;
   flex-direction:column;
-  min-height:520px;
+  height:480px;
 }
 .lf-stream::before{
   content:'';
@@ -381,12 +392,28 @@ p{color:var(--text-secondary);line-height:1.75;}
 .lf-stream-list{
   flex:1;
   display:flex;
-  flex-direction:column;
+  flex-direction:column-reverse;
+  justify-content:flex-start;
   gap:10px;
   position:relative;
   z-index:1;
   overflow:hidden;
+  min-height:0;
 }
+.lf-stream-list::before{
+  content:'WAITING FOR FIRST CALL...';
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:.7rem;
+  letter-spacing:.18em;
+  color:rgba(233,233,240,.25);
+  pointer-events:none;
+  z-index:0;
+}
+.lf-stream-list .lf-item{position:relative;z-index:1;}
+.lf-stream-list:has(.lf-item)::before{display:none;}
 .lf-stream-fade{
   position:absolute;
   bottom:0;
@@ -435,21 +462,25 @@ p{color:var(--text-secondary);line-height:1.75;}
   white-space:nowrap;
 }
 
+@media(max-width:1024px){
+  .lf-section{height:auto;}
+  .lf-pin{position:relative;height:auto;padding:80px 24px;}
+}
 @media(max-width:900px){
-  .lf-section{padding:80px 24px;}
-  .lf-title{font-size:2.2rem;}
+  .lf-pin{padding:64px 24px;}
+  .lf-title{font-size:1.9rem;}
   .lf-grid{grid-template-columns:1fr;gap:16px;}
-  .lf-stream{min-height:420px;}
+  .lf-stream{height:360px;}
   .lf-counter-num{font-size:3.4rem;}
 }
 @media(max-width:560px){
-  .lf-section{padding:64px 16px;}
-  .lf-header{margin-bottom:40px;}
-  .lf-title{font-size:1.7rem;}
-  .lf-sub{font-size:.9rem;}
+  .lf-pin{padding:48px 16px;}
+  .lf-header{margin-bottom:28px;}
+  .lf-title{font-size:1.5rem;}
+  .lf-sub{font-size:.88rem;}
   .lf-panel{padding:22px 18px;}
-  .lf-stream{padding:18px;}
-  .lf-counter-num{font-size:3rem;}
+  .lf-stream{padding:18px;height:320px;}
+  .lf-counter-num{font-size:2.8rem;}
   .lf-item{padding:12px;gap:10px;}
   .lf-item-name{font-size:.78rem;}
   .lf-item-time{font-size:.65rem;}

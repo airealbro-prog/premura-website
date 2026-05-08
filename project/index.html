@@ -92,73 +92,74 @@
   </div>
 </div>
 
-<!-- ═══ LIVE APPOINTMENT FEED — MISSION CONTROL ═══ -->
+<!-- ═══ LIVE APPOINTMENT FEED — MISSION CONTROL (Pin & Fill) ═══ -->
 <section class="lf-section">
-  <div class="lf-inner">
-    <div class="lf-header">
-      <span class="lf-eyebrow">PREMURA · LIVE FEED</span>
-      <h2 class="lf-title">Calendars filling.<br><span class="lf-title-accent">Right now.</span></h2>
-      <p class="lf-sub">Real appointments. Real agents. Real calendars getting filled — every minute, across every active campaign.</p>
-    </div>
+  <div class="lf-pin">
+    <div class="lf-inner">
+      <div class="lf-header">
+        <span class="lf-eyebrow">PREMURA · LIVE FEED</span>
+        <h2 class="lf-title">Calendars filling.<br><span class="lf-title-accent">Right now.</span></h2>
+        <p class="lf-sub">Scroll to fill the day. Every appointment is a real call, a real calendar, a real client booked.</p>
+      </div>
 
-    <div class="lf-grid">
-      <!-- LEFT: Status Panel -->
-      <aside class="lf-panel">
-        <div class="lf-panel-head">
-          <div class="lf-panel-status">
-            <span class="lf-dot"></span>
-            <span class="lf-panel-label">APPOINTMENT FEED</span>
+      <div class="lf-grid">
+        <!-- LEFT: Status Panel -->
+        <aside class="lf-panel">
+          <div class="lf-panel-head">
+            <div class="lf-panel-status">
+              <span class="lf-dot"></span>
+              <span class="lf-panel-label">APPOINTMENT FEED</span>
+            </div>
+            <div class="lf-panel-id">SYSTEM ID — PMR.LIVE.01</div>
           </div>
-          <div class="lf-panel-id">SYSTEM ID — PMR.LIVE.01</div>
-        </div>
 
-        <div class="lf-counter">
-          <div class="lf-counter-label">BOOKED TODAY</div>
-          <div class="lf-counter-num" id="lfCounter">0</div>
-          <div class="lf-counter-pulse"></div>
-        </div>
+          <div class="lf-counter">
+            <div class="lf-counter-label">BOOKED TODAY</div>
+            <div class="lf-counter-num" id="lfCounter">0</div>
+          </div>
 
-        <div class="lf-systems">
-          <div class="lf-systems-label">SYSTEM STATUS</div>
-          <div class="lf-system live">
-            <span class="lf-sys-dot"></span>
-            <span class="lf-sys-name">Agents online</span>
-            <span class="lf-sys-state" id="lfAgents">142</span>
+          <div class="lf-systems">
+            <div class="lf-systems-label">SYSTEM STATUS</div>
+            <div class="lf-system live">
+              <span class="lf-sys-dot"></span>
+              <span class="lf-sys-name">Agents online</span>
+              <span class="lf-sys-state" id="lfAgents">142</span>
+            </div>
+            <div class="lf-system live">
+              <span class="lf-sys-dot"></span>
+              <span class="lf-sys-name">Active calls</span>
+              <span class="lf-sys-state" id="lfCalls">38</span>
+            </div>
+            <div class="lf-system live">
+              <span class="lf-sys-dot"></span>
+              <span class="lf-sys-name">Calendars syncing</span>
+              <span class="lf-sys-state">LIVE</span>
+            </div>
+            <div class="lf-system live">
+              <span class="lf-sys-dot"></span>
+              <span class="lf-sys-name">Show rate</span>
+              <span class="lf-sys-state" id="lfShow">72%</span>
+            </div>
           </div>
-          <div class="lf-system live">
-            <span class="lf-sys-dot"></span>
-            <span class="lf-sys-name">Active calls</span>
-            <span class="lf-sys-state" id="lfCalls">38</span>
-          </div>
-          <div class="lf-system live">
-            <span class="lf-sys-dot"></span>
-            <span class="lf-sys-name">Calendars syncing</span>
-            <span class="lf-sys-state">LIVE</span>
-          </div>
-          <div class="lf-system live">
-            <span class="lf-sys-dot"></span>
-            <span class="lf-sys-name">Show rate</span>
-            <span class="lf-sys-state" id="lfShow">72%</span>
-          </div>
-        </div>
 
-        <div class="lf-progress-block">
-          <div class="lf-progress-label">DAILY TARGET</div>
-          <div class="lf-progress-bar"><div class="lf-progress-fill" id="lfProgress"></div></div>
-          <div class="lf-progress-pct"><span id="lfPct">0</span>% of 200 appointments</div>
-        </div>
-      </aside>
+          <div class="lf-progress-block">
+            <div class="lf-progress-label">DAILY TARGET</div>
+            <div class="lf-progress-bar"><div class="lf-progress-fill" id="lfProgress"></div></div>
+            <div class="lf-progress-pct"><span id="lfPct">0</span>% of 200 appointments</div>
+          </div>
+        </aside>
 
-      <!-- RIGHT: Live Feed -->
-      <div class="lf-stream" id="lfStream">
-        <div class="lf-stream-head">
-          <span class="lf-stream-label">INCOMING APPOINTMENTS</span>
-          <span class="lf-stream-time" id="lfTime">--:--</span>
+        <!-- RIGHT: Live Feed -->
+        <div class="lf-stream">
+          <div class="lf-stream-head">
+            <span class="lf-stream-label">INCOMING APPOINTMENTS</span>
+            <span class="lf-stream-time" id="lfTime">--:--</span>
+          </div>
+          <div class="lf-stream-list" id="lfList">
+            <!-- populated by scroll -->
+          </div>
+          <div class="lf-stream-fade"></div>
         </div>
-        <div class="lf-stream-list" id="lfList">
-          <!-- populated by JS -->
-        </div>
-        <div class="lf-stream-fade"></div>
       </div>
     </div>
   </div>
@@ -1182,6 +1183,7 @@
 <script>
 (function() {
   const section = document.querySelector(".lf-section");
+  const pin = document.querySelector(".lf-pin");
   const list = document.getElementById("lfList");
   const counter = document.getElementById("lfCounter");
   const timeEl = document.getElementById("lfTime");
@@ -1192,141 +1194,113 @@
   const showEl = document.getElementById("lfShow");
   if (!section || !list) return;
 
-  const samples = [
-    { name: "Robert K.", loc: "Phoenix, AZ" },
-    { name: "Sarah M.", loc: "Tampa, FL" },
-    { name: "James L.", loc: "Austin, TX" },
-    { name: "Maria G.", loc: "Las Vegas, NV" },
-    { name: "David T.", loc: "Charlotte, NC" },
-    { name: "Lisa R.", loc: "Denver, CO" },
-    { name: "Mike S.", loc: "Atlanta, GA" },
-    { name: "Karen W.", loc: "Sacramento, CA" },
-    { name: "Tom B.", loc: "Houston, TX" },
-    { name: "Emma F.", loc: "Orlando, FL" },
-    { name: "Carlos H.", loc: "San Diego, CA" },
-    { name: "Patricia N.", loc: "Nashville, TN" },
-    { name: "Steven J.", loc: "Seattle, WA" },
-    { name: "Jennifer P.", loc: "Boston, MA" },
-    { name: "Brian D.", loc: "Dallas, TX" }
+  // Fixed appointments that fill in scroll order
+  const appointments = [
+    { name: "Robert K.", loc: "Phoenix, AZ", status: "BOOKED" },
+    { name: "Sarah M.", loc: "Tampa, FL", status: "CONFIRMED" },
+    { name: "James L.", loc: "Austin, TX", status: "BOOKED" },
+    { name: "Maria G.", loc: "Las Vegas, NV", status: "BOOKED" },
+    { name: "David T.", loc: "Charlotte, NC", status: "CONFIRMED" },
+    { name: "Lisa R.", loc: "Denver, CO", status: "BOOKED" },
+    { name: "Mike S.", loc: "Atlanta, GA", status: "BOOKED" },
+    { name: "Karen W.", loc: "Sacramento, CA", status: "CONFIRMED" },
+    { name: "Tom B.", loc: "Houston, TX", status: "BOOKED" },
+    { name: "Emma F.", loc: "Orlando, FL", status: "BOOKED" },
+    { name: "Carlos H.", loc: "San Diego, CA", status: "CONFIRMED" },
+    { name: "Patricia N.", loc: "Nashville, TN", status: "BOOKED" }
   ];
-
-  const statuses = [
-    { text: "BOOKED", color: "#22c55e" },
-    { text: "CONFIRMED", color: "#22c55e" },
-    { text: "BOOKED", color: "#22c55e" },
-    { text: "BOOKED", color: "#22c55e" }
-  ];
-
-  let counterValue = 0;
-  let started = false;
-  let intervalId = null;
+  const N = appointments.length;
   const targetCount = 200;
+  const startCount = 0;
 
   function pad(n) { return n < 10 ? "0" + n : n; }
   function nowTime() {
     const d = new Date();
     return pad(d.getHours()) + ":" + pad(d.getMinutes()) + ":" + pad(d.getSeconds());
   }
-  function recentTime(secAgo) {
-    const d = new Date(Date.now() - secAgo * 1000);
-    return pad(d.getHours()) + ":" + pad(d.getMinutes()) + ":" + pad(d.getSeconds());
-  }
 
-  function addAppointment() {
-    const sample = samples[Math.floor(Math.random() * samples.length)];
-    const status = statuses[Math.floor(Math.random() * statuses.length)];
-
+  // Pre-create all items hidden so we can show/hide based on scroll
+  appointments.forEach((appt, idx) => {
     const item = document.createElement("div");
     item.className = "lf-item";
+    item.dataset.idx = idx;
+    item.style.display = "none";
     item.innerHTML =
       '<div class="lf-item-time">' + nowTime() + '</div>' +
       '<div class="lf-item-info">' +
-        '<div class="lf-item-name">' + sample.name + '</div>' +
-        '<div class="lf-item-loc">▸ ' + sample.loc + '</div>' +
+        '<div class="lf-item-name">' + appt.name + '</div>' +
+        '<div class="lf-item-loc">▸ ' + appt.loc + '</div>' +
       '</div>' +
-      '<div class="lf-item-status">' + status.text + '</div>';
+      '<div class="lf-item-status">' + appt.status + '</div>';
+    list.appendChild(item);
+  });
 
-    list.insertBefore(item, list.firstChild);
+  const items = list.querySelectorAll(".lf-item");
+  let lastShown = -1;
+  let ticking = false;
 
-    // Keep only the latest 6 items
-    while (list.children.length > 6) {
-      list.removeChild(list.lastChild);
-    }
+  function updateScroll() {
+    const rect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const sectionHeight = section.offsetHeight;
 
-    // Update counter
-    counterValue++;
-    counter.textContent = counterValue;
+    // Progress 0 → 1 across the entire scroll range
+    const totalScroll = sectionHeight - windowHeight;
+    const scrolled = -rect.top;
+    const progress = Math.max(0, Math.min(1, scrolled / totalScroll));
 
-    // Update progress
-    const pct = Math.min(100, Math.round(counterValue / targetCount * 100));
+    // Counter goes 0 → 200
+    const count = Math.round(startCount + (targetCount - startCount) * progress);
+    counter.textContent = count;
+
+    // Progress bar fills
+    const pct = Math.min(100, Math.round(count / targetCount * 100));
     progressBar.style.width = pct + "%";
     progressPct.textContent = pct;
 
-    // Subtle changes to system stats
-    if (Math.random() > 0.7) {
-      agentsEl.textContent = 138 + Math.floor(Math.random() * 12);
-      callsEl.textContent = 32 + Math.floor(Math.random() * 18);
-      showEl.textContent = (70 + Math.floor(Math.random() * 6)) + "%";
+    // Show appointments based on progress (one per ~8% scroll)
+    const shouldShow = Math.floor(progress * (N + 1));
+    if (shouldShow !== lastShown) {
+      items.forEach((item, idx) => {
+        if (idx < shouldShow) {
+          if (item.style.display === "none") {
+            // Set fresh time when revealing
+            const timeStr = nowTime();
+            item.querySelector(".lf-item-time").textContent = timeStr;
+            item.style.display = "";
+            // Restart slide-in animation
+            item.style.animation = "none";
+            void item.offsetWidth;
+            item.style.animation = "";
+          }
+        } else {
+          item.style.display = "none";
+        }
+      });
+      lastShown = shouldShow;
     }
+
+    // Subtle stat updates based on progress
+    agentsEl.textContent = 138 + Math.floor(progress * 8);
+    callsEl.textContent = 32 + Math.floor(progress * 14);
+    showEl.textContent = (70 + Math.floor(progress * 6)) + "%";
+
+    ticking = false;
   }
 
-  function tickClock() {
-    timeEl.textContent = nowTime();
-  }
+  // Live clock
+  function tickClock() { timeEl.textContent = nowTime(); }
+  tickClock();
+  setInterval(tickClock, 1000);
 
-  function start() {
-    if (started) return;
-    started = true;
-
-    // Pre-fill with a few existing items so it doesn't look empty
-    const seed = [
-      { name: "Robert K.", loc: "Phoenix, AZ", time: recentTime(8), status: "BOOKED" },
-      { name: "Sarah M.", loc: "Tampa, FL", time: recentTime(22), status: "CONFIRMED" },
-      { name: "James L.", loc: "Austin, TX", time: recentTime(47), status: "BOOKED" }
-    ];
-    seed.forEach(s => {
-      const item = document.createElement("div");
-      item.className = "lf-item";
-      item.style.animationDelay = "0s";
-      item.innerHTML =
-        '<div class="lf-item-time">' + s.time + '</div>' +
-        '<div class="lf-item-info">' +
-          '<div class="lf-item-name">' + s.name + '</div>' +
-          '<div class="lf-item-loc">▸ ' + s.loc + '</div>' +
-        '</div>' +
-        '<div class="lf-item-status">' + s.status + '</div>';
-      list.appendChild(item);
-    });
-
-    counterValue = 47;
-    counter.textContent = counterValue;
-    progressBar.style.width = (counterValue / targetCount * 100) + "%";
-    progressPct.textContent = Math.round(counterValue / targetCount * 100);
-
-    tickClock();
-    setInterval(tickClock, 1000);
-
-    // New appointments every 2.5-5 seconds
-    function scheduleNext() {
-      const delay = 2500 + Math.random() * 2500;
-      intervalId = setTimeout(() => {
-        addAppointment();
-        scheduleNext();
-      }, delay);
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(updateScroll);
+      ticking = true;
     }
-    scheduleNext();
-  }
+  }, { passive: true });
 
-  // Start when section enters viewport
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        start();
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.2 });
-  observer.observe(section);
+  updateScroll();
 })();
 </script>
 </body>
