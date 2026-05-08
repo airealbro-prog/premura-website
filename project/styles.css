@@ -461,10 +461,13 @@ p{color:var(--text-secondary);line-height:1.75;}
     min-width:100%;
   }
   .cal-agent-spacer{
-    background:rgba(255,255,255,.6);
+    background:rgba(252,251,255,.98);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
     position:sticky;
     left:0;
     z-index:3;
+    box-shadow:6px 0 12px -6px rgba(20,10,60,.08);
   }
   .cal-hours{
     display:contents;
@@ -481,11 +484,14 @@ p{color:var(--text-secondary);line-height:1.75;}
   .cal-agent-info{
     width:auto;
     padding:0 12px;
-    background:rgba(255,255,255,.7);
+    background:rgba(252,251,255,.98);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
     position:sticky;
     left:0;
     z-index:3;
-    border-right:1px solid rgba(20,10,60,.05);
+    border-right:1px solid rgba(20,10,60,.06);
+    box-shadow:6px 0 12px -6px rgba(20,10,60,.08);
   }
   .cal-agent-avatar{width:26px;height:26px;font-size:.62rem;}
   .cal-agent-name{font-size:.72rem;}
