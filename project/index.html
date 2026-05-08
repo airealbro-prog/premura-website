@@ -1209,18 +1209,17 @@
       slots.appendChild(cell);
     }
 
-    // Place appointments in their slots
+    // Place appointments inside their specific slot cell
     schedule[ai].forEach(appt => {
       if (appt.slot < 0 || appt.slot >= HOUR_COUNT) return;
+      const cell = slots.children[appt.slot];
+      if (!cell) return;
       const card = document.createElement("div");
       card.className = "cal-appt";
-      card.style.left = "calc(" + (appt.slot / HOUR_COUNT * 100) + "% + 3px)";
-      card.style.right = "auto";
-      card.style.width = "calc(" + (1 / HOUR_COUNT * 100) + "% - 6px)";
       card.innerHTML =
         '<div class="cal-appt-name">' + appt.name + '</div>' +
         '<div class="cal-appt-loc">' + appt.loc + '</div>';
-      slots.appendChild(card);
+      cell.appendChild(card);
       allAppts.push({ card: card, slot: appt.slot, agent: ai });
     });
 

@@ -373,10 +373,11 @@ p{color:var(--text-secondary);line-height:1.75;}
   height:100%;
   border-left:1px dashed rgba(20,10,60,.05);
   position:relative;
+  min-height:60px;
 }
 .cal-slot-cell:first-child{border-left:none;}
 
-/* Appointment block */
+/* Appointment block — fills its slot cell */
 .cal-appt{
   position:absolute;
   top:8px;
@@ -384,7 +385,7 @@ p{color:var(--text-secondary);line-height:1.75;}
   left:3px;
   right:3px;
   border-radius:8px;
-  padding:6px 8px;
+  padding:6px 9px;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -447,29 +448,80 @@ p{color:var(--text-secondary);line-height:1.75;}
   .cal-frame-head{padding:14px 16px;}
   .cal-frame-num{font-size:1.6rem;}
   .cal-frame-day{font-size:.7rem;}
-  .cal-hour-ruler{grid-template-columns:80px 1fr;}
-  .cal-hours{padding-right:10px;}
-  .cal-hour-cell{font-size:.55rem;}
-  .cal-agent-row{grid-template-columns:80px 1fr;min-height:54px;}
-  .cal-agent-info{padding:0 8px 0 12px;gap:6px;}
-  .cal-agent-avatar{width:24px;height:24px;font-size:.6rem;}
-  .cal-agent-name{font-size:.7rem;}
+
+  /* Mobile: horizontal scrollable calendar with sticky agent column */
+  .cal-grid-wrap{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .cal-grid-wrap::-webkit-scrollbar{display:none;}
+
+  .cal-hour-ruler{
+    display:grid;
+    grid-template-columns:90px repeat(11, 90px);
+    width:max-content;
+    min-width:100%;
+  }
+  .cal-agent-spacer{
+    background:rgba(255,255,255,.6);
+    position:sticky;
+    left:0;
+    z-index:3;
+  }
+  .cal-hours{
+    display:contents;
+  }
+  .cal-hour-cell{font-size:.62rem;padding:6px 0;}
+
+  .cal-agent-row{
+    display:grid;
+    grid-template-columns:90px repeat(11, 90px);
+    width:max-content;
+    min-width:100%;
+    min-height:64px;
+  }
+  .cal-agent-info{
+    width:auto;
+    padding:0 12px;
+    background:rgba(255,255,255,.7);
+    position:sticky;
+    left:0;
+    z-index:3;
+    border-right:1px solid rgba(20,10,60,.05);
+  }
+  .cal-agent-avatar{width:26px;height:26px;font-size:.62rem;}
+  .cal-agent-name{font-size:.72rem;}
   .cal-agent-status{display:none;}
-  .cal-agent-slots{padding:4px 10px 4px 0;}
-  .cal-appt{padding:4px 6px;border-radius:6px;}
-  .cal-appt-name{font-size:.58rem;}
-  .cal-appt-loc{display:none;}
+  .cal-agent-slots{
+    display:contents;
+  }
+  .cal-slot-cell{
+    border-left:1px dashed rgba(20,10,60,.05);
+    position:relative;
+    height:100%;
+    min-height:64px;
+  }
+  .cal-slot-cell:first-child{border-left:none;}
+
+  /* Appointment cards: each fills its slot column */
+  .cal-appt{
+    position:absolute;
+    top:8px;bottom:8px;
+    left:3px;right:3px;
+    border-radius:8px;
+    padding:6px 9px;
+  }
+  .cal-appt-name{font-size:.72rem;font-weight:600;line-height:1.2;}
+  .cal-appt-loc{display:block;font-size:.62rem;line-height:1.2;}
 }
 @media(max-width:480px){
   .cal-pin{padding:48px 12px;}
   .cal-title{font-size:1.3rem;}
   .cal-frame-num{font-size:1.4rem;}
   .cal-frame-month{display:none;}
-  .cal-hour-ruler{grid-template-columns:60px 1fr;}
-  .cal-agent-row{grid-template-columns:60px 1fr;min-height:48px;}
-  .cal-agent-info{padding:0 6px 0 8px;gap:4px;}
-  .cal-agent-avatar{width:22px;height:22px;font-size:.55rem;}
-  .cal-agent-name{font-size:.62rem;}
+  .cal-hour-ruler,.cal-agent-row{grid-template-columns:74px repeat(11, 80px);}
+  .cal-agent-info{padding:0 8px;}
+  .cal-agent-avatar{width:24px;height:24px;font-size:.58rem;}
+  .cal-agent-name{font-size:.66rem;}
+  .cal-appt-name{font-size:.66rem;}
+  .cal-appt-loc{font-size:.58rem;}
   .cal-hour-cell:nth-child(even){visibility:hidden;}
 }
 
