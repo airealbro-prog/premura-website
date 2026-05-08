@@ -99,13 +99,21 @@
     <div class="scroll-sticky">
       <div class="calendar-wrap">
         <div class="calendar-header">
-          <h3>150+ Active Campaigns Filling Daily</h3>
+          <h3>Every Day. Every Calendar. Filled.</h3>
         </div>
         <div class="calendar-grid" id="calendarGrid"></div>
         <div class="calendar-stats" id="calendarStats">
           <div class="stat-box">
-            <div class="stat-value" id="statFilled">0</div>
-            <div class="stat-label">Campaigns Active</div>
+            <div class="stat-value" id="calStat1" data-target="150">0</div>
+            <div class="stat-label">Active Campaigns</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="calStat2" data-target="6800">0</div>
+            <div class="stat-label">Appointments</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="calStat3" data-target="6000">0</div>
+            <div class="stat-label">Trained Agents</div>
           </div>
         </div>
       </div>
@@ -1132,7 +1140,6 @@
 <script>
 (function() {
   const grid = document.getElementById("calendarGrid");
-  const statFilled = document.getElementById("statFilled");
   const section = document.querySelector(".scroll-animation");
   if (!grid || !section) return;
 
@@ -1144,29 +1151,45 @@
   }
 
   const cells = grid.querySelectorAll(".calendar-cell");
+  const statEls = document.querySelectorAll(".calendar-stats .stat-value");
   let ticking = false;
-  let lastActiveCount = 0;
+  let lastActiveCount = -1;
+
+  function formatNum(n) {
+    return n >= 1000 ? n.toLocaleString() + "+" : (n > 0 ? n + "+" : "0");
+  }
 
   function updateCalendar() {
     const rect = section.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     const sectionHeight = section.offsetHeight;
 
-    // Progress: starts when top hits viewport top, ends when bottom hits viewport bottom
     const totalScroll = sectionHeight - windowHeight;
     const scrolled = -rect.top;
     const progress = Math.max(0, Math.min(1, scrolled / totalScroll));
     const cellsToActivate = Math.floor(progress * totalCells);
 
     if (cellsToActivate !== lastActiveCount) {
+      // Re-trigger animation on cells that just became active
       cells.forEach((cell, idx) => {
         if (idx < cellsToActivate) {
-          cell.classList.add("active");
+          if (!cell.classList.contains("active")) {
+            cell.classList.remove("active");
+            void cell.offsetWidth; // reflow to restart animation
+            cell.classList.add("active");
+          }
         } else {
           cell.classList.remove("active");
         }
       });
-      statFilled.textContent = cellsToActivate;
+
+      // Animate stat counters based on progress
+      statEls.forEach(el => {
+        const target = parseInt(el.dataset.target, 10);
+        const current = Math.floor(target * progress);
+        el.textContent = formatNum(current);
+      });
+
       lastActiveCount = cellsToActivate;
     }
 
