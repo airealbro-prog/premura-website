@@ -456,7 +456,7 @@ p{color:var(--text-secondary);line-height:1.75;}
 
   .cal-hour-ruler{
     display:grid;
-    grid-template-columns:90px repeat(11, 90px);
+    grid-template-columns:120px repeat(11, 90px);
     width:max-content;
     min-width:100%;
   }
@@ -464,10 +464,6 @@ p{color:var(--text-secondary);line-height:1.75;}
     background:rgba(252,251,255,.98);
     backdrop-filter:blur(10px);
     -webkit-backdrop-filter:blur(10px);
-    position:sticky;
-    left:0;
-    z-index:3;
-    box-shadow:6px 0 12px -6px rgba(20,10,60,.08);
   }
   .cal-hours{
     display:contents;
@@ -476,22 +472,20 @@ p{color:var(--text-secondary);line-height:1.75;}
 
   .cal-agent-row{
     display:grid;
-    grid-template-columns:90px repeat(11, 90px);
+    grid-template-columns:120px repeat(11, 90px);
     width:max-content;
     min-width:100%;
     min-height:64px;
   }
   .cal-agent-info{
     width:auto;
-    padding:0 12px;
-    background:rgba(252,251,255,.98);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
-    position:sticky;
-    left:0;
-    z-index:3;
+    padding:0 14px;
     border-right:1px solid rgba(20,10,60,.06);
-    box-shadow:6px 0 12px -6px rgba(20,10,60,.08);
+    overflow:hidden;
+  }
+  .cal-agent-info > div{
+    min-width:0;
+    overflow:hidden;
   }
   .cal-agent-avatar{width:26px;height:26px;font-size:.62rem;}
   .cal-agent-name{font-size:.72rem;}
@@ -523,8 +517,8 @@ p{color:var(--text-secondary);line-height:1.75;}
   .cal-title{font-size:1.3rem;}
   .cal-frame-num{font-size:1.4rem;}
   .cal-frame-month{display:none;}
-  .cal-hour-ruler,.cal-agent-row{grid-template-columns:74px repeat(11, 80px);}
-  .cal-agent-info{padding:0 8px;}
+  .cal-hour-ruler,.cal-agent-row{grid-template-columns:108px repeat(11, 80px);}
+  .cal-agent-info{padding:0 10px;}
   .cal-agent-avatar{width:24px;height:24px;font-size:.58rem;}
   .cal-agent-name{font-size:.66rem;}
   .cal-appt-name{font-size:.66rem;}
