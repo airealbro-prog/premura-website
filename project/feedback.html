@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="assets/premura-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How did we do? | Premura</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+#fb-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:110px 20px 60px;position:relative;overflow:hidden;}
+.fb-orb{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(var(--accent-rgb),.18),transparent 65%);top:-160px;right:-140px;pointer-events:none;}
+.fb-card{max-width:560px;width:100%;padding:44px 36px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg-2);position:relative;}
+.fb-card h1{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:10px;}
+.fb-card .fb-sub{font-size:.95rem;margin-bottom:28px;}
+.fb-scale{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;margin-bottom:8px;}
+.fb-n{aspect-ratio:1;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-card);color:var(--text);font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all .18s ease;}
+.fb-n:hover{border-color:var(--accent);transform:translateY(-2px);}
+.fb-n.sel{background:linear-gradient(135deg,var(--accent),var(--accent-light));border-color:transparent;}
+.fb-scale-lbls{display:flex;justify-content:space-between;font-size:.72rem;color:var(--text-secondary);margin-bottom:26px;}
+.fb-step{display:none;}
+.fb-step.on{display:block;}
+.fb-links{display:flex;flex-direction:column;gap:12px;margin-top:18px;}
+.fb-links a{display:block;text-align:center;padding:15px 20px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg-card);font-weight:600;color:var(--text);transition:border-color .2s;}
+.fb-links a:hover{border-color:var(--accent);}
+.fb-form{display:flex;flex-direction:column;gap:14px;margin-top:18px;}
+.fb-form input,.fb-form textarea{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:13px 16px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.92rem;}
+.fb-form textarea{min-height:120px;resize:vertical;}
+.fb-form input:focus,.fb-form textarea:focus{outline:none;border-color:var(--accent);}
+.fb-submit{border:none;cursor:pointer;}
+.fb-note{font-size:.78rem;color:var(--text-secondary);margin-top:14px;}
+.fb-thanks{text-align:center;padding:20px 0;}
+.fb-err{color:#ff8a8a;font-size:.85rem;display:none;}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Premura"><img src="assets/premura-logo.png" alt="Premura"/></a>
+    <div class="nav-links"><a href="/">← premura.org</a></div>
+  </div>
+</nav>
+
+<div id="fb-wrap">
+  <div class="fb-orb"></div>
+  <div class="fb-card">
+
+    <!-- STEP 1: rating -->
+    <div class="fb-step on" id="step1">
+      <h1>How did we do?</h1>
+      <p class="fb-sub">One question, honestly answered, helps us more than you know. How likely are you to recommend Premura to another operator?</p>
+      <div class="fb-scale" id="fbScale"></div>
+      <div class="fb-scale-lbls"><span>Not likely</span><span>Extremely likely</span></div>
+    </div>
+
+    <!-- STEP 2a: promoter -->
+    <div class="fb-step" id="stepHigh">
+      <h1>That's great to hear 🙌</h1>
+      <p class="fb-sub">Would you take 60 seconds to say it publicly? It genuinely helps other operators find us — and it means a lot to the agents on your campaign.</p>
+      <div class="fb-links" id="fbLinks"></div>
+      <p class="fb-note">We never pay for or script reviews — say whatever you actually think.</p>
+    </div>
+
+    <!-- STEP 2b: detractor / passive -->
+    <div class="fb-step" id="stepLow">
+      <h1>We want to fix that</h1>
+      <p class="fb-sub">Tell us what happened. This goes straight to our operations team — a human reads every submission, and we'll follow up.</p>
+      <form class="fb-form" id="fbForm">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="text" name="company" id="fbCompany" placeholder="Company">
+        <input type="email" name="email" placeholder="Email (so we can follow up)" required>
+        <textarea name="message" placeholder="What happened — and what would make it right?" required></textarea>
+        <button type="submit" class="btn-primary fb-submit">Send to operations →</button>
+        <span class="fb-err" id="fbErr">Something went wrong — please email support@premura.org instead.</span>
+      </form>
+    </div>
+
+    <!-- STEP 3: thanks -->
+    <div class="fb-step" id="stepDone">
+      <div class="fb-thanks">
+        <h1>Got it — thank you</h1>
+        <p class="fb-sub">Your feedback is on our operations desk. If you left contact details, you'll hear from a human shortly.</p>
+        <a href="/" class="btn-primary">Back to premura.org →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  // Public review destinations. Google link activates once the Google Business Profile exists.
+  var REVIEW_LINKS = [
+    { label: "Review us on Trustpilot", url: "https://www.trustpilot.com/evaluate/premura.org" },
+    { label: "Review us on BBB.org", url: "https://www.bbb.org/us/fl/medley/profile/business-consultant/premura-corp-0633-92052338/customer-reviews" },
+    { label: "Review us on Google", url: "" } // TODO: add Google review link once GBP is live
+  ];
+  var FN_URL = "https://turczidwqyvycelbhcig.supabase.co/functions/v1/review-feedback";
+  var ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR1cmN6aWR3cXl2eWNlbGJoY2lnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4OTcwMjMsImV4cCI6MjA3MjQ3MzAyM30.ISZcRHRpkHImm6AqkJqHQvHEd1wfF8OmpT1Cm5Csye0";
+
+  var params = new URLSearchParams(location.search);
+  var client = params.get("c") || "";
+  var rating = null;
+
+  var scale = document.getElementById("fbScale");
+  for (var i = 1; i <= 10; i++) {
+    var b = document.createElement("button");
+    b.className = "fb-n"; b.textContent = i; b.dataset.v = i; b.type = "button";
+    b.addEventListener("click", pick);
+    scale.appendChild(b);
+  }
+  var companyEl = document.getElementById("fbCompany");
+  if (client && companyEl) companyEl.value = client;
+
+  function show(id){
+    document.querySelectorAll(".fb-step").forEach(function(s){ s.classList.remove("on"); });
+    document.getElementById(id).classList.add("on");
+  }
+
+  function pick(e){
+    rating = parseInt(e.currentTarget.dataset.v, 10);
+    document.querySelectorAll(".fb-n").forEach(function(n){ n.classList.toggle("sel", parseInt(n.dataset.v,10) === rating); });
+    // fire-and-forget log of the rating itself
+    try {
+      fetch(FN_URL, { method: "POST", headers: { "Content-Type": "application/json", "apikey": ANON_KEY, "Authorization": "Bearer " + ANON_KEY },
+        body: JSON.stringify({ kind: "rating", rating: rating, client: client }) });
+    } catch(_) {}
+    setTimeout(function(){
+      if (rating >= 8) {
+        var wrap = document.getElementById("fbLinks");
+        wrap.innerHTML = "";
+        REVIEW_LINKS.forEach(function(l){
+          if (!l.url) return;
+          var a = document.createElement("a");
+          a.href = l.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = l.label;
+          wrap.appendChild(a);
+        });
+        show("stepHigh");
+      } else {
+        show("stepLow");
+      }
+    }, 250);
+  }
+
+  document.getElementById("fbForm").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var f = ev.target;
+    var payload = {
+      kind: "feedback",
+      rating: rating,
+      client: client,
+      name: f.name.value,
+      company: f.company.value,
+      email: f.email.value,
+      message: f.message.value
+    };
+    fetch(FN_URL, { method: "POST", headers: { "Content-Type": "application/json", "apikey": ANON_KEY, "Authorization": "Bearer " + ANON_KEY },
+      body: JSON.stringify(payload) })
+      .then(function(r){ if (!r.ok) throw new Error(r.status); show("stepDone"); })
+      .catch(function(){ document.getElementById("fbErr").style.display = "block"; });
+  });
+})();
+</script>
+</body>
+</html>
