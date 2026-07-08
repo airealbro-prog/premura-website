@@ -509,7 +509,7 @@
   <div class="section-inner">
     <span class="section-label">Operators We Work With</span>
     <h2 class="section-title">Real operators<br>Real numbers</h2>
-    <p class="section-sub">Five operators. Five different markets. One pattern: appointments, deals, revenue — month after month.</p>
+    <p class="section-sub">Seven operators. Seven different markets. One pattern: appointments, deals, revenue — month after month.</p>
 
     <!-- Carousel -->
     <div class="tc-wrap">
@@ -966,7 +966,9 @@
     { name: "Leicer", vimeo: "1072244795", hash: "5d8bc1fb19", stat: "$152,000", statSub: "in payouts" },
     { name: "Caesar", vimeo: "1072251232", hash: "50162c383c", stat: "8-10", statSub: "installs per month" },
     { name: "Scott", vimeo: "1072241851", hash: "26fcdbbedd", stat: "17", statSub: "deals in first month" },
-    { name: "Rafa", vimeo: "1091678713", hash: "243b833aa0", stat: "12+", statSub: "deals every month" }
+    { name: "Rafa", vimeo: "1091678713", hash: "243b833aa0", stat: "12+", statSub: "deals every month" },
+    { name: "Michael Velardi", wistia: "7wj6qo1loi", stat: "18", statSub: "sales per month" },
+    { name: "Mitchell Rossey", wistia: "mevvlasmcv", stat: "50-60", statSub: "appointments per month" }
   ];
 
   const CARD_W = 296;
@@ -990,8 +992,13 @@
         thumb.className = "tc-card-thumb";
 
         const iframe = document.createElement("iframe");
-        iframe.title = "vimeo-player";
-        iframe.src = "https://player.vimeo.com/video/" + v.vimeo + "?h=" + v.hash;
+        if (v.wistia) {
+          iframe.title = "wistia-player";
+          iframe.src = "https://fast.wistia.com/embed/iframe/" + v.wistia;
+        } else {
+          iframe.title = "vimeo-player";
+          iframe.src = "https://player.vimeo.com/video/" + v.vimeo + "?h=" + v.hash;
+        }
         iframe.frameBorder = "0";
         iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share";
         iframe.allowFullscreen = true;
@@ -1049,7 +1056,9 @@
     const v = videos[videoIdx];
     playerFrame.innerHTML = "";
     const iframe = document.createElement("iframe");
-    iframe.src = "https://player.vimeo.com/video/" + v.vimeo + "?h=" + v.hash + "&autoplay=1";
+    iframe.src = v.wistia
+      ? "https://fast.wistia.com/embed/iframe/" + v.wistia + "?autoPlay=true"
+      : "https://player.vimeo.com/video/" + v.vimeo + "?h=" + v.hash + "&autoplay=1";
     iframe.title = v.name + " testimonial";
     iframe.frameBorder = "0";
     iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share";
