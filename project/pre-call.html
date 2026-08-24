@@ -298,9 +298,9 @@
 
    • Leave both blank → a labelled "coming soon" placeholder shows.
 
-   The five solar testimonials are wired to Vimeo so the page is populated
-   today; per Ryan's request they should be re-uploaded to Vidalytics and
-   the vidalytics: field filled so views are tracked.
+   All seven testimonials are wired live today (5 on Vimeo, 2 on Wistia) so
+   the page is populated; per Ryan's request they should be re-uploaded to
+   Vidalytics and the vidalytics: field filled so views are tracked.
    ═══════════════════════════════════════════════════════════════════════ */
 window.PC_MEDIA = {
   main:   { label: 'Main video — welcome & next steps (record + upload to Vidalytics)' },
@@ -329,8 +329,8 @@ window.PC_MEDIA = {
   t_caesar:  { vimeo: '1072251232', hash: '50162c383c', poster: 'assets/review-caesar.jpg', title: 'Caesar' },
   t_scott:   { vimeo: '1072241851', hash: '26fcdbbedd', poster: 'assets/review-scott.jpg',  title: 'Scott' },
   t_rafa:    { vimeo: '1091678713', hash: '243b833aa0', poster: 'assets/review-rafa.jpg',    title: 'Rafa' },
-  t_velardi: { wistia: '7wj6qo1loi', label: 'Michael Velardi — 18 sales/mo (on Wistia → re-upload to Vidalytics)' },
-  t_rossey:  { wistia: 'mevvlasmcv', label: 'Mitchell Rossey — 50–60 appts/mo (on Wistia → re-upload to Vidalytics)' }
+  t_velardi: { wistia: '7wj6qo1loi', poster: 'assets/review-velardi.jpg', title: 'Michael Velardi' },
+  t_rossey:  { wistia: 'mevvlasmcv', poster: 'assets/review-rossey.jpg',  title: 'Mitchell Rossey' }
 };
 
 (function () {
@@ -346,11 +346,12 @@ window.PC_MEDIA = {
     return wrap;
   }
 
-  function vimeoFacade(cfg) {
+  /* Click-to-play facade. `srcFor(cfg)` returns the autoplay iframe src; the
+     poster + play button hide once the iframe is injected. */
+  function facade(cfg, href, srcFor) {
     var a = document.createElement('a');
     a.className = 'pc-embed';
-    a.href = 'https://vimeo.com/' + cfg.vimeo + '/' + cfg.hash;
-    a.target = '_blank'; a.rel = 'noopener'; a.setAttribute('role', 'button');
+    a.href = href; a.target = '_blank'; a.rel = 'noopener'; a.setAttribute('role', 'button');
     a.setAttribute('aria-label', 'Play ' + (cfg.title || 'video'));
     a.innerHTML =
       "<img class='pc-poster' loading='lazy' decoding='async' src='" + cfg.poster + "' alt='" + (cfg.title || '') + " testimonial'>" +
@@ -360,13 +361,21 @@ window.PC_MEDIA = {
       e.preventDefault();
       if (a.classList.contains('is-playing')) return;
       var f = document.createElement('iframe');
-      f.src = 'https://player.vimeo.com/video/' + cfg.vimeo + '?h=' + cfg.hash + '&autoplay=1';
+      f.src = srcFor(cfg);
       f.title = (cfg.title || 'Premura') + ' testimonial';
       f.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
       f.allowFullscreen = true; f.referrerPolicy = 'strict-origin-when-cross-origin'; f.frameBorder = '0';
       a.classList.add('is-playing'); a.appendChild(f); f.focus();
     });
     return a;
+  }
+  function vimeoFacade(cfg) {
+    return facade(cfg, 'https://vimeo.com/' + cfg.vimeo + '/' + cfg.hash,
+      function (c) { return 'https://player.vimeo.com/video/' + c.vimeo + '?h=' + c.hash + '&autoplay=1'; });
+  }
+  function wistiaFacade(cfg) {
+    return facade(cfg, 'https://premura.wistia.com/medias/' + cfg.wistia,
+      function (c) { return 'https://fast.wistia.net/embed/iframe/' + c.wistia + '?autoPlay=true'; });
   }
 
   document.querySelectorAll('.pc-video[data-slot]').forEach(function (el) {
@@ -382,6 +391,7 @@ window.PC_MEDIA = {
       return;
     }
     if (cfg.vimeo && cfg.poster) { el.appendChild(vimeoFacade(cfg)); return; }
+    if (cfg.wistia && cfg.poster) { el.appendChild(wistiaFacade(cfg)); return; }
     el.appendChild(placeholder(cfg));
   });
 })();
