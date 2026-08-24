@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,follow">
+<link rel="icon" type="image/png" href="assets/premura-logo.png">
+<link rel="apple-touch-icon" href="assets/premura-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're Booked — Premura Strategy Call</title>
+<meta name="description" content="Your Premura strategy call is scheduled. Confirm your appointment, watch the next-steps video, and get every answer before we talk.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="pre-call.css">
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<!-- Minimal top bar — no nav links, keep the focus on the call -->
+<header class="pc-topbar">
+  <a href="/" aria-label="Premura"><img src="assets/premura-logo.png" alt="Premura"/></a>
+</header>
+
+<!-- ════ HERO + MAIN VIDEO ════ -->
+<section id="pc-hero">
+  <div class="pc-orb"></div>
+  <div class="pc-orb b"></div>
+  <div class="pc-hero-inner">
+    <span class="pc-badge"><span class="dot"></span>Your call is scheduled</span>
+    <h1>You're booked.<br><em>Now let's make the call count.</em></h1>
+    <p class="pc-hero-sub">Watch the short video below — it walks you through exactly what happens next, how to confirm your appointment, and how to get the most out of our conversation.</p>
+
+    <!-- MAIN THANK-YOU / NEXT-STEPS VIDEO -->
+    <div class="pc-main-video">
+      <div class="pc-video" data-slot="main"></div>
+    </div>
+
+    <!-- CONFIRM STEPS -->
+    <div class="pc-confirm">
+      <div class="pc-confirm-head">⚠ Your meeting is scheduled but not yet confirmed — take 30 seconds to lock it in.</div>
+      <div class="pc-steps">
+        <div class="pc-step">
+          <span class="pc-step-n">1</span>
+          <h3>Accept the calendar invite</h3>
+          <p>Check your email for the invite and add it to your calendar so the time is blocked and you get the reminders.</p>
+        </div>
+        <div class="pc-step">
+          <span class="pc-step-n">2</span>
+          <h3>Bring your decision-makers</h3>
+          <p>Everyone who'll manage, run, or pay for the call center should be on the call — it's the only way we can run your full numbers.</p>
+        </div>
+        <div class="pc-step">
+          <span class="pc-step-n">3</span>
+          <h3>Watch the video &amp; skim the answers</h3>
+          <p>The next-steps video plus the 17 answers below mean we spend the call on your business, not the basics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ 17 QUESTIONS ════ -->
+<section class="section" style="background:var(--bg-2);">
+  <div class="section-inner">
+    <span class="section-label">Every Answer, Before We Talk</span>
+    <h2 class="section-title">17 questions operators ask us<br>— answered on video</h2>
+    <p class="section-sub">Tap any question to watch a short answer from Michael or Matt. The written version is right underneath — but the video has the detail. Come to the call with the ones you still want to dig into.</p>
+
+    <div class="pc-q-list">
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">01</span><span class="pc-q-txt">What's the cost, minimum build, and is there a cap to scaling?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q1"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> Two-agent minimum (it's dialer math, not an upsell), roughly a $5k/month floor, and most clients land at $50–$100 per qualified appointment once ramped. Scaling only caps at your closers' capacity and territory. <span class="pc-watch">▶ Michael breaks down the full numbers in the video.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">02</span><span class="pc-q-txt">Does it work without door-to-door or paid ads?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q2"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> Yes — it's your own internal cold-calling engine: your setters, your dialer, your data, booking straight to your calendar. No knocking, no ads. <span class="pc-watch">▶ Full explanation in the video.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">03</span><span class="pc-q-txt">Am I a fit if I'm under 5 installs a month?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q3"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> Honestly, probably not yet — a call center needs calendar capacity for 40–50 appointments, closing experience, and buildout budget. If that's you, we'd love to talk. <span class="pc-watch">▶ Michael explains who it's really for.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">04</span><span class="pc-q-txt">Who must be on the call?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q4"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> Everyone who'll manage, operate, or pay for the call center. If a decision-maker is missing, we can't run the full numbers build. <span class="pc-watch">▶ Why, in about a minute.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">05</span><span class="pc-q-txt">How fast are we live, and what happens in the first 14 days?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q5"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> Usually 1–3 weeks: three rounds of interviews (you pick the hires), we scrape your zip-code data, set up the dialer and local numbers, then a launch call. <span class="pc-watch">▶ Full walkthrough in the video.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">06</span><span class="pc-q-txt">Where can you run this?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q6"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> Anywhere in the US — Alaska and Hawaii included. You pick the exact zip codes and targeting filters. <span class="pc-watch">▶ More from Matt in the video.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">07</span><span class="pc-q-txt">Who hires, trains, manages, and QAs the appointments day to day?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q7"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> We do — recruiting, screening, training, dialer, data, daily coaching, and QA against your checklist. You get a dashboard with full control to hire, fire, or change anything. <span class="pc-watch">▶ See how it works in the video.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">08</span><span class="pc-q-txt">What exactly is a "qualified appointment," and how are handoffs done?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q8"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> You define every qualifying question and targeting criterion; we book only appointments that meet them, decision-makers present — pushed to your CRM, dashboard, text, email, and Discord. <span class="pc-watch">▶ Full definition in the video.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">09</span><span class="pc-q-txt">What results are clients seeing, and what's the show rate?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q9"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> Expect ~1 qualified appointment per agent per day (20–25/month), 45–65% show rates, clients closing 25–70%. We confirm both decision-makers, call day-of, and re-inject every no-show. <span class="pc-watch">▶ Michael's full answer in the video.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">10</span><span class="pc-q-txt">Can I see scripts, QA standards, and reporting before launch?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q10"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> Yes — you review and sign off on scripts, objection handling, the qualification rubric, and report templates before go-live. <span class="pc-watch">▶ Examples inside the video.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">11</span><span class="pc-q-txt">What data do you call, and how do you handle DNC / brand protection?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q11"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> We built $100k+ of in-house scraping software tuned for home improvement — age, roof size, power usage, even AI credit prediction — refreshed weekly. <span class="pc-watch">▶ Matt covers DNC and brand protection in the video.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">12</span><span class="pc-q-txt">What's a setter's daily activity, and how do we ramp a campaign?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q12"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> Setters dial 7–8 hours a day — up to 4,000 dials and 200–300 live conversations each — and yes, you can start small and ramp up. <span class="pc-watch">▶ Full numbers in the video.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">13</span><span class="pc-q-txt">How do you coordinate territories to avoid double-booking?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q13"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> Our software links to each closer's calendar and books with 100% accuracy across every territory — no double-booking, even at massive scale. <span class="pc-watch">▶ How it works, in the video.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">14</span><span class="pc-q-txt">Can we pause or surge for weather, crews, or inventory?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q14"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> Yes — add agents, cut agents, pause, or resume any time, for weather, crew availability, inventory, whatever you need. <span class="pc-watch">▶ The playbook is in the video.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">15</span><span class="pc-q-txt">How do you handle saturated territories — and can I storm chase?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q15"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> We rotate zip codes so territories never burn (4 years proven in South Florida), keep crews busy through snow, and can blitz a hot storm area within about an hour. <span class="pc-watch">▶ Michael explains in the video.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">16</span><span class="pc-q-txt">If performance dips, what levers do you pull and how fast?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q16"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> We find the weakest link — volume, booking, show, or close — and pull the right lever: agents, script, data, numbers, dialer speed, retraining. Daily contact, weekly meetings. <span class="pc-watch">▶ Full list in the video.</span></p>
+        </div>
+      </details>
+
+      <details class="pc-q glass-card">
+        <summary><span class="pc-q-num">17</span><span class="pc-q-txt">What do top clients do — and what mistakes kill month one?</span></summary>
+        <div class="pc-q-body">
+          <div class="pc-video" data-slot="q17"></div>
+          <p class="pc-answer"><strong>Short answer:</strong> Winners put their best closers on it, give feedback, dedicate 1–2 hours a week, run 6+ agents, and confirm every appointment. The mistake that kills month one is expecting peak performance during ramp-up. <span class="pc-watch">▶ Michael's playbook in the video.</span></p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ VIDEO TESTIMONIALS ════ -->
+<section class="section" id="pc-testimonials">
+  <div class="section-inner">
+    <span class="section-label">Real Operators, Real Numbers</span>
+    <h2 class="section-title">The people already running<br>a Premura call center</h2>
+    <p class="section-sub">Every one of these is a real client on camera with their actual results. Hit play on any of them.</p>
+
+    <div class="pc-tgrid">
+      <article class="pc-tcard">
+        <div class="pc-video" data-slot="t_jorge"></div>
+        <div class="pc-tmeta"><div class="pc-tstat">20+</div><div class="pc-tstat-sub">deals per month</div><div class="pc-tname">Jorge — solar operator</div></div>
+      </article>
+      <article class="pc-tcard">
+        <div class="pc-video" data-slot="t_leicer"></div>
+        <div class="pc-tmeta"><div class="pc-tstat">$152,000</div><div class="pc-tstat-sub">in payouts</div><div class="pc-tname">Leicer — solar operator</div></div>
+      </article>
+      <article class="pc-tcard">
+        <div class="pc-video" data-slot="t_caesar"></div>
+        <div class="pc-tmeta"><div class="pc-tstat">8–10</div><div class="pc-tstat-sub">installs per month</div><div class="pc-tname">Caesar — solar operator</div></div>
+      </article>
+      <article class="pc-tcard">
+        <div class="pc-video" data-slot="t_scott"></div>
+        <div class="pc-tmeta"><div class="pc-tstat">17</div><div class="pc-tstat-sub">deals in his first month</div><div class="pc-tname">Scott — solar operator</div></div>
+      </article>
+      <article class="pc-tcard">
+        <div class="pc-video" data-slot="t_rafa"></div>
+        <div class="pc-tmeta"><div class="pc-tstat">12+</div><div class="pc-tstat-sub">deals every month</div><div class="pc-tname">Rafa — solar operator</div></div>
+      </article>
+      <article class="pc-tcard">
+        <div class="pc-video" data-slot="t_velardi"></div>
+        <div class="pc-tmeta"><div class="pc-tstat">18</div><div class="pc-tstat-sub">sales per month</div><div class="pc-tname">Michael Velardi</div></div>
+      </article>
+      <article class="pc-tcard">
+        <div class="pc-video" data-slot="t_rossey"></div>
+        <div class="pc-tmeta"><div class="pc-tstat">50–60</div><div class="pc-tstat-sub">appointments per month</div><div class="pc-tname">Mitchell Rossey</div></div>
+      </article>
+    </div>
+
+    <!-- WRITTEN / SCREENSHOT TESTIMONIALS -->
+    <h3 style="text-align:center;font-family:'Outfit',sans-serif;margin:56px 0 0;font-size:1.2rem;color:var(--text);">In their own words</h3>
+    <p class="section-sub" style="margin-top:8px;">Screenshots and written wins from operators across the country.</p>
+    <div class="pc-pgrid">
+      <div class="pc-ptile" data-photo="1"><span class="pc-ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span><span class="pc-ph-label">Screenshot testimonial</span></div>
+      <div class="pc-ptile" data-photo="2"><span class="pc-ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span><span class="pc-ph-label">Screenshot testimonial</span></div>
+      <div class="pc-ptile" data-photo="3"><span class="pc-ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span><span class="pc-ph-label">Screenshot testimonial</span></div>
+      <div class="pc-ptile" data-photo="4"><span class="pc-ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span><span class="pc-ph-label">Screenshot testimonial</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FINAL CTA ════ -->
+<section id="cta-final">
+  <div class="cta-inner">
+    <h2>See you on the call.</h2>
+    <p>Make sure the invite is on your calendar and your decision-makers are in the room. Need to reach us before then? We're one email away.</p>
+    <a href="mailto:support@premura.org" class="btn-primary">Email support@premura.org</a>
+    <p class="cta-support">Can't make your time? Reply to your confirmation email and we'll reschedule — no problem at all.</p>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="footer-bottom" style="border-top:none;">
+    <span>© 2026 Premura Corp. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="/">Home</a>
+      <a href="/reviews">Reviews</a>
+      <a href="mailto:support@premura.org">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   PRE-CALL PAGE — media config
+   ───────────────────────────────────────────────────────────────────────
+   Each video slot on the page reads one entry below.
+
+   • To make a slot a live VIDALYTICS video (tracked views etc.):
+       set  vidalytics: 'PASTE_EMBED_ID'
+     …and paste the matching Vidalytics loader <script> once (see HANDOFF
+     note at the bottom of this file). Vidalytics wins over Vimeo if both set.
+
+   • To make a slot a live VIMEO video (no tracking):
+       set  vimeo: 'ID', hash: 'HASH', poster: 'assets/xxx.jpg'
+
+   • Leave both blank → a labelled "coming soon" placeholder shows.
+
+   The five solar testimonials are wired to Vimeo so the page is populated
+   today; per Ryan's request they should be re-uploaded to Vidalytics and
+   the vidalytics: field filled so views are tracked.
+   ═══════════════════════════════════════════════════════════════════════ */
+window.PC_MEDIA = {
+  main:   { label: 'Main video — welcome & next steps (record + upload to Vidalytics)' },
+
+  q1:  { label: 'Q1 — Cost, minimum build & scaling · Michael' },
+  q2:  { label: 'Q2 — Works without D2D or ads? · Michael' },
+  q3:  { label: 'Q3 — Fit under 5 installs? · Michael' },
+  q4:  { label: 'Q4 — Who must be on the call? · Michael' },
+  q5:  { label: 'Q5 — Speed to live / first 14 days · Michael' },
+  q6:  { label: 'Q6 — Where can you run this? · Matt' },
+  q7:  { label: 'Q7 — Who hires/trains/manages/QAs? · Matt' },
+  q8:  { label: 'Q8 — What is a qualified appointment? · Matt' },
+  q9:  { label: 'Q9 — Results & show rate · Michael' },
+  q10: { label: 'Q10 — Scripts, QA & reporting pre-launch · Matt' },
+  q11: { label: 'Q11 — Data sourcing & DNC · Matt' },
+  q12: { label: 'Q12 — Setter daily activity & ramp · Matt' },
+  q13: { label: 'Q13 — Territory coordination · Matt' },
+  q14: { label: 'Q14 — Pause / surge playbook · Matt' },
+  q15: { label: 'Q15 — Saturation & storm chasing · Michael' },
+  q16: { label: 'Q16 — Performance-dip levers · Matt' },
+  q17: { label: 'Q17 — Top-client habits & month-one mistakes · Michael' },
+
+  /* Testimonials — live via Vimeo now; swap to Vidalytics when re-uploaded */
+  t_jorge:   { vimeo: '1072247746', hash: 'd493e53744', poster: 'assets/review-jorge.jpg',  title: 'Jorge' },
+  t_leicer:  { vimeo: '1072244795', hash: '5d8bc1fb19', poster: 'assets/review-leicer.jpg', title: 'Leicer' },
+  t_caesar:  { vimeo: '1072251232', hash: '50162c383c', poster: 'assets/review-caesar.jpg', title: 'Caesar' },
+  t_scott:   { vimeo: '1072241851', hash: '26fcdbbedd', poster: 'assets/review-scott.jpg',  title: 'Scott' },
+  t_rafa:    { vimeo: '1091678713', hash: '243b833aa0', poster: 'assets/review-rafa.jpg',    title: 'Rafa' },
+  t_velardi: { wistia: '7wj6qo1loi', label: 'Michael Velardi — 18 sales/mo (on Wistia → re-upload to Vidalytics)' },
+  t_rossey:  { wistia: 'mevvlasmcv', label: 'Mitchell Rossey — 50–60 appts/mo (on Wistia → re-upload to Vidalytics)' }
+};
+
+(function () {
+  var PLAY_SVG = "<svg viewBox='0 0 24 24' fill='currentColor'><path d='M8 5v14l11-7z'/></svg>";
+
+  function placeholder(cfg) {
+    var wrap = document.createElement('div');
+    wrap.className = 'pc-slot-ph';
+    wrap.innerHTML =
+      "<span class='pc-ph-icon'>" + PLAY_SVG + "</span>" +
+      "<span class='pc-ph-tag'>Video coming soon</span>" +
+      "<span class='pc-ph-label'>" + (cfg.label || 'Video') + "</span>";
+    return wrap;
+  }
+
+  function vimeoFacade(cfg) {
+    var a = document.createElement('a');
+    a.className = 'pc-embed';
+    a.href = 'https://vimeo.com/' + cfg.vimeo + '/' + cfg.hash;
+    a.target = '_blank'; a.rel = 'noopener'; a.setAttribute('role', 'button');
+    a.setAttribute('aria-label', 'Play ' + (cfg.title || 'video'));
+    a.innerHTML =
+      "<img class='pc-poster' loading='lazy' decoding='async' src='" + cfg.poster + "' alt='" + (cfg.title || '') + " testimonial'>" +
+      "<span class='pc-play' aria-hidden='true'>" + PLAY_SVG + "</span>";
+    a.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      if (a.classList.contains('is-playing')) return;
+      var f = document.createElement('iframe');
+      f.src = 'https://player.vimeo.com/video/' + cfg.vimeo + '?h=' + cfg.hash + '&autoplay=1';
+      f.title = (cfg.title || 'Premura') + ' testimonial';
+      f.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
+      f.allowFullscreen = true; f.referrerPolicy = 'strict-origin-when-cross-origin'; f.frameBorder = '0';
+      a.classList.add('is-playing'); a.appendChild(f); f.focus();
+    });
+    return a;
+  }
+
+  document.querySelectorAll('.pc-video[data-slot]').forEach(function (el) {
+    var cfg = window.PC_MEDIA[el.dataset.slot] || { label: el.dataset.slot };
+    /* Vidalytics: if an embed id is set, the loader script (pasted per HANDOFF
+       note) targets #vidalytics_embed_<id>; we drop that container in and let
+       Vidalytics hydrate it. */
+    if (cfg.vidalytics) {
+      var v = document.createElement('div');
+      v.id = 'vidalytics_embed_' + cfg.vidalytics;
+      v.style.cssText = 'width:100%;height:100%;';
+      el.appendChild(v);
+      return;
+    }
+    if (cfg.vimeo && cfg.poster) { el.appendChild(vimeoFacade(cfg)); return; }
+    el.appendChild(placeholder(cfg));
+  });
+})();
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     HANDOFF — how to switch a slot to a real Vidalytics video
+     ─────────────────────────────────────────────────────────────────────
+     1. Upload the video in your Vidalytics account.
+     2. Copy its embed ID (the value after `vidalytics_embed_` in the code
+        Vidalytics gives you) into the matching entry in window.PC_MEDIA above,
+        e.g.  main: { vidalytics: 'abc123XYZ', ... }
+     3. Paste the Vidalytics loader <script> for that video just below this
+        comment (one per video is fine — they can stack here).
+     The slot will then render the tracked Vidalytics player instead of the
+     placeholder. Nothing else on the page needs to change.
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+</body>
+</html>
