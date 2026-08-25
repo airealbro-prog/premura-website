@@ -84,12 +84,21 @@ a{color:var(--pc-purple-2);}
 .pc-ph-tag{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pc-purple-2);}
 .pc-ph-label{font-size:.8rem;color:var(--pc-ink-2);max-width:85%;}
 
-/* Step 3 — "I know the sender" note */
-.pc-note{max-width:600px;margin:8px auto 0;text-align:left;background:var(--pc-bg-2);border:1px solid var(--pc-line);border-left:3px solid var(--pc-purple);border-radius:12px;padding:16px 18px;}
-.pc-note p{margin:0 0 12px;font-size:.95rem;color:var(--pc-ink-2);}
-.pc-note p b{color:var(--pc-ink);}
-.pc-note-shot{border-radius:10px;overflow:hidden;border:1px solid var(--pc-line);}
-.pc-note-shot img{width:100%;display:block;}
+/* Step 3 — "I know the sender" note + recreation of the unknown-sender notice */
+.pc-note-lead{max-width:600px;margin:0 auto 14px;color:var(--pc-ink-2);font-size:.95rem;}
+.pc-note-lead b{color:var(--pc-ink);}
+.pc-know{max-width:600px;margin:0 auto;text-align:left;}
+.pc-know img{width:100%;display:block;border-radius:14px;}
+.pc-know-mail{background:#e9e9ee;color:#1b1b22;border-radius:14px;padding:20px 22px;box-shadow:0 20px 50px -22px rgba(0,0,0,.7);}
+.pc-know-mail-h{font-weight:700;font-size:1.05rem;margin-bottom:10px;}
+.pc-know-mail-p{font-size:.9rem;line-height:1.5;color:#3a3a44;margin:0 0 16px;}
+.pc-know-email{background:#111;color:#fff;border-radius:4px;padding:1px 8px;font-size:.85em;white-space:nowrap;}
+.pc-know-btnrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.pc-know-btn{display:inline-block;background:#fff;border:1px solid #b9b9c2;border-radius:8px;padding:9px 16px;font-weight:600;font-size:.92rem;color:#1b1b22;box-shadow:0 0 0 3px var(--pc-red),0 0 0 6px rgba(255,84,112,.28);}
+.pc-know-arrow{color:var(--pc-red);font-size:1.7rem;font-weight:800;line-height:1;}
+.pc-know-cta{background:#0b0b0f;color:#fff;border-radius:8px;padding:10px 14px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.82rem;line-height:1.35;flex:1;min-width:180px;}
+.pc-know-cta b{color:var(--pc-red);}
+@media(max-width:560px){ .pc-know-arrow{display:none;} .pc-know-btnrow{gap:10px;} }
 
 /* Commonly Asked Questions — 2-up cards, ALL-CAPS, big video on open */
 .pc-q-list{margin-top:26px;text-align:left;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}

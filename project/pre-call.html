@@ -46,11 +46,20 @@
 <section class="pc-sec tight">
   <div class="pc-wrap pc-narrow">
     <h2 class="pc-step-label pc-step-sm">3. Say <span class="pc-u pur">"I know the sender"</span></h2>
-    <div class="pc-note">
-      <p><b>Important:</b> the invite comes from an address your email may not recognize. If you see an <b>"invitation from an unknown sender"</b> that offers <b>"I know the sender"</b> instead of <b>"Add to calendar,"</b> tap <b>"I know the sender"</b> so the event lands on your calendar.</p>
-      <!-- SCREENSHOT HANDOFF: replace this placeholder with Ryan's screenshot:
-           <div class="pc-note-shot"><img src="assets/precall-know-sender.png" alt="Tap I know the sender"></div> -->
-      <div class="pc-note-shot"><div class="pc-shot-ph" style="padding-bottom:120px;"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><small>Screenshot coming — the "I know the sender" email</small></div></div>
+    <p class="pc-note-lead">The invite comes from an address your email may not recognize. If your email shows the notice below, tap <b>"I know the sender"</b> so the event lands on your calendar.</p>
+    <!-- Faithful recreation of the "unknown sender" calendar notice. To use a real
+         screenshot instead, drop it in assets/ and replace this whole .pc-know block with:
+         <div class="pc-know"><img src="assets/precall-know-sender.png" alt="Tap I know the sender"></div> -->
+    <div class="pc-know">
+      <div class="pc-know-mail">
+        <div class="pc-know-mail-h">Unknown sender: not added to Calendar yet</div>
+        <p class="pc-know-mail-p">It looks like you've never been in contact with this sender <span class="pc-know-email">hello@infopros.io</span>, so this event hasn't been added to your calendar. It won't appear there unless you say you know the sender.</p>
+        <div class="pc-know-btnrow">
+          <span class="pc-know-btn">I know the sender</span>
+          <span class="pc-know-arrow" aria-hidden="true">←</span>
+          <span class="pc-know-cta">Press <b>"I know the sender"</b> to add the event to your calendar</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
