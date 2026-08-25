@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" href="assets/premura-logo.png">
+<link rel="apple-touch-icon" href="assets/premura-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Testimonials · Premura Sales</title>
+<meta name="description" content="Internal: grab any client's testimonial link and send it to a lead.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,700;0,800;1,700;1,800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sales-testimonials.css">
+</head>
+<body>
+
+<header class="st-head">
+  <div class="st-wrap">
+    <span class="st-eyebrow">Premura · Sales tool</span>
+    <h1 class="st-h1">Client <span class="st-u">testimonials</span></h1>
+    <p class="st-sub">Grab any client's link and send it to your lead. Pick their state for local proof — same-state testimonials close.</p>
+  </div>
+</header>
+
+<!-- State jump index (all 50 + DC). Active states link to their group; empty ones are dimmed. -->
+<nav class="st-index" aria-label="Jump to a state"><div class="st-wrap"><div class="st-index-row" data-state-index></div></div></nav>
+
+<main class="st-wrap">
+  <div data-results></div>
+</main>
+
+<footer class="st-foot">
+  <div>Internal sales tool · not indexed. Questions? <a href="mailto:support@premura.org">support@premura.org</a></div>
+  <div style="margin-top:8px;">© 2026 Premura Corp.</div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   HOW TO ASSIGN A CLIENT'S STATE (this is the whole job):
+   In ST_DATA below, change a client's  state:'TBD'  to their state name,
+   e.g.  state:'Florida'  or  state:'Texas'  (full name, matched case-
+   insensitively to the list). That client moves under that state's header
+   and the state's pill in the index lights up. That's it.
+
+   To ADD a written quote: fill the  quote:'...'  field with the client's
+   real words. Leave it empty and the card shows a "quote to add" note.
+
+   To ADD a client: copy a block, give it a unique  id  (used in the share
+   link, e.g. #jorge), and its video (vimeo+hash+poster, or wistia+poster).
+   ═══════════════════════════════════════════════════════════════════════ */
+window.ST_DATA = [
+  { id:'scott',   name:'Scott Kelly',      industry:'Solar', state:'TBD',
+    stat:'17 deals in his first 30 days — virtually, from the call center',
+    quote:'', vimeo:'1072241851', hash:'26fcdbbedd', poster:'assets/review-scott.jpg' },
+  { id:'leicer',  name:'Leicer',           industry:'Solar', state:'TBD',
+    stat:'$152,000 in payouts',
+    quote:'', vimeo:'1072244795', hash:'5d8bc1fb19', poster:'assets/review-leicer.jpg' },
+  { id:'jorge',   name:'Jorge',            industry:'Solar', state:'TBD',
+    stat:'20+ deals a month',
+    quote:'', vimeo:'1072247746', hash:'d493e53744', poster:'assets/review-jorge.jpg' },
+  { id:'caesar',  name:'Caesar',           industry:'Solar', state:'TBD',
+    stat:'8–10 installs a month',
+    quote:'', vimeo:'1072251232', hash:'50162c383c', poster:'assets/review-caesar.jpg' },
+  { id:'rafa',    name:'Rafa',             industry:'Solar', state:'TBD',
+    stat:'12+ deals a month',
+    quote:'', vimeo:'1091678713', hash:'243b833aa0', poster:'assets/review-rafa.jpg' },
+  { id:'velardi', name:'Michael Velardi',  industry:'', state:'TBD',
+    stat:'18 sales a month',
+    quote:'', wistia:'7wj6qo1loi', poster:'assets/review-velardi.jpg' },
+  { id:'rossey',  name:'Mitchell Rossey',  industry:'', state:'TBD',
+    stat:'50–60 appointments a month',
+    quote:'', wistia:'mevvlasmcv', poster:'assets/review-rossey.jpg' }
+];
+
+window.ST_STATES = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
+
+(function(){
+  var PLAY="<svg viewBox='0 0 24 24' fill='currentColor'><path d='M8 5v14l11-7z'/></svg>";
+  function slug(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
+  // robust copy: Clipboard API, else execCommand on a temp textarea. Resolves true/false.
+  function execCopy(t){try{var ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.cssText='position:fixed;top:-1000px;left:-1000px;opacity:0';document.body.appendChild(ta);ta.focus();ta.select();var okc=document.execCommand&&document.execCommand('copy');document.body.removeChild(ta);return !!okc;}catch(e){return false;}}
+  function copyText(t){
+    if(navigator.clipboard&&navigator.clipboard.writeText){return navigator.clipboard.writeText(t).then(function(){return true;},function(){return execCopy(t);});}
+    return Promise.resolve(execCopy(t));
+  }
+  function selectNode(el){try{var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);return true;}catch(e){return false;}}
+  function esc(s){var d=document.createElement('div');d.textContent=s||'';return d.innerHTML;}
+
+  function baseIframe(src,title){
+    var f=document.createElement('iframe');f.src=src;f.title=(title||'Premura')+' testimonial';
+    f.allow='autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
+    f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';f.frameBorder='0';return f;
+  }
+  function facade(c){
+    var href,srcFor;
+    if(c.vimeo){href='https://vimeo.com/'+c.vimeo+'/'+c.hash;srcFor=function(){return 'https://player.vimeo.com/video/'+c.vimeo+'?h='+c.hash+'&autoplay=1&title=0&byline=0&portrait=0';};}
+    else{href='https://premura.wistia.com/medias/'+c.wistia;srcFor=function(){return 'https://fast.wistia.net/embed/iframe/'+c.wistia+'?autoPlay=true';};}
+    var a=document.createElement('a');a.className='st-embed';a.href=href;a.target='_blank';a.rel='noopener';
+    a.setAttribute('role','button');a.setAttribute('aria-label','Play '+c.name);
+    a.innerHTML="<img class='st-poster' loading='lazy' decoding='async' src='"+c.poster+"' alt='"+esc(c.name)+" testimonial'><span class='st-play' aria-hidden='true'>"+PLAY+"</span>";
+    a.addEventListener('click',function(e){
+      if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0)return;e.preventDefault();
+      if(a.classList.contains('is-playing'))return;
+      a.classList.add('is-playing');var f=baseIframe(srcFor(),c.name);a.appendChild(f);f.focus();
+    });
+    return a;
+  }
+
+  function card(c){
+    var el=document.createElement('article');el.className='st-card';el.id=c.id;
+    var vid=document.createElement('div');vid.className='st-video';vid.appendChild(facade(c));
+    el.appendChild(vid);
+
+    var body=document.createElement('div');body.className='st-body';
+    var nm=c.name+(c.industry?' <span class="st-ind">· '+esc(c.industry)+'</span>':'');
+    body.innerHTML=
+      "<div class='st-name'>"+nm+"</div>"+
+      "<div class='st-stat'>"+esc(c.stat)+"</div>"+
+      (c.quote
+        ? "<blockquote class='st-quote'>“"+esc(c.quote)+"”</blockquote>"
+        : "<div class='st-quote st-quote-todo'>Quote to add — paste "+esc(c.name.split(' ')[0])+"'s words here</div>");
+
+    var link=location.origin+location.pathname+'#'+c.id;
+    var small=document.createElement('div');small.className='st-linkline';small.textContent=link;
+    var btn=document.createElement('button');btn.type='button';btn.className='st-copy';
+    btn.innerHTML="<span class='st-copy-ic'>🔗</span> Copy link to send";
+    btn.addEventListener('click',function(){
+      var orig="<span class='st-copy-ic'>🔗</span> Copy link to send";
+      function flash(txt,cls){btn.classList.add(cls);btn.innerHTML=txt;setTimeout(function(){btn.classList.remove(cls);btn.innerHTML=orig;},2400);}
+      copyText(link).then(function(done){
+        if(done){flash("✓ Copied — paste it to your lead",'is-copied');}
+        else{selectNode(small);flash("Link selected — press Ctrl+C",'is-copied');}
+      });
+    });
+    body.appendChild(btn);
+    body.appendChild(small);
+
+    el.appendChild(body);
+    return el;
+  }
+
+  // group clients by state (TBD -> "Unassigned")
+  var byState={};
+  ST_DATA.forEach(function(c){var k=(c.state&&c.state.toUpperCase()!=='TBD')?c.state:'__TBD__';(byState[k]=byState[k]||[]).push(c);});
+  var present={};Object.keys(byState).forEach(function(k){if(k!=='__TBD__')present[k.toLowerCase()]=true;});
+
+  // state index
+  var idx=document.querySelector('[data-state-index]');
+  ST_STATES.forEach(function(s){
+    var has=present[s.toLowerCase()];
+    var a=document.createElement('a');a.className='st-pill'+(has?'':' is-empty');
+    a.textContent=s;
+    if(has){a.href='#state-'+slug(s);}else{a.setAttribute('aria-disabled','true');a.title='No testimonials yet';}
+    idx.appendChild(a);
+  });
+
+  // results — assigned states alphabetically, then Unassigned
+  var results=document.querySelector('[data-results]');
+  var assigned=Object.keys(byState).filter(function(k){return k!=='__TBD__';}).sort();
+  function group(title,id,list,note){
+    var sec=document.createElement('section');sec.className='st-group';if(id)sec.id=id;
+    sec.innerHTML="<h2 class='st-group-h'>"+esc(title)+" <span class='st-count'>"+list.length+"</span></h2>"+(note?"<p class='st-note'>"+note+"</p>":"");
+    var grid=document.createElement('div');grid.className='st-grid';
+    list.forEach(function(c){grid.appendChild(card(c));});
+    sec.appendChild(grid);results.appendChild(sec);
+  }
+  assigned.forEach(function(st){group(st,'state-'+slug(st),byState[st]);});
+  if(byState['__TBD__']){
+    group('Unassigned — set each client’s state in the config','state-unassigned',byState['__TBD__'],
+      'These clients don’t have a state yet. Assign one in <code>ST_DATA</code> (change <code>state:’TBD’</code> to e.g. <code>state:’Florida’</code>) and they’ll file under that state above and light up its pill.');
+  }
+
+  // if arriving with a #hash, highlight that card
+  function flash(){var h=location.hash.slice(1);if(!h)return;var el=document.getElementById(h);if(el){el.classList.add('is-target');el.scrollIntoView({block:'center'});}}
+  window.addEventListener('hashchange',function(){document.querySelectorAll('.st-card.is-target').forEach(function(e){e.classList.remove('is-target');});flash();});
+  flash();
+})();
+</script>
+
+</body>
+</html>
