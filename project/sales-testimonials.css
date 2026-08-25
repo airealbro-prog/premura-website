@@ -55,6 +55,7 @@ code{background:#191527;border:1px solid var(--st-line);border-radius:5px;paddin
 .st-body{padding:15px 16px 16px;display:flex;flex-direction:column;flex:1;}
 .st-name{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.08rem;color:#fff;}
 .st-ind{font-weight:600;font-size:.82rem;color:var(--st-ink-2);}
+.st-loc{color:var(--st-ink-2);font-size:.82rem;margin-top:3px;}
 .st-stat{color:var(--st-green);font-weight:600;font-size:.92rem;margin-top:3px;}
 .st-quote{margin:11px 0 0;font-size:.95rem;color:var(--st-ink);border-left:2px solid var(--st-purple);padding-left:12px;font-style:italic;}
 .st-quote-todo{color:#6f6889;border-left-color:#332a4d;font-style:normal;font-size:.86rem;}
