@@ -50,27 +50,27 @@
    link, e.g. #jorge), and its video (vimeo+hash+poster, or wistia+poster).
    ═══════════════════════════════════════════════════════════════════════ */
 window.ST_DATA = [
-  { id:'scott',   name:'Scott Kelly',      industry:'Solar', state:'TBD',
+  { id:'scott',   name:'Scott Kelly',      industry:'Solar', state:'Massachusetts',
     stat:'17 deals in his first 30 days — virtually, from the call center',
     quote:'', vimeo:'1072241851', hash:'26fcdbbedd', poster:'assets/review-scott.jpg' },
-  { id:'leicer',  name:'Leicer',           industry:'Solar', state:'TBD',
+  { id:'leicer',  name:'Leicer',           industry:'Solar', state:'Florida', area:'Miami & Broward County',
     stat:'$152,000 in payouts',
     quote:'', vimeo:'1072244795', hash:'5d8bc1fb19', poster:'assets/review-leicer.jpg' },
+  { id:'caesar',  name:'Caesar',           industry:'Solar', state:'Florida', area:'South Florida',
+    stat:'8–10 installs a month',
+    quote:'', vimeo:'1072251232', hash:'50162c383c', poster:'assets/review-caesar.jpg' },
+  { id:'rafa',    name:'Rafa',             industry:'Solar', state:'California',
+    stat:'12+ deals a month',
+    quote:'', vimeo:'1091678713', hash:'243b833aa0', poster:'assets/review-rafa.jpg' },
+  { id:'rossey',  name:'Mitchell Rossey',  industry:'Solar', state:'Pennsylvania',
+    stat:'50–60 appointments a month',
+    quote:"We're gonna do probably fifty to sixty appointments, twenty more than what I expected. Definitely outperforming where I assumed it would go.", wistia:'mevvlasmcv', poster:'assets/review-rossey.jpg' },
   { id:'jorge',   name:'Jorge',            industry:'Solar', state:'TBD',
     stat:'20+ deals a month',
     quote:'', vimeo:'1072247746', hash:'d493e53744', poster:'assets/review-jorge.jpg' },
-  { id:'caesar',  name:'Caesar',           industry:'Solar', state:'TBD',
-    stat:'8–10 installs a month',
-    quote:'', vimeo:'1072251232', hash:'50162c383c', poster:'assets/review-caesar.jpg' },
-  { id:'rafa',    name:'Rafa',             industry:'Solar', state:'TBD',
-    stat:'12+ deals a month',
-    quote:'', vimeo:'1091678713', hash:'243b833aa0', poster:'assets/review-rafa.jpg' },
-  { id:'velardi', name:'Michael Velardi',  industry:'', state:'TBD',
+  { id:'velardi', name:'Michael Velardi',  industry:'Solar', state:'TBD',
     stat:'18 sales a month',
-    quote:'', wistia:'7wj6qo1loi', poster:'assets/review-velardi.jpg' },
-  { id:'rossey',  name:'Mitchell Rossey',  industry:'', state:'TBD',
-    stat:'50–60 appointments a month',
-    quote:'', wistia:'mevvlasmcv', poster:'assets/review-rossey.jpg' }
+    quote:"In the last ten days, I think I had six sales. That's eighteen sales in a month, probably a forty percent close rate based on appointments.", wistia:'7wj6qo1loi', poster:'assets/review-velardi.jpg' }
 ];
 
 window.ST_STATES = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
@@ -114,8 +114,10 @@ window.ST_STATES = ['Alabama','Alaska','Arizona','Arkansas','California','Colora
 
     var body=document.createElement('div');body.className='st-body';
     var nm=c.name+(c.industry?' <span class="st-ind">· '+esc(c.industry)+'</span>':'');
+    var loc=(c.state&&c.state.toUpperCase()!=='TBD')?(c.state+(c.area?' · '+c.area:'')):'';
     body.innerHTML=
       "<div class='st-name'>"+nm+"</div>"+
+      (loc?"<div class='st-loc'>📍 "+esc(loc)+"</div>":"")+
       "<div class='st-stat'>"+esc(c.stat)+"</div>"+
       (c.quote
         ? "<blockquote class='st-quote'>“"+esc(c.quote)+"”</blockquote>"
