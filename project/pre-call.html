@@ -202,6 +202,27 @@ window.PC_MEDIA = {
 })();
 </script>
 
+<script>
+/* screenshot lightbox — click a proof image to see it full-size */
+(function(){
+  var imgs=document.querySelectorAll('.pc-wall .pc-shot img');
+  if(!imgs.length)return;
+  var ov=document.createElement('div');ov.className='pc-lb';ov.setAttribute('role','dialog');ov.setAttribute('aria-modal','true');ov.setAttribute('aria-hidden','true');
+  ov.innerHTML="<button class='pc-lb-x' type='button' aria-label='Close'>&times;</button><img class='pc-lb-img' alt=''>";
+  var lbImg=ov.querySelector('.pc-lb-img'),xBtn=ov.querySelector('.pc-lb-x');
+  document.body.appendChild(ov);
+  function open(src,alt){lbImg.src=src;lbImg.alt=alt||'';ov.classList.add('is-open');ov.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';xBtn.focus();}
+  function close(){ov.classList.remove('is-open');ov.setAttribute('aria-hidden','true');document.body.style.overflow='';lbImg.removeAttribute('src');}
+  imgs.forEach(function(im){
+    im.setAttribute('role','button');im.setAttribute('tabindex','0');im.setAttribute('aria-label','Expand '+(im.alt||'image'));
+    im.addEventListener('click',function(){open(im.currentSrc||im.src,im.alt);});
+    im.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(im.currentSrc||im.src,im.alt);}});
+  });
+  ov.addEventListener('click',function(e){if(e.target===ov||e.target===xBtn)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('is-open'))close();});
+})();
+</script>
+
 <!-- ═══════════════════════════════════════════════════════════════════════
      HANDOFF
      • Main video: autoplays muted with a tap-for-sound button, currently playing
