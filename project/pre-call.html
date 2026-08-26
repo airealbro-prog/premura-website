@@ -7,10 +7,10 @@
 <link rel="apple-touch-icon" href="assets/premura-logo.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>You're Booked · Premura Strategy Call</title>
-<meta name="description" content="Your Premura call is booked. Two quick steps, then the proof.">
+<meta name="description" content="Your Premura call is booked. Watch the video, add it to your calendar, and see the proof.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,700;0,800;1,700;1,800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,700;0,800;1,700;1,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="pre-call.css">
 </head>
 <body>
@@ -19,69 +19,90 @@
 <section id="pc-hero">
   <div class="pc-wrap">
     <span class="pc-eyebrow">✅ You're booked</span>
-    <h1 class="pc-h pc-h1">Don't be the one who skips these <span class="pc-u red">two steps</span> 👇</h1>
+    <h1 class="pc-h pc-h1">Don't be the one who skips these <span class="pc-u red">3 steps</span> 👇</h1>
   </div>
 </section>
 
-<!-- ═══ STEP 1 · CALENDAR ═══ -->
+<!-- ═══ STEP 1 · WATCH THE VIDEO (primary) ═══ -->
 <section class="pc-sec tight">
   <div class="pc-wrap">
-    <h2 class="pc-step-label">1. Put it on your <span class="pc-u pur">calendar</span> 📅</h2>
-    <!-- HANDOFF: GHL should inject the real date/time via &dates=START/END on this link. -->
-    <a class="pc-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Premura%20Strategy%20Call&details=Bring%20every%20decision-maker.%20Reply%20to%20your%20confirmation%20email%20to%20move%20it.&location=Online" target="_blank" rel="noopener" data-calendar-link>Add to Google Calendar</a>
-  </div>
-</section>
-
-<!-- ═══ STEP 2 · MAIN VIDEO ═══ -->
-<section class="pc-sec tight">
-  <div class="pc-wrap">
-    <h2 class="pc-step-label">2. Watch this <span class="pc-u pur">first</span> ▶️</h2>
+    <h2 class="pc-step-label">1. Watch <span class="pc-u pur">this</span></h2>
     <div class="pc-main-video">
-      <div class="pc-vbar">🔊 Tap the video for sound</div>
       <div class="pc-video rounded" data-slot="main"></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ 17 QUESTIONS ═══ -->
-<section class="pc-sec">
+<!-- ═══ STEP 2 · CALENDAR (minimal) ═══ -->
+<section class="pc-sec tight">
   <div class="pc-wrap pc-narrow">
-    <h2 class="pc-h pc-h2">Your questions, <span class="pc-u pur">answered</span> 💬</h2>
+    <h2 class="pc-step-label pc-step-sm">2. Add it to your <span class="pc-u pur">calendar</span></h2>
+    <!-- HANDOFF: GHL should inject the real date/time via &dates=START/END on this link. -->
+    <a class="pc-btn pc-btn-sm" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Premura%20Strategy%20Call&details=Bring%20every%20decision-maker.%20Reply%20to%20your%20confirmation%20email%20to%20move%20it.&location=Online" target="_blank" rel="noopener" data-calendar-link>Add to Google Calendar</a>
+  </div>
+</section>
+
+<!-- ═══ STEP 3 · "I KNOW THE SENDER" NOTE ═══ -->
+<section class="pc-sec tight">
+  <div class="pc-wrap pc-narrow">
+    <h2 class="pc-step-label pc-step-sm">3. Say <span class="pc-u pur">"I know the sender"</span></h2>
+    <p class="pc-note-lead">The invite comes from an address your email may not recognize. If your email shows the notice below, tap <b>"I know the sender"</b> so the event lands on your calendar.</p>
+    <!-- Faithful recreation of the "unknown sender" calendar notice. To use a real
+         screenshot instead, drop it in assets/ and replace this whole .pc-know block with:
+         <div class="pc-know"><img src="assets/precall-know-sender.png" alt="Tap I know the sender"></div> -->
+    <div class="pc-know">
+      <div class="pc-know-mail">
+        <div class="pc-know-mail-h">Unknown sender: not added to Calendar yet</div>
+        <p class="pc-know-mail-p">It looks like you've never been in contact with this sender <span class="pc-know-email">hello@infopros.io</span>, so this event hasn't been added to your calendar. It won't appear there unless you say you know the sender.</p>
+        <div class="pc-know-btnrow">
+          <span class="pc-know-btn">I know the sender</span>
+          <span class="pc-know-arrow" aria-hidden="true">←</span>
+          <span class="pc-know-cta">Press <b>"I know the sender"</b> to add the event to your calendar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMMONLY ASKED QUESTIONS ═══ -->
+<section class="pc-sec">
+  <div class="pc-wrap">
+    <h2 class="pc-h pc-h2">Commonly Asked <span class="pc-u pur">Questions</span></h2>
     <div class="pc-q-list">
 
-      <details class="pc-q" open><summary><span class="pc-q-num">01</span><span class="pc-q-txt">What does it cost, and can it scale?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q1"></div><p class="pc-answer">We size it to how many deals you can close, so nothing gets wasted. <span class="pc-watch">▶ Watch for the full cost breakdown</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">01</span><span class="pc-q-txt">What does it cost, and can it scale?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q1"></div><p class="pc-answer">Most clients land at <b>$50 to $100 per qualified appointment</b> once ramped. We don't charge per appointment, that number is the whole system cost divided by the appointments it books, and it scales with your closers. <span class="pc-watch">▶ Watch the full breakdown</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">02</span><span class="pc-q-txt">Does it work without door-to-door or ads?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q2"></div><p class="pc-answer">Yes. Your own calling team books straight to your calendar. No knocking, no ads. <span class="pc-watch">▶ Watch it</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">02</span><span class="pc-q-txt">Does it work without door-to-door or ads?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q2"></div><p class="pc-answer">Yes. Your own calling team books straight to your calendar. No knocking, no ads. <span class="pc-watch">▶ Watch it</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">03</span><span class="pc-q-txt">Am I a fit if I do under 5 installs a month?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q3"></div><p class="pc-answer">Probably not yet. You need room for 40 to 50 appointments and a closer ready to work them. If that's you, let's talk. <span class="pc-watch">▶ Watch it</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">03</span><span class="pc-q-txt">Am I a fit if I do under 5 installs a month?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q3"></div><p class="pc-answer">Probably not yet. You need room for 40 to 50 appointments and a closer ready to work them. If that's you, let's talk. <span class="pc-watch">▶ Watch it</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">04</span><span class="pc-q-txt">Who needs to be on the call?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q4"></div><p class="pc-answer">Everyone who runs or pays for the call center. <span class="pc-watch">▶ Watch why</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">04</span><span class="pc-q-txt">Who needs to be on the call?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q4"></div><p class="pc-answer">Everyone who runs or pays for the call center. <span class="pc-watch">▶ Watch why</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">05</span><span class="pc-q-txt">How fast are we live?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q5"></div><p class="pc-answer">Usually 1 to 3 weeks. <span class="pc-watch">▶ Watch the full timeline</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">05</span><span class="pc-q-txt">How fast are we live?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q5"></div><p class="pc-answer">Usually 1 to 3 weeks. <span class="pc-watch">▶ Watch the full timeline</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">06</span><span class="pc-q-txt">Where can you run this?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q6"></div><p class="pc-answer">Anywhere in the US. You pick the zip codes. <span class="pc-watch">▶ Watch it</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">06</span><span class="pc-q-txt">Where can you run this?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q6"></div><p class="pc-answer">Anywhere in the US. You pick the zip codes. <span class="pc-watch">▶ Watch it</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">07</span><span class="pc-q-txt">Who hires, trains, and manages the agents?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q7"></div><p class="pc-answer">We do all of it. You watch it live in your dashboard. <span class="pc-watch">▶ Watch it</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">07</span><span class="pc-q-txt">Who hires, trains, and manages the agents?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q7"></div><p class="pc-answer">We do all of it. You watch it live in your dashboard. <span class="pc-watch">▶ Watch it</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">08</span><span class="pc-q-txt">What counts as a qualified appointment?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q8"></div><p class="pc-answer">You set the rules. We only book appointments that meet them. <span class="pc-watch">▶ Watch it</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">08</span><span class="pc-q-txt">What counts as a qualified appointment?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q8"></div><p class="pc-answer">You set the rules. We only book appointments that meet them. <span class="pc-watch">▶ Watch it</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">09</span><span class="pc-q-txt">What results are clients getting?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q9"></div><p class="pc-answer">About one good appointment per agent per day. <span class="pc-watch">▶ Watch the numbers</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">09</span><span class="pc-q-txt">What results are clients getting?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q9"></div><p class="pc-answer">About one good appointment per agent per day. <span class="pc-watch">▶ Watch the numbers</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">10</span><span class="pc-q-txt">Can I see the scripts before launch?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q10"></div><p class="pc-answer">Yes. You approve everything before we go live. <span class="pc-watch">▶ Watch it</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">10</span><span class="pc-q-txt">Can I see the scripts before launch?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q10"></div><p class="pc-answer">Yes. You approve everything before we go live. <span class="pc-watch">▶ Watch it</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">11</span><span class="pc-q-txt">What data do you call?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q11"></div><p class="pc-answer">Our own data software, refreshed every week. <span class="pc-watch">▶ Watch it</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">11</span><span class="pc-q-txt">What data do you call?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q11"></div><p class="pc-answer">Our own data software, refreshed every week. <span class="pc-watch">▶ Watch it</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">12</span><span class="pc-q-txt">Can I start small and grow?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q12"></div><p class="pc-answer">Yes. Setters call all day, and you can add agents whenever you want. <span class="pc-watch">▶ Watch it</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">12</span><span class="pc-q-txt">Can I start small and grow?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q12"></div><p class="pc-answer">Yes. Setters call all day, and you can add agents whenever you want. <span class="pc-watch">▶ Watch it</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">13</span><span class="pc-q-txt">How do you avoid double-booking?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q13"></div><p class="pc-answer">Our software books each closer's calendar with no overlap. <span class="pc-watch">▶ Watch it</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">13</span><span class="pc-q-txt">How do you avoid double-booking?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q13"></div><p class="pc-answer">Our software books each closer's calendar with no overlap. <span class="pc-watch">▶ Watch it</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">14</span><span class="pc-q-txt">Can I pause or add agents any time?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q14"></div><p class="pc-answer">Yes. Add agents, cut agents, or pause any time. <span class="pc-watch">▶ Watch it</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">14</span><span class="pc-q-txt">Can I pause or add agents any time?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q14"></div><p class="pc-answer">Yes. Add agents, cut agents, or pause any time. <span class="pc-watch">▶ Watch it</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">15</span><span class="pc-q-txt">Do territories burn out?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q15"></div><p class="pc-answer">No. We rotate zip codes so they stay fresh, and we can chase a storm fast. <span class="pc-watch">▶ Watch it</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">15</span><span class="pc-q-txt">Do territories burn out?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q15"></div><p class="pc-answer">No. We rotate zip codes so they stay fresh, and we can chase a storm fast. <span class="pc-watch">▶ Watch it</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">16</span><span class="pc-q-txt">What if results dip?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q16"></div><p class="pc-answer">We find the weak spot and fix it fast. <span class="pc-watch">▶ Watch it</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">16</span><span class="pc-q-txt">What if results dip?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q16"></div><p class="pc-answer">We find the weak spot and fix it fast. <span class="pc-watch">▶ Watch it</span></p></div></details>
 
-      <details class="pc-q" open><summary><span class="pc-q-num">17</span><span class="pc-q-txt">What do the best clients do?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q17"></div><p class="pc-answer">They put their best closer on it and confirm every appointment. <span class="pc-watch">▶ Watch it</span></p></div></details>
+      <details class="pc-q"><summary><span class="pc-q-num">17</span><span class="pc-q-txt">What do the best clients do?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q17"></div><p class="pc-answer">They put their best closer on it and confirm every appointment. <span class="pc-watch">▶ Watch it</span></p></div></details>
 
     </div>
   </div>
@@ -93,29 +114,27 @@
     <h2 class="pc-h pc-h2">And off <span class="pc-u grn">camera</span> 📱</h2>
     <div class="pc-wall">
       <!-- Real client screenshots. Add more by dropping images in project/assets/ and
-           replacing a placeholder tile with: <div class="pc-shot"><img src="assets/proof-XX.png" alt="client win"></div> -->
+           adding: <div class="pc-shot"><img src="assets/proof-XX.png" alt="client win"></div> -->
       <div class="pc-shot"><img src="assets/proof-dashboard.png" alt="Call center performance dashboard" loading="lazy"></div>
       <div class="pc-shot"><img src="assets/proof-discord.png" alt="Appointments landing in Discord" loading="lazy"></div>
-      <div class="pc-shot"><div class="pc-shot-ph" style="padding-bottom:60px;"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 10h8M8 14h5"/><rect x="3" y="4" width="18" height="14" rx="2"/></svg><small>Group-chat win</small></div></div>
-      <div class="pc-shot"><div class="pc-shot-ph" style="padding-bottom:90px;"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><small>Client DM</small></div></div>
-      <div class="pc-shot"><div class="pc-shot-ph" style="padding-bottom:50px;"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 10h8M8 14h5"/><rect x="3" y="4" width="18" height="14" rx="2"/></svg><small>Text message</small></div></div>
-      <div class="pc-shot"><div class="pc-shot-ph" style="padding-bottom:70px;"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18M7 14l4-4 3 3 5-6"/></svg><small>Stripe screenshot</small></div></div>
+      <div class="pc-shot"><div class="pc-shot-ph" style="padding-bottom:52%;"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 10h8M8 14h5"/><rect x="3" y="4" width="18" height="14" rx="2"/></svg><small>Group-chat win</small></div></div>
+      <div class="pc-shot"><div class="pc-shot-ph" style="padding-bottom:52%;"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><small>Client DM</small></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ VIDEO TESTIMONIALS · FINAL ═══ -->
+<!-- ═══ VIDEO TESTIMONIALS ═══ -->
 <section class="pc-sec">
   <div class="pc-wrap">
     <h2 class="pc-h pc-h2">Real operators, <span class="pc-u pur">on camera</span> 🎥</h2>
     <div class="pc-tgrid">
-      <article class="pc-tcard"><div class="pc-video" data-slot="t_jorge"></div><div class="pc-tmeta"><div class="pc-tstat">20+</div><div class="pc-tstat-sub">deals a month</div><div class="pc-tname">Jorge · solar</div></div></article>
-      <article class="pc-tcard"><div class="pc-video" data-slot="t_leicer"></div><div class="pc-tmeta"><div class="pc-tstat">$152K</div><div class="pc-tstat-sub">in payouts</div><div class="pc-tname">Leicer · solar</div></div></article>
-      <article class="pc-tcard"><div class="pc-video" data-slot="t_caesar"></div><div class="pc-tmeta"><div class="pc-tstat">8–10</div><div class="pc-tstat-sub">installs a month</div><div class="pc-tname">Caesar · solar</div></div></article>
       <article class="pc-tcard"><div class="pc-video" data-slot="t_scott"></div><div class="pc-tmeta"><div class="pc-tstat">17</div><div class="pc-tstat-sub">deals, first month</div><div class="pc-tname">Scott · solar</div></div></article>
+      <article class="pc-tcard"><div class="pc-video" data-slot="t_leicer"></div><div class="pc-tmeta"><div class="pc-tstat">$152K</div><div class="pc-tstat-sub">in payouts</div><div class="pc-tname">Leicer · solar</div></div></article>
+      <article class="pc-tcard"><div class="pc-video" data-slot="t_jorge"></div><div class="pc-tmeta"><div class="pc-tstat">20+</div><div class="pc-tstat-sub">deals a month</div><div class="pc-tname">Jorge · solar</div></div></article>
+      <article class="pc-tcard"><div class="pc-video" data-slot="t_rossey"></div><div class="pc-tmeta"><div class="pc-tstat">50–60</div><div class="pc-tstat-sub">appointments a month</div><div class="pc-tname">Mitchell Rossey · solar</div></div></article>
+      <article class="pc-tcard"><div class="pc-video" data-slot="t_caesar"></div><div class="pc-tmeta"><div class="pc-tstat">8–10</div><div class="pc-tstat-sub">installs a month</div><div class="pc-tname">Caesar · solar</div></div></article>
       <article class="pc-tcard"><div class="pc-video" data-slot="t_rafa"></div><div class="pc-tmeta"><div class="pc-tstat">12+</div><div class="pc-tstat-sub">deals a month</div><div class="pc-tname">Rafa · solar</div></div></article>
-      <article class="pc-tcard"><div class="pc-video" data-slot="t_velardi"></div><div class="pc-tmeta"><div class="pc-tstat">18</div><div class="pc-tstat-sub">sales a month</div><div class="pc-tname">Michael Velardi</div></div></article>
-      <article class="pc-tcard"><div class="pc-video" data-slot="t_rossey"></div><div class="pc-tmeta"><div class="pc-tstat">50–60</div><div class="pc-tstat-sub">appointments a month</div><div class="pc-tname">Mitchell Rossey</div></div></article>
+      <article class="pc-tcard"><div class="pc-video" data-slot="t_velardi"></div><div class="pc-tmeta"><div class="pc-tstat">18</div><div class="pc-tstat-sub">sales a month</div><div class="pc-tname">Michael Velardi · solar</div></div></article>
     </div>
   </div>
 </section>
@@ -128,13 +147,12 @@
 <script>
 /* ═══ media config — see HANDOFF at the bottom for the Vidalytics swap ═══
    All 7 testimonials are live (5 Vimeo, 2 Wistia). The main slot autoplays
-   muted (browsers block sound-on autoplay) with a tap-for-sound button, and
-   currently plays Scott's video as a working TEST — swap it for the recorded
-   welcome video via Vidalytics (which does sound-on autoplay natively). The
-   17 answer videos stay as labelled placeholders until recorded. */
+   muted and unmutes when you tap the video (Vidalytics does sound-on autoplay
+   natively once swapped in). It currently plays Scott's video as a working
+   TEST. The 17 answer videos stay as labelled placeholders until recorded. */
 window.PC_MEDIA = {
-  // TEST video in the main slot — replace with the real welcome video (Vidalytics id).
-  main: { vimeo:'1072241851', hash:'26fcdbbedd', poster:'assets/review-scott.jpg', title:'Watch this first', autoplay:true },
+  // TEST video in the main slot — replace with the real WELCOME video (Vidalytics id).
+  main: { vimeo:'1072241851', hash:'26fcdbbedd', title:'Welcome', autoplay:true },
 
   q1:{label:'Q1 · Cost & scaling · Michael'}, q2:{label:'Q2 · Works without D2D/ads? · Michael'},
   q3:{label:'Q3 · Fit under 5 installs? · Michael'}, q4:{label:'Q4 · Who must be on the call? · Michael'},
@@ -164,13 +182,14 @@ window.PC_MEDIA = {
     f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';f.frameBorder='0';
     return f;
   }
-  /* main slot — autoplay muted, one tap for sound */
+  /* main slot — autoplay muted; tap the video to unmute (no separate bar) */
   function autoplay(el,cfg){
     var wrap=document.createElement('div');wrap.className='pc-embed is-playing';
     var f=baseIframe(vimeoSrc(cfg,'&autoplay=1&muted=1'),cfg.title);wrap.appendChild(f);
-    var un=document.createElement('button');un.type='button';un.className='pc-unmute';un.innerHTML='🔊 Tap for sound';
-    un.addEventListener('click',function(){f.src=vimeoSrc(cfg,'&autoplay=1&muted=0');un.remove();});
-    wrap.appendChild(un);el.appendChild(wrap);
+    var tap=document.createElement('button');tap.type='button';tap.className='pc-tap-sound';tap.setAttribute('aria-label','Tap the video for sound');
+    tap.innerHTML="<span aria-hidden='true'>🔊</span>";
+    tap.addEventListener('click',function(){f.src=vimeoSrc(cfg,'&autoplay=1&muted=0');tap.remove();});
+    wrap.appendChild(tap);el.appendChild(wrap);
   }
   function placeholder(cfg){
     var w=document.createElement('div');w.className='pc-slot-ph';
@@ -191,50 +210,39 @@ window.PC_MEDIA = {
   }
   var vimeo=function(c){return facade(c,'https://vimeo.com/'+c.vimeo+'/'+c.hash,function(x){return vimeoSrc(x,'&autoplay=1');});};
   var wistia=function(c){return facade(c,'https://premura.wistia.com/medias/'+c.wistia,function(x){return 'https://fast.wistia.net/embed/iframe/'+x.wistia+'?autoPlay=true';});};
-  document.querySelectorAll('.pc-video[data-slot]').forEach(function(el){
+  function render(el){
+    if(el.dataset.rendered)return;
     var cfg=window.PC_MEDIA[el.dataset.slot]||{label:el.dataset.slot};
-    if(cfg.vidalytics){var v=document.createElement('div');v.id='vidalytics_embed_'+cfg.vidalytics;v.style.cssText='width:100%;height:100%;';el.appendChild(v);return;}
-    if(cfg.autoplay&&cfg.vimeo){autoplay(el,cfg);return;}
-    if(cfg.vimeo&&cfg.poster){el.appendChild(vimeo(cfg));return;}
-    if(cfg.wistia&&cfg.poster){el.appendChild(wistia(cfg));return;}
-    el.appendChild(placeholder(cfg));
+    if(cfg.vidalytics){var v=document.createElement('div');v.id='vidalytics_embed_'+cfg.vidalytics;v.style.cssText='width:100%;height:100%;';el.appendChild(v);el.dataset.rendered='1';return;}
+    if(cfg.autoplay&&cfg.vimeo){autoplay(el,cfg);el.dataset.rendered='1';return;}
+    if(cfg.vimeo&&cfg.poster){el.appendChild(vimeo(cfg));el.dataset.rendered='1';return;}
+    if(cfg.wistia&&cfg.poster){el.appendChild(wistia(cfg));el.dataset.rendered='1';return;}
+    el.appendChild(placeholder(cfg));el.dataset.rendered='1';
+  }
+  // render the main video + testimonials now; render each question video when its card opens
+  document.querySelectorAll('.pc-video[data-slot]').forEach(function(el){
+    if(!el.closest('details.pc-q')) render(el);
   });
-})();
-</script>
-
-<script>
-/* screenshot lightbox — click a proof image to see it full-size */
-(function(){
-  var imgs=document.querySelectorAll('.pc-wall .pc-shot img');
-  if(!imgs.length)return;
-  var ov=document.createElement('div');ov.className='pc-lb';ov.setAttribute('role','dialog');ov.setAttribute('aria-modal','true');ov.setAttribute('aria-hidden','true');
-  ov.innerHTML="<button class='pc-lb-x' type='button' aria-label='Close'>&times;</button><img class='pc-lb-img' alt=''>";
-  var lbImg=ov.querySelector('.pc-lb-img'),xBtn=ov.querySelector('.pc-lb-x');
-  document.body.appendChild(ov);
-  function open(src,alt){lbImg.src=src;lbImg.alt=alt||'';ov.classList.add('is-open');ov.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';xBtn.focus();}
-  function close(){ov.classList.remove('is-open');ov.setAttribute('aria-hidden','true');document.body.style.overflow='';lbImg.removeAttribute('src');}
-  imgs.forEach(function(im){
-    im.setAttribute('role','button');im.setAttribute('tabindex','0');im.setAttribute('aria-label','Expand '+(im.alt||'image'));
-    im.addEventListener('click',function(){open(im.currentSrc||im.src,im.alt);});
-    im.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(im.currentSrc||im.src,im.alt);}});
+  document.querySelectorAll('details.pc-q').forEach(function(d){
+    d.addEventListener('toggle',function(){ if(d.open){ var el=d.querySelector('.pc-video[data-slot]'); if(el) render(el); } });
   });
-  ov.addEventListener('click',function(e){if(e.target===ov||e.target===xBtn)close();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('is-open'))close();});
 })();
 </script>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      HANDOFF
-     • Main video: autoplays muted with a tap-for-sound button, currently playing
-       Scott's Vimeo as a working TEST. For the real welcome video, set
-       `vidalytics:'EMBED_ID'` on the `main` slot in PC_MEDIA and paste that
-       video's Vidalytics loader <script> just below. Vidalytics gives sound-on
-       autoplay-on-open natively (browsers block that for Vimeo/Wistia).
+     • Main video (Step 1): autoplays muted, taps to unmute. Currently Scott's
+       Vimeo as a TEST. For the real WELCOME video, set `vidalytics:'EMBED_ID'`
+       on the `main` slot in PC_MEDIA and paste that video's Vidalytics loader
+       <script> just below. Vidalytics does sound-on autoplay natively.
      • 17 answer videos: set `vidalytics:'EMBED_ID'` on q1..q17 the same way.
-     • Calendar button: working add-to-Google-Calendar link. GHL should inject the
-       booked date/time via &dates=YYYYMMDDTHHMMSSZ/YYYYMMDDTHHMMSSZ on the URL.
-     • Screenshot wall: two real screenshots live (dashboard + Discord). Add more
-       by dropping images in project/assets/ and replacing a placeholder tile with:
+       (Question videos load only when a card is opened, to keep the page fast.)
+     • Calendar button (Step 2): GHL should inject the booked date/time via
+       &dates=YYYYMMDDTHHMMSSZ/YYYYMMDDTHHMMSSZ on the URL.
+     • Step 3 screenshot: drop Ryan's "I know the sender" image in assets/ and
+       replace the placeholder with:
+       <div class="pc-note-shot"><img src="assets/precall-know-sender.png" alt="Tap I know the sender"></div>
+     • Screenshot wall: two real screenshots live. Add more with
        <div class="pc-shot"><img src="assets/proof-01.png" alt="client win"></div>
      ═══════════════════════════════════════════════════════════════════════ -->
 
