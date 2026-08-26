@@ -59,12 +59,26 @@ code{background:#191527;border:1px solid var(--st-line);border-radius:5px;paddin
 .st-stat{color:var(--st-green);font-weight:600;font-size:.92rem;margin-top:3px;}
 .st-quote{margin:11px 0 0;font-size:.95rem;color:var(--st-ink);border-left:2px solid var(--st-purple);padding-left:12px;font-style:italic;}
 .st-quote-todo{color:#6f6889;border-left-color:#332a4d;font-style:normal;font-size:.86rem;}
-.st-copy{margin-top:14px;background:var(--st-purple);color:#fff;border:0;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.92rem;padding:11px 14px;cursor:pointer;transition:background .15s ease,transform .12s ease;}
+.st-actions{margin-top:14px;display:flex;gap:8px;align-items:stretch;}
+.st-copy{flex:1;background:var(--st-purple);color:#fff;border:0;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.92rem;padding:11px 14px;cursor:pointer;transition:background .15s ease,transform .12s ease;}
 .st-copy:hover{background:var(--st-purple-2);}
 .st-copy:active{transform:scale(.98);}
 .st-copy.is-copied{background:var(--st-green);color:#062615;}
 .st-copy-ic{margin-right:4px;}
+.st-open{flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:0 14px;border:1px solid var(--st-line);border-radius:9px;color:var(--st-ink);text-decoration:none;font-family:'Outfit',sans-serif;font-weight:700;font-size:.86rem;transition:border-color .15s ease;}
+.st-open:hover{border-color:var(--st-purple);}
 .st-linkline{margin-top:7px;font-size:.72rem;color:#5f596f;word-break:break-all;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+
+/* ═══ standalone single-client page (what a lead sees) ═══ */
+.st-solo{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 20px;}
+.st-solo-card{width:100%;max-width:640px;}
+.st-solo-card .st-eyebrow{color:var(--st-green);}
+.st-solo-video{border-radius:16px;overflow:hidden;border:1px solid var(--st-line);box-shadow:0 24px 70px -24px rgba(169,53,255,.4);margin-top:10px;}
+.st-solo-meta{margin-top:20px;text-align:center;}
+.st-solo-name{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;color:#fff;}
+.st-solo-meta .st-loc{margin-top:5px;}
+.st-solo-stat{color:var(--st-green);font-weight:600;font-size:1.05rem;margin-top:8px;}
+.st-solo-meta .st-quote{display:inline-block;text-align:left;margin:16px auto 0;max-width:560px;font-size:1.02rem;}
 
 /* footer */
 .st-foot{border-top:1px solid var(--st-line);margin-top:36px;padding:26px 20px;text-align:center;color:#6a6480;font-size:.82rem;}

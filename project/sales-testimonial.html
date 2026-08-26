@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" href="assets/premura-logo.png">
+<link rel="apple-touch-icon" href="assets/premura-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premura · Client result</title>
+<meta name="description" content="A real Premura client result.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,700;0,800;1,700;1,800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sales-testimonials.css">
+</head>
+<body>
+
+<main class="st-solo" data-solo>
+  <!-- filled by JS from ?c=<id> -->
+</main>
+
+<script src="sales-data.js"></script>
+<script>
+(function(){
+  var esc=ST.esc;
+  var params=new URLSearchParams(location.search);
+  var id=params.get('c')||'';
+  var c=ST.find(id);
+  var root=document.querySelector('[data-solo]');
+
+  if(!c){
+    root.innerHTML="<div class='st-solo-card'><span class='st-eyebrow'>Premura</span>"+
+      "<h1 class='st-solo-name'>Testimonial not found</h1>"+
+      "<p class='st-solo-stat'>This link is missing a valid client. Double-check the link, or reach us at <a href='mailto:support@premura.org'>support@premura.org</a>.</p></div>";
+    return;
+  }
+
+  document.title='Premura · '+c.name;
+  var loc=ST.loc(c);
+  var wrap=document.createElement('div');wrap.className='st-solo-card';
+
+  var head=document.createElement('div');
+  head.innerHTML="<span class='st-eyebrow'>✅ Real Premura client</span>";
+  wrap.appendChild(head);
+
+  var vid=document.createElement('div');vid.className='st-video st-solo-video';vid.appendChild(ST.facade(c));
+  wrap.appendChild(vid);
+
+  var meta=document.createElement('div');meta.className='st-solo-meta';
+  meta.innerHTML=
+    "<div class='st-solo-name'>"+esc(c.name)+(c.industry?" <span class='st-ind'>· "+esc(c.industry)+"</span>":"")+"</div>"+
+    (loc?"<div class='st-loc'>📍 "+esc(loc)+"</div>":"")+
+    "<div class='st-solo-stat'>"+esc(c.stat)+"</div>"+
+    (c.quote?"<blockquote class='st-quote'>“"+esc(c.quote)+"”</blockquote>":"");
+  wrap.appendChild(meta);
+
+  root.appendChild(wrap);
+})();
+</script>
+
+</body>
+</html>
