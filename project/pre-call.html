@@ -167,14 +167,12 @@ window.PC_MEDIA = {
     f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';f.frameBorder='0';
     return f;
   }
-  /* main slot — autoplay muted; tap the video to unmute (no separate bar) */
+  /* main slot — autoplay muted; the player's own Unmute control handles sound
+     (Vidalytics does sound-on autoplay natively once swapped in) */
   function autoplay(el,cfg){
     var wrap=document.createElement('div');wrap.className='pc-embed is-playing';
     var f=baseIframe(vimeoSrc(cfg,'&autoplay=1&muted=1'),cfg.title);wrap.appendChild(f);
-    var tap=document.createElement('button');tap.type='button';tap.className='pc-tap-sound';tap.setAttribute('aria-label','Tap the video for sound');
-    tap.innerHTML="<span aria-hidden='true'>🔊</span>";
-    tap.addEventListener('click',function(){f.src=vimeoSrc(cfg,'&autoplay=1&muted=0');tap.remove();});
-    wrap.appendChild(tap);el.appendChild(wrap);
+    el.appendChild(wrap);
   }
   function placeholder(cfg){
     var w=document.createElement('div');w.className='pc-slot-ph';
