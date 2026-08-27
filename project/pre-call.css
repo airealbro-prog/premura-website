@@ -60,7 +60,7 @@ a{color:var(--pc-purple-2);}
 .pc-video.rounded{border-radius:18px;}
 /* Step-1 main video — big & prominent, capped by viewport height so it never gets cut */
 /* Step-1 main video — big & prominent, capped by viewport height so Step 2 stays visible on load */
-.pc-main-video{width:100%;max-width:min(720px,72vh);margin:8px auto 0;border-radius:18px;box-shadow:0 24px 70px -20px rgba(169,53,255,.45);}
+.pc-main-video{width:100%;max-width:min(1080px,112vh);margin:8px auto 0;border-radius:18px;box-shadow:0 24px 70px -20px rgba(169,53,255,.45);}
 
 /* click-to-play facade (testimonials + question videos) */
 .pc-embed{position:relative;display:block;width:100%;height:100%;cursor:pointer;}
@@ -122,7 +122,7 @@ a{color:var(--pc-purple-2);}
 .pc-shot-ph small{font-size:.78rem;line-height:1.4;}
 
 /* testimonials — ONE gigantic embed per row */
-.pc-tgrid{display:grid;grid-template-columns:1fr;gap:28px;margin-top:28px;max-width:880px;margin-left:auto;margin-right:auto;}
+.pc-tgrid{display:grid;grid-template-columns:1fr;gap:32px;margin-top:28px;max-width:1000px;margin-left:auto;margin-right:auto;}
 .pc-tcard{background:var(--pc-bg-2);border:1px solid var(--pc-line);border-radius:16px;overflow:hidden;transition:border-color .25s ease,transform .25s ease;}
 .pc-tcard:hover{border-color:var(--pc-purple);}
 .pc-tmeta{padding:18px 22px 20px;text-align:left;}
