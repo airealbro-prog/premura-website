@@ -104,6 +104,16 @@
 
       <details class="pc-q"><summary><span class="pc-q-num">17</span><span class="pc-q-txt">What do the best clients do?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q17"></div><p class="pc-answer">They put their best closer on it and confirm every appointment. <span class="pc-watch">▶ Watch it</span></p></div></details>
 
+      <details class="pc-q"><summary><span class="pc-q-num">18</span><span class="pc-q-txt">What are the show rates?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q18"></div><p class="pc-answer"><span class="pc-watch">▶ Watch the breakdown</span></p></div></details>
+
+      <details class="pc-q"><summary><span class="pc-q-num">19</span><span class="pc-q-txt">Can I hear the agents on real calls?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q19"></div><p class="pc-answer"><span class="pc-watch">▶ Real call recordings</span></p></div></details>
+
+      <details class="pc-q"><summary><span class="pc-q-num">20</span><span class="pc-q-txt">How do you stay compliant?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q20"></div><p class="pc-answer"><span class="pc-watch">▶ Watch it</span></p></div></details>
+
+      <details class="pc-q"><summary><span class="pc-q-num">21</span><span class="pc-q-txt">What's the time commitment on me?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q21"></div><p class="pc-answer"><span class="pc-watch">▶ Watch it</span></p></div></details>
+
+      <details class="pc-q"><summary><span class="pc-q-num">22</span><span class="pc-q-txt">Do you manage it all for me?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q22"></div><p class="pc-answer"><span class="pc-watch">▶ Watch it</span></p></div></details>
+
     </div>
   </div>
 </section>
@@ -136,18 +146,29 @@
    natively once swapped in). It currently plays Scott's video as a working
    TEST. The 17 answer videos stay as labelled placeholders until recorded. */
 window.PC_MEDIA = {
-  // TEST video in the main slot — replace with the real WELCOME video (Vidalytics id).
-  main: { vimeo:'1072241851', hash:'26fcdbbedd', title:'Welcome', autoplay:true },
+  // Main WELCOME video — Vidalytics, scraped from the GHL precall page.
+  main: { vidalytics:'e7gLdr5TfoBwtOYW', title:'Welcome' },
 
-  q1:{label:'Q1 · Cost & scaling · Michael'}, q2:{label:'Q2 · Works without D2D/ads? · Michael'},
-  q3:{label:'Q3 · Fit under 5 installs? · Michael'}, q4:{label:'Q4 · Who must be on the call? · Michael'},
-  q5:{label:'Q5 · Speed to live · Michael'}, q6:{label:'Q6 · Where can you run this? · Matt'},
-  q7:{label:'Q7 · Who hires/trains/manages? · Matt'}, q8:{label:'Q8 · What is a qualified appointment? · Matt'},
-  q9:{label:'Q9 · Client results · Michael'}, q10:{label:'Q10 · Scripts before launch · Matt'},
-  q11:{label:'Q11 · Data & DNC · Matt'}, q12:{label:'Q12 · Start small & ramp · Matt'},
-  q13:{label:'Q13 · No double-booking · Matt'}, q14:{label:'Q14 · Pause / add agents · Matt'},
-  q15:{label:'Q15 · Territory saturation · Michael'}, q16:{label:'Q16 · If results dip · Matt'},
-  q17:{label:'Q17 · What top clients do · Michael'},
+  // REAL Vidalytics answer videos (scraped) mapped to matching questions:
+  q5:{ vidalytics:'ZVwEX7vTosTpdDVq', label:'Setup Timeline' },      // How fast are we live?
+  q7:{ vidalytics:'dYWdezRxD93Sx6L7', label:'How We Find Agents' },  // Who hires / trains / manages?
+  q8:{ vidalytics:'WAEC1llmQOk5XZgb', label:'Appointment Quality' }, // What is a qualified appointment?
+  q9:{ vidalytics:'b5JdRBNm6VG3qFBr', label:'Appointment Volume' },  // What results are clients getting?
+  // new questions for scraped videos with no existing match:
+  q18:{ vidalytics:'aaiKxFajo3qNXpEh', label:'Average Show Rates' },
+  q19:{ vidalytics:'WyNPO8v6ARzldnWJ', label:'Agent Call Recordings' },
+  q20:{ vidalytics:'KAUDOAHZPrQC9Lf7', label:'How We Stay Compliant' },
+  q21:{ vidalytics:'QDWaTzrW7CLQds4L', label:'Time Commitment' },
+  q22:{ vidalytics:'lFoRR0wXs9_NVGeW', label:'Have Us Manage It' },
+
+  // remaining answers — placeholders until recorded:
+  q1:{label:'Q1 · Cost & scaling'}, q2:{label:'Q2 · Works without D2D/ads?'},
+  q3:{label:'Q3 · Fit under 5 installs?'}, q4:{label:'Q4 · Who must be on the call?'},
+  q6:{label:'Q6 · Where can you run this?'}, q10:{label:'Q10 · Scripts before launch'},
+  q11:{label:'Q11 · Data & DNC'}, q12:{label:'Q12 · Start small & ramp'},
+  q13:{label:'Q13 · No double-booking'}, q14:{label:'Q14 · Pause / add agents'},
+  q15:{label:'Q15 · Territory saturation'}, q16:{label:'Q16 · If results dip'},
+  q17:{label:'Q17 · What top clients do'},
 
   t_jorge:   { vimeo:'1072247746', hash:'d493e53744', poster:'assets/review-jorge.jpg',  title:'Jorge' },
   t_leicer:  { vimeo:'1072244795', hash:'5d8bc1fb19', poster:'assets/review-leicer.jpg', title:'Leicer' },
@@ -166,6 +187,20 @@ window.PC_MEDIA = {
     f.allow='autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
     f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';f.frameBorder='0';
     return f;
+  }
+  /* Vidalytics loader (exact embed code from the GHL precall page, group PLL2mFsn).
+     Runs once per embed id; the player fills the .pc-video box. */
+  function loadVidalytics(id){
+    (function (v, i, d, a, l, y, t, c, s) {
+      y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}
+      var vl='Loader',vli=v[y][vl],vsl=v[c][vl+'Script'],vlf=v[c][vl+'Loaded'],ve='Embed';
+      if(!vsl){vsl=function(u,cb){
+        if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
+        if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
+        i.getElementsByTagName("head")[0].appendChild(s);
+      };}
+      vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
+    })(window, document, 'Vidalytics', 'vidalytics_embed_'+id, 'https://fast.vidalytics.com/embeds/PLL2mFsn/'+id+'/');
   }
   /* main slot — autoplay muted; the player's own Unmute control handles sound
      (Vidalytics does sound-on autoplay natively once swapped in) */
@@ -196,7 +231,7 @@ window.PC_MEDIA = {
   function render(el){
     if(el.dataset.rendered)return;
     var cfg=window.PC_MEDIA[el.dataset.slot]||{label:el.dataset.slot};
-    if(cfg.vidalytics){var v=document.createElement('div');v.id='vidalytics_embed_'+cfg.vidalytics;v.style.cssText='width:100%;height:100%;';el.appendChild(v);el.dataset.rendered='1';return;}
+    if(cfg.vidalytics){var v=document.createElement('div');v.id='vidalytics_embed_'+cfg.vidalytics;v.style.cssText='width:100%;position:relative;padding-top:56.25%;';el.appendChild(v);loadVidalytics(cfg.vidalytics);el.dataset.rendered='1';return;}
     if(cfg.autoplay&&cfg.vimeo){autoplay(el,cfg);el.dataset.rendered='1';return;}
     if(cfg.vimeo&&cfg.poster){el.appendChild(vimeo(cfg));el.dataset.rendered='1';return;}
     if(cfg.wistia&&cfg.poster){el.appendChild(wistia(cfg));el.dataset.rendered='1';return;}
