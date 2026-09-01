@@ -25,6 +25,7 @@ img{max-width:100%;display:block;}
 a{color:var(--pc-purple-2);}
 
 .pc-wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+.pc-wrap-wide{max-width:1320px;}   /* the main video breaks out wider on desktop */
 .pc-narrow{max-width:640px;margin:0 auto;}
 
 /* headline system */
@@ -60,7 +61,7 @@ a{color:var(--pc-purple-2);}
 .pc-video.rounded{border-radius:18px;}
 /* Step-1 main video — big & prominent, capped by viewport height so it never gets cut */
 /* Step-1 main video — big & prominent, capped by viewport height so Step 2 stays visible on load */
-.pc-main-video{width:100%;max-width:min(1080px,112vh);margin:8px auto 0;border-radius:18px;box-shadow:0 24px 70px -20px rgba(169,53,255,.45);}
+.pc-main-video{width:100%;max-width:min(1280px,128vh);margin:8px auto 0;border-radius:18px;box-shadow:0 24px 70px -20px rgba(169,53,255,.45);}
 
 /* click-to-play facade (testimonials + question videos) */
 .pc-embed{position:relative;display:block;width:100%;height:100%;cursor:pointer;}
