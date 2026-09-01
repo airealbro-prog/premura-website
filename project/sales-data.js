@@ -27,7 +27,7 @@ window.ST_DATA = [
   { id:'jorge',   name:'Jorge',            industry:'Solar', state:'TBD',
     stat:'20+ deals a month',
     quote:'20+ deals a month running his own call center.', vimeo:'1072247746', hash:'d493e53744', poster:'assets/review-jorge.jpg' },
-  { id:'velardi', name:'Michael Velardi',  industry:'Solar', state:'TBD',
+  { id:'velardi', name:'Michael Velardi',  industry:'Solar', state:'New York',
     stat:'18 sales a month',
     quote:"In the last ten days, I think I had six sales. That's eighteen sales in a month, probably a forty percent close rate based on appointments.", wistia:'7wj6qo1loi', poster:'assets/review-velardi.jpg' }
 ];
