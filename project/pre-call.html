@@ -13,8 +13,8 @@
 <!-- speed: warm up Vidalytics + preload the main video's loader so it plays fast -->
 <link rel="preconnect" href="https://fast.vidalytics.com" crossorigin>
 <link rel="dns-prefetch" href="https://fast.vidalytics.com">
-<link rel="preconnect" href="https://player.vimeo.com" crossorigin>
-<link rel="preconnect" href="https://fast.wistia.net" crossorigin>
+<link rel="preconnect" href="https://player.vimeo.com">
+<link rel="preconnect" href="https://fast.wistia.net">
 <link rel="preload" as="script" crossorigin href="https://fast.vidalytics.com/embeds/PLL2mFsn/e7gLdr5TfoBwtOYW/loader.min.js">
 <!-- non-render-blocking fonts (swap to stylesheet once loaded) -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,700;0,800;1,700;1,800&family=DM+Sans:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -189,7 +189,7 @@ window.PC_MEDIA = {
 
 (function(){
   var PLAY="<svg viewBox='0 0 24 24' fill='currentColor'><path d='M8 5v14l11-7z'/></svg>";
-  function vimeoSrc(c,opts){return 'https://player.vimeo.com/video/'+c.vimeo+'?h='+c.hash+opts+'&title=0&byline=0&portrait=0';}
+  function vimeoSrc(c,opts){return 'https://player.vimeo.com/video/'+c.vimeo+'?h='+c.hash+opts;}
   function baseIframe(src,title){
     var f=document.createElement('iframe');f.src=src;f.title=(title||'Premura')+' video';
     f.allow='autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
