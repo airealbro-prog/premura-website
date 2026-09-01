@@ -1,0 +1,31 @@
+/* ═══ WHITE / light theme for the pre-call A/B test ═══
+   Loaded AFTER pre-call.css on pre-call-b.html. Flips the color tokens and
+   fixes the few spots that hard-code dark values. */
+:root{
+  --pc-bg:#ffffff;
+  --pc-bg-2:#f5f3fb;
+  --pc-ink:#14121c;
+  --pc-ink-2:#5f5872;
+  --pc-line:#e6e2f0;
+  --pc-purple:#8b2fe6;
+  --pc-purple-2:#7a1fd6;
+  --pc-green:#1a9d55;
+  --pc-red:#e0304f;
+}
+
+/* placeholder video state -> light */
+.pc-slot-ph{background:repeating-linear-gradient(45deg,#f1eef8 0 14px,#e9e5f3 14px 28px);border-color:#d9d2ea;}
+
+/* testimonial stat hard-codes #fff -> dark on the light card */
+.pc-tstat{color:var(--pc-ink);}
+
+/* softer purple glow on white */
+.pc-main-video{box-shadow:0 24px 60px -26px rgba(139,47,230,.32);}
+.pc-tcard{box-shadow:0 12px 30px -22px rgba(20,18,28,.25);}
+
+/* the "unknown sender" recreation stays a real-looking notice; give it a hair of edge on white */
+.pc-know-mail{border:1px solid #dcdce4;}
+
+/* footer greys on white */
+footer.pc-foot{color:#7a7488;}
+footer.pc-foot a{color:#6a6480;}
