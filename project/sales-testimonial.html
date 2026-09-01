@@ -26,6 +26,9 @@
   var params=new URLSearchParams(location.search);
   var id=params.get('c')||'';
   var c=ST.find(id);
+  // geo mode (appointment-email links): ?state=FL[&city=…] → nearest client testimonial
+  var geo=params.get('state')||params.get('loc');
+  if(!c&&(geo||params.has('geo')))c=ST.nearest(geo);
   var root=document.querySelector('[data-solo]');
 
   if(!c){
@@ -43,8 +46,20 @@
   head.innerHTML="<span class='st-eyebrow'>✅ Real Premura client</span>";
   wrap.appendChild(head);
 
-  var vid=document.createElement('div');vid.className='st-video st-solo-video';vid.appendChild(ST.facade(c));
+  var vid=document.createElement('div');vid.className='st-video st-solo-video';
+  var fac=ST.facade(c);vid.appendChild(fac);
   wrap.appendChild(vid);
+  // ?play=1 (email clicks): start the video immediately, muted so browsers allow it
+  if(params.get('play')==='1'){
+    var src=c.vimeo
+      ?('https://player.vimeo.com/video/'+c.vimeo+'?h='+c.hash+'&autoplay=1&muted=1&title=0&byline=0&portrait=0')
+      :('https://fast.wistia.net/embed/iframe/'+c.wistia+'?autoPlay=true&muted=true');
+    fac.classList.add('is-playing');
+    var f=document.createElement('iframe');f.src=src;f.title=c.name+' testimonial';
+    f.allow='autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
+    f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';f.frameBorder='0';
+    fac.appendChild(f);
+  }
 
   var meta=document.createElement('div');meta.className='st-solo-meta';
   meta.innerHTML=

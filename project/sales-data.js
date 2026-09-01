@@ -63,3 +63,42 @@ window.ST = (function(){
   function shareLink(id){var clean=!/\.html$/.test(location.pathname);return location.origin+'/sales-testimonial'+(clean?'':'.html')+'?c='+encodeURIComponent(id);}
   return {PLAY:PLAY,esc:esc,slug:slug,find:find,loc:loc,facade:facade,shareLink:shareLink};
 })();
+
+/* ── Geo matching: pick the client testimonial nearest to a prospect ──
+   Prospect location arrives from GHL email merge fields (?state=FL&city=…).
+   GHL stores 2-letter codes; ST.nearest accepts codes or full names.
+   No usable location → the default testimonial (leicer). */
+window.ST_GEO=(function(){
+  // state centroids, lat/lng
+  var C={AL:[32.8,-86.8],AK:[64.7,-152.3],AZ:[34.3,-111.7],AR:[34.9,-92.4],CA:[37.2,-119.5],
+  CO:[39.0,-105.5],CT:[41.6,-72.7],DE:[39.0,-75.5],DC:[38.9,-77.0],FL:[28.6,-82.4],GA:[32.6,-83.4],
+  HI:[20.3,-156.4],ID:[44.4,-114.6],IL:[40.0,-89.2],IN:[39.9,-86.3],IA:[42.1,-93.5],KS:[38.5,-98.4],
+  KY:[37.5,-85.3],LA:[31.0,-92.0],ME:[45.4,-69.2],MD:[39.0,-76.8],MA:[42.3,-71.8],MI:[44.3,-85.4],
+  MN:[46.3,-94.3],MS:[32.7,-89.7],MO:[38.4,-92.5],MT:[47.0,-109.6],NE:[41.5,-99.8],NV:[39.3,-116.6],
+  NH:[43.7,-71.6],NJ:[40.2,-74.7],NM:[34.4,-106.1],NY:[42.9,-75.5],NC:[35.5,-79.4],ND:[47.4,-100.5],
+  OH:[40.3,-82.8],OK:[35.6,-97.5],OR:[43.9,-120.6],PA:[40.9,-77.8],RI:[41.7,-71.6],SC:[33.9,-80.9],
+  SD:[44.4,-100.2],TN:[35.9,-86.4],TX:[31.5,-99.4],UT:[39.3,-111.7],VT:[44.1,-72.7],VA:[37.5,-78.9],
+  WA:[47.4,-120.4],WV:[38.6,-80.6],WI:[44.6,-90.0],WY:[43.0,-107.6]};
+  var NAME2CODE={};
+  var CODES=['AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
+  for(var i=0;i<window.ST_STATES.length;i++)NAME2CODE[window.ST_STATES[i].toLowerCase()]=CODES[i];
+  return {C:C,NAME2CODE:NAME2CODE};
+})();
+window.ST.DEFAULT_ID='leicer';
+window.ST.stateCode=function(s){
+  if(!s)return null;s=String(s).trim();
+  if(/^[A-Za-z]{2}$/.test(s)&&window.ST_GEO.C[s.toUpperCase()])return s.toUpperCase();
+  return window.ST_GEO.NAME2CODE[s.toLowerCase()]||null;
+};
+window.ST.nearest=function(state){
+  var code=window.ST.stateCode(state);
+  var candidates=window.ST_DATA.filter(function(c){return window.ST.stateCode(c.state);});
+  if(!code||!candidates.length)return window.ST.find(window.ST.DEFAULT_ID)||window.ST_DATA[0];
+  var p=window.ST_GEO.C[code],best=null,bestD=Infinity;
+  candidates.forEach(function(c){
+    var q=window.ST_GEO.C[window.ST.stateCode(c.state)];
+    var d=Math.pow((p[0]-q[0]),2)+Math.pow((p[1]-q[1])*Math.cos(p[0]*Math.PI/180),2);
+    if(d<bestD){bestD=d;best=c;}
+  });
+  return best;
+};
