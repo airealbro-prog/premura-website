@@ -90,10 +90,10 @@ window.ST.stateCode=function(s){
   if(/^[A-Za-z]{2}$/.test(s)&&window.ST_GEO.C[s.toUpperCase()])return s.toUpperCase();
   return window.ST_GEO.NAME2CODE[s.toLowerCase()]||null;
 };
-window.ST.nearest=function(state){
+window.ST.nearest=function(state,fallbackId){
   var code=window.ST.stateCode(state);
   var candidates=window.ST_DATA.filter(function(c){return window.ST.stateCode(c.state);});
-  if(!code||!candidates.length)return window.ST.find(window.ST.DEFAULT_ID)||window.ST_DATA[0];
+  if(!code||!candidates.length)return window.ST.find(fallbackId)||window.ST.find(window.ST.DEFAULT_ID)||window.ST_DATA[0];
   var p=window.ST_GEO.C[code],best=null,bestD=Infinity;
   candidates.forEach(function(c){
     var q=window.ST_GEO.C[window.ST.stateCode(c.state)];

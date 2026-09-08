@@ -26,9 +26,13 @@
   var params=new URLSearchParams(location.search);
   var id=params.get('c')||'';
   var c=ST.find(id);
-  // geo mode (appointment-email links): ?state=FL[&city=…] → nearest client testimonial
+  // geo mode (appointment-email links): ?state=FL → nearest client testimonial.
+  // An empty/missing state still counts as geo mode when the param (or ?d=) is
+  // present — GHL renders {{contact.state}} as "" for contacts with no state —
+  // and falls back to ?d=<id>, then the default client.
   var geo=params.get('state')||params.get('loc');
-  if(!c&&(geo||params.has('geo')))c=ST.nearest(geo);
+  if(!c&&(params.has('state')||params.has('loc')||params.has('geo')||params.has('d')))
+    c=ST.nearest(geo,params.get('d'));
   var root=document.querySelector('[data-solo]');
 
   if(!c){
