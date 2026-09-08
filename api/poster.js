@@ -36,9 +36,9 @@ function stateCode(s) {
   if (/^[A-Za-z]{2}$/.test(s) && CENTROID[s.toUpperCase()]) return s.toUpperCase();
   return NAMES[s.toLowerCase()] || null;
 }
-function nearestId(state) {
+function nearestId(state, fallback) {
   const code = stateCode(state);
-  if (!code) return DEFAULT_ID;
+  if (!code) return CLIENTS.some(c => c.id === fallback) ? fallback : DEFAULT_ID;
   const p = CENTROID[code];
   let best = DEFAULT_ID, bestD = Infinity;
   for (const c of CLIENTS) {
@@ -50,7 +50,7 @@ function nearestId(state) {
 }
 
 module.exports = (req, res) => {
-  const id = nearestId(req.query.state || req.query.loc);
+  const id = nearestId(req.query.state || req.query.loc, req.query.d);
   res.setHeader('Cache-Control', 'public, max-age=3600');
   res.redirect(302, `https://www.premura.org/assets/email-poster-${id}.jpg`);
 };
