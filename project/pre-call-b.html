@@ -223,20 +223,47 @@ window.PC_MEDIA = {
     w.innerHTML="<span class='pc-ph-icon'>"+PLAY+"</span><span class='pc-ph-tag'>Video coming soon</span><span class='pc-ph-label'>"+(cfg.label||'Video')+"</span>";
     return w;
   }
-  function facade(cfg,href,srcFor){
+  /* ── Instant testimonials ─────────────────────────────────────────────
+     The old GHL page feels instant because every video is Vidalytics, which
+     preloads itself. Ours are Vimeo/Wistia click-to-play, so a cold click pays
+     for player boot + buffering (~1-2s). Fix: prewarm the player (muted,
+     buffering, hidden behind the poster) while a card is in view or on
+     hover/tap intent, then on click just reveal + rewind + unmute. Only ~1
+     giant testimonial is in view at a time; cards that scroll away unopened
+     are cooled to cap buffering. */
+  function pcPost(f,m){try{f.contentWindow.postMessage(JSON.stringify(m),'*');}catch(e){}}
+  function vimeoUnmute(f){var n=0;(function go(){if(n++>6||!f.parentNode)return;
+    if(n<=2)pcPost(f,{method:'setCurrentTime',value:0});
+    pcPost(f,{method:'setVolume',value:1});pcPost(f,{method:'play'});
+    setTimeout(go,250);})();}
+  var pcIO=('IntersectionObserver' in window)?new IntersectionObserver(function(es){
+    es.forEach(function(en){var api=en.target._pcw;if(!api)return;
+      if(en.isIntersecting&&en.intersectionRatio>=0.55)api.warm();
+      else if(en.intersectionRatio<=0.05)api.cool();});},{threshold:[0,0.05,0.55,1]}):null;
+  function facade(cfg,href,coldSrc,warmSrc,unmute){
     var a=document.createElement('a');a.className='pc-embed';a.href=href;a.target='_blank';a.rel='noopener';
     a.setAttribute('role','button');a.setAttribute('aria-label','Play '+(cfg.title||'video'));
     a.innerHTML="<img class='pc-poster' loading='lazy' decoding='async' src='"+cfg.poster+"' alt='"+(cfg.title||'')+" testimonial'><span class='pc-play' aria-hidden='true'>"+PLAY+"</span>";
+    var frame=null,live=false;
+    function warm(){if(frame||live||!warmSrc)return;frame=baseIframe(warmSrc(cfg),cfg.title);frame.className='pc-prewarm';frame.tabIndex=-1;a.appendChild(frame);}
+    function cool(){if(frame&&!live){a.removeChild(frame);frame=null;}}
+    a._pcw={warm:warm,cool:cool};
+    a.addEventListener('pointerenter',warm);a.addEventListener('touchstart',warm,{passive:true});a.addEventListener('focus',warm);
     a.addEventListener('click',function(e){
       if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0)return;e.preventDefault();
-      if(a.classList.contains('is-playing'))return;
-      var f=baseIframe(srcFor(cfg),cfg.title);
-      a.classList.add('is-playing');a.appendChild(f);f.focus();
+      if(live)return;live=true;a.classList.add('is-playing');
+      if(frame&&unmute){unmute(frame);}
+      else{if(frame){a.removeChild(frame);frame=null;}frame=baseIframe(coldSrc(cfg),cfg.title);a.appendChild(frame);}
+      frame.focus();
     });
+    if(pcIO&&warmSrc)pcIO.observe(a);
     return a;
   }
-  var vimeo=function(c){return facade(c,'https://vimeo.com/'+c.vimeo+'/'+c.hash,function(x){return vimeoSrc(x,'&autoplay=1');});};
-  var wistia=function(c){return facade(c,'https://premura.wistia.com/medias/'+c.wistia,function(x){return 'https://fast.wistia.net/embed/iframe/'+x.wistia+'?autoPlay=true';});};
+  var vimeo=function(c){return facade(c,'https://vimeo.com/'+c.vimeo+'/'+c.hash,
+    function(x){return vimeoSrc(x,'&autoplay=1');},
+    function(x){return vimeoSrc(x,'&autoplay=1&muted=1&playsinline=1&api=1');},vimeoUnmute);};
+  var wistia=function(c){return facade(c,'https://premura.wistia.com/medias/'+c.wistia,
+    function(x){return 'https://fast.wistia.net/embed/iframe/'+x.wistia+'?autoPlay=true';},null,null);};
   function render(el){
     if(el.dataset.rendered)return;
     var cfg=window.PC_MEDIA[el.dataset.slot]||{label:el.dataset.slot};
