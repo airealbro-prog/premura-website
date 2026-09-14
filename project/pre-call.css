@@ -61,7 +61,7 @@ a{color:var(--pc-purple-2);}
 .pc-video.rounded{border-radius:18px;}
 /* Step-1 main video — deliberately bigger than the old page (measured ~1130px);
    fixed width so it's consistent across monitors. */
-.pc-main-video{width:100%;max-width:1320px;margin:8px auto 0;border-radius:18px;box-shadow:0 24px 70px -20px rgba(169,53,255,.45);}
+.pc-main-video{width:100%;max-width:1320px;margin:20px auto 10px;border-radius:18px;box-shadow:0 24px 70px -20px rgba(169,53,255,.45);}
 
 /* click-to-play facade (testimonials + question videos) */
 .pc-embed{position:relative;display:block;width:100%;height:100%;cursor:pointer;}
