@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="assets/premura-logo.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>You're Booked · Premura Strategy Call</title>
-<meta name="description" content="Your Premura call is booked. Watch the video, add it to your calendar, and see the proof.">
+<meta name="description" content="Your Premura call is booked. Watch the video, say you know the sender, and see the proof.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- speed: warm up Vidalytics + preload the main video's loader so it plays fast -->
@@ -28,7 +28,7 @@
 <section id="pc-hero">
   <div class="pc-wrap">
     <span class="pc-eyebrow">✅ You're booked</span>
-    <h1 class="pc-h pc-h1">Don't be the one who skips these <span class="pc-u red">3 steps</span> 👇</h1>
+    <h1 class="pc-h pc-h1">Don't be the one who skips these <span class="pc-u red">2 steps</span> 👇</h1>
   </div>
 </section>
 
@@ -64,14 +64,6 @@
   </div>
 </section>
 
-<!-- ═══ STEP 3 · CALENDAR (last) ═══ -->
-<section class="pc-sec tight">
-  <div class="pc-wrap pc-narrow">
-    <h2 class="pc-step-label pc-step-sm">3. Add it to your <span class="pc-u pur">calendar</span></h2>
-    <!-- The picked date/time is injected into &dates=START/END by the script at the bottom, from ?start=/?end= (or a cookie) on the URL. -->
-    <a class="pc-btn pc-btn-sm" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Premura%20Strategy%20Call&details=Bring%20every%20decision-maker.%20Reply%20to%20your%20confirmation%20email%20to%20move%20it.&location=Online" target="_blank" rel="noopener" data-calendar-link>Add to Google Calendar</a>
-  </div>
-</section>
 
 <!-- ═══ COMMONLY ASKED QUESTIONS ═══ -->
 <section class="pc-sec">
@@ -249,29 +241,6 @@ window.PC_MEDIA = {
 })();
 </script>
 
-<script>
-/* Add-to-Calendar: use the exact slot the prospect picked on the booking page.
-   The previous (GHL) page must send the chosen time in the redirect URL, e.g.
-     /pre-call?start=2026-09-20T15:00:00Z&end=2026-09-20T15:45:00Z
-   (ISO 8601 or unix seconds; a cookie appt_start/appt_end also works). With no
-   date present we keep the plain template link, so nothing breaks. */
-(function(){
-  var link=document.querySelector('[data-calendar-link]'); if(!link) return;
-  var p=new URLSearchParams(location.search);
-  function cookie(n){var m=document.cookie.match('(?:^|; )'+n+'=([^;]+)');return m?decodeURIComponent(m[1]):'';}
-  function ms(v){return /^\d{9,}$/.test(v)?new Date(parseInt(v,10)*(v.length<=10?1000:1)):new Date(v);}
-  function gc(d){return isNaN(d)?null:d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z');}
-  var start=p.get('start')||p.get('date')||p.get('appointment_start')||cookie('appt_start');
-  if(!start) return;
-  var s=gc(ms(start)); if(!s) return;
-  var endRaw=p.get('end')||p.get('appointment_end')||cookie('appt_end');
-  var e=endRaw?gc(ms(endRaw)):gc(new Date(ms(start).getTime()+45*60000));
-  if(!e) return;
-  var href=link.getAttribute('href').replace(/([&?])dates=[^&]*/,'$1').replace(/[?&]$/,'');
-  href+=(href.indexOf('?')>=0?'&':'?')+'dates='+s+'/'+e;
-  link.setAttribute('href',href);
-})();
-</script>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      HANDOFF
