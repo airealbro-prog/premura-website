@@ -103,11 +103,14 @@ a{color:var(--pc-purple-2);}
 
 /* Commonly Asked Questions — 2-up cards, ALL-CAPS, big video on open */
 .pc-q-list{margin-top:26px;text-align:left;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}
-.pc-q{border:1px solid var(--pc-line);border-radius:12px;background:var(--pc-bg-2);overflow:hidden;transition:border-color .2s ease,opacity .25s ease;}
+.pc-q{border:1px solid var(--pc-line);border-radius:12px;background:var(--pc-bg-2);overflow:hidden;transition:border-color .2s ease,opacity .3s ease,filter .3s ease;}
 .pc-q[open]{border-color:var(--pc-purple);}
-/* when a question is open, gray out the ones that aren't so the open one stands out */
-.pc-q-list:has(.pc-q[open]) .pc-q:not([open]){opacity:.45;}
-.pc-q-list:has(.pc-q[open]) .pc-q:not([open]):hover{opacity:.85;}
+/* Focus effect: the active question (the open one, or the one being hovered) stays
+   in full color; every other tile — video included — goes black & white.
+   Hover wins over the open-state via !important so the hovered tile is always color. */
+.pc-q-list:has(.pc-q[open]) .pc-q:not([open]),
+.pc-q-list:hover .pc-q:not(:hover){filter:grayscale(1);opacity:.8;}
+.pc-q:hover{filter:none!important;opacity:1!important;}
 .pc-q summary{cursor:pointer;list-style:none;display:flex;gap:10px;align-items:center;padding:14px 16px;font-family:'Outfit',sans-serif;font-weight:800;font-size:.92rem;text-transform:uppercase;color:var(--pc-ink);}
 .pc-q summary::-webkit-details-marker{display:none;}
 .pc-q-num{color:var(--pc-purple-2);font-size:.82rem;flex-shrink:0;}
