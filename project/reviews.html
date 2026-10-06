@@ -64,7 +64,7 @@
 <section class="section" id="rv-videos">
   <div class="section-inner">
     <span class="section-label">Client Video Reviews</span>
-    <h2 class="section-title">Five operators<br>Five different markets</h2>
+    <h2 class="section-title">Eight operators<br>Eight different markets</h2>
     <p class="section-sub">Hit play — every review plays right here on this page. Same videos, same numbers we show on the homepage, because they're real.</p>
     <div class="rv-grid">
 
@@ -145,6 +145,51 @@
           <div class="rv-stat">12+</div>
           <div class="rv-stat-sub">deals every month</div>
           <div class="rv-name">Rafa — solar operator</div>
+        </div>
+      </article>
+
+      <article class="rv-card">
+        <a class="rv-embed" href="https://premura.wistia.com/medias/7wj6qo1loi" target="_blank" rel="noopener"
+           data-wistia="7wj6qo1loi" data-person="Michael Velardi"
+           aria-label="Play Michael Velardi's review">
+          <img class="rv-poster" src="assets/review-velardi.jpg" width="1280" height="720" loading="lazy" decoding="async"
+               alt="Michael Velardi, a solar operator, speaking to camera in his Premura video review">
+          <span class="rv-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <div class="rv-meta">
+          <div class="rv-stat">18</div>
+          <div class="rv-stat-sub">sales per month</div>
+          <div class="rv-name">Michael Velardi — solar operator</div>
+        </div>
+      </article>
+
+      <article class="rv-card">
+        <a class="rv-embed" href="https://premura.wistia.com/medias/mevvlasmcv" target="_blank" rel="noopener"
+           data-wistia="mevvlasmcv" data-person="Mitchell Rossey"
+           aria-label="Play Mitchell Rossey's review">
+          <img class="rv-poster" src="assets/review-rossey.jpg" width="1280" height="720" loading="lazy" decoding="async"
+               alt="Mitchell Rossey, a solar operator, speaking to camera in his Premura video review">
+          <span class="rv-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <div class="rv-meta">
+          <div class="rv-stat">50–60</div>
+          <div class="rv-stat-sub">appointments per month</div>
+          <div class="rv-name">Mitchell Rossey — solar operator</div>
+        </div>
+      </article>
+
+      <article class="rv-card">
+        <a class="rv-embed" href="https://premura.wistia.com/medias/4kpfym5xc2" target="_blank" rel="noopener"
+           data-wistia="4kpfym5xc2" data-person="Jonathan Ortega"
+           aria-label="Play Jonathan Ortega's review">
+          <img class="rv-poster" src="https://fast.wistia.com/embed/medias/4kpfym5xc2/swatch" width="1280" height="720" loading="lazy" decoding="async"
+               alt="Jonathan Ortega, a solar operator, speaking to camera in his Premura video review">
+          <span class="rv-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        </a>
+        <div class="rv-meta">
+          <div class="rv-stat">22+</div>
+          <div class="rv-stat-sub">deals per month</div>
+          <div class="rv-name">Jonathan Ortega — solar operator</div>
         </div>
       </article>
 
@@ -267,10 +312,10 @@
 <script src="main.js"></script>
 <script>
 /* Click-to-play testimonial embeds.
-   Cards ship as plain Vimeo links so they still work with JS off; this upgrades them
-   to play in place. Nothing is requested from Vimeo until the visitor actually clicks. */
+   Cards ship as plain Vimeo/Wistia links so they still work with JS off; this upgrades
+   them to play in place. Nothing is requested from the video host until the click. */
 (function () {
-  var embeds = document.querySelectorAll(".rv-embed[data-vimeo]");
+  var embeds = document.querySelectorAll(".rv-embed[data-vimeo], .rv-embed[data-wistia]");
   if (!embeds.length) return;
 
   Array.prototype.forEach.call(embeds, function (embed) {
@@ -282,8 +327,12 @@
       if (embed.classList.contains("is-playing")) return;
 
       var iframe = document.createElement("iframe");
-      iframe.src = "https://player.vimeo.com/video/" + embed.dataset.vimeo +
-                   "?h=" + embed.dataset.hash + "&autoplay=1";
+      if (embed.dataset.wistia) {
+        iframe.src = "https://fast.wistia.net/embed/iframe/" + embed.dataset.wistia + "?autoPlay=true";
+      } else {
+        iframe.src = "https://player.vimeo.com/video/" + embed.dataset.vimeo +
+                     "?h=" + embed.dataset.hash + "&autoplay=1";
+      }
       iframe.title = embed.dataset.person + " — Premura client review";
       iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share";
       iframe.allowFullscreen = true;
