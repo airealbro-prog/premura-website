@@ -15,8 +15,7 @@
 <link rel="dns-prefetch" href="https://fast.vidalytics.com">
 <link rel="preconnect" href="https://player.vimeo.com">
 <link rel="preconnect" href="https://fast.wistia.net">
-<link rel="preconnect" href="https://www.youtube.com">
-<link rel="preconnect" href="https://i.ytimg.com">
+<link rel="preconnect" href="https://embed-ssl.wistia.com" crossorigin>
 <link rel="preload" as="script" crossorigin href="https://fast.vidalytics.com/embeds/PLL2mFsn/e7gLdr5TfoBwtOYW/loader.min.js">
 <!-- non-render-blocking fonts (swap to stylesheet once loaded) -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,700;0,800;1,700;1,800&family=DM+Sans:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -123,15 +122,15 @@ window.PC_MEDIA = {
   // Main WELCOME video — Vidalytics, scraped from the GHL precall page.
   main: { vidalytics:'e7gLdr5TfoBwtOYW', title:'Welcome' },
 
-  // 8 Q&A answer clips - YouTube (Unlisted), channel UC5yZL1Zv_-4as3BXdIWUZbw.
-  q1:{ youtube:'dUVU-b9CB6o', label:'Cost & scaling' },
-  q2:{ youtube:'1FyvjrEuQY8', label:'No door-to-door or paid ads' },
-  q3:{ youtube:'Em51Wg6qPTU', label:'Fit under 5 installs/mo' },
-  q4:{ youtube:'dEgdjFjxT0Q', label:'Who is on the strategy call' },
-  q5:{ youtube:'upl8O0bRewQ', label:'Go live / first 14 days' },
-  q6:{ youtube:'u5wGvoNgmUo', label:'Results / show rates' },
-  q7:{ youtube:'cnQ-mI3rvZQ', label:'Seasonality / territory / blitzing' },
-  q8:{ youtube:'TsUWgaDC3PI', label:'Closer execution / month one' },
+  // 8 Q&A answer clips - Wistia (airealbro account), folder b7n2y14au7.
+  q1:{ wistia:'rvigdnlehq', host:'airealbro', poster:'https://embed-ssl.wistia.com/deliveries/5643fc038ac8f5a25c505cf805238d14926b38dc.jpg?image_crop_resized=960x540', label:'Cost & scaling' },
+  q2:{ wistia:'hai2x2d3e4', host:'airealbro', poster:'https://embed-ssl.wistia.com/deliveries/9fd4da0d6e8800e311861c65ffc580cb408f5f20.jpg?image_crop_resized=960x540', label:'No door-to-door or paid ads' },
+  q3:{ wistia:'5csxunbn8a', host:'airealbro', poster:'https://embed-ssl.wistia.com/deliveries/8e185a2e8aeb80a1d1778337f05e06ce4a276f48.jpg?image_crop_resized=960x540', label:'Fit under 5 installs/mo' },
+  q4:{ wistia:'18crmrtmys', host:'airealbro', poster:'https://embed-ssl.wistia.com/deliveries/0c9470d41510e2d7ad43ad1adc38cca3fea0a144.jpg?image_crop_resized=960x540', label:'Who is on the strategy call' },
+  q5:{ wistia:'ghs62184aj', host:'airealbro', poster:'https://embed-ssl.wistia.com/deliveries/dd7689ca94dd05dd172ab0acb80b995b67012f48.jpg?image_crop_resized=960x540', label:'Go live / first 14 days' },
+  q6:{ wistia:'dt24do1j5l', host:'airealbro', poster:'https://embed-ssl.wistia.com/deliveries/cd8271f1dd4a5fb63c18d653dc79bb068e35cf57.jpg?image_crop_resized=960x540', label:'Results / show rates' },
+  q7:{ wistia:'7tjzbmvp3r', host:'airealbro', poster:'https://embed-ssl.wistia.com/deliveries/29003178af8509e3cc7937a7cd855c7bf85151ac.jpg?image_crop_resized=960x540', label:'Seasonality / territory / blitzing' },
+  q8:{ wistia:'ddyf32ll1s', host:'airealbro', poster:'https://embed-ssl.wistia.com/deliveries/a780419e3a50e90b5bd772ba719bed0b7220b066.jpg?image_crop_resized=960x540', label:'Closer execution / month one' },
 
 
   t_jorge:   { vimeo:'1072247746', hash:'d493e53744', poster:'assets/review-jorge.jpg',  title:'Jorge' },
@@ -217,7 +216,7 @@ window.PC_MEDIA = {
   var vimeo=function(c){return facade(c,'https://vimeo.com/'+c.vimeo+'/'+c.hash,
     function(x){return vimeoSrc(x,'&autoplay=1');},
     function(x){return vimeoSrc(x,'&autoplay=1&muted=1&playsinline=1&api=1');},vimeoUnmute);};
-  var wistia=function(c){return facade(c,'https://premura.wistia.com/medias/'+c.wistia,
+  var wistia=function(c){return facade(c,'https://'+(c.host||'premura')+'.wistia.com/medias/'+c.wistia,
     function(x){return 'https://fast.wistia.net/embed/iframe/'+x.wistia+'?autoPlay=true';},null,null);};
   // YouTube (Unlisted) answer clips: thumbnail facade, click loads a chrome-stripped embed.
   var youtube=function(c){if(!c.poster)c.poster='https://i.ytimg.com/vi/'+c.youtube+'/hqdefault.jpg';
