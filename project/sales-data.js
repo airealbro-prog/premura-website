@@ -29,7 +29,10 @@ window.ST_DATA = [
     quote:'20+ deals a month running his own call center.', vimeo:'1072247746', hash:'d493e53744', poster:'assets/review-jorge.jpg' },
   { id:'velardi', name:'Michael Velardi',  industry:'Solar', state:'New York',
     stat:'18 sales a month',
-    quote:"In the last ten days, I think I had six sales. That's eighteen sales in a month, probably a forty percent close rate based on appointments.", wistia:'7wj6qo1loi', poster:'assets/review-velardi.jpg' }
+    quote:"In the last ten days, I think I had six sales. That's eighteen sales in a month, probably a forty percent close rate based on appointments.", wistia:'7wj6qo1loi', poster:'assets/review-velardi.jpg' },
+  { id:'ortega',  name:'Jonathan Ortega',  industry:'Solar', state:'Nevada', area:'Las Vegas',
+    stat:'22+ deals a month',
+    quote:"These leads are already briefed, so what you get are actual appointments — and they confirm the day before and again an hour or two before. I recommend them 100%.", wistia:'4kpfym5xc2', poster:'https://fast.wistia.com/embed/medias/4kpfym5xc2/swatch' }
 ];
 
 window.ST_STATES = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];

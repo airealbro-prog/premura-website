@@ -9,6 +9,7 @@ const CLIENTS = [
   { id: 'rafa',    state: 'CA' },
   { id: 'rossey',  state: 'PA' },
   { id: 'velardi', state: 'NY' },
+  { id: 'ortega',  state: 'NV' },
 ];
 const DEFAULT_ID = 'leicer';
 const CENTROID = {AL:[32.8,-86.8],AK:[64.7,-152.3],AZ:[34.3,-111.7],AR:[34.9,-92.4],CA:[37.2,-119.5],
