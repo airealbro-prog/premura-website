@@ -9,8 +9,9 @@
   --pc-line:#e6e2f0;
   --pc-purple:#8b2fe6;
   --pc-purple-2:#7a1fd6;
-  --pc-green:#1a9d55;
-  --pc-red:#e0304f;
+  /* simplified palette: white page uses only white / purple / black — fold the green & red accents into purple */
+  --pc-green:#8b2fe6;
+  --pc-red:#8b2fe6;
 }
 
 /* placeholder video state -> light */
@@ -25,6 +26,9 @@
 
 /* the "unknown sender" recreation stays a real-looking notice; give it a hair of edge on white */
 .pc-know-mail{border:1px solid #dcdce4;}
+
+/* simplified palette: pc-know-btn hard-codes a pink outer ring -> make it purple on white */
+.pc-know-btn{box-shadow:0 0 0 3px var(--pc-purple),0 0 0 6px rgba(139,47,230,.24);}
 
 /* footer greys on white */
 footer.pc-foot{color:#7a7488;}
