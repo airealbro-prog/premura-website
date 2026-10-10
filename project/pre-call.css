@@ -116,6 +116,9 @@ a{color:var(--pc-purple-2);}
 /* FAQ: bare clickable thumbnail tiles - no accordion title, no play overlay */
 .pc-q-list .pc-video{border-radius:12px;box-shadow:0 8px 24px -12px rgba(0,0,0,.5);}
 .pc-q-list .pc-play,.pc-q-list .pc-embed::after{display:none;}
+/* FAQ hover-to-play: muted preview iframe lets hover/leave pass through; sound frame is interactive */
+.pc-hoverplay .pc-hoverframe{pointer-events:none;}
+.pc-hoverplay.is-playing .pc-hoverframe{pointer-events:auto;}
 .pc-answer{color:var(--pc-ink-2);font-size:.95rem;margin:14px 0 0;}
 .pc-answer b{color:var(--pc-ink);}
 .pc-watch{display:block;margin-top:7px;color:var(--pc-purple-2);font-weight:700;font-size:.86rem;}
