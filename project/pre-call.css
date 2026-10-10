@@ -120,6 +120,13 @@ a{color:var(--pc-purple-2);}
 .pc-hoverplay .pc-hoverframe{pointer-events:none;opacity:0;transition:opacity .5s ease;}
 .pc-hoverplay.is-hovering .pc-hoverframe{opacity:1;}
 .pc-hoverplay.is-playing .pc-hoverframe{pointer-events:auto;}
+/* "click to play video" label: parked off the left edge, slides in on hover (desktop)
+   or when the tile scrolls into view (touch, via .show-label); sits above the preview. */
+.pc-hoverplay .pc-plabel{position:absolute;top:10px;left:0;z-index:5;display:flex;align-items:center;gap:7px;padding:5px 12px 5px 9px;font-family:'Outfit',sans-serif;font-weight:600;font-size:.78rem;color:#fff;background:rgba(10,8,16,.5);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);border-radius:0 8px 8px 0;transform:translateX(-115%);transition:transform .45s cubic-bezier(.2,.75,.2,1);pointer-events:none;white-space:nowrap;}
+.pc-hoverplay .pc-plabel::before{content:'';flex:none;width:3px;height:14px;border-radius:2px;background:var(--pc-purple-2);}
+.pc-hoverplay.show-label .pc-plabel{transform:translateX(0);}
+@media(hover:hover){.pc-hoverplay:hover .pc-plabel{transform:translateX(0);}}
+@media(prefers-reduced-motion:reduce){.pc-hoverplay .pc-plabel{transition:none;}}
 /* Step 3: add-to-calendar button + dropdown */
 .pc-cal{margin-top:16px;display:flex;flex-direction:column;align-items:center;gap:12px;}
 .pc-cal-when{font-size:.95rem;color:var(--pc-ink-2);}
