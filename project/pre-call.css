@@ -120,6 +120,20 @@ a{color:var(--pc-purple-2);}
 .pc-hoverplay .pc-hoverframe{pointer-events:none;opacity:0;transition:opacity .5s ease;}
 .pc-hoverplay.is-hovering .pc-hoverframe{opacity:1;}
 .pc-hoverplay.is-playing .pc-hoverframe{pointer-events:auto;}
+/* Step 3: add-to-calendar button + dropdown */
+.pc-cal{margin-top:16px;display:flex;flex-direction:column;align-items:center;gap:12px;}
+.pc-cal-when{font-size:.95rem;color:var(--pc-ink-2);}
+.pc-cal-when b{color:var(--pc-ink);}
+.pc-cal-wrap{position:relative;}
+.pc-cal-btn{display:inline-flex;align-items:center;gap:10px;background:var(--pc-purple);color:#fff;border:0;border-radius:12px;padding:14px 22px;font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem;cursor:pointer;box-shadow:0 12px 32px -10px rgba(169,53,255,.6);transition:transform .2s ease,filter .2s ease;}
+.pc-cal-btn:hover{transform:translateY(-1px);filter:brightness(1.08);}
+.pc-cal-btn svg{width:20px;height:20px;flex-shrink:0;}
+.pc-cal-btn .pc-cal-caret{width:16px;height:16px;transition:transform .2s ease;}
+.pc-cal-btn[aria-expanded="true"] .pc-cal-caret{transform:rotate(180deg);}
+.pc-cal-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-4px);min-width:230px;background:var(--pc-bg-2);border:1px solid var(--pc-line);border-radius:12px;padding:6px;opacity:0;visibility:hidden;transition:opacity .18s ease,transform .18s ease;z-index:30;box-shadow:0 22px 54px -16px rgba(0,0,0,.7);}
+.pc-cal-menu.open{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.pc-cal-menu a{display:block;padding:11px 14px;border-radius:8px;color:var(--pc-ink);text-decoration:none;font-size:.95rem;font-weight:600;}
+.pc-cal-menu a:hover{background:rgba(169,53,255,.14);}
 .pc-answer{color:var(--pc-ink-2);font-size:.95rem;margin:14px 0 0;}
 .pc-answer b{color:var(--pc-ink);}
 .pc-watch{display:block;margin-top:7px;color:var(--pc-purple-2);font-weight:700;font-size:.86rem;}
