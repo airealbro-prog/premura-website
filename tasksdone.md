@@ -12,3 +12,11 @@
 - **PR #58** (branch feat/precall-faq-scroll-label): sliding "click to play video" label on FAQ thumbnails. Desktop: slides in on hover (CSS, hover:hover). Mobile/touch: hover:none-only IntersectionObserver shows the label on the single most in-view tile (one-at-a-time) as you scroll; slides out when it leaves. Videos still tap-to-play (no autoplay on mobile scroll — flagged to Ryan as a choice). Verified on deploy-preview-58: desktop hover slide confirmed, mobile showingCount==1 at all scroll positions, 0 videos auto-played.
 - Dropped a local .claude/launch.json that got swept into #57 by git add -A.
 - PRs: https://github.com/airealbro-prog/premura-website/pull/57 , https://github.com/airealbro-prog/premura-website/pull/58
+
+## 2026-10-11 — Testimonials bigger + rename Reviews → Testimonials (PR #59)
+- /reviews #rv-videos: 3-up grid → one big testimonial per screen (card sized off viewport height; 1067x736 at 1440x900, up to 1320w). PR #7 click-to-play facade unchanged.
+- Ortega poster: Wistia 100x56 swatch (3rd-party on load, blurry) → local assets/review-ortega.jpg 1280x720.
+- "Reviews" → "Testimonials" label in nav/mobile nav/footer on all 53 pages (162 swaps) + reviews.html title/meta/eyebrow/section label/a11y. URL kept at /reviews (no redirect needed).
+- Left as-is (flagged to Ryan): inline "reviews page" prose links on SEO pages, footer reputation links, JSON-LD names; duplicate "Testimonials" footer label (/reviews vs /premura-testimonials).
+- Verified on Vercel preview (premuraorg-website, SSO-protected, via OIDC header): files byte-identical, desktop+mobile no h-scroll, in-place Vimeo iframe on click, only Google Fonts on load. Screenshots: pr-screenshots/reviews-embed/pr59/.
+- PR: https://github.com/airealbro-prog/premura-website/pull/59
