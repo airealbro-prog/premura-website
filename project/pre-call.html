@@ -212,9 +212,14 @@ window.PC_MEDIA = {
   var wistia=function(c){return facade(c,'https://'+(c.host||'premura')+'.wistia.com/medias/'+c.wistia,
     function(x){return 'https://fast.wistia.net/embed/iframe/'+x.wistia+'?autoPlay=true';},null,null);};
   /* FAQ "click to play video" label: slides in on hover (desktop, via CSS) or, on touch
-     devices only, when the tile scrolls into view here; slides back out when it leaves. */
+     devices only, on the single most in-view tile as you scroll (one at a time), via .show-label. */
+  var labelTiles=[];
   var labelIO=('IntersectionObserver' in window && window.matchMedia && matchMedia('(hover:none)').matches)?new IntersectionObserver(function(es){
-    es.forEach(function(en){en.target.classList.toggle('show-label', en.isIntersecting&&en.intersectionRatio>=0.6);});},{threshold:[0,0.6,1]}):null;
+    es.forEach(function(en){en.target._ratio=en.intersectionRatio;});
+    var best=null,bestR=0.4;
+    labelTiles.forEach(function(t){var r=t._ratio||0;if(r>bestR){bestR=r;best=t;}});
+    labelTiles.forEach(function(t){t.classList.toggle('show-label',t===best);});
+  },{threshold:[0,0.25,0.4,0.6,0.8,1]}):null;
   // FAQ tiles: muted looping preview on hover/focus; click plays with sound.
   var wistiaHover=function(c){
     var a=document.createElement('a');a.className='pc-embed pc-hoverplay';
@@ -239,7 +244,7 @@ window.PC_MEDIA = {
       if(frame){a.removeChild(frame);frame=null;}
       frame=baseIframe(src('autoPlay=true&playsinline=true'),c.title);frame.className='pc-hoverframe';a.appendChild(frame);a.classList.add('is-hovering');frame.focus();
     });
-    if(labelIO)labelIO.observe(a);
+    if(labelIO){labelTiles.push(a);labelIO.observe(a);}
     return a;
   };
   // YouTube (Unlisted) answer clips: thumbnail facade, click loads a chrome-stripped embed.
