@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "premura-site",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8377", "--directory", "C:/premura/premura-org-site/project"],
+      "port": 8377
+    }
+  ]
+}
