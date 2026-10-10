@@ -20,3 +20,9 @@
 - Left as-is (flagged to Ryan): inline "reviews page" prose links on SEO pages, footer reputation links, JSON-LD names; duplicate "Testimonials" footer label (/reviews vs /premura-testimonials).
 - Verified on Vercel preview (premuraorg-website, SSO-protected, via OIDC header): files byte-identical, desktop+mobile no h-scroll, in-place Vimeo iframe on click, only Google Fonts on load. Screenshots: pr-screenshots/reviews-embed/pr59/.
 - PR: https://github.com/airealbro-prog/premura-website/pull/59
+
+## 2026-10-11 — /reviews → /testimonials route move (PR #60)
+- reviews.html → testimonials.html (canonical updated); vercel.json 308 /reviews → /testimonials (query string kept). Dropped a /reviews.html rule — cleanUrls already sends it to /reviews (2 hops, lands fine).
+- 263 internal href="/reviews" across 55 pages + sitemap.xml + llms.txt → /testimonials; 2 "/reviews" link labels + 1 meta description fixed.
+- Verified on Vercel preview: /testimonials 200; /reviews 308→/testimonials (UTMs kept); /reviews.html 2 hops→200; /Reviews 404 same as live. Page renders identically desktop+mobile, in-place Vimeo, only Google Fonts on load.
+- PR: https://github.com/airealbro-prog/premura-website/pull/60
