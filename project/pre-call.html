@@ -71,21 +71,14 @@
     <h2 class="pc-h pc-h2">Commonly Asked <span class="pc-u pur">Questions</span></h2>
     <div class="pc-q-list">
 
-      <details class="pc-q"><summary><span class="pc-q-num">01</span><span class="pc-q-txt">What's the cost - minimum build, and is there a cap to scaling?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q1"></div></div></details>
-
-      <details class="pc-q"><summary><span class="pc-q-num">02</span><span class="pc-q-txt">Does this work without door-to-door reps or expensive paid ads?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q2"></div></div></details>
-
-      <details class="pc-q"><summary><span class="pc-q-num">03</span><span class="pc-q-txt">Am I a fit if I'm under 5 installs/month - and what path should I take?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q3"></div></div></details>
-
-      <details class="pc-q"><summary><span class="pc-q-num">04</span><span class="pc-q-txt">Who needs to be on the strategy call?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q4"></div></div></details>
-
-      <details class="pc-q"><summary><span class="pc-q-num">05</span><span class="pc-q-txt">How fast do we go live - what happens in the first 14 days?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q5"></div></div></details>
-
-      <details class="pc-q"><summary><span class="pc-q-num">06</span><span class="pc-q-txt">What results are clients seeing - show rate, no-shows, reschedules?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q6"></div></div></details>
-
-      <details class="pc-q"><summary><span class="pc-q-num">07</span><span class="pc-q-txt">How do you handle seasonality, saturated territories, and blitzing/storm-chasing?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q7"></div></div></details>
-
-      <details class="pc-q"><summary><span class="pc-q-num">08</span><span class="pc-q-txt">What do top closers do to convert - and what kills month one?</span></summary><div class="pc-q-body"><div class="pc-video" data-slot="q8"></div></div></details>
+      <div class="pc-video" data-slot="q1"></div>
+      <div class="pc-video" data-slot="q2"></div>
+      <div class="pc-video" data-slot="q3"></div>
+      <div class="pc-video" data-slot="q4"></div>
+      <div class="pc-video" data-slot="q5"></div>
+      <div class="pc-video" data-slot="q6"></div>
+      <div class="pc-video" data-slot="q7"></div>
+      <div class="pc-video" data-slot="q8"></div>
 
     </div>
   </div>
@@ -196,7 +189,7 @@ window.PC_MEDIA = {
       else if(en.intersectionRatio<=0.05)api.cool();});},{threshold:[0,0.05,0.55,1]}):null;
   function facade(cfg,href,coldSrc,warmSrc,unmute){
     var a=document.createElement('a');a.className='pc-embed';a.href=href;a.target='_blank';a.rel='noopener';
-    a.setAttribute('role','button');a.setAttribute('aria-label','Play '+(cfg.title||'video'));
+    a.setAttribute('role','button');a.setAttribute('aria-label','Play '+(cfg.title||cfg.label||'video'));
     a.innerHTML="<img class='pc-poster' loading='lazy' decoding='async' src='"+cfg.poster+"' alt='"+(cfg.title||'')+" testimonial'><span class='pc-play' aria-hidden='true'>"+PLAY+"</span>";
     var frame=null,live=false;
     function warm(){if(frame||live||!warmSrc)return;frame=baseIframe(warmSrc(cfg),cfg.title);frame.className='pc-prewarm';frame.tabIndex=-1;a.appendChild(frame);}
