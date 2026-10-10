@@ -29,14 +29,14 @@
 <section id="pc-hero">
   <div class="pc-wrap">
     <span class="pc-eyebrow">✅ You're booked</span>
-    <h1 class="pc-h pc-h1">Don't be the one who skips these <span class="pc-u red">2 steps</span> 👇</h1>
+    <h1 class="pc-h pc-h1">Don't be the one who skips these <span class="pc-u red">2 steps</span></h1>
   </div>
 </section>
 
 <!-- ═══ STEP 1 · WATCH THE VIDEO (primary) ═══ -->
 <section class="pc-sec tight">
   <div class="pc-wrap pc-wrap-wide">
-    <h2 class="pc-step-label">1. Watch <span class="pc-u pur">this</span></h2>
+    <h2 class="pc-step-label">1. Watch <span class="pc-u pur">this</span> 👇</h2>
     <div class="pc-main-video">
       <div class="pc-video rounded" data-slot="main"></div>
     </div>
@@ -218,18 +218,23 @@ window.PC_MEDIA = {
     a.href='https://'+(c.host||'premura')+'.wistia.com/medias/'+c.wistia;a.target='_blank';a.rel='noopener';
     a.setAttribute('role','button');a.setAttribute('aria-label','Play '+(c.title||c.label||'video'));
     a.innerHTML="<img class='pc-poster' loading='lazy' decoding='async' src='"+c.poster+"' alt='"+(c.title||c.label||'')+"'>";
-    var frame=null,live=false;
+    var frame=null,live=false,enterT=null,exitT=null;
     function src(o){return 'https://fast.wistia.net/embed/iframe/'+c.wistia+'?'+o;}
-    function play(){if(live||frame)return;frame=baseIframe(src('autoPlay=true&muted=true&silentAutoPlay=true&endVideoBehavior=loop&playsinline=true&controlsVisibleOnLoad=false&playbar=false&playButton=false&smallPlayButton=false&fullscreenButton=false&volumeControl=false&settingsControl=false&qualityControl=false'),c.title);frame.className='pc-hoverframe';frame.tabIndex=-1;a.appendChild(frame);}
-    function stop(){if(live||!frame)return;a.removeChild(frame);frame=null;}
+    function build(){frame=baseIframe(src('autoPlay=true&muted=true&silentAutoPlay=true&endVideoBehavior=loop&playsinline=true&controlsVisibleOnLoad=false&playbar=false&playButton=false&smallPlayButton=false&fullscreenButton=false&volumeControl=false&settingsControl=false&qualityControl=false'),c.title);frame.className='pc-hoverframe';frame.tabIndex=-1;a.appendChild(frame);}
+    function fadeIn(){requestAnimationFrame(function(){requestAnimationFrame(function(){if(frame&&!exitT&&!live)a.classList.add('is-hovering');});});}
+    function play(){if(live)return;if(exitT){clearTimeout(exitT);exitT=null;}if(frame||enterT)return;
+      enterT=setTimeout(function(){enterT=null;build();fadeIn();},140);}
+    function stop(){if(live)return;if(enterT){clearTimeout(enterT);enterT=null;}if(!frame||exitT)return;
+      a.classList.remove('is-hovering');exitT=setTimeout(function(){exitT=null;if(frame&&!live){a.removeChild(frame);frame=null;}},520);}
     a._pcw={warm:play,cool:stop};
     a.addEventListener('pointerenter',play);a.addEventListener('pointerleave',stop);
     a.addEventListener('focus',play);a.addEventListener('blur',stop);
     a.addEventListener('click',function(e){
       if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0)return;e.preventDefault();
       if(live)return;live=true;a.classList.add('is-playing');
+      if(enterT){clearTimeout(enterT);enterT=null;}if(exitT){clearTimeout(exitT);exitT=null;}
       if(frame){a.removeChild(frame);frame=null;}
-      frame=baseIframe(src('autoPlay=true&playsinline=true'),c.title);a.appendChild(frame);frame.focus();
+      frame=baseIframe(src('autoPlay=true&playsinline=true'),c.title);frame.className='pc-hoverframe';a.appendChild(frame);a.classList.add('is-hovering');frame.focus();
     });
     return a;
   };
