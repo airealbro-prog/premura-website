@@ -211,12 +211,16 @@ window.PC_MEDIA = {
     function(x){return vimeoSrc(x,'&autoplay=1&muted=1&playsinline=1&api=1');},vimeoUnmute);};
   var wistia=function(c){return facade(c,'https://'+(c.host||'premura')+'.wistia.com/medias/'+c.wistia,
     function(x){return 'https://fast.wistia.net/embed/iframe/'+x.wistia+'?autoPlay=true';},null,null);};
+  /* FAQ "click to play video" label: slides in on hover (desktop, via CSS) or, on touch
+     devices only, when the tile scrolls into view here; slides back out when it leaves. */
+  var labelIO=('IntersectionObserver' in window && window.matchMedia && matchMedia('(hover:none)').matches)?new IntersectionObserver(function(es){
+    es.forEach(function(en){en.target.classList.toggle('show-label', en.isIntersecting&&en.intersectionRatio>=0.6);});},{threshold:[0,0.6,1]}):null;
   // FAQ tiles: muted looping preview on hover/focus; click plays with sound.
   var wistiaHover=function(c){
     var a=document.createElement('a');a.className='pc-embed pc-hoverplay';
     a.href='https://'+(c.host||'premura')+'.wistia.com/medias/'+c.wistia;a.target='_blank';a.rel='noopener';
     a.setAttribute('role','button');a.setAttribute('aria-label','Play '+(c.title||c.label||'video'));
-    a.innerHTML="<img class='pc-poster' loading='lazy' decoding='async' src='"+c.poster+"' alt='"+(c.title||c.label||'')+"'>";
+    a.innerHTML="<img class='pc-poster' loading='lazy' decoding='async' src='"+c.poster+"' alt='"+(c.title||c.label||'')+"'><span class='pc-plabel'>click to play video</span>";
     var frame=null,live=false,enterT=null,exitT=null;
     function src(o){return 'https://fast.wistia.net/embed/iframe/'+c.wistia+'?'+o;}
     function build(){frame=baseIframe(src('autoPlay=true&muted=true&silentAutoPlay=true&endVideoBehavior=loop&playsinline=true&controlsVisibleOnLoad=false&playbar=false&playButton=false&smallPlayButton=false&fullscreenButton=false&volumeControl=false&settingsControl=false&qualityControl=false'),c.title);frame.className='pc-hoverframe';frame.tabIndex=-1;a.appendChild(frame);}
@@ -235,6 +239,7 @@ window.PC_MEDIA = {
       if(frame){a.removeChild(frame);frame=null;}
       frame=baseIframe(src('autoPlay=true&playsinline=true'),c.title);frame.className='pc-hoverframe';a.appendChild(frame);a.classList.add('is-hovering');frame.focus();
     });
+    if(labelIO)labelIO.observe(a);
     return a;
   };
   // YouTube (Unlisted) answer clips: thumbnail facade, click loads a chrome-stripped embed.
