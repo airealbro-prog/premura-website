@@ -1,5 +1,9 @@
 {
   "outputDirectory": "project",
   "trailingSlash": false,
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/reviews", "destination": "/testimonials", "permanent": true },
+    { "source": "/reviews.html", "destination": "/testimonials", "permanent": true }
+  ]
 }
