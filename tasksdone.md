@@ -26,3 +26,13 @@
 - 263 internal href="/reviews" across 55 pages + sitemap.xml + llms.txt → /testimonials; 2 "/reviews" link labels + 1 meta description fixed.
 - Verified on Vercel preview: /testimonials 200; /reviews 308→/testimonials (UTMs kept); /reviews.html 2 hops→200; /Reviews 404 same as live. Page renders identically desktop+mobile, in-place Vimeo, only Google Fonts on load.
 - PR: https://github.com/airealbro-prog/premura-website/pull/60
+
+## 2026-10-11 — Six new client video testimonials (PR #61)
+- New Wistia testimonials: Micah Eagler (California Energy Builders), Thomas Higgs (7H Solar), Mike, Eric Fox, Anthony, Ryan. Stats/quotes verbatim from Wistia captions; local 1280x720 posters.
+- /testimonials: 6 cards in the one-per-screen layout + "In Their Words" quote section (6 cards, each links to its video) + VideoObject JSON-LD. Heading → "Fourteen video testimonials".
+- Homepage carousel: +6; posters instead of eager iframes (24 → 0 on load; the #59 flag); loop-clone cards now play; Enter/Escape; card step measured from DOM so mobile (240px cards) no longer drifts.
+- /premura-testimonials: 5 new before/after stories (11 total). sales-data.js: +6 (CA geo-match still Rafa, in sync with api/poster.js).
+- Branch was rebuilt from a ZIP export (base f1f8be9) and rebased onto main after #59/#60: reviews.html → testimonials.html, reviews.css mobile block, review-ortega.jpg (kept main's).
+- Verified: headless Edge desktop 1440x900 + mobile 390x844, 134/134 checks. Not yet checked on the Vercel preview (SSO).
+- FLAGGED to Ryan: client permission; "7H Solar"/"Eagler" spellings; Mike may be Michael Velardi; Eric Fox stats read by interviewer; testimonials/bryan.mp4 has no embed code yet; assets/proof-discord.png contains homeowner PII (publicly reachable, recommend removal).
+- PR: https://github.com/airealbro-prog/premura-website/pull/61
