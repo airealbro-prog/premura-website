@@ -497,7 +497,7 @@
   <div class="section-inner">
     <span class="section-label">Operators We Work With</span>
     <h2 class="section-title">Real operators<br>Real numbers</h2>
-    <p class="section-sub">Seven operators. Seven different markets. One pattern: appointments, deals, revenue — month after month.</p>
+    <p class="section-sub">Fourteen video reviews, all on camera. One pattern: appointments, deals, revenue — month after month.</p>
 
     <!-- Carousel -->
     <div class="tc-wrap">
@@ -1002,17 +1002,30 @@
   if (!track) return;
 
   const videos = [
-    { name: "Jorge", vimeo: "1072247746", hash: "d493e53744", stat: "20+", statSub: "deals per month" },
-    { name: "Leicer", vimeo: "1072244795", hash: "5d8bc1fb19", stat: "$152,000", statSub: "in payouts" },
-    { name: "Caesar", vimeo: "1072251232", hash: "50162c383c", stat: "8-10", statSub: "installs per month" },
-    { name: "Scott", vimeo: "1072241851", hash: "26fcdbbedd", stat: "17", statSub: "deals in first month" },
-    { name: "Rafa", vimeo: "1091678713", hash: "243b833aa0", stat: "12+", statSub: "deals every month" },
-    { name: "Michael Velardi", wistia: "7wj6qo1loi", stat: "18", statSub: "sales per month" },
-    { name: "Mitchell Rossey", wistia: "mevvlasmcv", stat: "50-60", statSub: "appointments per month" },
-    { name: "Jonathan Ortega", wistia: "4kpfym5xc2", stat: "22+", statSub: "deals per month" }
+    { name: "Jorge", vimeo: "1072247746", hash: "d493e53744", poster: "assets/review-jorge.jpg", stat: "20+", statSub: "deals per month" },
+    { name: "Leicer", vimeo: "1072244795", hash: "5d8bc1fb19", poster: "assets/review-leicer.jpg", stat: "$152,000", statSub: "in payouts" },
+    { name: "Caesar", vimeo: "1072251232", hash: "50162c383c", poster: "assets/review-caesar.jpg", stat: "8-10", statSub: "installs per month" },
+    { name: "Scott", vimeo: "1072241851", hash: "26fcdbbedd", poster: "assets/review-scott.jpg", stat: "17", statSub: "deals in first month" },
+    { name: "Rafa", vimeo: "1091678713", hash: "243b833aa0", poster: "assets/review-rafa.jpg", stat: "12+", statSub: "deals every month" },
+    { name: "Michael Velardi", wistia: "7wj6qo1loi", poster: "assets/review-velardi.jpg", stat: "18", statSub: "sales per month" },
+    { name: "Mitchell Rossey", wistia: "mevvlasmcv", poster: "assets/review-rossey.jpg", stat: "50-60", statSub: "appointments per month" },
+    { name: "Jonathan Ortega", wistia: "4kpfym5xc2", poster: "assets/review-ortega.jpg", stat: "22+", statSub: "deals per month" },
+    { name: "Micah Eagler", wistia: "u2xw5glu9y", poster: "assets/review-micah.jpg", stat: "~80%", statSub: "close rate on sits" },
+    { name: "Thomas Higgs", wistia: "vep4k0kv05", poster: "assets/review-thomas.jpg", stat: "Nearly all", statSub: "sales from the call center" },
+    { name: "Eric Fox", wistia: "lyz1nym61r", poster: "assets/review-eric-fox.jpg", stat: "14", statSub: "deals in first two weeks" },
+    { name: "Mike", wistia: "j55lgcp9f4", poster: "assets/review-mike.jpg", stat: "2 → 5", statSub: "agents, scaled up" },
+    { name: "Anthony", wistia: "kfch50ezr6", poster: "assets/review-anthony.jpg", stat: "4", statSub: "deals closed early on" },
+    { name: "Ryan", wistia: "rm8k6m9pbc", poster: "assets/review-ryan.jpg", stat: "Paid back", statSub: "in first month" }
   ];
 
-  const CARD_W = 296;
+  // card width + gap, measured from the DOM — cards shrink to 240px under 640px (styles.css)
+  let CARD_W = 296;
+  function measure() {
+    const c = track.querySelector(".tc-card");
+    if (!c) return;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    CARD_W = c.getBoundingClientRect().width + gap;
+  }
   const N = videos.length;
   let offset = 0;
   let isJumping = false;
@@ -1021,10 +1034,10 @@
     track.innerHTML = "";
     [videos, videos, videos].forEach((set, setIdx) => {
       set.forEach((v, i) => {
-        const realIdx = setIdx === 1 ? i : -1;
+        // every copy plays its own video — the loop clones are visible after scrolling too
         const card = document.createElement("div");
         card.className = "tc-card";
-        card.dataset.idx = realIdx;
+        card.dataset.idx = i;
         card.setAttribute("role", "button");
         card.setAttribute("tabindex", setIdx === 1 ? "0" : "-1");
         card.setAttribute("aria-label", "Play " + v.name + " testimonial");
@@ -1032,20 +1045,15 @@
         const thumb = document.createElement("div");
         thumb.className = "tc-card-thumb";
 
-        const iframe = document.createElement("iframe");
-        if (v.wistia) {
-          iframe.title = "wistia-player";
-          iframe.src = "https://fast.wistia.com/embed/iframe/" + v.wistia;
-        } else {
-          iframe.title = "vimeo-player";
-          iframe.src = "https://player.vimeo.com/video/" + v.vimeo + "?h=" + v.hash;
-        }
-        iframe.frameBorder = "0";
-        iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share";
-        iframe.allowFullscreen = true;
-        iframe.referrerPolicy = "strict-origin-when-cross-origin";
-        iframe.style.cssText = "width:100%; height:100%;";
-        thumb.appendChild(iframe);
+        // poster only — the player iframe loads in the modal on click, not 3× per card up front
+        const img = document.createElement("img");
+        img.src = v.poster;
+        img.alt = v.name + " video testimonial";
+        img.width = 1280;
+        img.height = 720;
+        img.loading = "lazy";
+        img.decoding = "async";
+        thumb.appendChild(img);
 
         const playIcon = document.createElement("div");
         playIcon.className = "tc-card-play";
@@ -1061,6 +1069,7 @@
         track.appendChild(card);
       });
     });
+    measure();
     offset = N * CARD_W;
     track.style.transition = "none";
     track.style.transform = "translateX(-" + offset + "px)";
@@ -1086,6 +1095,14 @@
   }
 
   buildTrack();
+  // crossing the 640px breakpoint changes the card width — keep the same card in front
+  window.addEventListener("resize", () => {
+    const idx = Math.round(offset / CARD_W);
+    measure();
+    offset = idx * CARD_W;
+    track.style.transition = "none";
+    track.style.transform = "translateX(-" + offset + "px)";
+  });
   if (prevBtn) prevBtn.addEventListener("click", () => scroll(-1));
   if (nextBtn) nextBtn.addEventListener("click", () => scroll(1));
 
@@ -1117,6 +1134,21 @@
       if (!card) return;
       const realIdx = parseInt(card.dataset.idx, 10);
       openPlayerModal(realIdx);
+    });
+
+    track.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const card = e.target.closest(".tc-card");
+      if (!card) return;
+      e.preventDefault();
+      openPlayerModal(parseInt(card.dataset.idx, 10));
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape" || !modal.classList.contains("is-open")) return;
+      modal.classList.remove("is-open");
+      playerFrame.innerHTML = "";
+      document.body.style.overflow = "";
     });
 
     modal.addEventListener("click", (e) => {

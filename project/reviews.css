@@ -60,16 +60,32 @@ a.rv-trust:hover{border-color:var(--accent);}
 .rv-verify-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
 .rv-verify-list li{padding:14px 18px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-card);}
 
+/* quote links jump to a card — clear the fixed nav and flash the card that was linked */
+.rv-card{scroll-margin-top:110px;}
+.rv-card:target{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 12px 40px rgba(var(--accent-rgb),.25);}
+
+/* ── Written quotes: verbatim lines from the video transcripts ── */
+.rv-quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:44px;}
+.rv-quote{position:relative;margin:0;padding:30px 26px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.rv-quote::before{content:'“';position:absolute;top:-18px;right:16px;font-family:'Outfit',sans-serif;font-weight:800;font-size:7rem;line-height:1;color:rgba(var(--accent-rgb),.18);pointer-events:none;}
+.rv-quote blockquote{margin:0;font-size:1rem;line-height:1.6;color:var(--text);position:relative;}
+.rv-quote figcaption{display:flex;flex-direction:column;gap:2px;padding-top:16px;border-top:1px solid var(--border);}
+.rv-quote figcaption a{font-weight:600;color:var(--accent-light);font-size:.92rem;}
+.rv-quote figcaption a:hover{text-decoration:underline;}
+.rv-quote figcaption span{font-size:.8rem;color:var(--text-secondary);}
+
 #rv-client-cta .btn-primary{margin-top:10px;}
 @media(max-width:640px){
   #rv-hero{padding-top:130px;}
   .rv-trust{min-width:44%;}
   .rv-grid{gap:40px;margin-top:34px;margin-inline:0;}
-  .rv-card{max-width:none;}
+  .rv-card{max-width:none;scroll-margin-top:90px;}
   .rv-meta{padding:18px 18px 22px;column-gap:10px;}
   .rv-stat{font-size:2.6rem;}
   .rv-name{margin-left:0;flex-basis:100%;font-size:.95rem;}
   .rv-play{width:68px;height:68px;}
   .rv-play svg{width:30px;height:30px;margin-left:4px;}
   .rv-dur{right:10px;bottom:10px;font-size:.75rem;padding:3px 9px;}
+  .rv-quotes{grid-template-columns:1fr;gap:16px;margin-top:34px;}
+  .rv-quote{padding:24px 20px 20px;}
 }

@@ -32,7 +32,25 @@ window.ST_DATA = [
     quote:"In the last ten days, I think I had six sales. That's eighteen sales in a month, probably a forty percent close rate based on appointments.", wistia:'7wj6qo1loi', poster:'assets/review-velardi.jpg' },
   { id:'ortega',  name:'Jonathan Ortega',  industry:'Solar', state:'Nevada', area:'Las Vegas',
     stat:'22+ deals a month',
-    quote:"These leads are already briefed, so what you get are actual appointments — and they confirm the day before and again an hour or two before. I recommend them 100%.", wistia:'4kpfym5xc2', poster:'https://fast.wistia.com/embed/medias/4kpfym5xc2/swatch' }
+    quote:"These leads are already briefed, so what you get are actual appointments — and they confirm the day before and again an hour or two before. I recommend them 100%.", wistia:'4kpfym5xc2', poster:'assets/review-ortega.jpg' },
+  { id:'micah',   name:'Micah Eagler',     industry:'Solar', state:'California', area:'California Energy Builders',
+    stat:'Closing almost 80% of appointments sat, KPIs up 50%+',
+    quote:"It basically increased our KPIs by over 50%, and our closing rate increased instantaneously. So now we're basically closing almost 80% of all leads that we sit.", wistia:'u2xw5glu9y', poster:'assets/review-micah.jpg' },
+  { id:'ryan',    name:'Ryan',             industry:'Solar', state:'California', area:'Southern California',
+    stat:'Made his money back in month one, on the minimum plan',
+    quote:"I closed a couple deals my first month here, definitely made my money back plus a little bit on top of that. And this was just starting out with the minimum plan.", wistia:'rm8k6m9pbc', poster:'assets/review-ryan.jpg' },
+  { id:'thomas',  name:'Thomas Higgs',     industry:'Solar', state:'TBD', area:'7H Solar',
+    stat:'Nearly all appointments & sales now come from the call center',
+    quote:"Now pretty much all of our appointments and sales are coming through the call center Premura helped us set up.", wistia:'vep4k0kv05', poster:'assets/review-thomas.jpg' },
+  { id:'mike',    name:'Mike',             industry:'Solar', state:'TBD',
+    stat:'Scaled from a 2-agent to a 5-agent call center',
+    quote:"I started with a two agent call center. I found that it was working so well that I increased it to a five agent call center.", wistia:'j55lgcp9f4', poster:'assets/review-mike.jpg' },
+  { id:'anthony', name:'Anthony',          industry:'Solar', state:'TBD',
+    stat:'4 deals closed early on, 2 already installed',
+    quote:"These guys are legit. They know what they're talking about. They know what they're doing.", wistia:'kfch50ezr6', poster:'assets/review-anthony.jpg' },
+  { id:'eric-fox', name:'Eric Fox',                          state:'TBD',
+    stat:'14 deals in his first two weeks, 86 appointments in one week',
+    wistia:'lyz1nym61r', poster:'assets/review-eric-fox.jpg' }
 ];
 
 window.ST_STATES = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
