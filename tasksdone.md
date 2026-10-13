@@ -36,3 +36,9 @@
 - Verified: headless Edge desktop 1440x900 + mobile 390x844, 134/134 checks. Not yet checked on the Vercel preview (SSO).
 - FLAGGED to Ryan: client permission; "7H Solar"/"Eagler" spellings; Mike may be Michael Velardi; Eric Fox stats read by interviewer; testimonials/bryan.mp4 has no embed code yet; assets/proof-discord.png contains homeowner PII (publicly reachable, recommend removal).
 - PR: https://github.com/airealbro-prog/premura-website/pull/61
+
+## 2026-10-13 — Pre-call FAQ: remove hover/scroll autoplay (PR #62)
+- Per Ryan: FAQ videos must NOT auto-play on hover (desktop) or scroll-to (mobile). Stripped the muted-preview machinery from wistiaHover (build/fadeIn/play/stop, pointerenter/leave/focus/blur, prewarm _pcw) in both pre-call.html + pre-call-b.html. Tiles are now static thumbnails; click/tap plays with sound.
+- Kept: the "click to play video" label (slides in on hover desktop / one-at-a-time on mobile scroll) and click-to-play. Testimonials + main video untouched.
+- Verified on deploy-preview-62: simulated hover 900ms -> no .pc-hoverframe, no _pcw; click -> frame with autoPlay=true & NOT muted; label present on all 8 tiles.
+- PR: https://github.com/airealbro-prog/premura-website/pull/62
