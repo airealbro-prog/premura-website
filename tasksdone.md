@@ -42,3 +42,8 @@
 - Kept: the "click to play video" label (slides in on hover desktop / one-at-a-time on mobile scroll) and click-to-play. Testimonials + main video untouched.
 - Verified on deploy-preview-62: simulated hover 900ms -> no .pc-hoverframe, no _pcw; click -> frame with autoPlay=true & NOT muted; label present on all 8 tiles.
 - PR: https://github.com/airealbro-prog/premura-website/pull/62
+
+## 2026-10-13 — Pre-call: remove Step 3 (PR #63)
+- Per Ryan: dropped the "3. Add it to your calendar" step entirely. Removed section markup, .pc-cal* CSS, and the calendar <script> from both pre-call.html + pre-call-b.html. Heading reverted "3 steps" -> "2 steps". Kept the ✅-emoji removal + 👇 on "Watch this".
+- Net: 152 deletions, 2 heading edits. Verified on deploy-preview-63 (white page, even with ?start/?end params): heading "2 steps", only steps 1 & 2, no #pc-cal element, no JS errors, 8 FAQ tiles + 7 testimonials intact.
+- PR: https://github.com/airealbro-prog/premura-website/pull/63
