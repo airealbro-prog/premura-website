@@ -246,29 +246,19 @@ window.PC_MEDIA = {
     labelTiles.forEach(function(t){var r=t._ratio||0;if(r>bestR){bestR=r;best=t;}});
     labelTiles.forEach(function(t){t.classList.toggle('show-label',t===best);});
   },{threshold:[0,0.25,0.4,0.6,0.8,1]}):null;
-  // FAQ tiles: muted looping preview on hover/focus; click plays with sound.
+  // FAQ tiles: static thumbnail + "click to play" label; click/tap plays with sound (no hover/scroll autoplay).
   var wistiaHover=function(c){
     var a=document.createElement('a');a.className='pc-embed pc-hoverplay';
     a.href='https://'+(c.host||'premura')+'.wistia.com/medias/'+c.wistia;a.target='_blank';a.rel='noopener';
     a.setAttribute('role','button');a.setAttribute('aria-label','Play '+(c.title||c.label||'video'));
     a.innerHTML="<img class='pc-poster' loading='lazy' decoding='async' src='"+c.poster+"' alt='"+(c.title||c.label||'')+"'><span class='pc-plabel'>click to play video</span>";
-    var frame=null,live=false,enterT=null,exitT=null;
+    var live=false;
     function src(o){return 'https://fast.wistia.net/embed/iframe/'+c.wistia+'?'+o;}
-    function build(){frame=baseIframe(src('autoPlay=true&muted=true&silentAutoPlay=true&endVideoBehavior=loop&playsinline=true&controlsVisibleOnLoad=false&playbar=false&playButton=false&smallPlayButton=false&fullscreenButton=false&volumeControl=false&settingsControl=false&qualityControl=false'),c.title);frame.className='pc-hoverframe';frame.tabIndex=-1;a.appendChild(frame);}
-    function fadeIn(){requestAnimationFrame(function(){requestAnimationFrame(function(){if(frame&&!exitT&&!live)a.classList.add('is-hovering');});});}
-    function play(){if(live)return;if(exitT){clearTimeout(exitT);exitT=null;}if(frame||enterT)return;
-      enterT=setTimeout(function(){enterT=null;build();fadeIn();},140);}
-    function stop(){if(live)return;if(enterT){clearTimeout(enterT);enterT=null;}if(!frame||exitT)return;
-      a.classList.remove('is-hovering');exitT=setTimeout(function(){exitT=null;if(frame&&!live){a.removeChild(frame);frame=null;}},520);}
-    a._pcw={warm:play,cool:stop};
-    a.addEventListener('pointerenter',play);a.addEventListener('pointerleave',stop);
-    a.addEventListener('focus',play);a.addEventListener('blur',stop);
+    // No hover/scroll preview — tiles stay static thumbnails until clicked/tapped.
     a.addEventListener('click',function(e){
       if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0)return;e.preventDefault();
       if(live)return;live=true;a.classList.add('is-playing');
-      if(enterT){clearTimeout(enterT);enterT=null;}if(exitT){clearTimeout(exitT);exitT=null;}
-      if(frame){a.removeChild(frame);frame=null;}
-      frame=baseIframe(src('autoPlay=true&playsinline=true'),c.title);frame.className='pc-hoverframe';a.appendChild(frame);a.classList.add('is-hovering');frame.focus();
+      var frame=baseIframe(src('autoPlay=true&playsinline=true'),c.title);frame.className='pc-hoverframe';a.appendChild(frame);a.classList.add('is-hovering');frame.focus();
     });
     if(labelIO){labelTiles.push(a);labelIO.observe(a);}
     return a;
