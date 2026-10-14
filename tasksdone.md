@@ -53,3 +53,10 @@
 - Impl: FAQ click now embeds the Wistia iframe with ?web_component=true + class/name "wistia_embed"; player.js loaded lazily; once iframe.wistiaApi is ready, bind 'pause' (3s timer -> .pc-thumb-return) and 'play' (cancel/reverse). CSS: .pc-thumb-return fades .pc-hoverframe to opacity 0 over 1.6s and un-hides .pc-poster (is-playing had hidden it). Clicking the returned thumbnail resumes the paused player (fires 'play' -> fades back).
 - Verified API via Context7 (Wistia player.js embed API; 'pause' is a bindable event). State-gated preview test on deploy-preview-64: pauseFired=true, thumb-return added ~2900ms after pause, settled frameOpacity=0 + posterOpacity=1, resume -> frameOpacity=1.
 - PR: https://github.com/airealbro-prog/premura-website/pull/64
+
+## 2026-10-14 — Pre-call: Meta Pixel to match original GHL page (PR #65)
+- Found both original GHL pages (callcenter.premura.org/precallpage-page + /home) use ONLY Meta Pixel 2139803833202789 (no GTM/GA/TikTok). Precall fires init+PageView+Schedule; home fires init+PageView.
+- Added the FB pixel to our rebuilt pre-call.html + pre-call-b.html (base code + PageView + Schedule, high in <head>, with noscript). Our page is GHL's post-booking redirect target, so Schedule/booking conversions now fire from it.
+- Verified on deploy-preview-65: fbq v2.9.419 loaded, beacons sent to facebook.com/tr for id=2139803833202789 ev=PageView AND ev=Schedule.
+- STILL TODO (other half of Ryan's ask): the callcenter.premura.org GHL clone — ensure it has the same pixel. Couldn't verify directly (clone is domainless + my Chrome GHL session lands on a different agency without this sub-account). It was cloned from /home which carries the pixel, so it likely already has it.
+- PR: https://github.com/airealbro-prog/premura-website/pull/65
