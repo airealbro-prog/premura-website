@@ -221,6 +221,17 @@ window.PC_MEDIA = {
     labelTiles.forEach(function(t){var r=t._ratio||0;if(r>bestR){bestR=r;best=t;}});
     labelTiles.forEach(function(t){t.classList.toggle('show-label',t===best);});
   },{threshold:[0,0.25,0.4,0.6,0.8,1]}):null;
+  // FAQ "pause -> bring the thumbnail back" via the Wistia Player API (player.js, loaded lazily).
+  var wistiaPlayerJs=false;
+  function loadWistiaPlayerJs(){if(wistiaPlayerJs)return;wistiaPlayerJs=true;var s=document.createElement('script');s.src='https://fast.wistia.net/player.js';s.async=true;document.head.appendChild(s);}
+  // When a playing FAQ video is paused for 3s, slow-fade the live frame out so the poster shows again; resuming reverses it.
+  function thumbReturn(a,frame){
+    var timer=null,tries=0;
+    function back(){a.classList.remove('is-hovering');a.classList.add('pc-thumb-return');}
+    function onPause(){if(timer)clearTimeout(timer);timer=setTimeout(back,3000);}
+    function onPlay(){if(timer){clearTimeout(timer);timer=null;}a.classList.remove('pc-thumb-return');a.classList.add('is-hovering');}
+    (function wait(){var api=frame.wistiaApi;if(api&&api.bind){api.bind('pause',onPause);api.bind('play',onPlay);return;}if(tries++>80)return;setTimeout(wait,100);})();
+  }
   // FAQ tiles: static thumbnail + "click to play" label; click/tap plays with sound (no hover/scroll autoplay).
   var wistiaHover=function(c){
     var a=document.createElement('a');a.className='pc-embed pc-hoverplay';
@@ -233,7 +244,11 @@ window.PC_MEDIA = {
     a.addEventListener('click',function(e){
       if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0)return;e.preventDefault();
       if(live)return;live=true;a.classList.add('is-playing');
-      var frame=baseIframe(src('autoPlay=true&playsinline=true'),c.title);frame.className='pc-hoverframe';a.appendChild(frame);a.classList.add('is-hovering');frame.focus();
+      loadWistiaPlayerJs();
+      var frame=baseIframe(src('autoPlay=true&playsinline=true&web_component=true'),c.title);
+      frame.className='pc-hoverframe wistia_embed';frame.setAttribute('name','wistia_embed');
+      a.appendChild(frame);a.classList.add('is-hovering');frame.focus();
+      thumbReturn(a,frame);
     });
     if(labelIO){labelTiles.push(a);labelIO.observe(a);}
     return a;
