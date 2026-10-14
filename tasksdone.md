@@ -47,3 +47,9 @@
 - Per Ryan: dropped the "3. Add it to your calendar" step entirely. Removed section markup, .pc-cal* CSS, and the calendar <script> from both pre-call.html + pre-call-b.html. Heading reverted "3 steps" -> "2 steps". Kept the ✅-emoji removal + 👇 on "Watch this".
 - Net: 152 deletions, 2 heading edits. Verified on deploy-preview-63 (white page, even with ?start/?end params): heading "2 steps", only steps 1 & 2, no #pc-cal element, no JS errors, 8 FAQ tiles + 7 testimonials intact.
 - PR: https://github.com/airealbro-prog/premura-website/pull/63
+
+## 2026-10-14 — Pre-call FAQ: paused 3s -> thumbnail slow-fades back (PR #64)
+- Per Ryan: when a playing FAQ answer video is paused for 3s, slow-fade (1.6s) the thumbnail back in; resuming reverses it. FAQ (Wistia) only.
+- Impl: FAQ click now embeds the Wistia iframe with ?web_component=true + class/name "wistia_embed"; player.js loaded lazily; once iframe.wistiaApi is ready, bind 'pause' (3s timer -> .pc-thumb-return) and 'play' (cancel/reverse). CSS: .pc-thumb-return fades .pc-hoverframe to opacity 0 over 1.6s and un-hides .pc-poster (is-playing had hidden it). Clicking the returned thumbnail resumes the paused player (fires 'play' -> fades back).
+- Verified API via Context7 (Wistia player.js embed API; 'pause' is a bindable event). State-gated preview test on deploy-preview-64: pauseFired=true, thumb-return added ~2900ms after pause, settled frameOpacity=0 + posterOpacity=1, resume -> frameOpacity=1.
+- PR: https://github.com/airealbro-prog/premura-website/pull/64
