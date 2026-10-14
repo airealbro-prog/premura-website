@@ -120,7 +120,9 @@ a{color:var(--pc-purple-2);}
 .pc-hoverplay .pc-hoverframe{pointer-events:none;opacity:0;transition:opacity .5s ease;}
 .pc-hoverplay.is-hovering .pc-hoverframe{opacity:1;}
 .pc-hoverplay.is-playing .pc-hoverframe{pointer-events:auto;}
-/* Paused 3s -> slow-fade the live frame out so the poster ("thumbnail") returns; resuming fades it back. */
+/* Paused 3s -> slow-fade the live frame out to reveal the poster ("thumbnail") underneath; resuming fades it back.
+   is-playing normally hides the poster, so un-hide it (behind the frame) while the frame dissolves. */
+.pc-hoverplay.pc-thumb-return .pc-poster{opacity:1;}
 .pc-hoverplay.pc-thumb-return .pc-hoverframe{opacity:0;transition:opacity 1.6s ease;}
 /* "click to play video" label: parked off the left edge, slides in on hover (desktop)
    or when the tile scrolls into view (touch, via .show-label); sits above the preview. */
