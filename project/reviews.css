@@ -21,6 +21,9 @@ a.rv-trust:hover{border-color:var(--accent);}
 
 /* the poster/player well — 16:9 matches what Vimeo/Wistia render */
 .rv-embed{position:relative;display:block;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden;cursor:pointer;}
+/* Portrait (9:16) testimonials, e.g. Vocal Video — shown in their native shape, a narrower card centred in the column, instead of letterboxed inside a 16:9 frame. */
+.rv-grid .rv-card--portrait{max-width:min(380px,calc((100vh - 220px) * 9 / 16));}
+.rv-card--portrait .rv-embed{aspect-ratio:9 / 16;}
 .rv-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease,opacity .3s ease;}
 .rv-card:hover .rv-poster{transform:scale(1.03);}
 .rv-embed::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.45) 100%);opacity:.85;transition:opacity .3s ease;}
