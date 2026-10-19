@@ -289,6 +289,21 @@
         </div>
       </article>
 
+      <article class="rv-card rv-card--portrait" id="review-adams">
+        <a class="rv-embed" href="https://vocalvideo.com/embed/v1/videos/261588" target="_blank" rel="noopener"
+           data-vocalvideo="261588" data-person="Daniel Adams"
+           aria-label="Play Daniel Adams's testimonial — 2 minutes 6 seconds">
+          <img class="rv-poster" src="assets/review-adams.jpg" width="1080" height="1920" loading="lazy" decoding="async"
+               alt="Daniel Adams of 100Mill Solar speaking to camera in his Premura video testimonial">
+          <span class="rv-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="rv-dur" aria-hidden="true">2:06</span>
+        </a>
+        <div class="rv-meta">
+          <div class="rv-stat-sub">100Mill Solar — solar operator</div>
+          <div class="rv-name">Daniel Adams</div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -453,7 +468,7 @@
    Cards ship as plain Vimeo/Wistia links so they still work with JS off; this upgrades
    them to play in place. Nothing is requested from the video host until the click. */
 (function () {
-  var embeds = document.querySelectorAll(".rv-embed[data-vimeo], .rv-embed[data-wistia]");
+  var embeds = document.querySelectorAll(".rv-embed[data-vimeo], .rv-embed[data-wistia], .rv-embed[data-vocalvideo]");
   if (!embeds.length) return;
 
   Array.prototype.forEach.call(embeds, function (embed) {
@@ -467,6 +482,8 @@
       var iframe = document.createElement("iframe");
       if (embed.dataset.wistia) {
         iframe.src = "https://fast.wistia.net/embed/iframe/" + embed.dataset.wistia + "?autoPlay=true";
+      } else if (embed.dataset.vocalvideo) {
+        iframe.src = "https://vocalvideo.com/embed/v1/videos/" + embed.dataset.vocalvideo + "?autoplay=1";
       } else {
         iframe.src = "https://player.vimeo.com/video/" + embed.dataset.vimeo +
                      "?h=" + embed.dataset.hash + "&autoplay=1";
