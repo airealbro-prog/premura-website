@@ -497,7 +497,7 @@
   <div class="section-inner">
     <span class="section-label">Operators We Work With</span>
     <h2 class="section-title">Real operators<br>Real numbers</h2>
-    <p class="section-sub">Fourteen video reviews, all on camera. One pattern: appointments, deals, revenue — month after month.</p>
+    <p class="section-sub">Fifteen video reviews, all on camera. One pattern: appointments, deals, revenue — month after month.</p>
 
     <!-- Carousel -->
     <div class="tc-wrap">
@@ -1015,7 +1015,8 @@
     { name: "Eric Fox", wistia: "lyz1nym61r", poster: "assets/review-eric-fox.jpg", stat: "14", statSub: "deals in first two weeks" },
     { name: "Mike", wistia: "j55lgcp9f4", poster: "assets/review-mike.jpg", stat: "2 → 5", statSub: "agents, scaled up" },
     { name: "Anthony", wistia: "kfch50ezr6", poster: "assets/review-anthony.jpg", stat: "4", statSub: "deals closed early on" },
-    { name: "Ryan", wistia: "rm8k6m9pbc", poster: "assets/review-ryan.jpg", stat: "Paid back", statSub: "in first month" }
+    { name: "Ryan", wistia: "rm8k6m9pbc", poster: "assets/review-ryan.jpg", stat: "Paid back", statSub: "in first month" },
+    { name: "Daniel Adams", vocalvideo: "261588", poster: "assets/review-adams.jpg", stat: "100Mill Solar", statSub: "— solar operator" }
   ];
 
   // card width + gap, measured from the DOM — cards shrink to 240px under 640px (styles.css)
@@ -1116,6 +1117,8 @@
     const iframe = document.createElement("iframe");
     iframe.src = v.wistia
       ? "https://fast.wistia.com/embed/iframe/" + v.wistia + "?autoPlay=true"
+      : v.vocalvideo
+      ? "https://vocalvideo.com/embed/v1/videos/" + v.vocalvideo + "?autoplay=1"
       : "https://player.vimeo.com/video/" + v.vimeo + "?h=" + v.hash + "&autoplay=1";
     iframe.title = v.name + " testimonial";
     iframe.frameBorder = "0";
