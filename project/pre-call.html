@@ -245,7 +245,7 @@ window.PC_MEDIA = {
     var a=document.createElement('a');a.className='pc-embed pc-hoverplay';
     a.href='https://'+(c.host||'premura')+'.wistia.com/medias/'+c.wistia;a.target='_blank';a.rel='noopener';
     a.setAttribute('role','button');a.setAttribute('aria-label','Play '+(c.title||c.label||'video'));
-    a.innerHTML="<img class='pc-poster' loading='lazy' decoding='async' src='"+c.poster+"' alt='"+(c.title||c.label||'')+"'><span class='pc-plabel'>click to play video</span>";
+    a.innerHTML="<img class='pc-poster' loading='lazy' decoding='async' src='"+c.poster+"' alt='"+(c.title||c.label||'')+"'><span class='pc-play' aria-hidden='true'>"+PLAY+"</span><span class='pc-plabel'>click to play video</span>";
     var live=false;
     function src(o){return 'https://fast.wistia.net/embed/iframe/'+c.wistia+'?'+o;}
     // No hover/scroll preview — tiles stay static thumbnails until clicked/tapped.

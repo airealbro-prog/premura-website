@@ -113,9 +113,13 @@ a{color:var(--pc-purple-2);}
 .pc-q[open] summary::after{transform:rotate(45deg);}
 .pc-q-body{padding:0 16px 18px;}
 .pc-q-body .pc-video{border-radius:12px;}
-/* FAQ: bare clickable thumbnail tiles - no accordion title, no play overlay */
+/* FAQ: clickable thumbnail tiles - no accordion title; a translucent play button so they read as videos */
 .pc-q-list .pc-video{border-radius:12px;box-shadow:0 8px 24px -12px rgba(0,0,0,.5);}
-.pc-q-list .pc-play,.pc-q-list .pc-embed::after{display:none;}
+.pc-q-list .pc-embed::after{display:none;}
+/* see-through centered play button: visible enough to say "video", light enough to not hide the thumbnail text */
+.pc-q-list .pc-play{width:58px;height:58px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.72);color:rgba(255,255,255,.92);box-shadow:none;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);}
+/* when the paused thumbnail slow-fades back, bring the play button back with it */
+.pc-hoverplay.pc-thumb-return .pc-play{opacity:1;}
 /* FAQ hover-to-play: muted preview iframe fades in over the poster; lets hover/leave pass through; sound frame is interactive */
 .pc-hoverplay .pc-hoverframe{pointer-events:none;opacity:0;transition:opacity .5s ease;}
 .pc-hoverplay.is-hovering .pc-hoverframe{opacity:1;}
