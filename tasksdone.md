@@ -60,3 +60,8 @@
 - Verified on deploy-preview-65: fbq v2.9.419 loaded, beacons sent to facebook.com/tr for id=2139803833202789 ev=PageView AND ev=Schedule.
 - STILL TODO (other half of Ryan's ask): the callcenter.premura.org GHL clone — ensure it has the same pixel. Couldn't verify directly (clone is domainless + my Chrome GHL session lands on a different agency without this sub-account). It was cloned from /home which carries the pixel, so it likely already has it.
 - PR: https://github.com/airealbro-prog/premura-website/pull/65
+
+## 2026-10-20 — Pre-call FAQ: translucent play button on thumbnails (PR #72)
+- Per Ryan: FAQ thumbnails looked like plain images. Added a see-through centered play button (frosted circle, rgba(255,255,255,.18) fill + .72 ring + play triangle, 58px) to each FAQ tile so they read as videos without hiding the thumbnail text. Re-shows on paused thumbnail return; hidden while playing (existing .is-playing rule). Testimonials keep their solid purple button. Added pc-play span to wistiaHover markup (both HTML) + restyled .pc-q-list .pc-play (was display:none from PR #53).
+- Verified on deploy-preview-72 desktop + mobile: buttons centered, translucent, thumbnail text ("What's the cost?" etc.) readable through them; testimonials' purple button unchanged.
+- PR: https://github.com/airealbro-prog/premura-website/pull/72
