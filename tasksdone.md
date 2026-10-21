@@ -65,3 +65,8 @@
 - Per Ryan: FAQ thumbnails looked like plain images. Added a see-through centered play button (frosted circle, rgba(255,255,255,.18) fill + .72 ring + play triangle, 58px) to each FAQ tile so they read as videos without hiding the thumbnail text. Re-shows on paused thumbnail return; hidden while playing (existing .is-playing rule). Testimonials keep their solid purple button. Added pc-play span to wistiaHover markup (both HTML) + restyled .pc-q-list .pc-play (was display:none from PR #53).
 - Verified on deploy-preview-72 desktop + mobile: buttons centered, translucent, thumbnail text ("What's the cost?" etc.) readable through them; testimonials' purple button unchanged.
 - PR: https://github.com/airealbro-prog/premura-website/pull/72
+
+## 2026-10-21 — Pre-call FAQ play button: premium purple glass (PR #74)
+- Christian felt the white frosted play button (PR #72) looked cheap. Restyled .pc-q-list .pc-play to purple glass: two-tone purple gradient fill (rgba 169,53,255 .44 -> 123,31,214 .26), thin light ring, purple glow box-shadow + inner top highlight, backdrop blur+saturate. Kept translucent so thumbnail text still shows. FAQ only; testimonials' solid purple button unchanged.
+- Verified on deploy-preview-74 (desktop): purple glass buttons centered on FAQ thumbnails, text readable through them.
+- PR: https://github.com/airealbro-prog/premura-website/pull/74
