@@ -116,8 +116,8 @@ a{color:var(--pc-purple-2);}
 /* FAQ: clickable thumbnail tiles - no accordion title; a translucent play button so they read as videos */
 .pc-q-list .pc-video{border-radius:12px;box-shadow:0 8px 24px -12px rgba(0,0,0,.5);}
 .pc-q-list .pc-embed::after{display:none;}
-/* see-through centered play button: visible enough to say "video", light enough to not hide the thumbnail text */
-.pc-q-list .pc-play{width:58px;height:58px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.72);color:rgba(255,255,255,.92);box-shadow:none;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);}
+/* see-through centered play button: premium purple glass — reads as "video", stays translucent so the thumbnail text shows */
+.pc-q-list .pc-play{width:60px;height:60px;background:linear-gradient(150deg,rgba(169,53,255,.44),rgba(123,31,214,.26));border:1.5px solid rgba(255,255,255,.55);color:#fff;box-shadow:0 10px 26px -8px rgba(169,53,255,.72),inset 0 1px 1px rgba(255,255,255,.45);-webkit-backdrop-filter:blur(3px) saturate(1.2);backdrop-filter:blur(3px) saturate(1.2);}
 /* when the paused thumbnail slow-fades back, bring the play button back with it */
 .pc-hoverplay.pc-thumb-return .pc-play{opacity:1;}
 /* FAQ hover-to-play: muted preview iframe fades in over the poster; lets hover/leave pass through; sound frame is interactive */
