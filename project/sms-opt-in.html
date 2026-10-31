@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="assets/premura-logo.png">
+<link rel="apple-touch-icon" href="assets/premura-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMS Opt-In | Premura</title>
+<meta name="description" content="Opt in to receive text message updates from Premura Corp. Msg and data rates may apply. Reply STOP to opt out.">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="canonical" href="https://www.premura.org/sms-opt-in">
+<style>
+.legal-hero{padding:150px 24px 36px;max-width:900px;margin:0 auto;}
+.legal-hero h1{font-size:clamp(2rem,5vw,3rem);margin-bottom:12px;}
+.legal-hero p.eff{color:var(--text-secondary);font-size:.95rem;}
+.legal-wrap{max-width:900px;margin:0 auto;padding:10px 24px 110px;}
+.legal-wrap h2{font-size:1.35rem;margin:38px 0 12px;color:var(--text);}
+.legal-wrap p,.legal-wrap li{color:var(--text-secondary);line-height:1.8;font-size:1rem;}
+.legal-wrap ul{margin:10px 0 10px 22px;}
+.legal-wrap li{margin-bottom:7px;}
+.legal-wrap a{color:var(--accent-light);text-decoration:underline;}
+.legal-callout{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin:22px 0;}
+.legal-callout strong{color:var(--text);}
+.optin-card{max-width:560px;margin:4px auto 0;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:30px;}
+.optin-card label{display:block;font-size:.9rem;color:var(--text);margin:14px 0 6px;font-weight:600;}
+.optin-card input[type=text],.optin-card input[type=tel]{width:100%;padding:13px 15px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--text);font-family:inherit;font-size:1rem;box-sizing:border-box;}
+.optin-consent{display:flex;gap:11px;align-items:flex-start;margin:20px 0 6px;}
+.optin-consent input{margin-top:4px;flex:0 0 auto;width:18px;height:18px;accent-color:var(--accent);}
+.optin-consent span{font-size:.82rem;color:var(--text-secondary);line-height:1.6;}
+.optin-card button{width:100%;justify-content:center;margin-top:20px;}
+.optin-ok{display:none;text-align:center;padding:24px 10px;}
+.optin-ok h3{color:var(--text);font-size:1.3rem;margin-bottom:8px;}
+</style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Premura"><img src="assets/premura-logo.png" alt="Premura"/></a>
+    <div class="nav-links">
+      <a href="/how-it-works">How It Works</a>
+      <a href="/solar">Solar</a>
+      <a href="/roofing">Roofing</a>
+      <a href="/technology">Technology</a>
+      <a href="/about">About</a>
+      <a href="/testimonials">Testimonials</a>
+      <a href="/faq">FAQ</a>
+      <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile-menu">
+  <button class="nav-mobile-close">×</button>
+  <a href="/how-it-works">How It Works</a>
+  <a href="/solar">Solar</a>
+  <a href="/roofing">Roofing</a>
+  <a href="/technology">Technology</a>
+  <a href="/about">About</a>
+  <a href="/testimonials">Testimonials</a>
+      <a href="/faq">FAQ</a>
+  <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:16px;">Book a Call</a>
+</div>
+
+<section class="legal-hero">
+  <span class="section-label">Stay Updated</span>
+  <h1>Get text updates from Premura</h1>
+  <p class="eff">Opt in to receive appointment, account, and application updates by SMS. Opt out any time by replying STOP.</p>
+</section>
+<main class="legal-wrap">
+  <div class="optin-card" id="optinCard">
+    <form id="optinForm">
+      <label for="fn">First name</label>
+      <input type="text" id="fn" name="first_name" required>
+      <label for="ln">Last name</label>
+      <input type="text" id="ln" name="last_name" required>
+      <label for="ph">Mobile phone</label>
+      <input type="tel" id="ph" name="phone" placeholder="(555) 555-5555" required>
+      <div class="optin-consent">
+        <input type="checkbox" id="consent" name="consent" required>
+        <span>I agree to receive recurring automated text messages from Premura Corp at the number provided (appointment, account, and application/interview updates). Consent is not a condition of purchase. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. See our <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-of-service">Terms of Service</a>.</span>
+      </div>
+      <button type="submit" class="btn-primary">Opt in to text updates &rarr;</button>
+    </form>
+    <div class="optin-ok" id="optinOk">
+      <h3>You're opted in &#10003;</h3>
+      <p>Thanks &mdash; you'll receive text updates from Premura Corp. Reply STOP at any time to opt out, or HELP for help.</p>
+    </div>
+  </div>
+</main>
+<script>
+(function(){
+  var f=document.getElementById('optinForm');
+  if(!f) return;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!document.getElementById('consent').checked) return;
+    document.getElementById('optinForm').style.display='none';
+    document.getElementById('optinOk').style.display='block';
+  });
+})();
+</script>
+
+<footer>
+  <div class="footer-rep">
+    <h4>Company &amp; Reputation</h4>
+    <div class="footer-rep-links">
+      <a href="/is-premura-legit">Is Premura Legit?</a>
+      <a href="/is-premura-a-scam">Is Premura a Scam?</a>
+      <a href="/the-truth-about-premura">The Truth About Premura</a>
+      <a href="/premura-reviews">Premura Reviews</a>
+      <a href="/premura-call-center-reviews">Call Center Reviews</a>
+      <a href="/premura-testimonials">Testimonials</a>
+      <a href="/are-premura-reviews-real">Are the Reviews Real?</a>
+      <a href="/premura-complaints">Complaints, Answered</a>
+      <a href="/premura-bbb">BBB Profile</a>
+      <a href="/who-owns-premura">Who Owns Premura</a>
+      <a href="/premura-cost">How Much It Costs</a>
+      <a href="/premura-guarantee">The Guarantee</a>
+      <a href="/premura-vs-in-house">Premura vs In-House</a>
+      <a href="/premura-results">Client Results</a>
+      <a href="/who-is-premura-for">Who It's For</a>
+      <a href="/how-good-is-premura">How Good Is It?</a>
+      <a href="/premura-call-centers">Premura Call Centers</a>
+      <a href="/call-centers-built-by-premura">Call Centers We Built</a>
+    </div>
+  </div>
+  <div class="footer-grid">
+    <div class="footer-brand"><span class="footer-logo"><img src="assets/premura-logo.png" alt="Premura"/><span class="footer-logo-word">PREMURA</span></span><p>In-house call centers for solar and roofing companies.</p></div>
+    <div class="footer-col"><h4>Pages</h4><a href="/">Home</a><a href="/how-it-works">How It Works</a><a href="/solar">For Solar</a><a href="/roofing">For Roofing</a><a href="/about">About Us</a><a href="/testimonials">Testimonials</a>
+      <a href="/faq">FAQ</a></div>
+    <div class="footer-col"><h4>Services</h4><a href="/solar">Solar Campaigns</a><a href="/roofing">Roofing Campaigns</a>
+      <a href="/build-a-call-center">Build a Call Center</a>
+      <a href="/call-center-setup-services">Call Center Setup</a>
+      <a href="/qualified-solar-appointments">Qualified Solar Appointments</a>
+      <a href="/exclusive-roofing-leads">Exclusive Roofing Leads</a>
+      <a href="/door-knocking-alternative">Door Knocking Alternative</a>
+      <a href="/pay-per-appointment">Pay Per Appointment vs Dedicated</a>
+      <a href="/home-services-lead-generation">Home Services Lead Generation</a><a href="/solar-appointment-setting">Solar Appointment Setting</a>
+      <a href="/roofing-appointment-setting">Roofing Appointment Setting</a>
+      <a href="/outbound-sales-outsourcing">Outbound Sales Outsourcing</a>
+      <a href="/technology">Technology &amp; Tools</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:support@premura.org">support@premura.org</a><a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:10px;padding:10px 20px;font-size:.84rem;display:inline-flex;">Book a Strategy Call →</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Premura Corp. All rights reserved.</span><div class="footer-bottom-links"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-service">Terms of Service</a></div></div>
+</footer>
+<div id="floating-cta"><a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary">Book a Call &rarr;</a></div>
+<script src="main.js"></script>
+</body>
+</html>
