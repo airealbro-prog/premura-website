@@ -81,10 +81,15 @@
       <label for="ph">Mobile phone</label>
       <input type="tel" id="ph" name="phone" placeholder="(555) 555-5555" required>
       <div class="optin-consent">
-        <input type="checkbox" id="consent" name="consent" required>
-        <span>I agree to receive recurring automated text messages from Premura Corp at the number provided (appointment, account, and application/interview updates). Consent is not a condition of purchase. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. See our <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-of-service">Terms of Service</a>.</span>
+        <input type="checkbox" id="consent" name="consent_transactional">
+        <span>I agree to receive account, appointment, and application/interview text messages from Premura Corp at the number provided. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help.</span>
       </div>
-      <button type="submit" class="btn-primary">Opt in to text updates &rarr;</button>
+      <div class="optin-consent">
+        <input type="checkbox" id="consentMkt" name="consent_marketing">
+        <span>I also agree to receive promotional and marketing text messages from Premura Corp at the number provided. <em>(Optional &mdash; not required.)</em> Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
+      </div>
+      <p style="font-size:.78rem;color:var(--text-secondary);margin:12px 0 0;line-height:1.6;">Consent to receive text messages is not a condition of any purchase. See our <a href="/privacy-policy" style="color:var(--accent-light);text-decoration:underline;">Privacy Policy</a> and <a href="/terms-of-service" style="color:var(--accent-light);text-decoration:underline;">Terms of Service</a>.</p>
+      <button type="submit" class="btn-primary">Submit &rarr;</button>
     </form>
     <div class="optin-ok" id="optinOk">
       <h3>You're opted in &#10003;</h3>
@@ -98,7 +103,6 @@
   if(!f) return;
   f.addEventListener('submit',function(e){
     e.preventDefault();
-    if(!document.getElementById('consent').checked) return;
     document.getElementById('optinForm').style.display='none';
     document.getElementById('optinOk').style.display='block';
   });
