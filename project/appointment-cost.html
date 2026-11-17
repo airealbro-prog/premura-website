@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="assets/premura-logo.png">
+<link rel="apple-touch-icon" href="assets/premura-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Appointment Cost Worksheet | Premura</title>
+<meta name="description" content="Type in four numbers and see what an appointment and a closed deal actually cost you this month, beside Premura's published figures. Nothing is sent anywhere. Prints to a clean sheet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="appointment-cost.css">
+<link rel="canonical" href="https://www.premura.org/appointment-cost">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.premura.org/#organization","name":"Premura","legalName":"Premura Corp","url":"https://www.premura.org/","logo":"https://www.premura.org/assets/premura-logo.png","description":"Premura builds and manages dedicated in-house call centers for solar and roofing companies. Trained agents book qualified appointments directly into your calendar.","foundingDate":"2022-09-22","telephone":"+1-833-366-8784","email":"support@premura.org","address":{"@type":"PostalAddress","addressLocality":"Medley","addressRegion":"FL","postalCode":"33166","addressCountry":"US"},"sameAs":["https://www.instagram.com/premuracallcenters","https://www.facebook.com/premuracallcenter","https://www.bbb.org/us/fl/medley/profile/business-consultant/premura-corp-0633-92052338"]}</script>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Premura"><img src="assets/premura-logo.png" alt="Premura"/></a>
+    <div class="nav-links">
+      <a href="/how-it-works">How It Works</a>
+      <a href="/solar">Solar</a>
+      <a href="/roofing">Roofing</a>
+      <a href="/technology">Technology</a>
+      <a href="/about">About</a>
+      <a href="/testimonials">Testimonials</a>
+      <a href="/faq">FAQ</a>
+      <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile-menu">
+  <button class="nav-mobile-close">&times;</button>
+  <a href="/how-it-works">How It Works</a>
+  <a href="/solar">Solar</a>
+  <a href="/roofing">Roofing</a>
+  <a href="/technology">Technology</a>
+  <a href="/about">About</a>
+  <a href="/testimonials">Testimonials</a>
+  <a href="/faq">FAQ</a>
+  <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:16px;">Book a Call</a>
+</div>
+
+<!-- ═══ PRINT-ONLY SHEET HEADER ═══ -->
+<div class="ac-print-head" aria-hidden="true">
+  <span class="ac-print-brand">PREMURA</span>
+  <span class="ac-print-title">The Appointment Cost Worksheet</span>
+</div>
+
+<!-- ═══ INTRO ═══ -->
+<header class="ac-intro">
+  <div class="ac-intro-bg"><div class="ac-intro-orb"></div></div>
+  <div class="ac-intro-inner">
+    <span class="ac-eyebrow">Premura &middot; Cost Control</span>
+    <h1>What an Appointment<br>Actually Costs You</h1>
+    <p class="ac-lede">Four numbers you already have. This page does the division and tells you what one appointment, one sat appointment and one closed deal cost you last month &mdash; beside what they cost on a Premura call center.</p>
+    <p class="ac-note">Everything here happens in your browser. Nothing is sent anywhere, nothing is saved, and there is nothing to fill in but your own numbers. Fill it in, then print or save the sheet and bring it to our call.</p>
+    <ul class="ac-meta">
+      <li>Four Inputs</li>
+      <li>Three Numbers Out</li>
+      <li>About 2 Minutes</li>
+      <li>Nothing Leaves Your Browser</li>
+    </ul>
+  </div>
+</header>
+
+<!-- ═══ 01 · WHAT YOU PAY NOW ═══ -->
+<section class="section ac-sheet-sec" id="worksheet">
+  <div class="section-inner">
+    <span class="ac-eyebrow">Worksheet &middot; 01</span>
+    <h2 class="section-title">What You Pay Now</h2>
+    <p class="section-sub">Use one channel and one month, so the division means something. Round numbers are fine &mdash; this is about the order of magnitude, not the cents.</p>
+
+    <noscript>
+      <p class="ac-noscript">This worksheet does its arithmetic in your browser, so it needs JavaScript switched on. Turn it on and reload &mdash; or bring the four numbers below to the call and we will do the division together: what you spent on one channel last month, how many appointments it produced, how many were actually sat, and how many became signed deals.</p>
+    </noscript>
+
+    <form class="ac-form" id="acForm" novalidate>
+
+      <fieldset class="ac-chans">
+        <legend class="ac-field-lbl">Which channel are these numbers from?</legend>
+        <div class="ac-chips" id="acChips">
+          <label class="ac-chip"><input type="radio" name="acChannel" value="paid" checked><span>Paid ads</span></label>
+          <label class="ac-chip"><input type="radio" name="acChannel" value="bought"><span>Bought appointments</span></label>
+          <label class="ac-chip"><input type="radio" name="acChannel" value="d2d"><span>Door to door</span></label>
+          <label class="ac-chip"><input type="radio" name="acChannel" value="referral"><span>Referrals</span></label>
+        </div>
+      </fieldset>
+
+      <div class="ac-fields">
+        <div class="ac-field">
+          <label class="ac-field-lbl" for="acSpend">What you spent on it last month</label>
+          <div class="ac-input-wrap ac-input-money">
+            <span class="ac-prefix" aria-hidden="true">$</span>
+            <input type="number" id="acSpend" inputmode="decimal" min="0" step="any" placeholder="0" autocomplete="off">
+          </div>
+          <p class="ac-hint">Ad spend, per-appointment fees, setter wages and bonuses &mdash; everything that channel cost you.</p>
+        </div>
+
+        <div class="ac-field">
+          <label class="ac-field-lbl" for="acAppts">Appointments it produced</label>
+          <div class="ac-input-wrap">
+            <input type="number" id="acAppts" inputmode="numeric" min="0" step="any" placeholder="0" autocomplete="off">
+          </div>
+          <p class="ac-hint">Everything that got booked onto a calendar, sat or not.</p>
+        </div>
+
+        <div class="ac-field">
+          <label class="ac-field-lbl" for="acSat">How many were actually sat</label>
+          <div class="ac-input-wrap">
+            <input type="number" id="acSat" inputmode="numeric" min="0" step="any" placeholder="0" autocomplete="off">
+          </div>
+          <p class="ac-hint">Your closer was in front of the homeowner. No-shows and cancellations do not count.</p>
+        </div>
+
+        <div class="ac-field">
+          <label class="ac-field-lbl" for="acDeals">Deals closed from them</label>
+          <div class="ac-input-wrap">
+            <input type="number" id="acDeals" inputmode="numeric" min="0" step="any" placeholder="0" autocomplete="off">
+          </div>
+          <p class="ac-hint">Signed contracts from those appointments.</p>
+        </div>
+      </div>
+
+      <p class="ac-flags" id="acFlags" role="status" aria-live="polite" hidden></p>
+    </form>
+
+    <!-- Results. Deliberately NOT .metric-card / .stats-bar / .metrics-grid and no data-count:
+         main.js sets opacity:0 inline on those card classes, and its count-up overwrites the
+         textContent of any [data-count] inside those two wrappers. Either would break this. -->
+    <div class="ac-out" id="acOut" aria-live="polite">
+      <div class="ac-out-head">
+        <span class="ac-eyebrow">Your numbers</span>
+        <span class="ac-out-chan" id="acOutChan">Paid ads</span>
+      </div>
+
+      <div class="ac-out-grid">
+        <div class="ac-cell">
+          <span class="ac-cell-lbl">Cost per appointment</span>
+          <span class="ac-cell-num" id="acCPA">&mdash;</span>
+          <span class="ac-cell-vs" id="acCPAvs">Premura: $31</span>
+        </div>
+        <div class="ac-cell">
+          <span class="ac-cell-lbl">Cost per sat appointment</span>
+          <span class="ac-cell-num" id="acCPS">&mdash;</span>
+          <span class="ac-cell-vs">What the no-shows cost you</span>
+        </div>
+        <div class="ac-cell ac-cell-key">
+          <span class="ac-cell-lbl">Cost per closed deal</span>
+          <span class="ac-cell-num" id="acCPD">&mdash;</span>
+          <span class="ac-cell-vs" id="acCPDvs">Premura: $250 to $500</span>
+        </div>
+      </div>
+
+      <p class="ac-gap" id="acGap">Fill in the four numbers above and the three figures appear here.</p>
+
+      <div class="ac-sub-grid">
+        <div class="ac-sub">
+          <span class="ac-sub-lbl">Show-up rate</span>
+          <span class="ac-sub-num" id="acShow">&mdash;</span>
+        </div>
+        <div class="ac-sub">
+          <span class="ac-sub-lbl">Close rate, on sat appointments</span>
+          <span class="ac-sub-num" id="acClose">&mdash;</span>
+        </div>
+      </div>
+
+      <p class="ac-out-foot">These two rates are why the first figure and the last are so far apart. Every no-show and every lost pitch is paid for by the deals that did close.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ 02 · WHAT IT COSTS US ═══ -->
+<section class="section ac-bench-sec">
+  <div class="section-inner">
+    <span class="ac-eyebrow">Worksheet &middot; 02</span>
+    <h2 class="section-title">What It Costs Us</h2>
+    <p class="section-sub">Premura's published figures, so you can put your own number beside them. Nothing here is modelled or projected.</p>
+
+    <div class="comp-wrap ac-bench-wrap">
+      <table class="comp-table ac-bench">
+        <thead>
+          <tr>
+            <th scope="col"><span class="ac-sr">Measure</span></th>
+            <th scope="col" class="comp-col-hl">Premura call center</th>
+            <th scope="col">Paid ads or bought appointments</th>
+            <th scope="col">Door to door</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="comp-row-lbl">Cost per appointment</td>
+            <td class="comp-col-hl"><b>$31</b></td>
+            <td>$300</td>
+            <td><span class="ac-nil">&mdash;</span></td>
+          </tr>
+          <tr>
+            <td class="comp-row-lbl">Cost per sale or install</td>
+            <td class="comp-col-hl"><b>$250 to $500</b></td>
+            <td>$2,000</td>
+            <td>$2,500</td>
+          </tr>
+          <tr>
+            <td class="comp-row-lbl">Training load</td>
+            <td class="comp-col-hl"><b>5 hrs/week</b></td>
+            <td><span class="ac-nil">&mdash;</span></td>
+            <td>15 hrs/week</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="ac-src">A dash means we have not published a figure for it, so we are not putting one on this page. Referrals are absent for the same reason &mdash; there is no honest benchmark to give you. Paid ads and bought appointments share a column because they cost the same per appointment and per sale.</p>
+  </div>
+</section>
+
+<!-- ═══ 03 · THE TWO DIALS ═══ -->
+<section class="section ac-dials-sec">
+  <div class="section-inner">
+    <span class="ac-eyebrow">Worksheet &middot; 03</span>
+    <h2 class="section-title">Why the Number Is Stuck</h2>
+    <p class="section-sub">On paid ads, quantity and quality are the same dial. One targeting setting controls both, so every time you fix one you break the other. On outbound they are two separate dials.</p>
+
+    <div class="ac-dials">
+      <div class="ac-dial ac-dial-one">
+        <span class="ac-dial-tag ac-dial-tag-one">One dial</span>
+        <h3>Paid ads and bought appointments</h3>
+        <p>Widen the targeting and volume goes up while quality falls. Tighten it and quality goes up while volume collapses &mdash; and your cost per appointment climbs, because the same spend now buys fewer of them. There is one control and it moves both numbers at once.</p>
+        <ul class="ac-dial-list ac-dial-list-bad">
+          <li>Want more appointments? Loosen targeting &mdash; and sit with worse ones.</li>
+          <li>Want better appointments? Tighten targeting &mdash; and get fewer.</li>
+          <li>Either way the per-appointment cost moves against you.</li>
+        </ul>
+      </div>
+
+      <div class="ac-dial ac-dial-two">
+        <span class="ac-dial-tag ac-dial-tag-two">Two dials</span>
+        <h3>A dedicated outbound call center</h3>
+        <p>Volume and quality are set in different places by different people. Volume is a function of how much dialling happens. Quality is decided in the conversation, by what the agent refuses to book. Turning one does not move the other.</p>
+        <div class="ac-dial-split">
+          <div>
+            <span class="ac-dial-sub">Volume dial</span>
+            <ul class="ac-dial-list">
+              <li>Dials made per agent, per day</li>
+              <li>How much of your territory is being worked</li>
+              <li>Agents on the campaign &mdash; add one, add its appointments</li>
+            </ul>
+          </div>
+          <div>
+            <span class="ac-dial-sub">Quality dial</span>
+            <ul class="ac-dial-list">
+              <li>How hard the agent qualifies before booking</li>
+              <li>Homeowner, roof or bill, decision-maker present, timeframe</li>
+              <li>What gets turned away instead of booked</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="ac-dials-foot">This is why the two figures you just worked out can be so far apart. A cheap appointment nobody sits is not cheap, and tightening a targeting dial to fix that makes your cost per appointment worse. Qualifying harder on a call costs you nothing but the call.</p>
+  </div>
+</section>
+
+<!-- ═══ 04 · BRING YOUR NUMBER ═══ -->
+<section class="section ac-close-sec">
+  <div class="section-inner ac-close-inner">
+    <span class="ac-eyebrow">Worksheet &middot; 04</span>
+    <h2 class="section-title">Bring Your Number to the Call</h2>
+    <p class="ac-close-body">You already have a call booked, so there is nothing to sign up for here. Print this sheet or save it as a PDF and bring the three figures with you. We will start from your real cost per deal instead of spending the first twenty minutes working it out.</p>
+    <p class="ac-close-body">If your cost per appointment came out near $31 you are running something unusual, and we would genuinely like to see it. If it came out closer to $300, that gap is the conversation.</p>
+    <button class="btn-secondary ac-print-btn" id="acPrint" type="button">Print or save this sheet</button>
+    <p class="ac-close-small">Nothing on this page is sent to us. If you want us to see your numbers, bring them to the call or paste them into a reply.</p>
+    <p class="ac-close-links">While you wait: <a href="/from-dial-to-appointment">what happens between the first dial and a confirmed appointment</a> &middot; <a href="/sales-audit">score your own operation out of sixty</a> &middot; <a href="/how-it-works">how a build runs</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-rep">
+    <h4>Company &amp; Reputation</h4>
+    <div class="footer-rep-links">
+      <a href="/is-premura-legit">Is Premura Legit?</a>
+      <a href="/is-premura-a-scam">Is Premura a Scam?</a>
+      <a href="/the-truth-about-premura">The Truth About Premura</a>
+      <a href="/premura-reviews">Premura Reviews</a>
+      <a href="/premura-call-center-reviews">Call Center Reviews</a>
+      <a href="/premura-testimonials">Testimonials</a>
+      <a href="/are-premura-reviews-real">Are the Reviews Real?</a>
+      <a href="/premura-complaints">Complaints, Answered</a>
+      <a href="/premura-bbb">BBB Profile</a>
+      <a href="/who-owns-premura">Who Owns Premura</a>
+      <a href="/premura-cost">How Much It Costs</a>
+      <a href="/premura-guarantee">The Guarantee</a>
+      <a href="/premura-vs-in-house">Premura vs In-House</a>
+      <a href="/premura-results">Client Results</a>
+      <a href="/who-is-premura-for">Who It's For</a>
+      <a href="/how-good-is-premura">How Good Is It?</a>
+      <a href="/premura-call-centers">Premura Call Centers</a>
+      <a href="/call-centers-built-by-premura">Call Centers We Built</a>
+    </div>
+  </div>
+  <div class="footer-grid">
+    <div class="footer-brand"><span class="footer-logo"><img src="assets/premura-logo.png" alt="Premura"/><span class="footer-logo-word">PREMURA</span></span><p>In-house call centers for solar and roofing companies.</p></div>
+    <div class="footer-col"><h4>Pages</h4><a href="/">Home</a><a href="/how-it-works">How It Works</a><a href="/solar">For Solar</a><a href="/roofing">For Roofing</a><a href="/about">About Us</a><a href="/testimonials">Testimonials</a>
+      <a href="/faq">FAQ</a></div>
+    <div class="footer-col"><h4>Services</h4><a href="/solar">Solar Campaigns</a><a href="/roofing">Roofing Campaigns</a>
+      <a href="/build-a-call-center">Build a Call Center</a>
+      <a href="/call-center-setup-services">Call Center Setup</a>
+      <a href="/qualified-solar-appointments">Qualified Solar Appointments</a>
+      <a href="/exclusive-roofing-leads">Exclusive Roofing Leads</a>
+      <a href="/door-knocking-alternative">Door Knocking Alternative</a>
+      <a href="/pay-per-appointment">Pay Per Appointment vs Dedicated</a>
+      <a href="/home-services-lead-generation">Home Services Lead Generation</a><a href="/solar-appointment-setting">Solar Appointment Setting</a>
+      <a href="/roofing-appointment-setting">Roofing Appointment Setting</a>
+      <a href="/outbound-sales-outsourcing">Outbound Sales Outsourcing</a>
+      <a href="/technology">Technology &amp; Tools</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:support@premura.org">support@premura.org</a><a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:10px;padding:10px 20px;font-size:.84rem;display:inline-flex;">Book a Strategy Call →</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Premura Corp. All rights reserved.</span><div class="footer-bottom-links"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-service">Terms of Service</a></div></div>
+</footer>
+
+<script src="main.js"></script>
+<script src="appointment-cost.js"></script>
+</body>
+</html>
