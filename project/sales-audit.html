@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="assets/premura-logo.png">
+<link rel="apple-touch-icon" href="assets/premura-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>20-Point Sales Audit | Premura</title>
+<meta name="description" content="A two-minute, 20-question audit of your solar or roofing sales operation. Score out of 60, a section-by-section breakdown, and the numbers behind each gap.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="sales-audit.css">
+<link rel="canonical" href="https://www.premura.org/sales-audit">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.premura.org/#organization","name":"Premura","legalName":"Premura Corp","url":"https://www.premura.org/","logo":"https://www.premura.org/assets/premura-logo.png","description":"Premura builds and manages dedicated in-house call centers for solar and roofing companies. Trained agents book qualified appointments directly into your calendar.","foundingDate":"2022-09-22","telephone":"+1-833-366-8784","email":"support@premura.org","address":{"@type":"PostalAddress","addressLocality":"Medley","addressRegion":"FL","postalCode":"33166","addressCountry":"US"},"sameAs":["https://www.instagram.com/premuracallcenters","https://www.facebook.com/premuracallcenter","https://www.bbb.org/us/fl/medley/profile/business-consultant/premura-corp-0633-92052338"]}</script>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Premura"><img src="assets/premura-logo.png" alt="Premura"/></a>
+    <div class="nav-links">
+      <a href="/how-it-works">How It Works</a>
+      <a href="/solar">Solar</a>
+      <a href="/roofing">Roofing</a>
+      <a href="/technology">Technology</a>
+      <a href="/about">About</a>
+      <a href="/testimonials">Testimonials</a>
+      <a href="/faq">FAQ</a>
+      <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile-menu">
+  <button class="nav-mobile-close">&times;</button>
+  <a href="/how-it-works">How It Works</a>
+  <a href="/solar">Solar</a>
+  <a href="/roofing">Roofing</a>
+  <a href="/technology">Technology</a>
+  <a href="/about">About</a>
+  <a href="/testimonials">Testimonials</a>
+  <a href="/faq">FAQ</a>
+  <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:16px;">Book a Call</a>
+</div>
+
+<!-- ═══ INTRO ═══ -->
+<section class="sa-intro" id="saIntro">
+  <div class="sa-intro-bg"><div class="sa-intro-orb"></div></div>
+  <div class="sa-intro-content">
+    <span class="section-label">Market &amp; Sales Audit</span>
+    <h1>Your Sales Operation,<br>in 20 Points</h1>
+    <p class="sa-lede">This is the self-serve version of the Market &amp; Sales Audit we run at the start of every build &mdash; twenty questions about where your appointments come from, what happens to them, and what you can actually see.</p>
+    <p class="sa-note">One tap per question, no typing. At the end you get a score out of 60, a section-by-section breakdown, and the numbers behind each gap &mdash; whether or not we end up working together.</p>
+
+    <div class="sa-meta">
+      <span>20 Questions</span>
+      <span>One Tap Each</span>
+      <span>About 2 Minutes</span>
+      <span>No Contact Details Needed</span>
+    </div>
+
+    <button class="btn-primary" id="saStart" type="button">Start the audit &rarr;</button>
+
+    <div class="sa-sections">
+      <div class="sa-sections-label">What it covers</div>
+      <ol>
+        <li><b>Where your appointments come from</b> &mdash; 5 points</li>
+        <li><b>Appointment quality</b> &mdash; 5 points</li>
+        <li><b>Your closers</b> &mdash; 4 points</li>
+        <li><b>Your team</b> &mdash; 3 points</li>
+        <li><b>What you can actually see</b> &mdash; 3 points</li>
+      </ol>
+    </div>
+
+    <noscript>
+      <div class="sa-noscript" style="margin-top:34px;">This audit needs JavaScript to score your answers. Turn it on and reload, or reply to the email you came from and we will walk the twenty points with you on the call.</div>
+    </noscript>
+  </div>
+</section>
+
+<!-- ═══ QUIZ ═══ -->
+<section class="sa-quiz" id="saQuiz" hidden>
+
+  <div class="sa-chrome">
+    <div class="sa-chrome-top">
+      <span class="sa-qnum" id="saQNum" aria-live="polite">Point 01 / 20</span>
+      <span class="sa-qsection" id="saQSection">Where your appointments come from</span>
+    </div>
+    <div class="sa-bar"><div class="sa-bar-fill" id="saBarFill"></div></div>
+  </div>
+
+  <div class="sa-stage" id="saStage">
+    <h2 class="sa-q" id="saQText" tabindex="-1"></h2>
+    <div class="sa-opts" id="saOpts" role="radiogroup" aria-labelledby="saQText"></div>
+  </div>
+
+  <div class="sa-foot">
+    <button class="sa-back" id="saBack" type="button" hidden>&larr; Back</button>
+    <div class="sa-rail" id="saRail" aria-hidden="true"></div>
+  </div>
+
+</section>
+
+<!-- ═══ RESULTS ═══ -->
+<section class="sa-results" id="saResults" hidden>
+  <div class="sa-results-inner">
+
+    <div class="sa-sheet">
+      <div class="sa-sheet-head">
+        <span class="sa-sheet-title">Sales Audit &mdash; Inspection Sheet</span>
+        <span>20 Points &middot; 5 Sections</span>
+      </div>
+
+      <div class="sa-score">
+        <div>
+          <div class="sa-score-num" id="saScoreNum">0</div>
+          <span class="sa-score-max" id="saScoreMax">/ 60</span>
+        </div>
+        <div class="sa-score-side">
+          <h2 class="sa-tier-name" id="saResultsHeading" tabindex="-1"><span id="saTierName"></span></h2>
+          <p class="sa-tier-read" id="saTierRead"></p>
+        </div>
+      </div>
+
+      <div class="sa-dk" id="saDk" hidden>
+        <span class="sa-dk-dot"></span>
+        <p><b id="saDkCount"></b> &mdash; <em>which is the most common honest answer to these questions, and is itself one of the findings.</em></p>
+      </div>
+
+      <div class="sa-bd">
+        <div class="sa-bd-label">Section by section</div>
+        <div id="saBreakdown"></div>
+      </div>
+    </div>
+
+    <div class="sa-actions">
+      <button class="btn-secondary" id="saCopy" type="button">Copy my results</button>
+      <button class="btn-secondary" id="saRestart" type="button">Start over</button>
+      <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="padding:12px 24px;font-size:.92rem;">Book a strategy call &rarr;</a>
+    </div>
+
+    <!-- Hidden unless CAPTURE_ENABLED is switched on in sales-audit.js.
+         Nothing is sent anywhere while it is off. -->
+    <div class="sa-capture" id="saCapture" hidden>
+      <h3>Want this sent to you?</h3>
+      <p>We will email you this sheet and have it in front of us before your strategy call, so the recommendations are specific to these answers rather than general.</p>
+      <form class="sa-capture-row" id="saCaptureForm">
+        <input type="email" id="saEmail" name="email" placeholder="you@company.com" autocomplete="email" required>
+        <button class="btn-primary" type="submit" style="padding:13px 24px;font-size:.95rem;">Email me the sheet</button>
+      </form>
+      <p class="sa-capture-note" id="saCaptureNote">Your answers are already on screen above. The email is only so a copy reaches you and your call.</p>
+    </div>
+
+    <!-- ── NEXT STEPS ── -->
+    <div class="sa-next">
+      <h2>The breakdowns behind each gap</h2>
+      <p>Everything below is already published. Nothing here is gated.</p>
+      <div class="sa-links">
+        <a class="sa-link" href="https://premura-call-center-pdf--4twaz0f.gamma.site/" target="_blank" rel="noopener">
+          <span class="sa-link-kicker">The numbers</span>
+          <span class="sa-link-title">The full call center breakdown</span>
+          <span class="sa-link-sub">Cost per appointment and per sale across channels, side by side.</span>
+        </a>
+        <a class="sa-link" href="/how-it-works">
+          <span class="sa-link-kicker">The build</span>
+          <span class="sa-link-title">How a call center gets built</span>
+          <span class="sa-link-sub">Every phase, every system, every handoff.</span>
+        </a>
+        <a class="sa-link" href="/technology">
+          <span class="sa-link-kicker">The stack</span>
+          <span class="sa-link-title">Dialer, CRM and calendar</span>
+          <span class="sa-link-sub">What your appointments run on, and what you can see of it.</span>
+        </a>
+        <a class="sa-link" href="/testimonials">
+          <span class="sa-link-kicker">The results</span>
+          <span class="sa-link-title">What operators say</span>
+          <span class="sa-link-sub">Companies running the same questions you just answered.</span>
+        </a>
+      </div>
+
+      <div class="sa-numbers">
+        <div class="sa-numbers-head"><span>Cost comparison &mdash; Premura's published figures</span></div>
+        <div class="sa-numbers-scroll">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th>Cost per</th>
+                <th class="comp-col-hl">Dedicated call center</th>
+                <th>Paid ads or bought appointments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="comp-row-lbl">Appointment</td>
+                <td class="comp-col-hl"><strong>$31</strong></td>
+                <td>$300</td>
+              </tr>
+              <tr>
+                <td class="comp-row-lbl">Sale</td>
+                <td class="comp-col-hl"><strong>$250&ndash;$500</strong></td>
+                <td>$2,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="sa-numbers-foot">Figures from Premura's own <a href="https://premura-call-center-pdf--4twaz0f.gamma.site/" target="_blank" rel="noopener">call center breakdown</a>.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="cta-final">
+  <div class="cta-inner">
+    <span class="section-label" style="display:block;text-align:center;margin-bottom:16px;">After the audit</span>
+    <h2>Go Through It With Us</h2>
+    <p>Book a strategy call and we will walk your twenty points, your territory and your closers &mdash; live.</p>
+    <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary">Book a Strategy Call &rarr;</a>
+    <p class="cta-support">No contracts required to start the conversation.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-rep">
+    <h4>Company &amp; Reputation</h4>
+    <div class="footer-rep-links">
+      <a href="/is-premura-legit">Is Premura Legit?</a>
+      <a href="/is-premura-a-scam">Is Premura a Scam?</a>
+      <a href="/the-truth-about-premura">The Truth About Premura</a>
+      <a href="/premura-reviews">Premura Reviews</a>
+      <a href="/premura-call-center-reviews">Call Center Reviews</a>
+      <a href="/premura-testimonials">Testimonials</a>
+      <a href="/are-premura-reviews-real">Are the Reviews Real?</a>
+      <a href="/premura-complaints">Complaints, Answered</a>
+      <a href="/premura-bbb">BBB Profile</a>
+      <a href="/who-owns-premura">Who Owns Premura</a>
+      <a href="/premura-cost">How Much It Costs</a>
+      <a href="/premura-guarantee">The Guarantee</a>
+      <a href="/premura-vs-in-house">Premura vs In-House</a>
+      <a href="/premura-results">Client Results</a>
+      <a href="/who-is-premura-for">Who It's For</a>
+      <a href="/how-good-is-premura">How Good Is It?</a>
+      <a href="/premura-call-centers">Premura Call Centers</a>
+      <a href="/call-centers-built-by-premura">Call Centers We Built</a>
+    </div>
+  </div>
+  <div class="footer-grid">
+    <div class="footer-brand"><span class="footer-logo"><img src="assets/premura-logo.png" alt="Premura"/><span class="footer-logo-word">PREMURA</span></span><p>In-house call centers for solar and roofing companies.</p></div>
+    <div class="footer-col"><h4>Pages</h4><a href="/">Home</a><a href="/how-it-works">How It Works</a><a href="/solar">For Solar</a><a href="/roofing">For Roofing</a><a href="/about">About Us</a><a href="/testimonials">Testimonials</a>
+      <a href="/faq">FAQ</a></div>
+    <div class="footer-col"><h4>Services</h4><a href="/solar">Solar Campaigns</a><a href="/roofing">Roofing Campaigns</a>
+      <a href="/build-a-call-center">Build a Call Center</a>
+      <a href="/call-center-setup-services">Call Center Setup</a>
+      <a href="/qualified-solar-appointments">Qualified Solar Appointments</a>
+      <a href="/exclusive-roofing-leads">Exclusive Roofing Leads</a>
+      <a href="/door-knocking-alternative">Door Knocking Alternative</a>
+      <a href="/pay-per-appointment">Pay Per Appointment vs Dedicated</a>
+      <a href="/home-services-lead-generation">Home Services Lead Generation</a><a href="/solar-appointment-setting">Solar Appointment Setting</a>
+      <a href="/roofing-appointment-setting">Roofing Appointment Setting</a>
+      <a href="/outbound-sales-outsourcing">Outbound Sales Outsourcing</a>
+      <a href="/technology">Technology &amp; Tools</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:support@premura.org">support@premura.org</a><a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:10px;padding:10px 20px;font-size:.84rem;display:inline-flex;">Book a Strategy Call →</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Premura Corp. All rights reserved.</span><div class="footer-bottom-links"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-service">Terms of Service</a></div></div>
+</footer>
+
+<script src="main.js"></script>
+<script src="sales-audit.js"></script>
+</body>
+</html>
