@@ -1,0 +1,155 @@
+/* ═══ FROM DIAL TO APPOINTMENT — the operating loop ═══
+   Companion to how-it-works.css. That page is the SETUP timeline on a day axis.
+   This page is the OPERATING loop on a one-lead axis. Same vocabulary, different spine:
+   a vertical rail of stages instead of a horizontal sticky track, so the two pages
+   never read as duplicates of each other.
+   Shared components (nav, .section*, .comp-table, .stats-bar, #cta-final, footer) all
+   come from styles.css. Scroll reveals and count-ups come from main.js. */
+
+/* ── Intro (mirrors .hiw-intro so the two pages open the same way) ── */
+.dta-intro{padding:160px 40px 80px;position:relative;overflow:hidden;text-align:center;}
+.dta-intro-bg{position:absolute;inset:0;pointer-events:none;}
+.dta-intro-orb{position:absolute;width:700px;height:700px;background:var(--accent);border-radius:50%;filter:blur(140px);opacity:.1;top:-280px;left:50%;transform:translateX(-50%);}
+.dta-intro-content{position:relative;z-index:1;max-width:820px;margin:0 auto;}
+.dta-intro h1{margin:18px 0 22px;}
+.dta-intro p{font-size:1.15rem;max-width:660px;margin:0 auto;}
+
+/* Chrome strip — the one-lead axis, answering the day axis on /how-it-works */
+.dta-chrome{max-width:820px;margin:48px auto 0;border:1px solid var(--border);border-radius:14px;background:linear-gradient(180deg,#0a0917 0%,#0e0c1f 100%);padding:16px 20px;font-family:'JetBrains Mono','Courier New',monospace;text-align:left;}
+.dta-chrome-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px dashed rgba(139,60,247,.18);flex-wrap:wrap;}
+.dta-chrome-status{display:flex;align-items:center;gap:8px;}
+.dta-chrome-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e;animation:dtaPulse 2s ease-in-out infinite;flex-shrink:0;}
+.dta-chrome-label{font-size:.62rem;font-weight:600;letter-spacing:.14em;color:var(--text);}
+.dta-chrome-id{font-size:.6rem;color:var(--text-secondary);letter-spacing:.08em;}
+@keyframes dtaPulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+
+/* The axis itself: dial → on the calendar, not day 0 → day 14 */
+.dta-axis{display:flex;align-items:center;gap:10px;margin-top:14px;overflow-x:auto;padding-bottom:4px;}
+.dta-axis-step{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary);white-space:nowrap;}
+.dta-axis-step.is-end{color:var(--accent);}
+.dta-axis-sep{flex:1;min-width:14px;height:1px;background:linear-gradient(90deg,rgba(139,60,247,.5),rgba(139,60,247,.15));}
+
+/* ── The rail of stages ── */
+.dta-flow{background:var(--bg-2);}
+.dta-rail{list-style:none;margin:48px 0 0;padding:0;position:relative;}
+/* the spine */
+.dta-rail::before{content:'';position:absolute;left:23px;top:12px;bottom:12px;width:2px;background:linear-gradient(180deg,rgba(139,60,247,.5),rgba(139,60,247,.12));}
+.dta-stage{position:relative;padding:0 0 40px 72px;}
+.dta-stage:last-child{padding-bottom:0;}
+.dta-stage-num{position:absolute;left:0;top:0;width:48px;height:48px;border-radius:50%;background:var(--bg-2);border:1px solid rgba(139,60,247,.35);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:600;color:var(--accent);box-shadow:0 0 0 6px var(--bg-2),0 0 20px rgba(139,60,247,.25);z-index:1;}
+.dta-stage-eyebrow{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.14em;color:var(--accent);background:rgba(139,60,247,.1);border:1px solid rgba(139,60,247,.22);padding:5px 12px;border-radius:100px;margin-bottom:16px;}
+/* .dta-stage carries .step-card to pick up main.js's reveal observer, and styles.css
+   has a `.step-card h3{font-size:1rem}` rule that would otherwise outrank a bare class
+   selector here. Qualified to win it back. */
+.dta-stage .dta-stage-title{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;color:var(--text);margin-bottom:14px;}
+.dta-stage-body{font-size:1rem;line-height:1.75;color:var(--text-secondary);max-width:620px;}
+.dta-stage-body + .dta-stage-body{margin-top:12px;}
+.dta-stage-body strong{color:var(--text);font-weight:600;}
+
+/* ── Widget shell, shared by every stage panel ── */
+.dta-panel{margin-top:22px;max-width:620px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:14px;overflow:hidden;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 12px 40px rgba(0,0,0,.25);}
+.dta-panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 16px;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);flex-wrap:wrap;}
+.dta-panel-name{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary);}
+.dta-panel-body{padding:16px;}
+/* Every panel carrying record-shaped data wears this, so nothing reads as a real account */
+.dta-example{font-family:'JetBrains Mono',monospace;font-size:.58rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#eab308;background:rgba(234,179,8,.1);border:1px solid rgba(234,179,8,.3);border-radius:100px;padding:3px 9px;white-space:nowrap;}
+.dta-live{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:#22c55e;}
+.dta-live::before{content:'';width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;animation:dtaPulse 1.6s ease-in-out infinite;}
+
+/* mono log rows — the site's existing idiom for an event list */
+.dta-log{display:flex;flex-direction:column;gap:7px;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--text-secondary);}
+.dta-log-row{padding:8px 12px;background:rgba(139,60,247,.05);border-left:2px solid var(--accent);border-radius:0 6px 6px 0;}
+.dta-log-row.is-muted{border-left-color:rgba(255,255,255,.14);background:rgba(255,255,255,.02);}
+.dta-log-row strong{color:var(--text);font-weight:600;}
+
+/* dialer meter row */
+.dta-meters{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+.dta-meter{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px;}
+.dta-meter-num{display:block;font-family:'Outfit',sans-serif;font-size:1.35rem;font-weight:800;color:var(--accent);line-height:1;letter-spacing:-.02em;}
+.dta-meter-lbl{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);margin-top:5px;display:block;}
+
+/* call header — the scene1 idiom from how-it-works */
+.dta-call{display:flex;align-items:center;gap:14px;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.07);}
+.dta-call-badge{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 18px rgba(139,60,247,.4);font-size:1.1rem;}
+.dta-call-info{display:flex;flex-direction:column;gap:3px;min-width:0;}
+.dta-call-name{font-family:'Outfit',sans-serif;font-size:.98rem;font-weight:700;color:var(--text);}
+.dta-call-time{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:#22c55e;}
+
+/* ── Four Point Qualification checklist ── */
+.dta-checks{display:flex;flex-direction:column;gap:2px;}
+.dta-check{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.dta-check:last-child{border-bottom:none;}
+.dta-check-tick{width:22px;height:22px;border-radius:6px;background:var(--accent);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:#fff;flex-shrink:0;margin-top:1px;}
+.dta-check-name{display:block;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;color:var(--text);}
+.dta-check-ask{display:block;font-size:.86rem;color:var(--text-secondary);margin-top:3px;line-height:1.55;}
+.dta-check-gate{margin-top:14px;padding:12px 14px;background:rgba(139,60,247,.07);border:1px solid rgba(139,60,247,.22);border-radius:10px;font-size:.88rem;color:var(--text);line-height:1.6;}
+
+/* ── Calendar slot widget ── */
+.dta-cal{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;}
+.dta-cal-col{display:flex;flex-direction:column;gap:6px;min-width:0;}
+.dta-cal-day{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);text-align:center;}
+.dta-cal-slot{height:38px;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);}
+.dta-cal-slot.is-busy{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);}
+.dta-cal-slot.is-new{background:rgba(139,60,247,.18);border-color:rgba(139,60,247,.5);box-shadow:0 0 16px rgba(139,60,247,.3);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.06em;color:var(--accent-light);font-weight:600;text-align:center;padding:2px;}
+
+/* ── Appointment record card ── */
+.dta-record{display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:.88rem;}
+.dta-record dt{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary);padding-top:3px;}
+.dta-record dd{margin:0;color:var(--text);}
+.dta-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07);}
+.dta-chip{font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:100px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.28);color:#22c55e;}
+
+/* ── Notes under the rail / under the table ── */
+.dta-note{margin-top:28px;font-size:.84rem;color:var(--text-secondary);max-width:700px;line-height:1.7;}
+.dta-note strong{color:var(--text);font-weight:600;}
+
+/* ── Cost table wrapper (uses .comp-table from styles.css) ── */
+.dta-cost{background:var(--bg);}
+
+/* ── Rhythm: reuses .stats-bar from styles.css, just needs breathing room ── */
+.dta-rhythm{background:var(--bg-2);}
+.dta-rhythm .stats-bar{margin-top:40px;}
+
+/* ── Cross-link to /how-it-works (the sibling page) ── */
+.dta-sibling{background:var(--bg);}
+.dta-sibling-card{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;padding:30px 34px;border:1px solid var(--border);border-radius:16px;background:linear-gradient(135deg,rgba(139,60,247,.07),rgba(139,60,247,.02));}
+.dta-sibling-text{max-width:600px;}
+.dta-sibling-text h3{margin-bottom:8px;}
+.dta-sibling-text p{font-size:.95rem;}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .dta-intro{padding:120px 20px 56px;}
+  .dta-intro p{font-size:1rem;}
+  .dta-chrome{padding:14px 16px;margin-top:36px;}
+  /* The axis reads as one line on desktop. On a phone it would either scroll out of
+     sight or truncate, so it wraps into dot-separated steps instead. */
+  .dta-axis{flex-wrap:wrap;overflow-x:visible;gap:6px 10px;}
+  .dta-axis-sep{display:none;}
+  .dta-axis-step:not(.is-end)::after{content:'·';margin-left:10px;color:rgba(139,60,247,.55);}
+  .dta-rail::before{left:15px;}
+  .dta-stage{padding-left:52px;padding-bottom:34px;}
+  .dta-stage-num{width:32px;height:32px;font-size:.7rem;box-shadow:0 0 0 5px var(--bg-2),0 0 14px rgba(139,60,247,.25);}
+  .dta-stage-body{font-size:.95rem;}
+  .dta-panel{margin-top:18px;}
+  .dta-panel-body{padding:14px;}
+  .dta-meters{grid-template-columns:1fr;gap:8px;}
+  .dta-meter{display:flex;align-items:baseline;gap:10px;padding:10px 12px;}
+  .dta-meter-num{font-size:1.15rem;}
+  .dta-meter-lbl{margin-top:0;}
+  .dta-log{font-size:.72rem;}
+  .dta-record{grid-template-columns:1fr;gap:2px 0;}
+  .dta-record dt{padding-top:10px;}
+  .dta-cal{grid-template-columns:repeat(5,1fr);gap:4px;}
+  .dta-cal-slot{height:30px;}
+  .dta-cal-slot.is-new{font-size:.46rem;}
+  .dta-sibling-card{padding:24px;gap:18px;}
+}
+
+/* ── Reduced motion — matches the convention in pre-call.css / sales-testimonials.css.
+   main.js reveals elements by setting inline opacity/transform on intersect, so killing
+   the transition makes them appear instantly rather than not at all. ── */
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto;}
+  .dta-chrome-dot,.dta-live::before{opacity:1;}
+}
