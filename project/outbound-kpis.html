@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="assets/premura-logo.png">
+<link rel="apple-touch-icon" href="assets/premura-logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Seven Numbers | Premura</title>
+<meta name="description" content="The seven numbers that tell you whether an outbound pipeline is working, from the first dial to a signed contract. What each one means, what moves it, and what a bad one hides.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="outbound-kpis.css">
+<link rel="canonical" href="https://www.premura.org/outbound-kpis">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.premura.org/#organization","name":"Premura","legalName":"Premura Corp","url":"https://www.premura.org/","logo":"https://www.premura.org/assets/premura-logo.png","description":"Premura builds and manages dedicated in-house call centers for solar and roofing companies. Trained agents book qualified appointments directly into your calendar.","foundingDate":"2022-09-22","telephone":"+1-833-366-8784","email":"support@premura.org","address":{"@type":"PostalAddress","addressLocality":"Medley","addressRegion":"FL","postalCode":"33166","addressCountry":"US"},"sameAs":["https://www.instagram.com/premuracallcenters","https://www.facebook.com/premuracallcenter","https://www.bbb.org/us/fl/medley/profile/business-consultant/premura-corp-0633-92052338"]}</script>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Premura"><img src="assets/premura-logo.png" alt="Premura"/></a>
+    <div class="nav-links">
+      <a href="/how-it-works">How It Works</a>
+      <a href="/solar">Solar</a>
+      <a href="/roofing">Roofing</a>
+      <a href="/technology">Technology</a>
+      <a href="/about">About</a>
+      <a href="/testimonials">Testimonials</a>
+      <a href="/faq">FAQ</a>
+      <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile-menu">
+  <button class="nav-mobile-close">&times;</button>
+  <a href="/how-it-works">How It Works</a>
+  <a href="/solar">Solar</a>
+  <a href="/roofing">Roofing</a>
+  <a href="/technology">Technology</a>
+  <a href="/about">About</a>
+  <a href="/testimonials">Testimonials</a>
+  <a href="/faq">FAQ</a>
+  <a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:16px;">Book a Call</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     INTRO. No main.js fade-in classes anywhere on this page: main.js sets
+     opacity:0 inline on .glass-card/.phase/.diff-card/.step-card/.pain-card/
+     .tool-card/.tool-card-big/.metric-card/.team-card. A reference page must be
+     readable the instant it paints. Likewise no [data-count] and no
+     .stats-bar/.metrics-grid wrapper — main.js's count-up overwrites the
+     textContent of any [data-count] inside those two.
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<header class="kpi-intro">
+  <div class="kpi-intro-bg"><div class="kpi-intro-orb"></div></div>
+  <div class="kpi-intro-inner">
+    <span class="kpi-eyebrow">Premura &middot; The Scoreboard</span>
+    <h1>The Seven Numbers<br>That Run an Outbound Pipeline</h1>
+    <p class="kpi-lede">Most operators who think they have a lead generation problem have a measurement problem. They know what they spent and they know how many deals they signed, and nothing in between. When the number at the end is disappointing, there is no way to tell which part of the machine is broken &mdash; so the fix becomes a guess.</p>
+    <p class="kpi-lede">These are the seven numbers in between. First dial to signed contract. What each one is, what it tells you, what actually moves it, and what a bad one hides.</p>
+    <p class="kpi-note">There is nothing to fill in on this page. It is reference material &mdash; look up the number you need and leave. If you want the arithmetic done on your own figures, the <a href="/appointment-cost">Appointment Cost Worksheet</a> does that.</p>
+  </div>
+</header>
+
+<!-- ═══ THE INDEX — the thirty-second promise, delivered literally ═══ -->
+<section class="section kpi-idx-sec">
+  <div class="section-inner">
+    <div class="kpi-idx-panel">
+      <div class="kpi-idx-head">
+        <span class="kpi-idx-dot" aria-hidden="true"></span>
+        <span class="kpi-idx-label">THE SCOREBOARD &middot; SEVEN NUMBERS, THREE LAYERS</span>
+      </div>
+      <nav class="kpi-idx-grid" aria-label="Jump to a metric">
+        <a class="kpi-idx-item kpi-l1" href="#m1"><span class="kpi-idx-n">01</span><span class="kpi-idx-name">Dials per agent per day</span><span class="kpi-idx-layer">Volume</span></a>
+        <a class="kpi-idx-item kpi-l1" href="#m2"><span class="kpi-idx-n">02</span><span class="kpi-idx-name">Contact rate</span><span class="kpi-idx-layer">Volume</span></a>
+        <a class="kpi-idx-item kpi-l2" href="#m3"><span class="kpi-idx-n">03</span><span class="kpi-idx-name">Set rate</span><span class="kpi-idx-layer">Quality</span></a>
+        <a class="kpi-idx-item kpi-l2" href="#m4"><span class="kpi-idx-n">04</span><span class="kpi-idx-name">Show rate</span><span class="kpi-idx-layer">Quality</span></a>
+        <a class="kpi-idx-item kpi-l2" href="#m5"><span class="kpi-idx-n">05</span><span class="kpi-idx-name">Close rate on sat appointments</span><span class="kpi-idx-layer">Quality</span></a>
+        <a class="kpi-idx-item kpi-l3" href="#m6"><span class="kpi-idx-n">06</span><span class="kpi-idx-name">Cost per appointment</span><span class="kpi-idx-layer">Money</span></a>
+        <a class="kpi-idx-item kpi-l3" href="#m7"><span class="kpi-idx-n">07</span><span class="kpi-idx-name">Cost per acquisition</span><span class="kpi-idx-layer">Money</span></a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ THE THREE LAYERS ═══ -->
+<section class="section kpi-layers-sec">
+  <div class="section-inner">
+    <span class="kpi-eyebrow">The Scoreboard &middot; How It Groups</span>
+    <h2 class="section-title">Three Layers, Not Seven Separate Numbers</h2>
+    <p class="section-sub">The seven are not a flat list. They group by who can move them and how fast, and that grouping is the difference between a dashboard and a diagnosis.</p>
+
+    <div class="kpi-layers">
+      <div class="kpi-layer kpi-layer-1">
+        <span class="kpi-layer-tag">Layer 01</span>
+        <h3>Volume</h3>
+        <p class="kpi-layer-sub">Dials per agent per day &middot; Contact rate</p>
+        <p>Moved by headcount, hours actually spent dialling, and the quality of the list. These respond in <b>days</b>. Add an agent on Monday and the dial count moves on Monday.</p>
+      </div>
+      <div class="kpi-layer kpi-layer-2">
+        <span class="kpi-layer-tag">Layer 02</span>
+        <h3>Quality</h3>
+        <p class="kpi-layer-sub">Set rate &middot; Show rate &middot; Close rate</p>
+        <p>Moved by how hard the agent qualifies and what the agent refuses to book. These respond in <b>weeks</b>, because they are changed by training and standards rather than by headcount.</p>
+      </div>
+      <div class="kpi-layer kpi-layer-3">
+        <span class="kpi-layer-tag">Layer 03</span>
+        <h3>Money</h3>
+        <p class="kpi-layer-sub">Cost per appointment &middot; Cost per acquisition</p>
+        <p>You do not move these directly <b>at all</b>. They are the output of the five above. Trying to fix a cost figure by working on the cost figure is the most common and most expensive mistake on this page.</p>
+      </div>
+    </div>
+
+    <p class="kpi-layers-foot">This is the same split as the two dials on the <a href="/appointment-cost">Appointment Cost Worksheet</a>: on outbound, volume and quality are separate controls in separate hands, which is exactly why they are separate layers here. On paid ads they are one dial, which is why a paid-ads operator has no equivalent of Layer 02 to work on.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     LAYER 01 — VOLUME
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="section kpi-group-sec" id="layer-1">
+  <div class="section-inner">
+    <div class="kpi-group-head">
+      <span class="kpi-group-tag kpi-l1">Layer 01</span>
+      <h2 class="section-title">Volume</h2>
+      <p class="kpi-group-sub">Is the top of the funnel actually being worked? These two are inputs, not outcomes &mdash; the only numbers on this page you control directly.</p>
+    </div>
+
+    <!-- 01 · DIALS PER AGENT PER DAY -->
+    <article class="kpi-card kpi-card-l1" id="m1">
+      <div class="kpi-card-top">
+        <span class="kpi-card-n">01</span>
+        <div class="kpi-card-id">
+          <h3>Dials per agent per day</h3>
+          <p class="kpi-formula"><span class="kpi-formula-lbl">How to work it out</span>Outbound call attempts in a day &divide; agents who dialled that day</p>
+        </div>
+      </div>
+      <dl class="kpi-def">
+        <dt>What it is</dt>
+        <dd>Attempts, not conversations. Every number your dialer threw at the network, including the ones nobody picked up. Count it per agent per day &mdash; a team total hides an agent who did nothing behind four who did double.</dd>
+        <dt>What it tells you</dt>
+        <dd>Whether the machine is switched on. It is the only number here that is a pure input, so when everything downstream looks bad this is the first thing to rule out. A pipeline cannot produce appointments it never dialled for.</dd>
+        <dt>What moves it</dt>
+        <dd>Hours actually spent on the dialer, which is not the same as hours logged in. Dialer mode &mdash; manual dialling costs you more than half your attempts against a power dialer. List size: an agent who exhausts the list by two o'clock stops. Wrap time between calls, pause time, and how long the average conversation runs.</dd>
+        <dt>What a bad one hides</dt>
+        <dd>A low dial count almost never means lazy agents, and treating it that way is how you lose good ones. It usually means they ran out of list, the dialer is misconfigured, or the day is going on admin and meetings. <b>A high one hides the opposite problem:</b> if dials climb and contacts do not, you are burning a dead list faster, and your cost per appointment will get worse while the activity report looks better.</dd>
+      </dl>
+      <div class="kpi-bench" data-bench="none">
+        <span class="kpi-bench-lbl">Premura benchmark</span>
+        <span class="kpi-bench-val kpi-bench-nil">Not published. We are not putting a figure here we have not published elsewhere.</span>
+      </div>
+    </article>
+
+    <!-- 02 · CONTACT RATE -->
+    <article class="kpi-card kpi-card-l1" id="m2">
+      <div class="kpi-card-top">
+        <span class="kpi-card-n">02</span>
+        <div class="kpi-card-id">
+          <h3>Contact rate</h3>
+          <p class="kpi-formula"><span class="kpi-formula-lbl">How to work it out</span>Calls that reached a live human &divide; dials attempted</p>
+        </div>
+      </div>
+      <dl class="kpi-def">
+        <dt>What it is</dt>
+        <dd>The share of your attempts that turned into a conversation with a person. It measures your <b>data and your phone numbers</b> &mdash; not your agents. Nothing an agent says can affect whether somebody picks up.</dd>
+        <dt>What it tells you</dt>
+        <dd>Whether the list is worth calling and whether your numbers are still getting through. It is the hinge of the whole funnel: halve this and you have halved every number downstream of it without anybody doing anything wrong.</dd>
+        <dt>What moves it</dt>
+        <dd>List source and age &mdash; a six-month-old list is a different asset from a fresh one. Time of day against the homeowner's time zone, not yours. Local versus toll-free caller ID. Carrier spam labelling on your outbound numbers. How many times that number has already been dialled, by you and by everyone else who bought the same list.</dd>
+        <dt>What a bad one hides</dt>
+        <dd>A falling contact rate is usually your phone numbers getting flagged by the carriers, not your list going stale &mdash; and the two have completely different fixes. Meanwhile it reads on every report as agents underperforming, so they get coached for a problem they cannot touch. <b>It also hides a definition problem.</b> Does a wrong number count as a contact? An answering machine? A two-second hang-up? Depending on where you draw that line, the same month's data can produce contact rates several times apart. Write your definition down before you compare two months, or you will be measuring your own bookkeeping instead of your pipeline.</dd>
+      </dl>
+      <div class="kpi-bench" data-bench="none">
+        <span class="kpi-bench-lbl">Premura benchmark</span>
+        <span class="kpi-bench-val kpi-bench-nil">Not published &mdash; and a single figure would be misleading without stating the definition behind it.</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     LAYER 02 — QUALITY
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="section kpi-group-sec kpi-group-alt" id="layer-2">
+  <div class="section-inner">
+    <div class="kpi-group-head">
+      <span class="kpi-group-tag kpi-l2">Layer 02</span>
+      <h2 class="section-title">Quality</h2>
+      <p class="kpi-group-sub">Was what got booked real? These three are decided in the conversation, by what the agent is willing to turn away. None of them can be read alone.</p>
+    </div>
+
+    <!-- 03 · SET RATE -->
+    <article class="kpi-card kpi-card-l2" id="m3">
+      <div class="kpi-card-top">
+        <span class="kpi-card-n">03</span>
+        <div class="kpi-card-id">
+          <h3>Set rate</h3>
+          <p class="kpi-formula"><span class="kpi-formula-lbl">How to work it out</span>Appointments booked &divide; conversations had</p>
+        </div>
+      </div>
+      <dl class="kpi-def">
+        <dt>What it is</dt>
+        <dd>The share of actual conversations that end with something on a calendar. <b>Divided by conversations, not by dials.</b> Appointments per dial is a different number with a different use, and quoting one when you mean the other is the most common error in outbound reporting &mdash; they differ by roughly the size of your contact rate.</dd>
+        <dt>What it tells you</dt>
+        <dd>Whether the pitch works on the traffic you are actually reaching. Because the denominator is conversations, it is the one quality number that is insulated from how good or bad your list is.</dd>
+        <dd>It is also where the first real lever sits: contact rate is mostly bought, set rate is mostly trained.</dd>
+        <dt>What moves it</dt>
+        <dd>The opener and how fast the agent gets to the point. The offer itself. How hard the agent qualifies before booking. Objection handling on the two or three objections that account for most of them. And the calendar &mdash; if the first available slot is nine days out, a measurable share of people who said yes never get booked at all.</dd>
+        <dt>What a bad one hides</dt>
+        <dd><b>The dangerous version of this metric is a high one.</b> An agent who books everybody who does not hang up posts an excellent set rate, demolishes your show rate, and costs you a closer's week. Set rate read on its own rewards exactly that behaviour, which is why it belongs next to show rate and nowhere else. A low set rate, by contrast, is usually honest &mdash; and sometimes it is an agent qualifying properly against a list that cannot support the offer.</dd>
+      </dl>
+      <div class="kpi-bench" data-bench="none">
+        <span class="kpi-bench-lbl">Premura benchmark</span>
+        <span class="kpi-bench-val kpi-bench-nil">Not published. A set rate quoted without its show rate is not worth comparing against anyway.</span>
+      </div>
+    </article>
+
+    <!-- 04 · SHOW RATE -->
+    <article class="kpi-card kpi-card-l2" id="m4">
+      <div class="kpi-card-top">
+        <span class="kpi-card-n">04</span>
+        <div class="kpi-card-id">
+          <h3>Show rate</h3>
+          <p class="kpi-formula"><span class="kpi-formula-lbl">How to work it out</span>Appointments sat &divide; appointments booked</p>
+        </div>
+      </div>
+      <dl class="kpi-def">
+        <dt>What it is</dt>
+        <dd>The share of booked appointments your closer actually sat &mdash; in front of the homeowner, pitch delivered. No-shows, cancellations and reschedules that never happened do not count.</dd>
+        <dt>What it tells you</dt>
+        <dd>Whether what the agent booked was real. This is the single honest test of appointment quality, and it is the number that separates an appointment from an entry on a calendar. Everything upstream can look healthy while this one quietly makes all of it worthless.</dd>
+        <dt>What moves it</dt>
+        <dd>Qualification depth &mdash; above all, whether the person who can actually say yes is going to be in the room. The confirmation sequence between booking and sit, and whether a human ever speaks to them again. The gap: book eight days out and you will lose people you would have kept at two. And whether the homeowner was told the truth about how long it takes and what it is for.</dd>
+        <dt>What a bad one hides</dt>
+        <dd>A bad show rate is almost never blamed on the right thing. It presents as a lead quality problem and is usually a booking-standards or confirmation problem &mdash; so operators go and buy a better list, which changes nothing. <b>It is also completely invisible in cost per appointment.</b> You can have the cheapest appointments in your market and a show rate that makes them worthless; the figure that catches it is cost per <i>sat</i> appointment, which the <a href="/appointment-cost">worksheet</a> computes beside the other two.</dd>
+        <dt>Before you trust your own</dt>
+        <dd>You only have a show rate if your closers disposition <b>every</b> appointment. If a meaningful share go un-dispositioned, what you are looking at is not a show rate &mdash; it is a sample of the appointments your closers chose to report on, and that sample is rarely unbiased. Check what fraction of last month's appointments have an outcome recorded against them before you draw any conclusion from this number. This is the most commonly broken measurement of the seven.</dd>
+      </dl>
+      <div class="kpi-bench" data-bench="none">
+        <span class="kpi-bench-lbl">Premura benchmark</span>
+        <span class="kpi-bench-val kpi-bench-nil">Not published.</span>
+      </div>
+      <p class="kpi-xlink"><a href="/appointment-cost">Work out what your no-shows cost you &rarr;</a></p>
+    </article>
+
+    <!-- 05 · CLOSE RATE -->
+    <article class="kpi-card kpi-card-l2" id="m5">
+      <div class="kpi-card-top">
+        <span class="kpi-card-n">05</span>
+        <div class="kpi-card-id">
+          <h3>Close rate on sat appointments</h3>
+          <p class="kpi-formula"><span class="kpi-formula-lbl">How to work it out</span>Signed contracts &divide; appointments <b>sat</b></p>
+        </div>
+      </div>
+      <dl class="kpi-def">
+        <dt>What it is</dt>
+        <dd>Of the homeowners your closer actually sat with, the share who signed. <b>Sat, not booked.</b> The word "sat" in the denominator is the entire value of the metric.</dd>
+        <dt>What it tells you</dt>
+        <dd>How good your sales process is with pipeline quality held constant. It is the one number on this page that is genuinely about your closers rather than your pipeline &mdash; provided you compute it on sits.</dd>
+        <dt>What moves it</dt>
+        <dd>The closer, the pitch, and the financing options you can put in front of someone. Pricing. Whether the appointment was set honestly &mdash; a closer walking into a conversation the homeowner was not expecting is losing a deal the setter lost. And how long after the pitch the follow-up happens.</dd>
+        <dt>What a bad one hides</dt>
+        <dd>Computed on <i>booked</i> appointments instead of sat, close rate silently blends your closer's skill with your setter's booking standards, and then nobody can tell which is broken &mdash; the most expensive measurement mistake of the seven, because it gets a good closer managed out. Watch, too, for a close rate falling right after you raised dial volume: that is usually not the closer. It is the booking bar dropping to keep the appointment count up.</dd>
+      </dl>
+      <div class="kpi-bench" data-bench="none">
+        <span class="kpi-bench-lbl">Premura benchmark</span>
+        <span class="kpi-bench-val kpi-bench-nil">Not published. Close rate belongs to your sales team, not to the call center.</span>
+      </div>
+      <p class="kpi-xlink"><a href="/appointment-cost">Compute your show and close rates from last month &rarr;</a></p>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     LAYER 03 — MONEY
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="section kpi-group-sec" id="layer-3">
+  <div class="section-inner">
+    <div class="kpi-group-head">
+      <span class="kpi-group-tag kpi-l3">Layer 03</span>
+      <h2 class="section-title">Money</h2>
+      <p class="kpi-group-sub">What it all cost. Neither of these has a dial of its own &mdash; they are what the five numbers above add up to, which is why they are the last thing to work on and the first thing everyone tries to fix.</p>
+    </div>
+
+    <!-- 06 · COST PER APPOINTMENT -->
+    <article class="kpi-card kpi-card-l3" id="m6">
+      <div class="kpi-card-top">
+        <span class="kpi-card-n">06</span>
+        <div class="kpi-card-id">
+          <h3>Cost per appointment</h3>
+          <p class="kpi-formula"><span class="kpi-formula-lbl">How to work it out</span>Everything that channel cost you in a month &divide; appointments it produced</p>
+        </div>
+      </div>
+      <dl class="kpi-def">
+        <dt>What it is</dt>
+        <dd>The price of one at-bat. <b>Everything</b> means everything: ad spend or per-appointment fees, setter wages and bonuses, the dialer, the data. Leave out the wages and you will get a number you like and cannot use.</dd>
+        <dt>What it tells you</dt>
+        <dd>What it costs to get a homeowner to agree to see you &mdash; and, compared across channels on the same definition, which of your channels is actually cheap rather than merely familiar.</dd>
+        <dt>What moves it</dt>
+        <dd>Nothing, directly. It moves when dials, contact rate or set rate move, or when the cost base changes. That is the whole point of the three layers: this figure is a readout, and the controls are upstairs.</dd>
+        <dt>What a bad one hides</dt>
+        <dd><b>It ignores show rate completely</b> &mdash; which makes it the easiest number on this page to improve while making your business worse. Drop the booking bar and cost per appointment falls that same week, every time. Cost per deal then goes up, but a month later and on a different report, so the two rarely get connected. If you track one cost figure, track cost per <i>sat</i> appointment instead.</dd>
+      </dl>
+      <div class="kpi-bench" data-bench="pub">
+        <span class="kpi-bench-lbl">Premura published figure</span>
+        <span class="kpi-bench-val"><b>$31</b> per appointment, against <b>$300</b> on paid ads or bought appointments.</span>
+      </div>
+      <p class="kpi-xlink"><a href="/appointment-cost">Work out yours from four numbers &rarr;</a></p>
+    </article>
+
+    <!-- 07 · COST PER ACQUISITION -->
+    <article class="kpi-card kpi-card-l3" id="m7">
+      <div class="kpi-card-top">
+        <span class="kpi-card-n">07</span>
+        <div class="kpi-card-id">
+          <h3>Cost per acquisition</h3>
+          <p class="kpi-formula"><span class="kpi-formula-lbl">How to work it out</span>Everything that channel cost you &divide; deals signed from it</p>
+        </div>
+      </div>
+      <dl class="kpi-def">
+        <dt>What it is</dt>
+        <dd>What one signed contract cost to originate &mdash; cost per install, in solar. The only number on this page that lands directly in your P&amp;L, and the one every other number on the page exists to explain.</dd>
+        <dt>What it tells you</dt>
+        <dd>Whether the pipeline is a business. Set against your gross margin per deal it answers the only question that matters, and once it is stable it turns headcount from a gamble into arithmetic.</dd>
+        <dt>What moves it</dt>
+        <dd>All six numbers above, and nothing else. Every one of them is a multiplier on this one, which is why a 10% improvement in two places beats a heroic effort in one.</dd>
+        <dt>What a bad one hides</dt>
+        <dd><b>It hides which of the six is broken</b> &mdash; that is the entire reason to track the other six. A bad cost per acquisition tells you to act and gives you no idea where, and acting without knowing where is what most of a year gets spent on. It is also the noisiest figure here: if you sign a handful of deals a month, one unusual deal swings it wildly, so read it over a quarter. A single month's cost per acquisition is an anecdote.</dd>
+      </dl>
+      <div class="kpi-bench" data-bench="pub">
+        <span class="kpi-bench-lbl">Premura published figure</span>
+        <span class="kpi-bench-val"><b>$250 to $500</b> per install, against <b>$2,000</b> on paid ads or bought appointments and <b>$2,500</b> door to door.</span>
+      </div>
+      <p class="kpi-xlink"><a href="/appointment-cost">Work out yours from four numbers &rarr;</a></p>
+    </article>
+  </div>
+</section>
+
+<!-- ═══ READING THEM IN ORDER ═══ -->
+<section class="section kpi-order-sec">
+  <div class="section-inner">
+    <span class="kpi-eyebrow">The Scoreboard &middot; In Practice</span>
+    <h2 class="section-title">Read Them In Order. Fix the First One That Is Broken.</h2>
+    <p class="section-sub">The seven are a sequence, and every number inherits the damage done above it. So there is only ever one worth working on: the first one that is wrong.</p>
+
+    <ol class="kpi-order">
+      <li><span class="kpi-order-n">01</span><div><b>Are we dialling?</b> If dials per agent per day is low, stop. Nothing below this means anything yet, and no amount of training fixes a dialer that is not running.</div></li>
+      <li><span class="kpi-order-n">02</span><div><b>Are we reaching anyone?</b> If contact rate is low, the problem is the list or the phone numbers. Coaching agents here is coaching them for something they cannot change.</div></li>
+      <li><span class="kpi-order-n">03</span><div><b>Do conversations turn into appointments?</b> If set rate is low with a healthy contact rate, it is the pitch, the offer or the calendar. This is the first genuinely trainable number.</div></li>
+      <li><span class="kpi-order-n">04</span><div><b>Do appointments get sat?</b> If show rate is low with a healthy set rate, you are booking people who were never going to turn up. That is a standards problem, and it is upstream of every cost figure.</div></li>
+      <li><span class="kpi-order-n">05</span><div><b>Do sits become deals?</b> Only once show rate is healthy does close rate tell you anything about your closers. Before that it is telling you about your setters.</div></li>
+      <li><span class="kpi-order-n">06</span><div><b>What did that cost?</b> Now the two money numbers mean something, because you know which of the five produced them.</div></li>
+    </ol>
+
+    <p class="kpi-order-foot">Working bottom-up instead &mdash; starting from a disappointing cost per deal &mdash; is how operators end up changing the thing that was never broken. The <a href="/sales-audit">twenty-question audit</a> walks the same ground as a diagnostic if you would rather be asked than go looking.</p>
+  </div>
+</section>
+
+<!-- ═══ THE PAYOFF — HEADCOUNT BECOMES ARITHMETIC ═══ -->
+<section class="section kpi-head-sec">
+  <div class="section-inner">
+    <span class="kpi-eyebrow">The Scoreboard &middot; What It Buys You</span>
+    <h2 class="section-title">Then Hiring Stops Being a Gamble</h2>
+    <p class="section-sub">This is what the seven numbers are actually for. Not a dashboard &mdash; the ability to write one sentence down and act on it.</p>
+
+    <div class="kpi-chain">
+      <div class="kpi-chain-row">
+        <span class="kpi-chain-item">Dials a day</span><span class="kpi-chain-op">&times;</span>
+        <span class="kpi-chain-item">Contact rate</span><span class="kpi-chain-op">&times;</span>
+        <span class="kpi-chain-item">Set rate</span><span class="kpi-chain-op">&times;</span>
+        <span class="kpi-chain-item">Show rate</span><span class="kpi-chain-op">&times;</span>
+        <span class="kpi-chain-item">Close rate</span><span class="kpi-chain-op">=</span>
+        <span class="kpi-chain-item kpi-chain-out">Deals from one more agent</span>
+      </div>
+    </div>
+
+    <div class="kpi-head-body">
+      <p>An operator who does not know these numbers hires on feel. Appointments are down, so add a setter and hope. If it does not work there is no way to tell whether the setter was wrong, the list was wrong, or the closer was the bottleneck all along &mdash; so the next decision is made on feel as well.</p>
+      <p>An operator who knows them multiplies. One more agent produces a predictable number of dials; the funnel's rates turn that into a number of deals; your margin per deal turns that into money, against a cost you already know. The answer comes out yes or no <b>before</b> you hire, and when it comes out wrong you can see which rate you were wrong about.</p>
+      <p>The precision is not the point &mdash; these are rates, they move, and the first version of the sum will be off. The point is that the sentence can be written at all. That is the whole difference between an outbound pipeline you operate and one you hope about, and it is why the measurement comes before the headcount rather than after it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLOSE ═══ -->
+<section class="section kpi-close-sec">
+  <div class="section-inner kpi-close-inner">
+    <span class="kpi-eyebrow">The Scoreboard &middot; Before the Call</span>
+    <h2 class="section-title">Which of the Seven Can You Answer Right Now?</h2>
+    <p class="kpi-close-body">You already have a call booked, so there is nothing to sign up for here. The useful thing to do with this page is go down the list of seven and mark the ones you could answer from memory, and the ones you would have to go and work out.</p>
+    <p class="kpi-close-body">Bring that to the call. The gaps are more informative than the figures &mdash; they tell us exactly where your pipeline is unmeasured, and an unmeasured stage is almost always where the problem turns out to be.</p>
+    <p class="kpi-close-small">Nothing on this page is sent to us, and there is nothing here to submit.</p>
+    <p class="kpi-close-links">Also worth your time: <a href="/appointment-cost">work out what an appointment and a deal actually cost you</a> &middot; <a href="/sales-audit">score your operation out of sixty</a> &middot; <a href="/from-dial-to-appointment">what happens between the first dial and a confirmed appointment</a> &middot; <a href="/how-it-works">how a build runs</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-rep">
+    <h4>Company &amp; Reputation</h4>
+    <div class="footer-rep-links">
+      <a href="/is-premura-legit">Is Premura Legit?</a>
+      <a href="/is-premura-a-scam">Is Premura a Scam?</a>
+      <a href="/the-truth-about-premura">The Truth About Premura</a>
+      <a href="/premura-reviews">Premura Reviews</a>
+      <a href="/premura-call-center-reviews">Call Center Reviews</a>
+      <a href="/premura-testimonials">Testimonials</a>
+      <a href="/are-premura-reviews-real">Are the Reviews Real?</a>
+      <a href="/premura-complaints">Complaints, Answered</a>
+      <a href="/premura-bbb">BBB Profile</a>
+      <a href="/who-owns-premura">Who Owns Premura</a>
+      <a href="/premura-cost">How Much It Costs</a>
+      <a href="/premura-guarantee">The Guarantee</a>
+      <a href="/premura-vs-in-house">Premura vs In-House</a>
+      <a href="/premura-results">Client Results</a>
+      <a href="/who-is-premura-for">Who It's For</a>
+      <a href="/how-good-is-premura">How Good Is It?</a>
+      <a href="/premura-call-centers">Premura Call Centers</a>
+      <a href="/call-centers-built-by-premura">Call Centers We Built</a>
+    </div>
+  </div>
+  <div class="footer-grid">
+    <div class="footer-brand"><span class="footer-logo"><img src="assets/premura-logo.png" alt="Premura"/><span class="footer-logo-word">PREMURA</span></span><p>In-house call centers for solar and roofing companies.</p></div>
+    <div class="footer-col"><h4>Pages</h4><a href="/">Home</a><a href="/how-it-works">How It Works</a><a href="/solar">For Solar</a><a href="/roofing">For Roofing</a><a href="/about">About Us</a><a href="/testimonials">Testimonials</a>
+      <a href="/faq">FAQ</a></div>
+    <div class="footer-col"><h4>Services</h4><a href="/solar">Solar Campaigns</a><a href="/roofing">Roofing Campaigns</a>
+      <a href="/build-a-call-center">Build a Call Center</a>
+      <a href="/call-center-setup-services">Call Center Setup</a>
+      <a href="/qualified-solar-appointments">Qualified Solar Appointments</a>
+      <a href="/exclusive-roofing-leads">Exclusive Roofing Leads</a>
+      <a href="/door-knocking-alternative">Door Knocking Alternative</a>
+      <a href="/pay-per-appointment">Pay Per Appointment vs Dedicated</a>
+      <a href="/home-services-lead-generation">Home Services Lead Generation</a><a href="/solar-appointment-setting">Solar Appointment Setting</a>
+      <a href="/roofing-appointment-setting">Roofing Appointment Setting</a>
+      <a href="/outbound-sales-outsourcing">Outbound Sales Outsourcing</a>
+      <a href="/technology">Technology &amp; Tools</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:support@premura.org">support@premura.org</a><a href="https://callcenter.premura.org/video-sales-page-page394172" target="_blank" rel="noopener" class="btn-primary" style="margin-top:10px;padding:10px 20px;font-size:.84rem;display:inline-flex;">Book a Strategy Call →</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Premura Corp. All rights reserved.</span><div class="footer-bottom-links"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-service">Terms of Service</a></div></div>
+</footer>
+
+<!-- No page-specific JS. This page has no inputs and no computation: the index is
+     anchor links, smooth scrolling is already global in styles.css, and arrival
+     highlighting is CSS :target. /from-dial-to-appointment ships two files the same
+     way. main.js is loaded only for the shared nav and mobile menu. -->
+<script src="main.js"></script>
+</body>
+</html>
