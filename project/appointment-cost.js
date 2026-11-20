@@ -7,21 +7,26 @@
    requests and leave nothing behind. Do not add one without Ryan.
 
    Every figure quoted here traces to Premura's published call center
-   breakdown: $31 per appointment, $250 to $500 per install, $300 per
+   breakdown: $30 to $100 per appointment, $400 to $800 per install, $300 per
    appointment and $2,000 per sale on paid ads and bought appointments,
    $2,500 per sale door to door. The deck publishes no appointment cost
    for door to door and nothing at all for referrals, so those are null
    and the page says so rather than guessing.
 
-   The deck's own "$250 AVERAGE cost per acquisition" line contradicts its
-   own $250-to-$500 table. The range is used, never the single figure.
+   Figures updated 2026-11-20 on Ryan's instruction and they now SUPERSEDE
+   the deck: appointments are quoted $30 to $100 and installs $400 to $800.
+   The deck still shows the older $31 / $250-to-$500 numbers, and its own
+   "$250 AVERAGE cost per acquisition" line contradicted its own table even
+   then. Both figures are ranges now, so a range is always used here, never
+   a single point.
    ═══════════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
 
-  var PREMURA_APPT = 31;
-  var PREMURA_SALE_LOW = 250;
-  var PREMURA_SALE_HIGH = 500;
+  var PREMURA_APPT_LOW = 30;
+  var PREMURA_APPT_HIGH = 100;
+  var PREMURA_SALE_LOW = 400;
+  var PREMURA_SALE_HIGH = 800;
 
   /* apptText / saleText are the deck's strings, quoted verbatim and never run
      through the money formatter — the deck says "$300", not "$300.00", and a
@@ -202,7 +207,7 @@
 
   function gapSentence(r, chan) {
     var cpa = r.costPerAppt, cpd = r.costPerDeal;
-    var ours = 'Our published figures are <b>$31</b> an appointment and <b>$250 to $500</b> an install.';
+    var ours = 'Our published figures are <b>$30 to $100</b> an appointment and <b>$400 to $800</b> an install.';
 
     if (cpa === null && cpd === null) {
       return 'Fill in the four numbers above and the three figures appear here.';
@@ -230,27 +235,25 @@
 
   function vsSentence(r, chan) {
     var cpa = r.costPerAppt;
-    var base = 'Premura: $31';
+    var base = 'Premura: $30 to $100';
     if (cpa === null) {
       return chan.apptText ? base + ' · ' + chan.label + ': ' + chan.apptText : base;
     }
     if (cpa === 0) return base + ' · you entered no spend';
-    var tail;
-    if (cpa > PREMURA_APPT) {
-      tail = multiple(cpa / PREMURA_APPT);
-      tail = tail ? ' · yours is ' + tail + ' ours' : '';
-    } else if (cpa < PREMURA_APPT) {
-      tail = multiple(PREMURA_APPT / cpa);
-      tail = tail ? ' · ours is ' + tail + ' yours' : '';
-    } else {
-      tail = ' · the same as ours';
+    /* The appointment figure is a range now, so it gets the same treatment
+       the install figure has always had: compare against the top of the
+       range, never a single point, so the multiple can never overstate. */
+    if (cpa > PREMURA_APPT_HIGH) {
+      var t = multiple(cpa / PREMURA_APPT_HIGH);
+      return t ? base + ' · yours is ' + t + ' our upper figure' : base;
     }
-    return base + tail;
+    if (cpa < PREMURA_APPT_LOW) return base + ' · yours is below our range';
+    return base + ' · yours is inside our range';
   }
 
   function cpdSentence(r) {
     var cpd = r.costPerDeal;
-    var base = 'Premura: $250 to $500';
+    var base = 'Premura: $400 to $800';
     if (cpd === null || cpd === 0) return base;
     if (cpd > PREMURA_SALE_HIGH) {
       var t = multiple(cpd / PREMURA_SALE_HIGH);
