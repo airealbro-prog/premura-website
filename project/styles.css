@@ -1849,3 +1849,18 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:64px 40
 .footer-rep-links a{display:block;color:var(--text-secondary);font-size:.86rem;margin-bottom:10px;transition:color .2s;-webkit-column-break-inside:avoid;break-inside:avoid;}
 .footer-rep-links a:hover{color:var(--accent);}
 @media(max-width:600px){.footer-rep-links{columns:2 140px;}}
+
+/* Intent gate — asks job seekers vs buyers before the strategy-call CTA.
+   Uses the site tokens so it inherits the theme. See main.js. */
+.pm-gate-veil{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(6,5,16,.72);backdrop-filter:blur(6px);animation:pmGateIn .18s ease;}
+.pm-gate-card{position:relative;width:100%;max-width:460px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:30px 26px 24px;box-shadow:0 30px 80px rgba(0,0,0,.55);}
+.pm-gate-title{font-size:1.32rem;font-weight:700;color:var(--text);margin-bottom:20px;text-align:center;letter-spacing:-.01em;}
+.pm-gate-choice{display:block;width:100%;text-align:left;background:var(--bg-card);color:var(--text);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 18px;margin-bottom:12px;cursor:pointer;font-family:inherit;transition:border-color .2s,background .2s,transform .2s;}
+.pm-gate-choice:last-of-type{margin-bottom:0;}
+.pm-gate-choice:hover,.pm-gate-choice:focus-visible{border-color:var(--accent);background:rgba(var(--accent-rgb),.12);transform:translateY(-1px);outline:none;}
+.pm-gate-choice-t{display:block;font-weight:700;font-size:1rem;color:var(--text);margin-bottom:3px;}
+.pm-gate-choice-s{display:block;font-size:.86rem;color:var(--text-secondary);line-height:1.4;}
+.pm-gate-close{position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text-secondary);cursor:pointer;font-size:.8rem;line-height:1;font-family:inherit;transition:color .2s,border-color .2s;}
+.pm-gate-close:hover{color:var(--text);border-color:var(--accent);}
+@keyframes pmGateIn{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.pm-gate-veil{animation:none}.pm-gate-choice{transition:none}.pm-gate-choice:hover{transform:none}}
