@@ -103,6 +103,14 @@ a{color:var(--pc-purple-2);}
 
 /* Commonly Asked Questions — 2-up cards, ALL-CAPS, big video on open */
 .pc-q-list{margin-top:26px;text-align:left;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}
+/* An odd number of questions leaves the last card stranded in the left column.
+   Span both columns and centre it, keeping the same width as every other card
+   ((100% - gap) / 2). Scoped above the 760px breakpoint because the grid is a
+   single column below it, and self-reverting: add a question back and the
+   count turns even, so the rule stops matching. */
+@media(min-width:761px){
+  .pc-q-list .pc-video:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 6px);}
+}
 .pc-q{border:1px solid var(--pc-line);border-radius:12px;background:var(--pc-bg-2);overflow:hidden;transition:border-color .2s ease;}
 .pc-q[open]{border-color:var(--pc-purple);}
 .pc-q summary{cursor:pointer;list-style:none;display:flex;gap:10px;align-items:center;padding:14px 16px;font-family:'Outfit',sans-serif;font-weight:800;font-size:.92rem;text-transform:uppercase;color:var(--pc-ink);}
